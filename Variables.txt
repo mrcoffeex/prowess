@@ -1,0 +1,34 @@
+Sign up Variables
+
+multiStepsUsername
+multiStepsEmail
+multiStepsPass
+
+multiStepsFirstName
+multiStepsLastName
+multiStepsMiddleName
+multiStepsQualifier
+multiStepsCS
+multiStepsGender
+multiStepsBirthday
+multiStepsMobile
+multiStepsBirthPlace
+
+multiStepsMunicipality
+multiStepsBarangay
+multiStepsProvince
+multiStepsZip
+multiStepsAddress
+
+--- 
+Scholar Code
+School ID
+Profile Picture
+Picture of validated School ID
+
+-Create a function for
+*limit birthday input to 16 yrs old 2007
+*Age according to bday 
+*Scholar Code 
+*Barangay according to multiStepsMunicipality
+
