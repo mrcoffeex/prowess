@@ -141,7 +141,7 @@
         <meta name="x-apple-disable-message-reformatting">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="telephone=no" name="format-detection">
-        <title>InternBuilders Email</title>
+        <title>PROWESS Email</title>
         <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i" rel="stylesheet">
         <style type="text/css">
         #outlook a {
@@ -206,7 +206,7 @@
         <td align="left" style="padding:0;Margin:0;width:282px">
         <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
         <tr style="border-collapse:collapse">
-        <td class="es-infoblock es-m-txt-c" align="left" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, helvetica, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px">InternBuilders<br></p></td>
+        <td class="es-infoblock es-m-txt-c" align="left" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, helvetica, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px">PROWESS<br></p></td>
         </tr>
         </table></td>
         </tr>
@@ -216,7 +216,7 @@
         <td align="left" style="padding:0;Margin:0;width:278px">
         <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
         <tr style="border-collapse:collapse">
-        <td align="right" class="es-infoblock es-m-txt-c" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:lato,  helvetica, arial, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px"><a href="https://internbuilders.online/" class="view" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#CCCCCC;font-size:12px;font-family:arial,  helvetica, sans-serif">Visit Website</a></p></td>
+        <td align="right" class="es-infoblock es-m-txt-c" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:lato,  helvetica, arial, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px"><a href="#" class="view" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#CCCCCC;font-size:12px;font-family:arial,  helvetica, sans-serif">Visit Website</a></p></td>
         </tr>
         </table></td>
         </tr>
@@ -295,7 +295,7 @@
         <tr style="border-collapse:collapse">
         <td class="es-m-txt-l" align="left" style="Margin:0;padding-top:20px;padding-left:30px;padding-right:30px;padding-bottom:40px">
             <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:lato,  helvetica, arial, sans-serif;line-height:27px;color:#666666;font-size:18px">
-                InternBuilders Support Team
+                PROWESS Support Team
             </p>
         </td>
         </tr>
@@ -342,10 +342,10 @@
         <td valign="top" align="center" style="padding:0;Margin:0;width:600px">
         <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;background-color:#b5d6f1;border-radius:4px" width="100%" cellspacing="0" cellpadding="0" bgcolor="#b5d6f1" role="presentation">
         <tr style="border-collapse:collapse">
-        <td align="center" style="padding:0;Margin:0;padding-top:30px;padding-left:30px;padding-right:30px"><h3 style="Margin:0; margin-bottom: 10px;line-height:24px;mso-line-height-rule:exactly;font-family:lato,  helvetica, arial, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#111111">Visit InternBuilders</h3></td>
+        <td align="center" style="padding:0;Margin:0;padding-top:30px;padding-left:30px;padding-right:30px"><h3 style="Margin:0; margin-bottom: 10px;line-height:24px;mso-line-height-rule:exactly;font-family:lato,  helvetica, arial, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#111111">Visit PROWESS Website</h3></td>
         </tr>
         <tr style="border-collapse:collapse">
-        <td esdev-links-color="#00A5EC" align="center" style="padding:0;Margin:0;padding-bottom:30px;padding-left:30px;padding-right:30px"><a target="_blank" href="https://www.internbuilders.online/" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#00A5EC;font-size:18px">click here</a></td>
+        <td esdev-links-color="#00A5EC" align="center" style="padding:0;Margin:0;padding-bottom:30px;padding-left:30px;padding-right:30px"><a target="_blank" href="#" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#00A5EC;font-size:18px">click here</a></td>
         </tr>
         </table></td>
         </tr>
@@ -475,7 +475,7 @@
         $title = "Verification Code";
 
         $subject = "Verification Code: " . $otp;
-        $message = "<p>Here is you verification code:</p>";
+        $message = "<p>Hi dear Scholars! Here is your verification code:</p>";
         $message .= "<h4>" . $otp . "</h4>\n\n";
         $message .= "<p>If this request did not come from you, change your account password immediately to prevent further unauthorized access.</p>";
         $message .= "<p>This is a system generated email. Do not reply.</p>";
@@ -486,6 +486,80 @@
             return true;
         } else {
             return false;
+        }
+
+    }
+
+    function sendVerification($userCode, $emailTo, $autoload){
+
+        $otp = createOTP($userCode);
+
+        $title = "Email Verification";
+
+        $subject = "Email Verification";
+        $message = "<p>Hi dear Scholars! Here is your verification link:</p>";
+        $message .= "<a href='http://localhost/prowess/verify?token=".randStrInt(30)."&usercode=".$userCode."&otp=".$otp."'>http://localhost/prowess/verify</a>\n\n";
+        $message .= "<p>If this request did not come from you, change your account password immediately to prevent further unauthorized access.</p>";
+        $message .= "<p>This is a system generated email. Do not reply.</p>";
+
+        $request = sendEmail($emailTo, $subject, $title, $message, $autoload);
+
+        if ($request == true) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function verifyAccount($userCode, $otp){
+
+        $stmt=PWD()->prepare("SELECT 
+                            * 
+                            FROM 
+                            prow_otp 
+                            Where 
+                            prow_user_code = :prow_user_code
+                            AND
+                            prow_otp_code = :prow_otp_code");
+        $stmt->execute([
+            'prow_user_code' => $userCode,
+            'prow_otp_code' => $otp
+        ]);
+
+        $count=$stmt->rowCount();
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($count > 0) {
+            
+            if ($res['prow_otp_status'] == 0) {
+
+                $stmt1=PWD()->prepare("UPDATE 
+                                    prow_otp 
+                                    SET
+                                    prow_otp_status = :prow_otp_status
+                                    Where 
+                                    prow_user_code = :prow_user_code
+                                    AND
+                                    prow_otp_code = :prow_otp_code");
+                $stmt1->execute([
+                    'prow_otp_status' => 1,
+                    'prow_user_code' => $userCode,
+                    'prow_otp_code' => $otp
+                ]);
+
+                if ($stmt1) {
+                    return "verified";
+                } else {
+                    return "error_verification";
+                }
+                
+            } else {
+                return "verified";
+            }
+
+        } else {
+            return "notfound";
         }
 
     }

@@ -1,4 +1,6 @@
 <?php
+    require '_config.php';
+
     include 'landing/_head.php';
     include 'landing/_nav.php';
 ?>
@@ -12,8 +14,7 @@
                     <div class="col-lg-6">
                         <div class="text-container">
                             <h1><span class="turquoise">PROWESS</span> Online Scholarship System</h1>
-                            <p class="p-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam beatae
-                                nesciunt neque consectetur quaerat possimus inventore aspernatur.</p>
+                            <p class="p-large">Empowering Communities, Igniting Careers: ProWESS - Where Education Leads to Opportunity</p>
                             <a class="btn-solid-lg page-scroll" href="signup">Sign Up</a>
                         </div>
                     </div>

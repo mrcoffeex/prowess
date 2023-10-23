@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2023 at 02:10 AM
+-- Generation Time: Oct 23, 2023 at 06:53 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -308,6 +308,7 @@ CREATE TABLE `prow_hei` (
   `prow_hei_zip` varchar(50) NOT NULL,
   `prow_hei_lat` double NOT NULL,
   `prow_hei_long` double NOT NULL,
+  `prow_hei_acct_status` int(11) NOT NULL DEFAULT 1,
   `prow_hei_created` datetime NOT NULL,
   `prow_hei_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -316,8 +317,8 @@ CREATE TABLE `prow_hei` (
 -- Dumping data for table `prow_hei`
 --
 
-INSERT INTO `prow_hei` (`prow_hei_id`, `prow_hei_code`, `prow_hei_name`, `prow_hei_logo`, `prow_hei_cover_photo`, `prow_hei_contact_person`, `prow_hei_contact`, `prow_hei_email`, `prow_hei_building_no`, `prow_hei_street`, `prow_hei_purok`, `prow_hei_barangay`, `prow_hei_municipality`, `prow_hei_province`, `prow_hei_zip`, `prow_hei_lat`, `prow_hei_long`, `prow_hei_created`, `prow_hei_updated`) VALUES
-(1, 'PQRS7890-230928155678', 'UM Digos College', '', '', 'Michael Brown', '09712371727', 'umindanao.edu.ph', '', 'Roxas Ext,', '', 'Zone 2', 'Digos CIty', 'Davao del Sur', '8002', 6.75017587061783, 125.35052536820952, '2023-09-29 02:11:00', '2023-09-29 02:11:00');
+INSERT INTO `prow_hei` (`prow_hei_id`, `prow_hei_code`, `prow_hei_name`, `prow_hei_logo`, `prow_hei_cover_photo`, `prow_hei_contact_person`, `prow_hei_contact`, `prow_hei_email`, `prow_hei_building_no`, `prow_hei_street`, `prow_hei_purok`, `prow_hei_barangay`, `prow_hei_municipality`, `prow_hei_province`, `prow_hei_zip`, `prow_hei_lat`, `prow_hei_long`, `prow_hei_acct_status`, `prow_hei_created`, `prow_hei_updated`) VALUES
+(1, 'PQRS7890-230928155678', 'UM Digos College', '', '', 'Michael Brown', '09712371727', 'umindanao.edu.ph', '', 'Roxas Ext,', '', 'Zone 2', 'Digos CIty', 'Davao del Sur', '8002', 6.75017587061783, 125.35052536820952, 1, '2023-09-29 02:11:00', '2023-09-29 02:11:00');
 
 -- --------------------------------------------------------
 
@@ -349,6 +350,7 @@ CREATE TABLE `prow_industry` (
   `prow_industry_zip` varchar(50) NOT NULL,
   `prow_industry_lat` double NOT NULL,
   `prow_industry_long` double NOT NULL,
+  `prow_industry_acct_status` int(11) NOT NULL DEFAULT 1,
   `prow_industry_created` datetime NOT NULL,
   `prow_industry_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -357,8 +359,8 @@ CREATE TABLE `prow_industry` (
 -- Dumping data for table `prow_industry`
 --
 
-INSERT INTO `prow_industry` (`prow_industry_id`, `prow_industry_code`, `prow_industry_name`, `prow_industry_type`, `prow_industry_logo`, `prow_industry_cover_photo`, `prow_industry_about`, `prow_industry_benefits`, `prow_industry_company_size`, `prow_industry_working_hours`, `prow_industry_dress_code`, `prow_industry_cont_person`, `prow_industry_contact`, `prow_industry_email`, `prow_industry_building_no`, `prow_industry_street`, `prow_industry_purok`, `prow_industry_barangay`, `prow_industry_municipality`, `prow_industry_province`, `prow_industry_zip`, `prow_industry_lat`, `prow_industry_long`, `prow_industry_created`, `prow_industry_updated`) VALUES
-(1, 'WXYZ6789-230928160000', 'TechSolutions Inc.', 'Information Technology', '', '', 'TechSolutions Inc. is a leading IT company specializing in software development and cybersecurity solutions.', 'Competitive salary, flexible work hours, professional growth opportunities, health and wellness prog', 500, 'Monday to Friday, 9:00 AM - 6:00 PM', 'Business Casual', 'Lisa Anderson', '09124726191', 'info@techsolutions.com', '123', 'Luna', 'Purok 2', 'Zone 1', 'Digos City', 'Davao del Sur', '8002', 6.7518, 125.3569, '2023-09-29 02:15:52', '2023-09-29 02:15:52');
+INSERT INTO `prow_industry` (`prow_industry_id`, `prow_industry_code`, `prow_industry_name`, `prow_industry_type`, `prow_industry_logo`, `prow_industry_cover_photo`, `prow_industry_about`, `prow_industry_benefits`, `prow_industry_company_size`, `prow_industry_working_hours`, `prow_industry_dress_code`, `prow_industry_cont_person`, `prow_industry_contact`, `prow_industry_email`, `prow_industry_building_no`, `prow_industry_street`, `prow_industry_purok`, `prow_industry_barangay`, `prow_industry_municipality`, `prow_industry_province`, `prow_industry_zip`, `prow_industry_lat`, `prow_industry_long`, `prow_industry_acct_status`, `prow_industry_created`, `prow_industry_updated`) VALUES
+(1, 'WXYZ6789-230928160000', 'TechSolutions Inc.', 'Information Technology', '', '', 'TechSolutions Inc. is a leading IT company specializing in software development and cybersecurity solutions.', 'Competitive salary, flexible work hours, professional growth opportunities, health and wellness prog', 500, 'Monday to Friday, 9:00 AM - 6:00 PM', 'Business Casual', 'Lisa Anderson', '09124726191', 'info@techsolutions.com', '123', 'Luna', 'Purok 2', 'Zone 1', 'Digos City', 'Davao del Sur', '8002', 6.7518, 125.3569, 1, '2023-09-29 02:15:52', '2023-09-29 02:15:52');
 
 -- --------------------------------------------------------
 
@@ -386,6 +388,7 @@ CREATE TABLE `prow_jobs` (
   `prow_jobs_id` int(11) NOT NULL,
   `prow_industry_code` varchar(50) NOT NULL,
   `prow_jobs_code` varchar(50) NOT NULL,
+  `prow_jobs_status` int(11) DEFAULT 1,
   `prow_jobs_title` varchar(50) NOT NULL,
   `prow_jobs_tags` varchar(50) NOT NULL,
   `prow_jobs_position` varchar(50) NOT NULL,
@@ -405,8 +408,8 @@ CREATE TABLE `prow_jobs` (
 -- Dumping data for table `prow_jobs`
 --
 
-INSERT INTO `prow_jobs` (`prow_jobs_id`, `prow_industry_code`, `prow_jobs_code`, `prow_jobs_title`, `prow_jobs_tags`, `prow_jobs_position`, `prow_jobs_description`, `prow_jobs_min_requirements`, `prow_jobs_requirements`, `prow_jobs_type`, `prow_jobs_qualification`, `prow_jobs_salary`, `prow_jobs_num_appl`, `prow_jobs_barangay`, `prow_jobs_municipality`, `prow_jobs_date_posted`) VALUES
-(1, 'WXYZ6789-230928160000', 'WXY22133-230928160000', 'Software Developer', 'Software, Development, IT, Programming', 'Junior Programmer', 'TechSolutions Inc. is seeking a talented Software ', 'Bachelor\'s degree', 'Experience with web development', 'Full-time', '2+ years of software development', '20,000', 20, 'Zone 1', 'Digos City', '2023-09-29 02:30:19');
+INSERT INTO `prow_jobs` (`prow_jobs_id`, `prow_industry_code`, `prow_jobs_code`, `prow_jobs_status`, `prow_jobs_title`, `prow_jobs_tags`, `prow_jobs_position`, `prow_jobs_description`, `prow_jobs_min_requirements`, `prow_jobs_requirements`, `prow_jobs_type`, `prow_jobs_qualification`, `prow_jobs_salary`, `prow_jobs_num_appl`, `prow_jobs_barangay`, `prow_jobs_municipality`, `prow_jobs_date_posted`) VALUES
+(1, 'WXYZ6789-230928160000', 'WXY22133-230928160000', 1, 'Software Developer', 'Software, Development, IT, Programming', 'Junior Programmer', 'TechSolutions Inc. is seeking a talented Software ', 'Bachelor\'s degree', 'Experience with web development', 'Full-time', '2+ years of software development', '20,000', 20, 'Zone 1', 'Digos City', '2023-09-29 02:30:19');
 
 -- --------------------------------------------------------
 
@@ -454,7 +457,7 @@ CREATE TABLE `prow_my_project` (
 --
 
 INSERT INTO `prow_my_project` (`prow_proj_id`, `prow_proj_name`, `prow_proj_address`, `prow_proj_title`, `prow_proj_origin`) VALUES
-(1, 'PROWESS', 'UM Digos College', 'Provincial Workforce Enabing System Through Scholarship', 2023);
+(1, 'PROWESS', 'UM Digos College', 'Provincial Workforce Enabling System Through Scholarship', 2023);
 
 -- --------------------------------------------------------
 
@@ -466,6 +469,7 @@ CREATE TABLE `prow_notifications` (
   `prow_notif_id` int(11) NOT NULL,
   `prow_notif_type` varchar(10) NOT NULL,
   `prow_notif_text` text NOT NULL,
+  `prow_notif_to` int(11) NOT NULL,
   `prow_notif_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -473,15 +477,20 @@ CREATE TABLE `prow_notifications` (
 -- Dumping data for table `prow_notifications`
 --
 
-INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_notif_text`, `prow_notif_date`) VALUES
-(1, 'attempt', 'Login Attempt - kjohn0319@gmail.com', '2023-10-16 07:36:37'),
-(2, 'attempt', 'Login Attempt - kentjohn', '2023-10-16 07:38:23'),
-(3, 'attempt', 'Login Attempt - kentjohn', '2023-10-16 07:41:53'),
-(4, 'attempt', 'Login Attempt - kentjohn', '2023-10-16 07:42:15'),
-(5, 'attempt', 'Login Attempt - kentjohn', '2023-10-16 07:42:22'),
-(6, 'attempt', 'Login Attempt - kentjohn', '2023-10-16 07:42:27'),
-(7, 'attempt', 'Login Attempt - kentjohn', '2023-10-16 07:44:36'),
-(8, 'auth', 'Login - kentjohn', '2023-10-16 07:45:53');
+INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_notif_text`, `prow_notif_to`, `prow_notif_date`) VALUES
+(1, 'auth', 'Login - annimay', 0, '2023-10-22 15:44:59');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prow_notif_type`
+--
+
+CREATE TABLE `prow_notif_type` (
+  `prow_notify_id` int(11) NOT NULL,
+  `prow_notify_category` int(11) NOT NULL,
+  `prow_notify_icon` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -503,16 +512,8 @@ CREATE TABLE `prow_otp` (
 --
 
 INSERT INTO `prow_otp` (`prow_otp_id`, `prow_otp_code`, `prow_user_code`, `prow_otp_status`, `prow_otp_created`, `prow_otp_updated`) VALUES
-(1, '142720', '20231014224413rylqCXuERn', 0, '2023-10-14 22:44:13', '2023-10-14 22:44:13'),
-(2, '091841', '20231014224520kQ5W7yB1Z7', 0, '2023-10-14 22:45:20', '2023-10-14 22:45:20'),
-(3, '972394', '20231014224828rpharCciBU', 0, '2023-10-14 22:48:28', '2023-10-14 22:48:28'),
-(4, '713167', '20231014224910RvvOwD3rrb', 0, '2023-10-14 22:49:10', '2023-10-14 22:49:10'),
-(5, '121765', '20231014225248VTU7zNhr1q', 0, '2023-10-14 22:52:49', '2023-10-14 22:52:49'),
-(6, '457760', '20231014225443PncrEw4nPL', 0, '2023-10-14 22:54:44', '2023-10-14 22:54:44'),
-(7, '284107', '20231016065612KoCnPmBknx', 0, '2023-10-16 06:56:12', '2023-10-16 06:56:12'),
-(8, '757214', '20231016065726WJsCnUV7xT', 0, '2023-10-16 06:57:26', '2023-10-16 06:57:26'),
-(9, '007207', '20231016065802MhzpQ6O9Cu', 0, '2023-10-16 06:58:02', '2023-10-16 06:58:02'),
-(10, '189627', '20231016070601iRw1BnwlZz', 0, '2023-10-16 07:06:01', '2023-10-16 07:06:01');
+(1, '169525', '20231021110439WbbwQPrPc1', 0, '2023-10-20 20:04:39', '2023-10-20 20:04:39'),
+(2, '553830', '20231021133746K5qPqqsnE4', 0, '2023-10-20 22:37:46', '2023-10-20 22:37:46');
 
 -- --------------------------------------------------------
 
@@ -535,6 +536,7 @@ CREATE TABLE `prow_scholar` (
   `prow_scholar_birthplace` varchar(50) NOT NULL,
   `prow_scholar_con` varchar(11) NOT NULL,
   `prow_scholar_email` varchar(50) NOT NULL,
+  `prow_scholar_acct_status` int(11) NOT NULL DEFAULT 2,
   `prow_scholar_created` datetime NOT NULL,
   `prow_scholar_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -543,8 +545,8 @@ CREATE TABLE `prow_scholar` (
 -- Dumping data for table `prow_scholar`
 --
 
-INSERT INTO `prow_scholar` (`prow_scholar_id`, `prow_scholar_code`, `prow_scholar_school_id`, `prow_scholar_img`, `prow_scholar_lastname`, `prow_scholar_firstname`, `prow_scholar_middlename`, `prow_scholar_suffix`, `prow_scholar_gender`, `prow_scholar_cs`, `prow_scholar_birthday`, `prow_scholar_birthplace`, `prow_scholar_con`, `prow_scholar_email`, `prow_scholar_created`, `prow_scholar_updated`) VALUES
-(1, '2023DGjzt1bMfkgf1iyur', '0', '', 'john', 'kent', '', '', 'Male', 'Single', '1998-06-22', 'asdasdasdasdasdasd', '9121610673', 'kjohn0319@gmail.com', '2023-10-16 07:06:01', '2023-10-16 07:06:01');
+INSERT INTO `prow_scholar` (`prow_scholar_id`, `prow_scholar_code`, `prow_scholar_school_id`, `prow_scholar_img`, `prow_scholar_lastname`, `prow_scholar_firstname`, `prow_scholar_middlename`, `prow_scholar_suffix`, `prow_scholar_gender`, `prow_scholar_cs`, `prow_scholar_birthday`, `prow_scholar_birthplace`, `prow_scholar_con`, `prow_scholar_email`, `prow_scholar_acct_status`, `prow_scholar_created`, `prow_scholar_updated`) VALUES
+(1, '2023EKsQFx', '0', '', 'Delima', 'Joane May', 'Ber', 'Sr.', 'Female', 'Single', '2222-02-02', 'dddddd', '0928265755', 'joanemaydelima@gmail.com', 2, '2023-10-20 22:37:46', '2023-10-20 22:37:46');
 
 -- --------------------------------------------------------
 
@@ -570,7 +572,7 @@ CREATE TABLE `prow_scholar_academe` (
 --
 
 INSERT INTO `prow_scholar_academe` (`prow_acad_id`, `prow_scholar_code`, `prow_acad_application`, `prow_acad_course`, `prow_acad_year`, `prow_acad_signature`, `prow_acad_status`, `prow_scholar_hei_id`, `prow_acad_created`, `prow_acad_updated`) VALUES
-(1, 'LMNO4321-230928153456', 'New', 'Bachelor of Science in Nursing', 1, '', 'Student', 'PQRS7890-230928155678', '2023-09-29 01:49:17', '2023-09-29 01:49:17');
+(1, '2023EKsQFx', '2', '1', 2022, 'sample', '2', '1', '2023-10-21 10:29:28', '2023-10-21 10:29:28');
 
 -- --------------------------------------------------------
 
@@ -595,7 +597,7 @@ CREATE TABLE `prow_scholar_address` (
 --
 
 INSERT INTO `prow_scholar_address` (`prow_address_id`, `prow_scholar_code`, `prow_address_description`, `prow_address_brgy`, `prow_address_municipality`, `prow_address_province`, `prow_address_zipcode`, `prow_address_created`, `prow_address_updated`) VALUES
-(1, '2023DGjzt1bMfkgf1iyur', '1095 asdasdasdsad', 'Alegre', '2', 'Davao del Sur', 8002, '2023-10-16 07:06:01', '2023-10-16 07:06:01');
+(1, '2023EKsQFx', 'Datoc Compound, Digos City', 'Zone 2', '1', 'Davao del Sur', 8002, '2023-10-20 22:37:46', '2023-10-20 22:37:46');
 
 -- --------------------------------------------------------
 
@@ -615,15 +617,6 @@ CREATE TABLE `prow_scholar_educ_attain` (
   `prow_educ_created` datetime NOT NULL,
   `prow_educ_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `prow_scholar_educ_attain`
---
-
-INSERT INTO `prow_scholar_educ_attain` (`prow_educ_id`, `prow_scholar_code`, `prow_educ_type`, `prow_educ_school_name`, `prow_educ_awards_received`, `prow_educ_awards_year`, `prow_educ_year_graduated`, `prow_educ_degree`, `prow_educ_created`, `prow_educ_updated`) VALUES
-(1, 'LMNO4321-230928153456', 'Elementary', 'Digos Central Elementary School', 'Honor Student', '2016', '2016', '', '2023-09-29 01:57:50', '2023-09-29 01:57:50'),
-(2, 'LMNO4321-230928153456', 'High School', 'Digos City National High School', 'Best in Science', '2023', '2023', '', '2023-09-29 01:57:50', '2023-09-29 01:57:50'),
-(3, 'LMNO4321-230928153456', 'College', 'University of Mindanao Digos College', '', '', '', 'Bachelor of Science in Nursing', '2023-09-29 01:57:50', '2023-09-29 01:57:50');
 
 -- --------------------------------------------------------
 
@@ -671,13 +664,6 @@ CREATE TABLE `prow_scholar_profile` (
   `prow_prof_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `prow_scholar_profile`
---
-
-INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guradian_cont`, `prow_prof_guardian_occu`, `prow_prof_created`, `prow_prof_updated`) VALUES
-(1, 'LMNO4321-230928153456', 167.64, 63.5, 'B+', 'Catholic', 'Singing, Dancing', 'John Davis', '09551234567', 'Farmer', 'Susan Davis', '09551234567', 'House Wife', '', '', '', '2023-09-28 10:30:13', '2023-09-28 10:30:13');
-
 -- --------------------------------------------------------
 
 --
@@ -703,13 +689,6 @@ CREATE TABLE `prow_scholar_requirements` (
   `prow_req_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `prow_scholar_requirements`
---
-
-INSERT INTO `prow_scholar_requirements` (`prow_req_id`, `prow_scholar_code`, `prow_req_exam_score`, `prow_req_exam_date`, `prow_req_school_card`, `prow_req_enrollment_form`, `prow_req_enrollment_form_status`, `prow_req_cert_residency`, `prow_req_endorsement`, `prow_req_interview`, `prow_req_interview_date`, `prow_req_prev_grades`, `prow_req_prev_SY`, `prow_req_status`, `prow_req_created`, `prow_req_updated`) VALUES
-(1, 'LMNO4321-230928153456', 30, '2023-09-29 02:08:05', '', '', 0, '', '', 0, '2023-09-29 02:08:05', '', '', '', '2023-09-29 02:08:05', '2023-09-29 02:08:05');
-
 -- --------------------------------------------------------
 
 --
@@ -722,17 +701,6 @@ CREATE TABLE `prow_scholar_skills` (
   `prow_skills` varchar(50) NOT NULL,
   `prow_skills_proficiency` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `prow_scholar_skills`
---
-
-INSERT INTO `prow_scholar_skills` (`prow_skills_id`, `prow_scholar_code`, `prow_skills`, `prow_skills_proficiency`) VALUES
-(1, 'LMNO4321-230928153456', 'Singing', 'Expert'),
-(2, 'LMNO4321-230928153456', 'Dancing', 'Advanced'),
-(3, 'LMNO4321-230928153456', 'Painting', 'Intermediate'),
-(4, 'LMNO4321-230928153456', 'Cooking', 'Beginner'),
-(5, 'LMNO4321-230928153456', 'Programming', 'Advanced');
 
 -- --------------------------------------------------------
 
@@ -764,7 +732,7 @@ CREATE TABLE `prow_users` (
   `prow_user_pword` varchar(100) NOT NULL,
   `prow_user_picture` text NOT NULL,
   `prow_user_type` int(11) NOT NULL,
-  `prow_user_status` int(11) NOT NULL,
+  `prow_user_verify` int(11) NOT NULL DEFAULT 0,
   `prow_user_last_location` text NOT NULL,
   `prow_user_created` datetime NOT NULL,
   `prow_user_updated` datetime NOT NULL
@@ -774,8 +742,8 @@ CREATE TABLE `prow_users` (
 -- Dumping data for table `prow_users`
 --
 
-INSERT INTO `prow_users` (`prow_user_id`, `prow_user_code`, `prow_scholar_code`, `prow_user_fullname`, `prow_user_uname`, `prow_user_pword`, `prow_user_picture`, `prow_user_type`, `prow_user_status`, `prow_user_last_location`, `prow_user_created`, `prow_user_updated`) VALUES
-(1, '20231016070601iRw1BnwlZz', '2023DGjzt1bMfkgf1iyur', 'kent john', 'kentjohn', 'ea439fbdaa955099ec9ad4a96a3a81bd', '', 4, 0, '', '2023-10-16 07:06:01', '2023-10-16 07:06:01');
+INSERT INTO `prow_users` (`prow_user_id`, `prow_user_code`, `prow_scholar_code`, `prow_user_fullname`, `prow_user_uname`, `prow_user_pword`, `prow_user_picture`, `prow_user_type`, `prow_user_verify`, `prow_user_last_location`, `prow_user_created`, `prow_user_updated`) VALUES
+(1, '20231021133746K5qPqqsnE4', '2023EKsQFx', 'Joane May Delima', 'annimay', '2d1a6492fd09416601a846902f660b5a', '', 0, 0, '', '2023-10-20 22:37:46', '2023-10-20 22:37:46');
 
 --
 -- Indexes for dumped tables
@@ -834,6 +802,12 @@ ALTER TABLE `prow_my_project`
 --
 ALTER TABLE `prow_notifications`
   ADD PRIMARY KEY (`prow_notif_id`);
+
+--
+-- Indexes for table `prow_notif_type`
+--
+ALTER TABLE `prow_notif_type`
+  ADD PRIMARY KEY (`prow_notify_id`);
 
 --
 -- Indexes for table `prow_otp`
@@ -951,13 +925,19 @@ ALTER TABLE `prow_my_project`
 -- AUTO_INCREMENT for table `prow_notifications`
 --
 ALTER TABLE `prow_notifications`
-  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `prow_notif_type`
+--
+ALTER TABLE `prow_notif_type`
+  MODIFY `prow_notify_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `prow_otp`
 --
 ALTER TABLE `prow_otp`
-  MODIFY `prow_otp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `prow_otp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar`
@@ -981,7 +961,7 @@ ALTER TABLE `prow_scholar_address`
 -- AUTO_INCREMENT for table `prow_scholar_educ_attain`
 --
 ALTER TABLE `prow_scholar_educ_attain`
-  MODIFY `prow_educ_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_educ_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_employment`
@@ -993,19 +973,19 @@ ALTER TABLE `prow_scholar_employment`
 -- AUTO_INCREMENT for table `prow_scholar_profile`
 --
 ALTER TABLE `prow_scholar_profile`
-  MODIFY `prow_prof_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_prof_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_requirements`
 --
 ALTER TABLE `prow_scholar_requirements`
-  MODIFY `prow_req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_req_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_skills`
 --
 ALTER TABLE `prow_scholar_skills`
-  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `prow_transaction`

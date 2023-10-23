@@ -21,6 +21,7 @@
     $multiStepsAddress = $_POST['multiStepsAddress'];
 
     $fullname = $multiStepsFirstName . " " . $multiStepsLastName;
+   
 
     $request = signUpScholar(
         $fullname, 

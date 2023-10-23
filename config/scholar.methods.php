@@ -1,7 +1,7 @@
 <?php  
 
     function createScholarProfile($scholarCode, $lname, $fname, $mname, $suffix, $gender, $cs, $birthday, $birthplace, $contact, $email){
-
+       
         $stmt=PWD()->prepare("INSERT INTO prow_scholar
                             (
                                 prow_scholar_code, 
@@ -16,7 +16,7 @@
                                 prow_scholar_birthday, 
                                 prow_scholar_birthplace, 
                                 prow_scholar_con, 
-                                prow_scholar_email, 
+                                prow_scholar_email,  
                                 prow_scholar_created, 
                                 prow_scholar_updated
                             ) 
@@ -34,7 +34,7 @@
                                 :prow_scholar_birthday, 
                                 :prow_scholar_birthplace, 
                                 :prow_scholar_con, 
-                                :prow_scholar_email, 
+                                :prow_scholar_email,
                                 NOW(), 
                                 NOW()
                             )");
@@ -116,7 +116,7 @@
         $birthday, 
         $birthplace, 
         $contact, 
-        $email, 
+        $email,
         $addressDescription, 
         $barangay, 
         $municipality, 
@@ -125,15 +125,15 @@
         ){
 
         $userCode = date('YmdHis') . randStrInt(10);
-        $scholarCode = date('Y') . randStrInt(17);
+        $scholarCode = date('Y') . randStrInt(6);
 
         $createUser = createUser($userCode, $scholarCode, $fullname, $uname, $pword);
-        $createScholar = createScholarProfile($scholarCode, $lname, $fname, $mname, $suffix, $gender, $cs, $birthday, $birthplace, $contact, $email);
+        $createScholar = createScholarProfile($scholarCode, $lname, $fname, $mname, $suffix, $gender, $cs, $birthday, $birthplace, $contact, $email, $acc_status);
         $createScholarAddress = createScholarAddress($scholarCode, $addressDescription, $barangay, $municipality, $province, $zipcode);
 
         //send email
 
-        sendOTP($userCode, $email, "phpmailer/PHPMailerAutoload.php");
+        sendVerification($userCode, $email, "phpmailer/PHPMailerAutoload.php");
 
         if ($createUser == true && $createScholar == true && $createScholarAddress == true) {
             return true;
@@ -142,5 +142,179 @@
         }
 
     }
+
+
+    //Select ALL Scholars
+    function selectScholar(){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_scholar");
+        $statement->execute();
+
+        return $statement;
+
+    }
+
+    //Count all Active Scholars
+     function countScholarActive($scholarID){
+
+        if (empty($scholarID)) {
+            
+            $statement=PWD()->prepare("SELECT
+                                            prow_scholar_id
+                                            FROM
+                                            prow_scholar
+                                            Where
+                                            prow_scholar_acct_status = :prow_scholar_acct_status");
+            $statement->execute([
+                'prow_scholar_acct_status' => 1
+            ]);
+
+        } else {
+            
+            $statement=PWD()->prepare("SELECT
+                                            prow_scholar_id
+                                            FROM
+                                            prow_scholar
+                                            Where
+                                            prow_scholar_status = :prow_scholar_status AND
+                                            prow_scholar_id = :prow_scholar_id");
+            $statement->execute([
+                'prow_scholar_acct_status' => 1,
+                'prow_scholar_id' => $scholarID
+            ]);
+
+        }
+
+        $count=$statement->rowCount();
+
+        return $count;
+
+    }
+
+
+    //Count all Pending Scholars
+     function countScholarPending($scholarID){
+
+        if (empty($scholarID)) {
+            
+            $statement=PWD()->prepare("SELECT
+                                            prow_scholar_id
+                                            FROM
+                                            prow_scholar
+                                            Where
+                                            prow_scholar_acct_status = :prow_scholar_acct_status");
+            $statement->execute([
+                'prow_scholar_acct_status' => 2
+            ]);
+
+        } else {
+            
+            $statement=PWD()->prepare("SELECT
+                                            prow_scholar_id
+                                            FROM
+                                            prow_scholar
+                                            Where
+                                            prow_scholar_status = :prow_scholar_status AND
+                                            prow_scholar_id = :prow_scholar_id");
+            $statement->execute([
+                'prow_scholar_acct_status' => 2,
+                'prow_scholar_id' => $scholarID
+            ]);
+
+        }
+
+        $count=$statement->rowCount();
+
+        return $count;
+
+    }
+
+    //Scholar fullname
+    function getFullname($profileCode){
+
+        $statement=PWD()->prepare("SELECT
+                                        prow_scholar_lastname,
+                                        prow_scholar_firstname,
+                                        prow_scholar_middlename,
+                                        prow_scholar_suffix
+                                        From
+                                        prow_scholar
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (is_array($res)) {
+
+            $middleInitial = substr($res['prow_scholar_middlename'], 0, 1);
+
+            if (empty($res['prow_scholar_middlename']) && empty($res['prow_scholar_suffix'])) {
+
+                $result = $res['prow_scholar_lastname'] . ", " . $res['prow_scholar_firstname'];
+    
+            } else if (empty($res['prow_scholar_middlename'])) {
+    
+                $result = $res['prow_scholar_lastname'] . ", " . $res['prow_scholar_firstname'] . " " . $res['prow_scholar_suffix'];
+    
+            } else if (empty($res['prow_scholar_suffix'])) {
+    
+                $result = $res['prow_scholar_lastname'] . ", " . $res['prow_scholar_firstname'] . " " . $middleInitial . ". ";
+    
+            } else {
+                
+                $result = $res['prow_scholar_lastname'] . ", " . $res['prow_scholar_firstname'] . " " . $middleInitial . ". " . $res['prow_scholar_suffix'];
+    
+            }
+    
+            return $result;
+
+        } else {
+            return null;
+        }
+    }
+
+    //Get Scholar status
+     function getScholarStatus($acct_status){
+        if ($acct_status==1){
+            $status = "Approved";
+        }else if ($acct_status==2){
+            $status = "Pending";
+        }else{
+            $status = "For Reapplication";
+        }
+
+        return $status;
+    
+    }
+
+    //Get School of Scholar
+    function getSchoolScholar($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                        prow_scholar_hei_id
+                                        From
+                                        prow_scholar_academe
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+
+        if ($statement == null){
+            return $statement;
+        }else{
+            return null;
+        }
+        
+
+    }
+
+
+
 
 ?>

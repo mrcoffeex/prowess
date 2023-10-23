@@ -1,6 +1,20 @@
 <?php  
   include 'config/includes.php';
-  $title = "SignUp Complete";
+  $title = "Verification Complete";
+
+  $status = clean_string($_GET['status']);
+
+  if ($status == "verified") {
+    $h1 = '<i class="fas fa-check"></i> Verification Complete!';
+    $h2 = 'Your account is now verified.';
+  } else if ($status == "notfound") {
+    $h1 = '<i class="fas fa-close"></i> No Data found!';
+    $h2 = 'We cant find any data that corresponds to your link.';
+  } else {
+    $h1 = '<i class="fas fa-exclamation-circle"></i> Something is wrong!';
+    $h2 = 'There is an error in the code.';
+  }
+  
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +48,8 @@
         <div class="d-flex col-lg-8 align-items-center justify-content-center authentication-bg p-5">
           <div class="w-px-700">
             <div class="misc-wrapper">
-                <h1 class="mb-2 mx-2 text-primary" style="font-size: 3rem">SignUp Complete!</h1>
-                <h4 class="mb-2 fw-semibold">Congratulations</h4>
-                <p class="mb-4 mx-2">Please <span class="text-primary">check your email</span> for verification process.</p>
+                <h1 class="mb-2 mx-2 text-primary" style="font-size: 3rem"><?= $h1 ?></h1>
+                <p class="mb-4 mx-2"><?= $h2 ?></p>
                 <div class="d-flex justify-content-center mt-5">
                     <img
                     src="assets/img/illustrations/misc-error-object.png"
@@ -45,7 +58,7 @@
                     width="160" />
 
                     <div class="d-flex flex-column align-items-center">
-                            <a href="login" target="_blank" class="btn btn-primary text-center my-4">Login Now</a>
+                            <a href="./" target="_blank" class="btn btn-primary text-center my-4">Back to Homepage</a>
                         </div>
                     </div>
                 </div>

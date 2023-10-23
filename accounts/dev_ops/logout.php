@@ -1,7 +1,5 @@
 <?php 
     require '../../config/includes.php';
-    require '_session.php';
-    
 	session_destroy();
 ?>
 
