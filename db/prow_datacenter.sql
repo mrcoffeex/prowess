@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2023 at 06:53 AM
+-- Generation Time: Oct 23, 2023 at 09:07 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -478,7 +478,8 @@ CREATE TABLE `prow_notifications` (
 --
 
 INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_notif_text`, `prow_notif_to`, `prow_notif_date`) VALUES
-(1, 'auth', 'Login - annimay', 0, '2023-10-22 15:44:59');
+(1, 'auth', 'Login - annimay', 0, '2023-10-22 15:44:59'),
+(2, 'auth', 'Login - kentjohn', 0, '2023-10-22 22:37:44');
 
 -- --------------------------------------------------------
 
@@ -513,7 +514,8 @@ CREATE TABLE `prow_otp` (
 
 INSERT INTO `prow_otp` (`prow_otp_id`, `prow_otp_code`, `prow_user_code`, `prow_otp_status`, `prow_otp_created`, `prow_otp_updated`) VALUES
 (1, '169525', '20231021110439WbbwQPrPc1', 0, '2023-10-20 20:04:39', '2023-10-20 20:04:39'),
-(2, '553830', '20231021133746K5qPqqsnE4', 0, '2023-10-20 22:37:46', '2023-10-20 22:37:46');
+(2, '553830', '20231021133746K5qPqqsnE4', 0, '2023-10-20 22:37:46', '2023-10-20 22:37:46'),
+(3, '613280', '20231022222030JIf4AtuDeH', 1, '2023-10-22 22:20:30', '2023-10-22 22:20:30');
 
 -- --------------------------------------------------------
 
@@ -546,7 +548,8 @@ CREATE TABLE `prow_scholar` (
 --
 
 INSERT INTO `prow_scholar` (`prow_scholar_id`, `prow_scholar_code`, `prow_scholar_school_id`, `prow_scholar_img`, `prow_scholar_lastname`, `prow_scholar_firstname`, `prow_scholar_middlename`, `prow_scholar_suffix`, `prow_scholar_gender`, `prow_scholar_cs`, `prow_scholar_birthday`, `prow_scholar_birthplace`, `prow_scholar_con`, `prow_scholar_email`, `prow_scholar_acct_status`, `prow_scholar_created`, `prow_scholar_updated`) VALUES
-(1, '2023EKsQFx', '0', '', 'Delima', 'Joane May', 'Ber', 'Sr.', 'Female', 'Single', '2222-02-02', 'dddddd', '0928265755', 'joanemaydelima@gmail.com', 2, '2023-10-20 22:37:46', '2023-10-20 22:37:46');
+(1, '2023EKsQFx', '0', '', 'Delima', 'Joane May', 'Ber', 'Sr.', 'Female', 'Single', '2222-02-02', 'dddddd', '0928265755', 'joanemaydelima@gmail.com', 2, '2023-10-20 22:37:46', '2023-10-20 22:37:46'),
+(2, '2023RgLtBI', '0', '', 'john', 'kent', '', '', 'Male', 'Single', '1997-06-22', 'asdasdada asdasd', '9121610673', 'kjohn0319@gmail.com', 2, '2023-10-22 22:20:30', '2023-10-22 22:20:30');
 
 -- --------------------------------------------------------
 
@@ -597,7 +600,8 @@ CREATE TABLE `prow_scholar_address` (
 --
 
 INSERT INTO `prow_scholar_address` (`prow_address_id`, `prow_scholar_code`, `prow_address_description`, `prow_address_brgy`, `prow_address_municipality`, `prow_address_province`, `prow_address_zipcode`, `prow_address_created`, `prow_address_updated`) VALUES
-(1, '2023EKsQFx', 'Datoc Compound, Digos City', 'Zone 2', '1', 'Davao del Sur', 8002, '2023-10-20 22:37:46', '2023-10-20 22:37:46');
+(1, '2023EKsQFx', 'Datoc Compound, Digos City', 'Zone 2', '1', 'Davao del Sur', 8002, '2023-10-20 22:37:46', '2023-10-20 22:37:46'),
+(2, '2023RgLtBI', '1095 asdasdas', 'Alegre', '2', 'Davao del Sur', 8002, '2023-10-22 22:20:30', '2023-10-22 22:20:30');
 
 -- --------------------------------------------------------
 
@@ -732,6 +736,7 @@ CREATE TABLE `prow_users` (
   `prow_user_pword` varchar(100) NOT NULL,
   `prow_user_picture` text NOT NULL,
   `prow_user_type` int(11) NOT NULL,
+  `prow_user_status` int(1) NOT NULL,
   `prow_user_verify` int(11) NOT NULL DEFAULT 0,
   `prow_user_last_location` text NOT NULL,
   `prow_user_created` datetime NOT NULL,
@@ -742,8 +747,9 @@ CREATE TABLE `prow_users` (
 -- Dumping data for table `prow_users`
 --
 
-INSERT INTO `prow_users` (`prow_user_id`, `prow_user_code`, `prow_scholar_code`, `prow_user_fullname`, `prow_user_uname`, `prow_user_pword`, `prow_user_picture`, `prow_user_type`, `prow_user_verify`, `prow_user_last_location`, `prow_user_created`, `prow_user_updated`) VALUES
-(1, '20231021133746K5qPqqsnE4', '2023EKsQFx', 'Joane May Delima', 'annimay', '2d1a6492fd09416601a846902f660b5a', '', 0, 0, '', '2023-10-20 22:37:46', '2023-10-20 22:37:46');
+INSERT INTO `prow_users` (`prow_user_id`, `prow_user_code`, `prow_scholar_code`, `prow_user_fullname`, `prow_user_uname`, `prow_user_pword`, `prow_user_picture`, `prow_user_type`, `prow_user_status`, `prow_user_verify`, `prow_user_last_location`, `prow_user_created`, `prow_user_updated`) VALUES
+(1, '20231021133746K5qPqqsnE4', '2023EKsQFx', 'Joane May Delima', 'annimay', '2d1a6492fd09416601a846902f660b5a', '', 0, 0, 0, '', '2023-10-20 22:37:46', '2023-10-20 22:37:46'),
+(2, '20231022222030JIf4AtuDeH', '2023RgLtBI', 'kent john', 'kentjohn', '1bbd886460827015e5d605ed44252251', '', 4, 0, 0, '', '2023-10-22 22:20:30', '2023-10-22 22:20:30');
 
 --
 -- Indexes for dumped tables
@@ -925,7 +931,7 @@ ALTER TABLE `prow_my_project`
 -- AUTO_INCREMENT for table `prow_notifications`
 --
 ALTER TABLE `prow_notifications`
-  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_notif_type`
@@ -937,13 +943,13 @@ ALTER TABLE `prow_notif_type`
 -- AUTO_INCREMENT for table `prow_otp`
 --
 ALTER TABLE `prow_otp`
-  MODIFY `prow_otp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `prow_otp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar`
 --
 ALTER TABLE `prow_scholar`
-  MODIFY `prow_scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_academe`
@@ -955,7 +961,7 @@ ALTER TABLE `prow_scholar_academe`
 -- AUTO_INCREMENT for table `prow_scholar_address`
 --
 ALTER TABLE `prow_scholar_address`
-  MODIFY `prow_address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_educ_attain`
@@ -997,7 +1003,7 @@ ALTER TABLE `prow_transaction`
 -- AUTO_INCREMENT for table `prow_users`
 --
 ALTER TABLE `prow_users`
-  MODIFY `prow_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
