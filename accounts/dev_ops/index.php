@@ -332,8 +332,7 @@
 
           <!-- Footer -->
           <?php
-          include "_footer.php";
-
+            include "_footer.php";
           ?>
           <!-- / Footer -->
 
@@ -355,8 +354,7 @@
   <!-- Core JS -->
   <!-- build:js assets/vendor/js/core.js -->
   <?php
-  include "_scripts.php";
-
+    include "_scripts.php";
   ?>
 </body>
 

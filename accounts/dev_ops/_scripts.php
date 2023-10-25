@@ -15,9 +15,13 @@
 <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 <script src="../../assets/vendor/libs/swiper/swiper.js"></script>
 
+<!-- Database JS -->
+
+
 <!-- Main JS -->
 <script src="../../assets/js/main.js"></script>
 
 <!-- Page JS -->
 <script src="../../assets/js/dashboards-analytics.js"></script>
-
+<script src="../../assets/js/pages-profile.js"></script>
+<script src="../../assets/js/pages-profile.js"></script>

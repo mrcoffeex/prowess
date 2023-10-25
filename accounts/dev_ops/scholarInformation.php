@@ -3,33 +3,107 @@
     require '_session.php';
     include 'scholarInformation.paginate.php';
     include "_head.php";
-    //require '_session.php';
 ?>
 
 <body>
-    <!-- Content -->
-
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <!-- Menu -->
             <?php
-            include "_sidemenu.php";
+                include "_sidemenu.php";
             ?>
-            <!-- / Menu -->
-
-            <!-- Layout container -->
+            
             <div class="layout-page">
-                <!-- Navbar -->
                 <?php
-                include "_topnavigation.php";
+                    include "_topnavigation.php";
                 ?>
-                <!-- / Navbar -->
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <div class="row g-4 mb-4">
+                        <div class="col-sm-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar">
+                                <div class="avatar-initial bg-label-primary rounded">
+                                    <div class="mdi mdi-account-outline mdi-24px"></div>
+                                </div>
+                                </div>
+                                <div class="ms-3">
+                                <div class="d-flex align-items-center">
+                                    <h5 class="mb-0">8,458</h5>
+                                    <div class="mdi mdi-chevron-down text-danger mdi-24px"></div>
+                                    <small class="text-danger">8.1%</small>
+                                </div>
+                                <small class="text-muted">Active Scholars</small>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar">
+                                <div class="avatar-initial bg-label-warning rounded">
+                                    <div class="mdi mdi-poll mdi-24px"></div>
+                                </div>
+                                </div>
+                                <div class="ms-3">
+                                <div class="d-flex align-items-center">
+                                    <h5 class="mb-0">$28.5K</h5>
+                                    <div class="mdi mdi-chevron-up text-success mdi-24px"></div>
+                                    <small class="text-success">18.2%</small>
+                                </div>
+                                <small class="text-muted">Total Scholars</small>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar">
+                                <div class="avatar-initial bg-label-info rounded">
+                                    <div class="mdi mdi-trending-up mdi-24px"></div>
+                                </div>
+                                </div>
+                                <div class="ms-3">
+                                <div class="d-flex align-items-center">
+                                    <h5 class="mb-0">2,450K</h5>
+                                    <div class="mdi mdi-chevron-down text-danger mdi-24px"></div>
+                                    <small class="text-danger">24.6%</small>
+                                </div>
+                                <small class="text-muted">Pending Scholars</small>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                        <div class="card">
+                            <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar">
+                                <div class="avatar-initial bg-label-success rounded">
+                                    <div class="mdi mdi-currency-usd mdi-24px"></div>
+                                </div>
+                                </div>
+                                <div class="ms-3">
+                                <div class="d-flex align-items-center">
+                                    <h5 class="mb-0">$48.2K</h5>
+                                    <div class="mdi mdi-chevron-down text-success mdi-24px"></div>
+                                    <small class="text-success">22.5%</small>
+                                </div>
+                                <small class="text-muted">Graduated</small>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
 
-                <!-- Content wrapper -->
-                <div class="content-wrapper">
-                    <!-- Content -->
-
-                    <!-- Advanced Search -->
                     <div class="card">
                         <h5 class="card-header">Advanced Search</h5>
                         <!--Search Form -->
@@ -165,41 +239,26 @@
                         </div>
                     </div>
 
-                    <!-- / Content -->
-
-                    <!-- Footer -->
                     <?php
-                    include "_footer.php";
-
+                        include "_footer.php";
                     ?>
-                    <!-- / Footer -->
 
                     <div class="content-backdrop fade"></div>
                 </div>
-                <!-- Content wrapper -->
             </div>
-            <!-- / Layout page -->
         </div>
 
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
 
-        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+        <div class="layout-overlay layout-menu-toggle"></div>
         <div class="drag-target"></div>
     </div>
 
-    <!-- / Content -->
-
-    <!-- Core JS -->
     <?php
-    include "_scripts.php";
-
+        include "_scripts.php";
     ?>
-    <!-- temporary data -->
     <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
     <script src="../../assets/js/tables-datatables-advanced.js"></script>
 
-    <!-- Page JS -->
 </body>
 
 </html>
