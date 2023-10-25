@@ -5,7 +5,7 @@
 
     if (isset($_SESSION['hotkopi_prow_session_id'])) {
 
-        if($_SESSION['hotkopi_prow_session_type'] == "0"){
+        if($_SESSION['hotkopi_prow_session_type'] == "0"){ 
             header("location: accounts/dev_ops/");
         }else if($_SESSION['hotkopi_prow_session_type'] == "1"){
             header("location: accounts/staff/");

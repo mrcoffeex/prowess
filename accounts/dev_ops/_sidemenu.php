@@ -137,13 +137,19 @@
       <span class="menu-header-text">Misc</span>
     </li>
     <li class="menu-item">
-      <a href="https://pixinvent.ticksy.com/" target="_blank" class="menu-link">
+      <a href="#" target="_blank" class="menu-link">
+        <i class="menu-icon tf-icons mdi mdi-cog-outline"></i>
+        <div data-i18n="Settings">Settings</div>
+      </a>
+    </li>
+    <li class="menu-item">
+      <a href="#" target="_blank" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-lifebuoy"></i>
         <div data-i18n="Support">Support</div>
       </a>
     </li>
     <li class="menu-item">
-      <a href="https://demos.pixinvent.com/materialize-html-admin-template/documentation/" target="_blank" class="menu-link">
+      <a href="#" target="_blank" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-file-document-multiple-outline"></i>
         <div data-i18n="About">About</div>
       </a>

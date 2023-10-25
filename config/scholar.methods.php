@@ -156,6 +156,23 @@
         return $statement;
 
     }
+    
+    //Select scholar according to scholar_code
+    function selectScholarCode($scholarCode){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_scholar
+                                        WHERE
+                                        prow_scholar_code = :prow_scholar_code");
+         $statement->execute([
+                'prow_scholar_code' => $scholarCode
+            ]);
+
+        return $statement;
+
+    }
 
     //Count all Active Scholars
      function countScholarActive($scholarID){

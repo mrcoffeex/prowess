@@ -36,7 +36,7 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-md-6 order-2 order-md-1">
                       <div class="card-body">
-                        <h4 class="card-title pb-xl-2">Welcome <strong> Devmaster!</strong>🎉
+                        <h4 class="card-title pb-xl-2">Welcome <strong> <?= $userUsername ?></strong>🎉
                         </h4>
                         <p class="mb-0">Welcome to Prowess your
                         </p>

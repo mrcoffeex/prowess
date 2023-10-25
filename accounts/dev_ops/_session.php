@@ -27,8 +27,25 @@
 
     //user
     $userFullname = $row['prow_user_fullname'];
+    $scholarCode = $row['prow_scholar_code'];
     $userUsername = $row['prow_user_uname'];
     $userId = $row['prow_user_id'];
+    $userType = $row['prow_user_type'];
+
+    //usertype
+    if ($userType==0){
+        $user_role="SuperAdmin";
+    }else if($userType==1){
+        $user_role="Admin";
+    }else if($userType==2){
+        $user_role="Staff";
+    }else if($userType==3){
+        $user_role="HEI";
+    }else if($userType==4){
+        $user_role="Student";
+    }else if($userType==5){
+        $user_role="Industry";
+    }
 
     //dates
     $datenow = date("Y-m-d H:i:s");

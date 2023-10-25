@@ -548,7 +548,20 @@
                     'prow_otp_code' => $otp
                 ]);
 
-                if ($stmt1) {
+
+                $stmt2=PWD()->prepare("UPDATE 
+                                    prow_users
+                                    SET
+                                    prow_user_verify = :prow_user_verify
+                                    Where 
+                                    prow_user_code = :prow_user_code
+                                    ");
+                $stmt2->execute([
+                    'prow_user_verify' => 1,
+                    'prow_user_code' => $userCode
+                ]);
+
+                if ($stmt1 && $stmt2) {
                     return "verified";
                 } else {
                     return "error_verification";

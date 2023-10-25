@@ -36,7 +36,7 @@
             <div class="misc-wrapper">
                 <h1 class="mb-2 mx-2 text-primary" style="font-size: 3rem">SignUp Complete!</h1>
                 <h4 class="mb-2 fw-semibold">Congratulations</h4>
-                <p class="mb-4 mx-2">Please <span class="text-primary">check your email</span> for verification process.</p>
+                <p class="mb-4 mx-2">Please <span class="text-primary">check your email</span> for verification process. Wait for at least 5 minutes for the verification link sent to your email</p>
                 <div class="d-flex justify-content-center mt-5">
                     <img
                     src="assets/img/illustrations/misc-error-object.png"

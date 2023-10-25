@@ -34,25 +34,31 @@
                         <h5 class="card-header">Advanced Search</h5>
                         <!--Search Form -->
                         <div class="card-body">
-                            <form class="dt_adv_search" method="POST">
+                            <form class="dt_adv_search" method="POST" action="scholarInformation.paginate">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row g-3">
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" class="form-control dt-input" data-column="3" placeholder="2023AbCd123" data-column-index="2" />
+                                                    <input type="text" name = "scholar_code" class="form-control dt-input" data-column="3" placeholder="2023AbCd123" data-column-index="2" />
                                                     <label>Scholar Code</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" class="form-control dt-input" data-column="3" placeholder="Juan Dela Cruz" data-column-index="2" />
+                                                    <input type="text" name = "schoolID" class="form-control dt-input" data-column="3" placeholder="042001" data-column-index="2" />
+                                                    <label>School ID</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 col-lg-4">
+                                                <div class="form-floating form-floating-outline">
+                                                    <input type="text" name = "scholar_name" class="form-control dt-input" data-column="3" placeholder="Juan Dela Cruz" data-column-index="2" />
                                                     <label>Name</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <select name="multiStepsSchool" id="multiStepsGender" class="form-control ">
+                                                    <select name="multiStepsSchool" id="multiStepsSchool" class="form-control ">
                                                         <option></option>
                                                          <?php
                                                             //get HEI
@@ -93,11 +99,20 @@
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="date" class="form-control dt-date flatpickr-range dt-input" data-column="5" placeholder="StartDate to EndDate" data-column-index="4" id="dt_date" name="dt_date" />
+                                                    <input type="date" name = "scholar_date" class="form-control dt-date flatpickr-range dt-input" data-column="5" placeholder="StartDate to EndDate" data-column-index="4" id="dt_date" name="dt_date" />
                                                     <label for="dt_date">Date</label>
                                                 </div>
                                                 <input type="hidden" class="form-control dt-date start_date dt-input" data-column="5" data-column-index="4" name="value_from_start_date" />
                                                 <input type="hidden" class="form-control dt-date end_date dt-input" name="value_from_end_date" data-column="5" data-column-index="4" />
+                                            </div>
+                                            <div class="col-12 col-sm-6 col-lg-4">
+                                                <a href="javascript:void(0)" class="btn btn-primary">
+                                                    <i class="mdi mdi-printer-outline me-1"></i>Print List
+                                                </a>
+
+                                                 <a href="javascript:void(0)" class="btn btn-primary">
+                                                    <i class="mdi mdi mdi-magnify me-1"></i>Search
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -120,7 +135,6 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                       // $getScholar=selectScholar();
                                         while ($scholar=$paginate->fetch(PDO::FETCH_ASSOC)) {
                                     ?>
                                     <tr>
@@ -129,7 +143,7 @@
                                                 <button 
                                                 type="button" 
                                                 class="btn btn-primary btn-sm">
-                                                <i class="ti-user"></i>
+                                                <i class="ti-user mdi mdi-account-eye"></i>
                                                 </button>
                                             </a>
                                         </td>
