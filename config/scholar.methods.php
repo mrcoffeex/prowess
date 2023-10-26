@@ -144,35 +144,6 @@
     }
 
 
-    //Select ALL Scholars
-    function selectScholar(){
-
-        $statement=PWD()->prepare("SELECT
-                                        *
-                                        FROM
-                                        prow_scholar");
-        $statement->execute();
-
-        return $statement;
-
-    }
-    
-    //Select scholar according to scholar_code
-    function selectScholarCode($scholarCode){
-
-        $statement=PWD()->prepare("SELECT
-                                        *
-                                        FROM
-                                        prow_scholar
-                                        WHERE
-                                        prow_scholar_code = :prow_scholar_code");
-         $statement->execute([
-                'prow_scholar_code' => $scholarCode
-            ]);
-
-        return $statement;
-
-    }
 
     //Count all Active Scholars
      function countScholarActive($scholarID){
@@ -296,6 +267,117 @@
         }
     }
 
+     function getUserRole($profileCode){
+         $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_users
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        
+        $role = $res['prow_user_type'];
+        
+        if ($role==0){
+            $userRole = "SuperAdmin";
+        }else if ($role==1){
+            $userRole = "Admin";
+        }else if ($role==2){
+            $userRole = "Staff";
+        }else if ($role==3){
+            $userRole = "HEI";
+        }else if ($role==4){
+            $userRole = "Student";
+        }else{
+            $userRole = "Industry";
+        }
+
+        return $userRole;
+    
+    }
+
+    function getUserName($profileCode){
+         $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_users
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        
+        $username = $res['prow_user_uname'];
+        
+        return $username;
+    
+    }
+
+
+    function getScholar_Status($profileCode){
+         $statement=PWD()->prepare("SELECT
+                                        prow_scholar_acct_status
+                                        From
+                                        prow_scholar
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        
+        $status = $res['prow_scholar_acct_status'];
+        
+        if ($status==1){
+            $scholar_status = "Approved";
+        }else if ($status==2){
+            $scholar_status = "Pending";
+        }else if ($role==3){
+            $scholar_status = "For Reapplication";
+        }
+
+        return $scholar_status;
+    
+    }
+
+
+    //Separate month and year
+    function separateMonthYear($datetime) {
+        $timestamp = strtotime($datetime);
+        $year = date('Y', $timestamp);
+        $monthNumber = date('m', $timestamp);
+        $monthName = DateTime::createFromFormat('!m', $monthNumber)->format('F');
+        return $monthName . ' ' . $year;
+    }
+
+
+    function getScholar_Joined($profileCode){
+         $statement=PWD()->prepare("SELECT
+                                        prow_scholar_created
+                                        From
+                                        prow_scholar
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        
+        $scholar_joined = $res['prow_scholar_created'];
+    
+        $joined= separateMonthYear($scholar_joined);
+
+        return $joined;
+    }
+    
     //Get Scholar status
      function getScholarStatus($acct_status){
         if ($acct_status==1){
@@ -313,25 +395,85 @@
     //Get School of Scholar
     function getSchoolScholar($profileCode){
         $statement=PWD()->prepare("SELECT
-                                        prow_scholar_hei_id
+                                        *
                                         From
-                                        prow_scholar_academe
+                                        prow_scholar_app_logs
                                         Where
                                         prow_scholar_code = :prow_scholar_code");
         $statement->execute([
             'prow_scholar_code' => $profileCode
         ]);
 
-        if ($statement == null){
-            return $statement;
-        }else{
-            return null;
-        }
-        
+        return $statement;
 
     }
 
+    function getSchoolName($heiID){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_hei
+                                        Where
+                                        prow_hei_id = :prow_hei_id");
+        $statement->execute([
+            'prow_hei_id' => $heiID
+        ]);
 
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        
+        $hei_name = $res['prow_hei_name'];
 
+        return $hei_name;
+
+    }
+
+    function getCourseName($courseID){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_list_course
+                                        Where
+                                        prow_course_id = :prow_course_id");
+        $statement->execute([
+            'prow_course_id' => $courseID
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        
+        $course_name = $res['prow_course_name'];
+
+        return $course_name;
+
+    }
+
+    function selectProfile($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                      *
+                                        From
+                                        prow_scholar
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+
+        return $statement;
+
+    }
+
+    function getAddressScholar($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_address
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+
+        return $statement;
+
+    }
 
 ?>

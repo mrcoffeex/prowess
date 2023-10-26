@@ -1,8 +1,16 @@
 <?php
   require '../../config/includes.php';
   require '_session.php';
-
   include "_head.php";
+
+  $getProfile=selectProfile($scholarCode);
+  $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
+
+  $getSchoolProfile=getSchoolScholar($scholarCode);
+  $schoolProfile=$getSchoolProfile->fetch(PDO::FETCH_ASSOC);
+
+  $getAddressProfile=getAddressScholar($scholarCode);
+  $addressProfile=$getAddressProfile->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -42,19 +50,21 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="pages-profile-teams.html"
-                        ><i class="mdi mdi-badge-account-outline me-1 mdi-20px"></i>Skills</a
+                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Educational Attainment</a
                       >
                     </li>
-                    <li class="nav-item">
+
+                    <!-- Hide this if not graduated -->
+                    <!-- <li class="nav-item">
                       <a class="nav-link" href="pages-profile-teams.html"
-                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Educational Attainment</a
+                        ><i class="mdi mdi-badge-account-outline me-1 mdi-20px"></i>Skills</a
                       >
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="pages-profile-teams.html"
                         ><i class="mdi mdi-briefcase-outline me-1 mdi-20px"></i>Employment</a
                       >
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                       <a class="nav-link" href="pages-profile-teams.html"
                         ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a
@@ -74,16 +84,20 @@
                       <small class="card-text text-uppercase text-muted">School Information</small>
                       <ul class="list-unstyled mb-0 mt-3 pt-1">
                         <li class="d-flex align-items-center mb-3">
-                          <i class="mdi mdi-town-hall mdi-24px"></i><span class="fw-semibold mx-2">Name:</span>
-                          <span>13.5k</span>
+                          <i class="mdi mdi-badge-account-outline mdi-24px"></i><span class="fw-semibold mx-2">School ID:</span>
+                          <span><?= $profile['prow_scholar_school_id'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
-                          <i class="mdi mdi-book-account-outline mdi-24px"></i
-                          ><span class="fw-semibold mx-2">Course:</span> <span>146</span>
+                          <i class="mdi mdi-town-hall mdi-24px"></i><span class="fw-semibold mx-2">School:</span>
+                          <span><?= getSchoolName($schoolProfile['prow_hei_id']) ?></span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-book-check-outline mdi-24px"></i
+                          ><span class="fw-semibold mx-2">Course:</span> <span><?= getCourseName($schoolProfile['prow_course_id']) ?></span>
                         </li>
                         <li class="d-flex align-items-center">
                           <i class="mdi mdi-book-open-outline mdi-24px"></i
-                          ><span class="fw-semibold mx-2">Year Level:</span> <span>897</span>
+                          ><span class="fw-semibold mx-2">Year Level:</span> <span><?= $schoolProfile['prow_yr_lvl'] ?></span>
                         </li>
                       </ul>
                     </div>
@@ -95,57 +109,68 @@
                       <small class="card-text text-uppercase text-muted">About</small>
                       <ul class="list-unstyled my-3 py-1">
                         <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-qrcode mdi-24px"></i
+                          ><span class="fw-semibold mx-2">Scholar Code:</span> <span><?= $profile['prow_scholar_code'] ?></span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-account-outline mdi-24px"></i
-                          ><span class="fw-semibold mx-2">User Name:</span> <span><? ?></span>
+                          ><span class="fw-semibold mx-2">User Name:</span> <span><?= getUserName($scholarCode) ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-account-settings-outline mdi-24px"></i><span class="fw-semibold mx-2">Gender:</span>
-                          <span>Active</span>
+                          <span><?= $profile['prow_scholar_gender'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-card-account-details-outline mdi-24px"></i><span class="fw-semibold mx-2">Civil Status:</span>
-                          <span>Developer</span>
+                          <span><?= $profile['prow_scholar_cs'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-cake-variant-outline mdi-24px"></i><span class="fw-semibold mx-2">Birthday:</span>
-                          <span>USA</span>
+                          <span><?= $profile['prow_scholar_birthday'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Birth Place:</span>
-                          <span>English</span>
+                          <span><?= $profile['prow_scholar_birthplace'] ?></span>
                         </li>
                       </ul>
                       <small class="card-text text-uppercase text-muted">Contacts</small>
                       <ul class="list-unstyled my-3 py-1">
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-phone-outline mdi-24px"></i><span class="fw-semibold mx-2">Contact:</span>
-                          <span>(123) 456-7890</span>
+                          <span><?= $profile['prow_scholar_con'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-email-outline mdi-24px"></i><span class="fw-semibold mx-2">Email:</span>
-                          <span>john.doe@example.com</span>
+                          <span><?= $profile['prow_scholar_email'] ?></span>
+                        </li>
+                      </ul>
+                      <small class="card-text text-uppercase text-muted">Talents</small>
+                      <ul class="list-unstyled my-3 py-1">
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-star-check-outline mdi-24px"></i><span class="fw-semibold mx-2">Contact:</span>
+                          <span>(123) 456-7890</span>
                         </li>
                       </ul>
                       <small class="card-text text-uppercase text-muted">Address</small>
                       <ul class="list-unstyled my-3 py-1">
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Street Name:</span>
-                          <span>(123) 456-7890</span>
+                          <span><?= $addressProfile['prow_address_description'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Province:</span>
-                          <span>john.doe@example.com</span>
+                          <span><?= $addressProfile['prow_address_province'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Municipality:</span>
-                          <span>(123) 456-7890</span>
+                          <span><?= getMunicipalityName($addressProfile['prow_address_municipality']) ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Barangay:</span>
-                          <span>john.doe@example.com</span>
+                          <span><?= $addressProfile['prow_address_brgy'] ?></span>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Zip Code:</span>
-                          <span>john.doe@example.com</span>
+                          <span><?= $addressProfile['prow_address_zipcode'] ?></span>
                         </li>
                       </ul>
                     </div>
@@ -179,6 +204,7 @@
                           </ul>
                         </div>
                       </div>
+                      
                     </div>
                     <div class="card-body pt-3 pb-0">
                       <ul class="timeline mb-0">
@@ -205,7 +231,7 @@
                           <span class="timeline-point timeline-point-primary"></span>
                           <div class="timeline-event">
                             <div class="timeline-header mb-1">
-                              <h6 class="mb-0">Upload Requirements</h6>
+                              <h6 class="mb-0">Finish Fill up Personal Information</h6>
                               <span class="text-muted">2 Day Ago</span>
                             </div>
                             <p class="text-muted mb-0">Add files to new design folder</p>
@@ -215,7 +241,7 @@
                           <span class="timeline-point timeline-point-warning"></span>
                           <div class="timeline-event">
                             <div class="timeline-header mb-1">
-                              <h6 class="mb-0">Shared 2 New Project Files</h6>
+                              <h6 class="mb-0">Upload File Requirements</h6>
                               <span class="text-muted">6 Day Ago</span>
                             </div>
                             <p class="text-muted mb-2">
@@ -234,7 +260,7 @@
                                   alt="Document image"
                                   width="15"
                                   class="me-2" />
-                                <span class="fw-medium text-body">App Guidelines</span>
+                                <span class="fw-medium text-body">Highschool Report Card</span>
                               </a>
                               <a href="javascript:void(0)">
                                 <img
@@ -242,7 +268,7 @@
                                   alt="Excel image"
                                   width="15"
                                   class="me-2" />
-                                <span class="fw-medium text-body">Testing Results</span>
+                                <span class="fw-medium text-body">Certificate of Low Income from Barangay</span>
                               </a>
                             </div>
                           </div>
@@ -251,10 +277,10 @@
                           <span class="timeline-point timeline-point-info"></span>
                           <div class="timeline-event">
                             <div class="timeline-header mb-1">
-                              <h6 class="mb-0">Project status updated</h6>
+                              <h6 class="mb-0">Initial Approval</h6>
                               <span class="text-muted">10 Day Ago</span>
                             </div>
-                            <p class="text-muted mb-0">Woocommerce iOS App Completed</p>
+                            <p class="text-muted mb-0">Approval by Scholarship Coordinator</p>
                           </div>
                         </li>
                       </ul>
@@ -262,7 +288,7 @@
                   </div>
 
                   <!-- Projects table -->
-                  <div class="card mb-4">
+                  <!-- <div class="card mb-4">
                     <div class="card-datatable table-responsive">
                       <table class="datatables-projects table">
                         <thead>
@@ -278,34 +304,28 @@
                         </thead>
                       </table>
                     </div>
-                  </div>
+                  </div> -->
                   <!--/ Projects table -->
                 </div>
               </div>
               <!--/ User Profile Content -->
             </div>
-            <!-- / Content -->
-
-            <!-- Footer -->
+         
               <?php
                 include "_footer.php";
               ?>
-            <!-- / Footer -->
+         
 
             <div class="content-backdrop fade"></div>
           </div>
-          <!-- Content wrapper -->
+      
         </div>
-        <!-- / Layout page -->
+        
       </div>
-
-      <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
-
-      <!-- Drag Target Area To SlideIn Menu On Small Screens -->
       <div class="drag-target"></div>
     </div>
-    <!-- / Layout wrapper -->
+
     <?php
       include "_scripts.php";
     ?>

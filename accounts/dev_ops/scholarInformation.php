@@ -199,12 +199,11 @@
                                 <thead>
                                     <tr>
                                         <th>Action</th>
+                                        <th>Scholar Code</th>
                                         <th>Fullname</th>
                                         <th>Status</th>
                                         <th>School</th>
                                         <th>Municipality</th>
-                                        <th>Year Level</th>
-                                        <th>Course</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -223,10 +222,9 @@
                                         </td>
                                         <td class="p-2 text-bold"><?= getFullname($scholar['prow_scholar_code'])  ?></td>
                                         <td class="p-2 text-bold"><?= getScholarStatus($scholar['prow_scholar_acct_status'])  ?></td>
-                                        <td class="p-2 text-bold"><?= getSchoolScholar($scholar['prow_scholar_code']);  ?></td>
-                                        <td class="p-2 text-bold"><?= getFullname($scholar['prow_scholar_code'])  ?></td>
-                                        <td class="p-2 text-bold"><?= getFullname($scholar['prow_scholar_code'])  ?></td>
-                                        <td class="p-2 text-bold"><?= getFullname($scholar['prow_scholar_code'])  ?></td>
+                                        <td class="p-2 text-bold"><?  ?></td>
+                                        <td class="p-2 text-bold"><?  ?></td>
+                                        <td class="p-2 text-bold"><?  ?></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>

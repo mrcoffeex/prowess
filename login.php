@@ -86,6 +86,7 @@
                   <span>Forgot Password?</span>
                 </a>
               </div>
+              <p class="mb-3 switch-sm justify-content-evenly">By accessing and using the PROWESS, you acknowledge and agree to the terms of this consent. For further information on how we protect your privacy, please read our <a href="#">Privacy Notice.</a></p>
               <button type="submit" id="loginUser" class="btn btn-primary d-grid w-100">Sign in</button>
             </form>
 

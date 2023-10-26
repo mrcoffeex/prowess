@@ -340,6 +340,15 @@
                           <label for="multiStepsAddress">House #, Street Name, Purok</label>
                         </div>
                       </div>
+                      <div class="col-sm-12">
+                        <div class="form-floating form-floating-outline">
+                          <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="basic-default-checkbox" required />
+                              <label class="form-check-label" for="basic-default-checkbox">Agree to our <a data-bs-toggle="modal"
+                              data-bs-target="#modalScrollable">terms and conditions</a></label>
+                          </div>
+                        </div>
+                      </div>
                       <div class="col-12 d-flex justify-content-between">
                         <button class="btn btn-secondary btn-prev">
                           <i class="mdi mdi-arrow-left me-sm-1 me-0"></i>
@@ -351,6 +360,109 @@
                     <!--/ Credit Card Details -->
                   </div>
                 </form>
+
+
+                <!-- Modal -->
+                      <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="modalScrollableTitle">Modal title</h4>
+                              <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <p>
+                                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                                in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                              </p>
+                              <p>
+                                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
+                                lacus vel augue laoreet rutrum faucibus dolor auctor.
+                              </p>
+                              <p>
+                                Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
+                                scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
+                                auctor fringilla.
+                              </p>
+                              <p>
+                                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                                in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                              </p>
+                              <p>
+                                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
+                                lacus vel augue laoreet rutrum faucibus dolor auctor.
+                              </p>
+                              <p>
+                                Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
+                                scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
+                                auctor fringilla.
+                              </p>
+                              <p>
+                                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                                in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                              </p>
+                              <p>
+                                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
+                                lacus vel augue laoreet rutrum faucibus dolor auctor.
+                              </p>
+                              <p>
+                                Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
+                                scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
+                                auctor fringilla.
+                              </p>
+                              <p>
+                                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                                in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                              </p>
+                              <p>
+                                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
+                                lacus vel augue laoreet rutrum faucibus dolor auctor.
+                              </p>
+                              <p>
+                                Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
+                                scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
+                                auctor fringilla.
+                              </p>
+                              <p>
+                                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                                in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                              </p>
+                              <p>
+                                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
+                                lacus vel augue laoreet rutrum faucibus dolor auctor.
+                              </p>
+                              <p>
+                                Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
+                                scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
+                                auctor fringilla.
+                              </p>
+                              <p>
+                                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                                in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                              </p>
+                              <p>
+                                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
+                                lacus vel augue laoreet rutrum faucibus dolor auctor.
+                              </p>
+                              <p>
+                                Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
+                                scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
+                                auctor fringilla.
+                              </p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                                Close
+                              </button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
               </div>
             </div>
           </div>
