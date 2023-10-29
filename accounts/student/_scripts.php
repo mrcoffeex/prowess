@@ -15,10 +15,7 @@
 <script src="../../assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js"></script>
 <script src="../../assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js"></script>
 <script src="../../assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js"></script>
-<!-- <script src="../../assets/vendor/libs/toastr/toastr.js"></script>
-<script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
-<script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script> -->
-<!-- <script src="../../assets/vendor/libs/swiper/swiper.js"></script> -->
+
 <script src="../../assets/vendor/libs/select2/select2.js"></script>
 <script src="../../assets/vendor/libs/tagify/tagify.js"></script>
 <script src="../../assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
