@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2023 at 09:07 AM
+-- Generation Time: Oct 29, 2023 at 04:50 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -323,6 +323,31 @@ INSERT INTO `prow_hei` (`prow_hei_id`, `prow_hei_code`, `prow_hei_name`, `prow_h
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prow_hei_course`
+--
+
+CREATE TABLE `prow_hei_course` (
+  `prow_hei_course_id` int(11) NOT NULL,
+  `prow_hei_id` int(11) NOT NULL,
+  `prow_course_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prow_hei_course`
+--
+
+INSERT INTO `prow_hei_course` (`prow_hei_course_id`, `prow_hei_id`, `prow_course_id`) VALUES
+(1, 1, 44),
+(2, 1, 39),
+(3, 1, 18),
+(4, 1, 45),
+(5, 1, 46),
+(6, 1, 47),
+(7, 1, 48);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prow_industry`
 --
 
@@ -414,6 +439,198 @@ INSERT INTO `prow_jobs` (`prow_jobs_id`, `prow_industry_code`, `prow_jobs_code`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prow_list_course`
+--
+
+CREATE TABLE `prow_list_course` (
+  `prow_course_id` int(4) NOT NULL,
+  `prow_course_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prow_list_course`
+--
+
+INSERT INTO `prow_list_course` (`prow_course_id`, `prow_course_name`) VALUES
+(1, 'Bachelor of Arts in Communication'),
+(2, 'Bachelor of Arts in History'),
+(3, 'Bachelor of Arts in Political Science'),
+(4, 'Bachelor of Arts in Theology'),
+(5, 'Bachelor of Library and Information Science'),
+(6, 'Bachelor of Science in Agribusiness'),
+(7, 'Bachelor of Science in Agricultural and Biosystems Engineering'),
+(8, 'Bachelor of Science in Agroforestry'),
+(9, 'Bachelor of Science in Civil Engineering'),
+(10, 'Bachelor of Science in Commerce'),
+(11, 'Bachelor of Science in Development Communication'),
+(12, 'Bachelor of Science in Electronics Engineering'),
+(13, 'Bachelor of Science in Hotel and Restaurant Management'),
+(14, 'Bachelor of Science in Information Systems'),
+(15, 'Bachelor of Science in Mathematics'),
+(16, 'Bachelor of Science in Midwifery'),
+(17, 'Bachelor of Science in Office Administration'),
+(18, 'Bachelor of Science in Tourism Management'),
+(19, 'Bachelor of Special Needs Education major in Generalist'),
+(20, 'Bachelor of Technology and Livelihood Education'),
+(21, 'Juris Doctor'),
+(22, 'Teacher Certificate Program'),
+(23, 'Bachelor of Arts in English Language'),
+(24, 'Bachelor of Early Childhood Education'),
+(25, 'Bachelor of Physical Education'),
+(26, 'Bachelor of Public Administration'),
+(27, 'Bachelor of Science in Accounting Information Systems'),
+(28, 'Bachelor of Science in Accounting Technology (now Accounting Information System)'),
+(29, 'Bachelor of Science in Agriculture'),
+(30, 'Bachelor of Science in Computer Engineering'),
+(31, 'Bachelor of Science in Computer Science'),
+(32, 'Bachelor of Science in Nursing'),
+(33, 'Bachelor of Science in Psychology'),
+(34, 'Bachelor of Science in Radiologic Technology'),
+(35, 'Bachelor of Technical-Vocational Teacher Education'),
+(36, 'Bachelor of Science in Accountancy'),
+(37, 'Bachelor of Science in Hospitality Management'),
+(38, 'Bachelor of Science in Management Accounting'),
+(39, 'Bachelor of Science in Criminology'),
+(40, 'Bachelor of Elementary Education'),
+(41, 'Bachelor of Science in Business Administration major in Human Resource Management'),
+(42, 'Bachelor of Science in Business Administration major in Marketing Management'),
+(43, 'Bachelor of Science in Business Administration major in Financial Management'),
+(44, 'Bachelor of Science in Information Technology'),
+(45, 'Bachelor of Secondary Education major in English'),
+(46, 'Bachelor of Secondary Education major in Filipino'),
+(47, 'Bachelor of Secondary Education major in Mathematics'),
+(48, 'Bachelor of Secondary Education major in Sciences');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prow_list_highschool`
+--
+
+CREATE TABLE `prow_list_highschool` (
+  `prow_highschool_id` int(11) NOT NULL,
+  `prow_highschool` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prow_list_skill`
+--
+
+CREATE TABLE `prow_list_skill` (
+  `prow_skills_id` int(11) NOT NULL,
+  `prow_skill_name` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prow_list_skill`
+--
+
+INSERT INTO `prow_list_skill` (`prow_skills_id`, `prow_skill_name`) VALUES
+(1, 'Define and access information needs'),
+(2, 'Assess and organize information and knowledge'),
+(3, 'Produce, share, and utilize information and knowledge'),
+(4, 'Communicate in different formats and platforms (print, broadcast, and online)'),
+(5, 'Prepare communication or media plan'),
+(6, 'Conduct communication and media research and evaluation'),
+(7, 'Develop and produce communication materials in different formats and platforms'),
+(8, 'Demonstrate communication management and leadership skills'),
+(9, 'Develop entrepreneurial capabilities'),
+(10, 'Adhere to ethical standards and practices'),
+(11, 'Know and practice rights and responsibilities and accountabilities in the communication profession'),
+(12, 'Demonstrate a development orientation in communication work'),
+(13, 'Apply communication theories and models, principles, practices, and tool sin development work');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prow_list_sy`
+--
+
+CREATE TABLE `prow_list_sy` (
+  `prow_sy_id` int(11) NOT NULL,
+  `prow_school_year` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prow_list_sy`
+--
+
+INSERT INTO `prow_list_sy` (`prow_sy_id`, `prow_school_year`) VALUES
+(1, '2021-2022'),
+(2, '2022-2023'),
+(3, '2023-2024');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prow_list_talents`
+--
+
+CREATE TABLE `prow_list_talents` (
+  `prow_talent_id` int(11) NOT NULL,
+  `prow_talent_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prow_list_talents`
+--
+
+INSERT INTO `prow_list_talents` (`prow_talent_id`, `prow_talent_name`) VALUES
+(1, 'Singing'),
+(2, 'Dancing'),
+(3, 'Acting'),
+(4, 'Painting'),
+(5, 'Drawing'),
+(6, 'Writing'),
+(7, 'Playing a musical instrument (e.g., piano, guitar, violin)'),
+(8, 'Composing music'),
+(9, 'Sculpting'),
+(10, 'Photography'),
+(11, 'Cooking'),
+(12, 'Sewing'),
+(13, 'Designing clothes'),
+(14, 'Graphic design'),
+(15, 'Poetry'),
+(16, 'Public speaking'),
+(17, 'Playing sports (e.g., basketball, soccer, tennis)'),
+(18, 'Chess playing'),
+(19, 'Coding/Programming'),
+(20, 'Problem-solving'),
+(21, 'Leadership'),
+(22, 'Negotiation'),
+(23, 'Critical thinking'),
+(24, 'Scientific research'),
+(25, 'Mathematical ability'),
+(26, 'Crafting (e.g., woodworking, pottery, jewelry-making)'),
+(27, 'Gardening'),
+(28, 'Singing in multiple languages'),
+(29, 'Storytelling'),
+(30, 'Martial arts'),
+(31, 'Yoga'),
+(32, 'Teaching'),
+(33, 'Mentoring'),
+(34, 'Event planning'),
+(35, 'Public relations'),
+(36, 'Time management'),
+(37, 'Organization'),
+(38, 'Networking'),
+(39, 'Entrepreneurship'),
+(40, 'Analytical thinking'),
+(41, 'Innovation'),
+(42, 'Marketing'),
+(43, 'Sales'),
+(44, 'Multilingualism'),
+(45, 'Problem-solving'),
+(46, 'Empathy'),
+(47, 'Animal training'),
+(48, 'Voice-over work'),
+(49, 'Magic tricks');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prow_municipalities`
 --
 
@@ -478,8 +695,16 @@ CREATE TABLE `prow_notifications` (
 --
 
 INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_notif_text`, `prow_notif_to`, `prow_notif_date`) VALUES
-(1, 'auth', 'Login - annimay', 0, '2023-10-22 15:44:59'),
-(2, 'auth', 'Login - kentjohn', 0, '2023-10-22 22:37:44');
+(1, 'attempt', 'Login Attempt - annimay', 0, '2023-10-23 15:38:19'),
+(2, 'auth', 'Login - annimay', 0, '2023-10-23 15:41:32'),
+(3, 'attempt', 'Login Attempt - annimay', 0, '2023-10-23 15:56:03'),
+(4, 'auth', 'Login - annimay', 0, '2023-10-23 15:56:08'),
+(5, 'auth', 'Login - annimay', 0, '2023-10-24 10:54:38'),
+(6, 'auth', 'Login - annimay', 0, '2023-10-24 11:10:48'),
+(7, 'auth', 'Login - annimay', 0, '2023-10-25 15:03:20'),
+(8, 'attempt', 'Login Attempt - annimay', 0, '2023-10-26 11:44:41'),
+(9, 'auth', 'Login - annimay', 0, '2023-10-26 11:44:47'),
+(10, 'auth', 'Login - annimay', 0, '2023-10-27 14:03:55');
 
 -- --------------------------------------------------------
 
@@ -513,9 +738,8 @@ CREATE TABLE `prow_otp` (
 --
 
 INSERT INTO `prow_otp` (`prow_otp_id`, `prow_otp_code`, `prow_user_code`, `prow_otp_status`, `prow_otp_created`, `prow_otp_updated`) VALUES
-(1, '169525', '20231021110439WbbwQPrPc1', 0, '2023-10-20 20:04:39', '2023-10-20 20:04:39'),
-(2, '553830', '20231021133746K5qPqqsnE4', 0, '2023-10-20 22:37:46', '2023-10-20 22:37:46'),
-(3, '613280', '20231022222030JIf4AtuDeH', 1, '2023-10-22 22:20:30', '2023-10-22 22:20:30');
+(1, '836895', '20231024064033nOz5kbyuQD', 1, '2023-10-23 15:40:33', '2023-10-23 15:40:33'),
+(2, '453915', '202310240645431ZyFfSRPzk', 1, '2023-10-23 15:45:43', '2023-10-23 15:45:43');
 
 -- --------------------------------------------------------
 
@@ -548,8 +772,8 @@ CREATE TABLE `prow_scholar` (
 --
 
 INSERT INTO `prow_scholar` (`prow_scholar_id`, `prow_scholar_code`, `prow_scholar_school_id`, `prow_scholar_img`, `prow_scholar_lastname`, `prow_scholar_firstname`, `prow_scholar_middlename`, `prow_scholar_suffix`, `prow_scholar_gender`, `prow_scholar_cs`, `prow_scholar_birthday`, `prow_scholar_birthplace`, `prow_scholar_con`, `prow_scholar_email`, `prow_scholar_acct_status`, `prow_scholar_created`, `prow_scholar_updated`) VALUES
-(1, '2023EKsQFx', '0', '', 'Delima', 'Joane May', 'Ber', 'Sr.', 'Female', 'Single', '2222-02-02', 'dddddd', '0928265755', 'joanemaydelima@gmail.com', 2, '2023-10-20 22:37:46', '2023-10-20 22:37:46'),
-(2, '2023RgLtBI', '0', '', 'john', 'kent', '', '', 'Male', 'Single', '1997-06-22', 'asdasdada asdasd', '9121610673', 'kjohn0319@gmail.com', 2, '2023-10-22 22:20:30', '2023-10-22 22:20:30');
+(1, '2023ljUXXn', '0', '', 'Delima', 'Joane May', 'Berdera', '', 'Female', 'Single', '1994-02-06', 'Valenzuela', '9282657552', 'joanemaydelima@gmail.com', 2, '2023-10-23 15:40:33', '2023-10-23 15:40:33'),
+(2, '20231y3fUA', '0', '', 'Delima', 'Annimay', '', '', 'Female', 'Single', '1994-02-06', 'Digos', '9282657552', 'jmdelima@umindanao.edu.ph', 2, '2023-10-23 15:45:43', '2023-10-23 15:45:43');
 
 -- --------------------------------------------------------
 
@@ -560,12 +784,9 @@ INSERT INTO `prow_scholar` (`prow_scholar_id`, `prow_scholar_code`, `prow_schola
 CREATE TABLE `prow_scholar_academe` (
   `prow_acad_id` int(11) NOT NULL,
   `prow_scholar_code` varchar(50) NOT NULL,
-  `prow_acad_application` varchar(50) NOT NULL,
-  `prow_acad_course` varchar(50) NOT NULL,
-  `prow_acad_year` int(11) NOT NULL,
-  `prow_acad_signature` text NOT NULL,
+  `prow_scholar_app_logs_id` int(11) NOT NULL,
   `prow_acad_status` varchar(11) NOT NULL,
-  `prow_scholar_hei_id` varchar(50) NOT NULL,
+  `prow_acad_signature` text NOT NULL,
   `prow_acad_created` datetime NOT NULL,
   `prow_acad_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -574,8 +795,8 @@ CREATE TABLE `prow_scholar_academe` (
 -- Dumping data for table `prow_scholar_academe`
 --
 
-INSERT INTO `prow_scholar_academe` (`prow_acad_id`, `prow_scholar_code`, `prow_acad_application`, `prow_acad_course`, `prow_acad_year`, `prow_acad_signature`, `prow_acad_status`, `prow_scholar_hei_id`, `prow_acad_created`, `prow_acad_updated`) VALUES
-(1, '2023EKsQFx', '2', '1', 2022, 'sample', '2', '1', '2023-10-21 10:29:28', '2023-10-21 10:29:28');
+INSERT INTO `prow_scholar_academe` (`prow_acad_id`, `prow_scholar_code`, `prow_scholar_app_logs_id`, `prow_acad_status`, `prow_acad_signature`, `prow_acad_created`, `prow_acad_updated`) VALUES
+(1, '2023ljUXXn', 1, '1', '', '2023-10-26 01:52:16', '2023-10-26 01:52:16');
 
 -- --------------------------------------------------------
 
@@ -600,8 +821,33 @@ CREATE TABLE `prow_scholar_address` (
 --
 
 INSERT INTO `prow_scholar_address` (`prow_address_id`, `prow_scholar_code`, `prow_address_description`, `prow_address_brgy`, `prow_address_municipality`, `prow_address_province`, `prow_address_zipcode`, `prow_address_created`, `prow_address_updated`) VALUES
-(1, '2023EKsQFx', 'Datoc Compound, Digos City', 'Zone 2', '1', 'Davao del Sur', 8002, '2023-10-20 22:37:46', '2023-10-20 22:37:46'),
-(2, '2023RgLtBI', '1095 asdasdas', 'Alegre', '2', 'Davao del Sur', 8002, '2023-10-22 22:20:30', '2023-10-22 22:20:30');
+(1, '2023ljUXXn', 'Datoc Compound, Digos City', 'Zone 1', '1', 'Davao del Sur', 8002, '2023-10-23 15:40:33', '2023-10-23 15:40:33'),
+(2, '20231y3fUA', 'Datoc Compound, Digos City', 'Ruparan', '1', 'Davao del Sur', 8002, '2023-10-23 15:45:43', '2023-10-23 15:45:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prow_scholar_app_logs`
+--
+
+CREATE TABLE `prow_scholar_app_logs` (
+  `prow_scholar_app_logs_id` int(11) NOT NULL,
+  `prow_scholar_code` varchar(50) NOT NULL,
+  `prow_application_type` int(11) NOT NULL,
+  `prow_hei_id` int(11) NOT NULL,
+  `prow_course_id` int(11) NOT NULL,
+  `prow_yr_lvl` int(11) NOT NULL,
+  `prow_sy_id` int(11) NOT NULL,
+  `prow_sem` varchar(50) NOT NULL,
+  `prow_app_logs_created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prow_scholar_app_logs`
+--
+
+INSERT INTO `prow_scholar_app_logs` (`prow_scholar_app_logs_id`, `prow_scholar_code`, `prow_application_type`, `prow_hei_id`, `prow_course_id`, `prow_yr_lvl`, `prow_sy_id`, `prow_sem`, `prow_app_logs_created`) VALUES
+(1, '2023ljUXXn', 1, 1, 44, 1, 3, '1', '2023-10-26 02:17:11');
 
 -- --------------------------------------------------------
 
@@ -612,15 +858,19 @@ INSERT INTO `prow_scholar_address` (`prow_address_id`, `prow_scholar_code`, `pro
 CREATE TABLE `prow_scholar_educ_attain` (
   `prow_educ_id` int(11) NOT NULL,
   `prow_scholar_code` varchar(50) NOT NULL,
-  `prow_educ_type` varchar(50) NOT NULL,
-  `prow_educ_school_name` varchar(50) NOT NULL,
-  `prow_educ_awards_received` varchar(50) NOT NULL,
-  `prow_educ_awards_year` varchar(10) NOT NULL,
+  `prow_educ_school_id` int(11) NOT NULL,
   `prow_educ_year_graduated` varchar(10) NOT NULL,
   `prow_educ_degree` varchar(50) NOT NULL,
   `prow_educ_created` datetime NOT NULL,
   `prow_educ_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prow_scholar_educ_attain`
+--
+
+INSERT INTO `prow_scholar_educ_attain` (`prow_educ_id`, `prow_scholar_code`, `prow_educ_school_id`, `prow_educ_year_graduated`, `prow_educ_degree`, `prow_educ_created`, `prow_educ_updated`) VALUES
+(1, '2023ljUXXn', 1, '2020', '1', '2023-10-26 02:33:25', '2023-10-26 02:33:25');
 
 -- --------------------------------------------------------
 
@@ -748,8 +998,8 @@ CREATE TABLE `prow_users` (
 --
 
 INSERT INTO `prow_users` (`prow_user_id`, `prow_user_code`, `prow_scholar_code`, `prow_user_fullname`, `prow_user_uname`, `prow_user_pword`, `prow_user_picture`, `prow_user_type`, `prow_user_status`, `prow_user_verify`, `prow_user_last_location`, `prow_user_created`, `prow_user_updated`) VALUES
-(1, '20231021133746K5qPqqsnE4', '2023EKsQFx', 'Joane May Delima', 'annimay', '2d1a6492fd09416601a846902f660b5a', '', 0, 0, 0, '', '2023-10-20 22:37:46', '2023-10-20 22:37:46'),
-(2, '20231022222030JIf4AtuDeH', '2023RgLtBI', 'kent john', 'kentjohn', '1bbd886460827015e5d605ed44252251', '', 4, 0, 0, '', '2023-10-22 22:20:30', '2023-10-22 22:20:30');
+(1, '20231024064033nOz5kbyuQD', '2023ljUXXn', 'Joane May Delima', 'annimay', '1bbd886460827015e5d605ed44252251', '', 0, 0, 0, '', '2023-10-23 15:40:33', '2023-10-23 15:40:33'),
+(2, '202310240645431ZyFfSRPzk', '20231y3fUA', 'Annimay Delima', 'cronos', '2d1a6492fd09416601a846902f660b5a', '', 4, 0, 0, '', '2023-10-23 15:45:43', '2023-10-23 15:45:43');
 
 --
 -- Indexes for dumped tables
@@ -774,6 +1024,12 @@ ALTER TABLE `prow_hei`
   ADD PRIMARY KEY (`prow_hei_id`);
 
 --
+-- Indexes for table `prow_hei_course`
+--
+ALTER TABLE `prow_hei_course`
+  ADD PRIMARY KEY (`prow_hei_course_id`);
+
+--
 -- Indexes for table `prow_industry`
 --
 ALTER TABLE `prow_industry`
@@ -790,6 +1046,30 @@ ALTER TABLE `prow_industry_reviews`
 --
 ALTER TABLE `prow_jobs`
   ADD PRIMARY KEY (`prow_jobs_id`);
+
+--
+-- Indexes for table `prow_list_course`
+--
+ALTER TABLE `prow_list_course`
+  ADD PRIMARY KEY (`prow_course_id`);
+
+--
+-- Indexes for table `prow_list_skill`
+--
+ALTER TABLE `prow_list_skill`
+  ADD PRIMARY KEY (`prow_skills_id`);
+
+--
+-- Indexes for table `prow_list_sy`
+--
+ALTER TABLE `prow_list_sy`
+  ADD PRIMARY KEY (`prow_sy_id`);
+
+--
+-- Indexes for table `prow_list_talents`
+--
+ALTER TABLE `prow_list_talents`
+  ADD PRIMARY KEY (`prow_talent_id`);
 
 --
 -- Indexes for table `prow_municipalities`
@@ -838,6 +1118,12 @@ ALTER TABLE `prow_scholar_academe`
 --
 ALTER TABLE `prow_scholar_address`
   ADD PRIMARY KEY (`prow_address_id`);
+
+--
+-- Indexes for table `prow_scholar_app_logs`
+--
+ALTER TABLE `prow_scholar_app_logs`
+  ADD PRIMARY KEY (`prow_scholar_app_logs_id`);
 
 --
 -- Indexes for table `prow_scholar_educ_attain`
@@ -904,6 +1190,12 @@ ALTER TABLE `prow_hei`
   MODIFY `prow_hei_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `prow_hei_course`
+--
+ALTER TABLE `prow_hei_course`
+  MODIFY `prow_hei_course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `prow_industry`
 --
 ALTER TABLE `prow_industry`
@@ -914,6 +1206,30 @@ ALTER TABLE `prow_industry`
 --
 ALTER TABLE `prow_jobs`
   MODIFY `prow_jobs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `prow_list_course`
+--
+ALTER TABLE `prow_list_course`
+  MODIFY `prow_course_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT for table `prow_list_skill`
+--
+ALTER TABLE `prow_list_skill`
+  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `prow_list_sy`
+--
+ALTER TABLE `prow_list_sy`
+  MODIFY `prow_sy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `prow_list_talents`
+--
+ALTER TABLE `prow_list_talents`
+  MODIFY `prow_talent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `prow_municipalities`
@@ -931,7 +1247,7 @@ ALTER TABLE `prow_my_project`
 -- AUTO_INCREMENT for table `prow_notifications`
 --
 ALTER TABLE `prow_notifications`
-  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `prow_notif_type`
@@ -943,7 +1259,7 @@ ALTER TABLE `prow_notif_type`
 -- AUTO_INCREMENT for table `prow_otp`
 --
 ALTER TABLE `prow_otp`
-  MODIFY `prow_otp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_otp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar`
@@ -964,10 +1280,16 @@ ALTER TABLE `prow_scholar_address`
   MODIFY `prow_address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `prow_scholar_app_logs`
+--
+ALTER TABLE `prow_scholar_app_logs`
+  MODIFY `prow_scholar_app_logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `prow_scholar_educ_attain`
 --
 ALTER TABLE `prow_scholar_educ_attain`
-  MODIFY `prow_educ_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `prow_educ_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_employment`

@@ -128,7 +128,7 @@
         $scholarCode = date('Y') . randStrInt(6);
 
         $createUser = createUser($userCode, $scholarCode, $fullname, $uname, $pword);
-        $createScholar = createScholarProfile($scholarCode, $lname, $fname, $mname, $suffix, $gender, $cs, $birthday, $birthplace, $contact, $email, $acc_status);
+        $createScholar = createScholarProfile($scholarCode, $lname, $fname, $mname, $suffix, $gender, $cs, $birthday, $birthplace, $contact, $email);
         $createScholarAddress = createScholarAddress($scholarCode, $addressDescription, $barangay, $municipality, $province, $zipcode);
 
         //send email
@@ -339,7 +339,7 @@
             $scholar_status = "Approved";
         }else if ($status==2){
             $scholar_status = "Pending";
-        }else if ($role==3){
+        }else if ($status==3){
             $scholar_status = "For Reapplication";
         }
 
@@ -403,11 +403,72 @@
         $statement->execute([
             'prow_scholar_code' => $profileCode
         ]);
-
+        
         return $statement;
 
     }
 
+    function getScholarSchool($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_app_logs
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($res['prow_hei_id'])) {
+            return "Not yet enrolled";
+        } else {         
+            return getSchoolName($res['prow_hei_id']);
+        }
+
+    }
+
+    function getScholarCourse($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_app_logs
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($res['prow_course_id'])) {
+            return "Not yet enrolled";
+        } else {         
+            return getCourseName($res['prow_course_id']);
+        }
+
+    }
+
+    function getScholarYrLvl($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_app_logs
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($res['prow_yr_lvl'])) {
+            return "Not yet enrolled";
+        } else {         
+            return getCourseName($res['prow_yr_lvl']);
+        }
+
+    }
+
+    
     function getSchoolName($heiID){
         $statement=PWD()->prepare("SELECT
                                         *
@@ -421,9 +482,11 @@
 
         $res=$statement->fetch(PDO::FETCH_ASSOC);
         
-        $hei_name = $res['prow_hei_name'];
-
-        return $hei_name;
+        if (empty($res['prow_hei_name'])) {
+            return "Not yet enrolled";
+        } else {
+            return $res['prow_hei_name'];
+        }
 
     }
 
@@ -439,12 +502,14 @@
         ]);
 
         $res=$statement->fetch(PDO::FETCH_ASSOC);
-        
-        $course_name = $res['prow_course_name'];
-
-        return $course_name;
+        if (empty($res['prow_course_name'])) {
+            return "Not yet enrolled";
+        } else {
+            return $res['prow_course_name'];
+        }        
 
     }
+
 
     function selectProfile($profileCode){
         $statement=PWD()->prepare("SELECT

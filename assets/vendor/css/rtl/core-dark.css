@@ -19663,7 +19663,9 @@ html:not(.layout-footer-fixed) .content-wrapper {
 }
 .app-brand-logo img,
 .app-brand-logo svg {
-  display: block;
+    display: block;
+    width: auto;
+    height: 3rem;
 }
 
 .app-brand-text {

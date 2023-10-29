@@ -212,7 +212,7 @@
                                     ?>
                                     <tr>
                                         <td class="text-center p-2">
-                                            <a href="#" target="_NEW">
+                                            <a href="scholar_profile?rand=<?= my_rand_str(100) ?>&scholarCode=<?= $scholar['prow_scholar_code'] ?>" target="_NEW">
                                                 <button 
                                                 type="button" 
                                                 class="btn btn-primary btn-sm">
@@ -220,11 +220,11 @@
                                                 </button>
                                             </a>
                                         </td>
+                                        <td class="p-2 text-bold"><?= $scholar['prow_scholar_code'] ?></td>
                                         <td class="p-2 text-bold"><?= getFullname($scholar['prow_scholar_code'])  ?></td>
-                                        <td class="p-2 text-bold"><?= getScholarStatus($scholar['prow_scholar_acct_status'])  ?></td>
-                                        <td class="p-2 text-bold"><?  ?></td>
-                                        <td class="p-2 text-bold"><?  ?></td>
-                                        <td class="p-2 text-bold"><?  ?></td>
+                                        <td class="p-2 text-bold"><?= getScholarStatus($scholar['prow_scholar_acct_status'])?></td>
+                                        <td class="p-2 text-bold"><?= getScholarSchool($scholar['prow_scholar_code'])  ?></td>
+                                        <td class="p-2 text-bold"><?= getScholarMuni($scholar['prow_scholar_code'])  ?></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>

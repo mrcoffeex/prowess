@@ -16,6 +16,25 @@
 
     }
 
+
+    function getScholarMuni($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_address
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        return getMunicipalityName($res['prow_address_municipality']);
+
+
+    }
+    
+    
+
     function getMunicipalityName($mun_id){
         $statement=PWD()->prepare("SELECT
                                         *

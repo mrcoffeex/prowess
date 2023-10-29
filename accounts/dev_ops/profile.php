@@ -154,7 +154,7 @@
                       <small class="card-text text-uppercase text-muted">Address</small>
                       <ul class="list-unstyled my-3 py-1">
                         <li class="d-flex align-items-center mb-3">
-                          <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Street Name:</span>
+                          <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Street:</span>
                           <span><?= $addressProfile['prow_address_description'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
