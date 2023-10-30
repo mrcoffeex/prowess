@@ -14673,7 +14673,6 @@ html:not([dir=rtl]) .card .card-separator {
 
 .justify-content-evenly {
   justify-content: space-evenly !important;
-  display:none;
 }
 
 .align-items-start {

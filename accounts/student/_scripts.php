@@ -88,3 +88,44 @@
         yearSelect.appendChild(option);
     }
 </script>
+
+
+<script>
+
+	//validations
+	function btnLoader(formObj){
+        formObj.disabled = true;
+        formObj.innerHTML = "processing ...";
+        return true;  
+    }
+
+    // School courses
+
+    $(document).ready(function() {
+
+        $('#enrollemntschooName').change(function(){
+
+            $.ajax({
+				type: "GET",
+				url: "auto_gen_course.php",
+				data: {courseId: $('#enrollemntschooName').val()},              
+				success: function (data) {
+
+                    $('#enrollmentCourse').find('option').remove();
+
+					var course = data.split(",");
+                    var option = '<option></option>';
+                    
+                    for (var i=0; i<course.length; i++){
+                        option += '<option>' + course[i] + '</option>';
+                    }
+
+                    $('#enrollmentCourse').append(option);
+				}
+			});
+            
+        });
+
+    });
+
+</script>

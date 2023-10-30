@@ -1,5 +1,6 @@
 <?php
-include "_head.php";
+    require '../../config/includes.php';
+    include "_head.php";
 ?>
 
 <body>
@@ -27,7 +28,7 @@ include "_head.php";
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="card mb-4">
                             <h5 class="card-header">Scholar Information</h5>
-                            <form class="card-body">
+                            <form class="card-body" enctype="multipart/form-data" method="POST" action="fillupformCreate">
                                 <h6>Personal Information</h6>
                                 <div class="row g-3">
                                     <div class="col-md-4">
@@ -54,7 +55,7 @@ include "_head.php";
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
-                                            <input type="number" id="scholarWeight" name="scholarWeight" class="form-control" placeholder="Height in centimeter" />
+                                            <input type="number" id="scholarWeight" name="scholarWeight" class="form-control" placeholder="Weight in Kilograms" />
                                             <label for="scholarWeight">Weight (kg)</label>
                                         </div>
                                     </div>
@@ -80,11 +81,15 @@ include "_head.php";
                                     </div>
                                     <div class="col-md-8 select2-primary">
                                         <div class="form-floating form-floating-outline">
-                                            <select id="scholarTalent" name="scholarTalent" class="select2 form-select" multiple>
-                                                <option value="Dancing">Dancing</option>
-                                                <option value="Singing">Singing</option>
-                                                <option value="Painting">Painting</option>
-                                                <option value="Modeling">Modeling</option>
+                                            <select id="scholarTalent" name="scholarTalent[]" class="select2 form-select" multiple>
+                                            <option></option>
+                                                         <?php
+                                                            //get talents
+                                                            $getTalent=selectTalent();
+                                                            while ($talent=$getTalent->fetch(PDO::FETCH_ASSOC)) {
+                                                        ?>
+                                                        <option><?= $talent['prow_talent_name'] ?></option>
+                                                        <?php } ?>
                                             </select>
                                             <label for="scholarTalent">Talents (You can select multiple)</label>
                                         </div>
@@ -96,7 +101,7 @@ include "_head.php";
                                     <!-- Father Information -->
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
-                                            <input type="text" id="scholarFatherName" name="scholarFatherName" class="form-control" placeholder="Height in centimeter" />
+                                            <input type="text" id="scholarFatherName" name="scholarFatherName" class="form-control" placeholder="Juan Dela Cruz" />
                                             <label for="scholarFatherName">Father Name</label>
                                         </div>
                                     </div>
@@ -112,8 +117,14 @@ include "_head.php";
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
                                             <select id="scholarFatherOccu" name="scholarFatherOccu" class="form-control">
-                                                <option>Select Occupation</option>
-                                                <option value="Driver">Driver</option>
+                                            <option>Select Occupation</option>
+                                                        <?php
+                                                            //get Occupation
+                                                            $geOccu=selectOccupation();
+                                                            while ($occu=$geOccu->fetch(PDO::FETCH_ASSOC)) {
+                                                        ?>
+                                                        <option value="<?= $occu['prow_occu_name'] ?>"><?= $occu['prow_occu_name'] ?></option>
+                                                        <?php } ?>
                                             </select>
                                             <label for="scholarFatherOccu">Occupation</label>
                                         </div>
@@ -121,7 +132,7 @@ include "_head.php";
                                     <!-- Mother Information -->
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
-                                            <input type="text" id="scholarMotherName" name="scholarMotherName" class="form-control" placeholder="Height in centimeter" />
+                                            <input type="text" id="scholarMotherName" name="scholarMotherName" class="form-control" placeholder="Juana Dela Cruz" />
                                             <label for="scholarMotherName">Mother Name</label>
                                         </div>
                                     </div>
@@ -129,7 +140,7 @@ include "_head.php";
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text">PH (+63)</span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="scholarFatherCont" name="scholarMotherCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
+                                                <input type="text" id="scholarMotherCont" name="scholarMotherCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
                                                 <label for="scholarMotherCont">Contact No.</label>
                                             </div>
                                         </div>
@@ -138,15 +149,23 @@ include "_head.php";
                                         <div class="form-floating form-floating-outline">
                                             <select id="scholarMotherOccu" name="scholarMotherOccu" class="form-control">
                                                 <option>Select Occupation</option>
-                                                <option value="Driver">Driver</option>
+                                                        <?php
+                                                            //get Occupation
+                                                            $geOccu=selectOccupation();
+                                                            while ($occu=$geOccu->fetch(PDO::FETCH_ASSOC)) {
+                                                        ?>
+                                                        <option value="<?= $occu['prow_occu_name'] ?>"><?= $occu['prow_occu_name'] ?></option>
+                                                        <?php } ?>
                                             </select>
                                             <label for="scholarMotherOccu">Occupation</label>
                                         </div>
                                     </div>
                                     <!-- Guardian Information -->
+                                    <hr class="my-2 mx-n4" />
+                                    <h6 class="fst-italic">*If not living with parents, write your guardian's name</h6>
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
-                                            <input type="text" id="scholarGuardianName" name="scholarGuardianName" class="form-control" placeholder="Height in centimeter" />
+                                            <input type="text" id="scholarGuardianName" name="scholarGuardianName" class="form-control" placeholder="Guardian's Name" />
                                             <label for="scholarGuardianName">Guardian Name</label>
                                         </div>
                                     </div>
@@ -162,8 +181,14 @@ include "_head.php";
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
                                             <select id="scholarGuardianOccu" name="scholarGuardianOccu" class="form-control">
-                                                <option>Select Occupation</option>
-                                                <option value="Driver">Driver</option>
+                                            <option>Select Occupation</option>
+                                                        <?php
+                                                            //get Occupation
+                                                            $geOccu=selectOccupation();
+                                                            while ($occu=$geOccu->fetch(PDO::FETCH_ASSOC)) {
+                                                        ?>
+                                                        <option value="<?= $occu['prow_occu_name'] ?>"><?= $occu['prow_occu_name'] ?></option>
+                                                        <?php } ?>
                                             </select>
                                             <label for="scholarGuardianOccu">Occupation</label>
                                         </div>
@@ -182,8 +207,14 @@ include "_head.php";
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
                                             <select id="enrollemntschooName" name="enrollemntschooName" class="form-control">
-                                                <option value="UM Digos College">UM Digos College</option>
-                                                <option value="Cor Jesu College">Cor Jesu College</option>
+                                            <option>Select School</option>
+                                                         <?php
+                                                            //get HEI
+                                                            $getHei=selectHei();
+                                                            while ($hei=$getHei->fetch(PDO::FETCH_ASSOC)) {
+                                                        ?>
+                                                        <option value="<?= $hei['prow_hei_id'] ?>"><?= $hei['prow_hei_name'] ?></option>
+                                                        <?php } ?>
                                             </select>
                                             <label for="enrollemntschooName">School Name</label>
                                         </div>
@@ -191,7 +222,7 @@ include "_head.php";
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
                                             <select id="enrollmentCourse" name="enrollmentCourse" class="form-control">
-                                                <option value="BSIT">BSIT (Bachelor of Science in Information Technology)</option>
+                                            <option>Select Course</option>
                                             </select>
                                             <label for="enrollmentCourse">Course</label>
                                         </div>
@@ -214,7 +245,7 @@ include "_head.php";
                                 <h6>Upload Requirements</h6>
                                 <div class="row g-3">
                                     <div class="col-md-4">
-                                        <label for="formFile" class="form-label">Enrollement Form</label>
+                                        <label for="formFile" class="form-label">Enrollment Form</label>
                                         <input class="form-control" type="file" id="formFile" />
                                     </div>
                                     <div class="col-md-4">
@@ -260,14 +291,14 @@ include "_head.php";
         <!-- Drag Target Area To SlideIn Menu On Small Screens -->
         <div class="drag-target"></div>
     </div>
-    <!-- / Layout wrapper -->
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <?php
-    include "_scripts.php";
+    <?php include "_scripts.php"; ?>
 
-    ?>
+    <script>
+        $('#scholarTalent').select2({
+            multiple: true
+        });
+    </script>
 </body>
 
 </html>

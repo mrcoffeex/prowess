@@ -96,9 +96,6 @@ Picture of validated School ID
     }
 ?>
 
-SELECT ap.prow_scholar_app_logs_id, hei.prow_hei_name 
-FROM prow_scholar_app_logs AS ap
-INNER JOIN prow_hei as hei ON ap.prow_scholar_app_logs_id=hei.prow_scholar_app_logs_id
 
 
 
@@ -106,40 +103,20 @@ INNER JOIN prow_hei as hei ON ap.prow_scholar_app_logs_id=hei.prow_scholar_app_l
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Full texts
-prow_address_id	
-prow_scholar_code	
-prow_address_description	
-prow_address_brgy	
-prow_address_municipality
-
-
-
-
-
-
-
-
-
-
-
-
+scholarBloodType
+scholarHeight
+scholarWeight
+scholarReligion
+scholarTalent
+scholarFatherName
+scholarFatherCont
+scholarFatherOccu
+scholarMotherName
+scholarMotherCont
+scholarMotherOccu
+scholarGuardianName
+scholarGuardianCont
+scholarGuardianOccu
 
 
 

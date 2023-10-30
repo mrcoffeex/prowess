@@ -541,4 +541,58 @@
 
     }
 
+
+
+
+    function selectTalent(){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_list_talents
+                                        Order By
+                                        prow_talent_name
+                                        ASC");
+        $statement->execute();
+
+        return $statement;
+
+
+    }
+
+    function selectOccupation(){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_list_occu
+                                        Order By
+                                        prow_occu_name
+                                        ASC");
+        $statement->execute();
+
+        return $statement;
+
+
+    }
+
+    function selectCoursebyHeiId($courseId){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_hei_course
+                                        WHERE
+                                        prow_hei_id = :prow_hei_id
+                                        Order By
+                                        prow_course_name
+                                        ASC");
+        $statement->execute([
+            'prow_hei_id' => $courseId
+        ]);
+
+        return $statement;
+
+    } 
+
 ?>

@@ -362,7 +362,7 @@
                 </form>
 
 
-                <!-- Modal -->
+                <!-- Modal for Privacy -->
                       <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable" role="document">
                           <div class="modal-content">

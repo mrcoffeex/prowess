@@ -35,6 +35,8 @@
   <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
   <link rel="stylesheet" href="../../assets/vendor/libs/apex-charts/apex-charts.css" />
   <link rel="stylesheet" href="../../assets/vendor/libs/swiper/swiper.css" />
+  <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css" />
+  <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css" />
 
   <!-- Page CSS -->
   <link rel="stylesheet" href="../../assets/vendor/css/pages/cards-statistics.css" />
