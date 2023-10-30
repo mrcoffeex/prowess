@@ -470,6 +470,7 @@
 
     
     function getSchoolName($heiID){
+        
         $statement=PWD()->prepare("SELECT
                                         *
                                         From
@@ -483,7 +484,7 @@
         $res=$statement->fetch(PDO::FETCH_ASSOC);
         
         if (empty($res['prow_hei_name'])) {
-            return "Not yet enrolled";
+            return "";
         } else {
             return $res['prow_hei_name'];
         }
