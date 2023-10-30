@@ -577,8 +577,6 @@
 
     }
 
-
-
     function my_rand_str( $length ) {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";   
 
@@ -590,5 +588,48 @@
         }
 
         return $str;
+    }
+
+    function scholarStatus($status){
+
+        if ($status == 1) {
+            $res = "Active";
+        } else if ($status == 2) {
+            $res = "Pending";
+        } else if ($status == 3) {
+            $res = "Alumni";
+        } else {
+            $res = "";
+        }
+        
+        return $res;
+    }
+
+    function semester($semester){
+
+        if ($semester == 1) {
+            $res = "First Semester";
+        } else if ($semester == 2) {
+            $res = "Second Semester";
+        } else {
+            $res = "";
+        }
+        
+        return $res;
+    }
+
+    function selectSchoolYears(){
+
+        $stmt=PWD()->prepare("SELECT 
+                            *
+                            FROM
+                            prow_list_sy
+                            Order By
+                            prow_school_year
+                            DESC");
+        $stmt->execute();
+
+        return $stmt;
+
     }
 ?>

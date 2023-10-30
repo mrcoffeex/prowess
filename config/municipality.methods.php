@@ -16,26 +16,8 @@
 
     }
 
-
-    function getScholarMuni($profileCode){
-        $statement=PWD()->prepare("SELECT
-                                        *
-                                        From
-                                        prow_scholar_address
-                                        Where
-                                        prow_scholar_code = :prow_scholar_code");
-        $statement->execute([
-            'prow_scholar_code' => $profileCode
-        ]);
-        $res=$statement->fetch(PDO::FETCH_ASSOC);
-        return getMunicipalityName($res['prow_address_municipality']);
-
-
-    }
-    
-    
-
     function getMunicipalityName($mun_id){
+        
         $statement=PWD()->prepare("SELECT
                                         *
                                         From
@@ -47,14 +29,30 @@
         ]);
 
         $res=$statement->fetch(PDO::FETCH_ASSOC);
-        
-        $mun_name = $res['prow_mun_name'];
 
-        return $mun_name;
-
+        if (!empty($res['prow_mun_name'])) {
+            return $res['prow_mun_name'];
+        } else {
+            return "";
+        }
 
     }
 
+    function getScholarMuni($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_address
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        return getMunicipalityName($res['prow_address_municipality']);
+    }
 
     
 ?>
