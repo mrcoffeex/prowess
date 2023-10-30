@@ -541,10 +541,6 @@
 
     }
 
-<<<<<<< HEAD
-
-
-
     function selectTalent(){
 
         $statement=PWD()->prepare("SELECT
@@ -595,7 +591,6 @@
         return $statement;
 
     } 
-=======
     function checkAppLogs($scholarCode){
 
         $stmt=PWD()->prepare("SELECT 
@@ -613,6 +608,5 @@
         return $count;
 
     }
->>>>>>> 596ec1baa96952f7ea12475b0dc758afd97033ba
 
 ?>
