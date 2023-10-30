@@ -25,3 +25,14 @@
 <script src="../../assets/js/dashboards-analytics.js"></script>
 <script src="../../assets/js/pages-profile.js"></script>
 <script src="../../assets/js/pages-profile.js"></script>
+
+<script>
+
+	//validations
+	function btnLoader(formObj){
+        formObj.disabled = true;
+        formObj.innerHTML = "processing ...";
+        return true;  
+    }
+
+</script>

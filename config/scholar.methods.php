@@ -541,4 +541,22 @@
 
     }
 
+    function checkAppLogs($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT 
+                            prow_scholar_app_logs_id
+                            FROM
+                            prow_scholar_app_logs
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        $count=$stmt->rowCount();
+
+        return $count;
+
+    }
+
 ?>

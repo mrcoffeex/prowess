@@ -1,7 +1,18 @@
 <?php
     require '../../config/includes.php';
     require '_session.php';
-    include 'scholarInformation.paginate.php';
+
+    $scholarCode = clean_string($_GET['scholarCode']);
+    $schoolId = clean_string($_GET['schoolId']);
+    $scholarName = clean_string($_GET['scholarName']);
+    $school = clean_int($_GET['school']);
+    $status = clean_string($_GET['status']);
+    $municipality = clean_int($_GET['municipality']);
+    $schoolYear = clean_string($_GET['schoolYear']);
+    $semester = clean_int($_GET['semester']);
+
+    include 'scholarInformationSearch.paginate.php';
+
     include "_head.php";
 ?>
 
@@ -105,7 +116,11 @@
                     </div>
 
                     <div class="card">
-                        <h5 class="card-header">Student List</h5>
+                        <h5 class="card-header">
+                            <a href="scholarInformation"><button type="button" class="btn btn-dark btn-sm">back to list</button></a>&nbsp;
+                            Student List 
+                            <span class="float-end"><?= $countRes ?> <small>result(s)</small></span>
+                        </h5>
                         <!--Search Form -->
                         <div class="card-body">
                             <form class="dt_adv_search" method="POST" action="_redirect" onsubmit="btnLoader(this.searchStudent)">
@@ -114,26 +129,26 @@
                                         <div class="row g-3">
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" name="scholarCode" class="form-control dt-input" data-column="3" placeholder="2023AbCd123" data-column-index="2" />
+                                                    <input type="text" name="scholarCode" class="form-control dt-input" data-column="3" placeholder="2023AbCd123" data-column-index="2" value="<?= $scholarCode ?>" />
                                                     <label>Scholar Code</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" name="schoolId" class="form-control dt-input" data-column="3" placeholder="042001" data-column-index="2" />
+                                                    <input type="text" name="schoolId" class="form-control dt-input" data-column="3" placeholder="042001" data-column-index="2" value="<?= $schoolId ?>" />
                                                     <label>School ID</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" name="scholarName" class="form-control dt-input" data-column="3" placeholder="Juan Dela Cruz" data-column-index="2" />
+                                                    <input type="text" name="scholarName" class="form-control dt-input" data-column="3" placeholder="Juan Dela Cruz" data-column-index="2" value="<?= $scholarName ?>" />
                                                     <label>Name</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
                                                     <select name="school" id="school" class="form-control">
-                                                        <option></option>
+                                                        <option value="<?= $school ?>"><?= getSchoolName($school) ?></option>
                                                          <?php
                                                             //get HEI
                                                             $getHei=selectHei();
@@ -148,7 +163,7 @@
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
                                                     <select name="status" id="status" class="form-control">
-                                                        <option value=""></option>
+                                                        <option value="<?= $status ?>"><?= scholarStatus($status) ?></option>
                                                         <option value="1">Active</option>
                                                         <option value="2">Pending</option>
                                                         <option value="3">Alumni</option>
@@ -159,7 +174,7 @@
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
                                                     <select name="municipality" id="municipality" class="form-control">
-                                                        <option value=""></option>
+                                                        <option value="<?= $municipality ?>"><?= getMunicipalityName($municipality) ?></option>
                                                         <?php  
                                                             //get municipalites
                                                             $getMunicipalities=selectMunicipalities();
@@ -175,7 +190,7 @@
                                                 <div class="form-floating form-floating-outline">
                                                     <div class="form-floating form-floating-outline">
                                                         <select name="schoolYear" id="schoolYear" class="form-control">
-                                                            <option value=""></option>
+                                                            <option><?= $schoolYear ?></option>
                                                             <?php  
                                                                 //get municipalites
                                                                 $getSY=selectSchoolYears();
@@ -192,7 +207,7 @@
                                                 <div class="form-floating form-floating-outline">
                                                     <div class="form-floating form-floating-outline">
                                                         <select name="semester" id="semester" class="form-control">
-                                                            <option value=""></option>
+                                                            <option value="<?= $semester ?>"><?= semester($semester) ?></option>
                                                             <option value="1">First Semester</option>
                                                             <option value="2">Second Semester</option>
                                                         </select>
