@@ -143,7 +143,25 @@
 
     }
 
+    //check if scholar has already fill up form
+    function checkProfileForm($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                            prow_scholar_type
+                                            FROM
+                                            prow_scholar
+                                            Where
+                                            prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
 
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        $scholar_type = $res['prow_scholar_type'];
+
+        return $scholar_type;
+        
+
+    }
 
     //Count all Active Scholars
      function countScholarActive($scholarID){

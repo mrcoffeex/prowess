@@ -1,6 +1,9 @@
 <?php
     require '../../config/includes.php';
+    require '_session.php';
     include "_head.php";
+
+
 ?>
 
 <body>
@@ -27,9 +30,18 @@
 
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="card mb-4">
-                            <h5 class="card-header">Scholar Information</h5>
-                            <form class="card-body" enctype="multipart/form-data" method="POST" action="fillupformCreate">
-                                <h6>Personal Information</h6>
+                            <h3 class="card-header">
+                            <i class="mdi mdi-book-edit-outline me-2 mdi-20px"></i>Scholar Information <?= $userUsername ?></h3>
+
+                            <div class="card-body divider text-start">
+                                <div class="divider-text">
+                                     <i class="mdi mdi-white-balance-sunny"></i>
+                                </div>
+                            </div>
+
+
+                            <form id="formValidation" class="card-body" enctype="multipart/form-data" method="POST" action="fillupformCreate">
+                                <h5><i class="mdi mdi-account me-2 mdi-20px"></i>Personal Information</h5>
                                 <div class="row g-3">
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
@@ -43,6 +55,7 @@
                                                 <option value="AB-">AB-</option>
                                                 <option value="O+">O+</option>
                                                 <option value="O-">O-</option>
+                                                <option value="O-">Unknown</option>
                                             </select>
                                             <label for="scholarBloodType">Blood Type</label>
                                         </div>
@@ -75,13 +88,14 @@
                                                 <option value="Protestantism">Protestantism</option>
                                                 <option value="Roman Catholicism">Roman Catholicism</option>
                                                 <option value="Sikhism">Sikhism</option>
+                                                <option value="Sikhism">No Religion</option>
                                             </select>
                                             <label for="scholarReligion">Religion</label>
                                         </div>
                                     </div>
                                     <div class="col-md-8 select2-primary">
                                         <div class="form-floating form-floating-outline">
-                                            <select id="scholarTalent" name="scholarTalent[]" class="select2 form-select" multiple>
+                                            <select id="scholarTalent" name="scholarTalent[]" class="select2 form-select" multiple >
                                             <option></option>
                                                          <?php
                                                             //get talents
@@ -96,7 +110,7 @@
                                     </div>
                                 </div>
                                 <hr class="my-4 mx-n4" />
-                                <h6>Family Information</h6>
+                                <h5><i class="mdi mdi-account-group-outline me-2 mdi-20px"></i>Family Information</h5>
                                 <div class="row g-3">
                                     <!-- Father Information -->
                                     <div class="col-md-4">
@@ -109,7 +123,7 @@
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text">PH (+63)</span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="scholarFatherCont" name="scholarFatherCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
+                                                <input type="text" id="contactNumber" name="scholarFatherCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
                                                 <label for="scholarFatherCont">Contact No.</label>
                                             </div>
                                         </div>
@@ -140,7 +154,7 @@
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text">PH (+63)</span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="scholarMotherCont" name="scholarMotherCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
+                                                <input type="text" id="contactNumber" name="scholarMotherCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
                                                 <label for="scholarMotherCont">Contact No.</label>
                                             </div>
                                         </div>
@@ -173,7 +187,7 @@
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text">PH (+63)</span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="scholarFatherCont" name="scholarGuardianCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
+                                                <input type="text" id="contactNumber" name="scholarGuardianCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
                                                 <label for="scholarGuardianCont">Contact No.</label>
                                             </div>
                                         </div>
@@ -196,7 +210,7 @@
                                 </div>
 
                                 <hr class="my-4 mx-n4" />
-                                <h6>Enrollment Information</h6>
+                                <h5><i class="mdi mdi-town-hall me-2 mdi-20px"></i>Enrollment Information</h5>
                                 <div class="row g-3">
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
@@ -242,23 +256,28 @@
                                 </div>
 
                                 <hr class="my-4 mx-n4" />
-                                <h6>Upload Requirements</h6>
+                                <h5><i class="mdi mdi-file-upload-outline me-2 mdi-20px"></i>Upload Requirements</h5>
+                                <p class="fst-italic">*Ensure that the necessary documents are scanned clearly before uploading. Uploading blurred images will result in a delay in processing your scholarship application. Please take the time to review and provide high-quality scans for a smoother application process</p>
                                 <div class="row g-3">
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Enrollment Form</label>
-                                        <input class="form-control" type="file" id="formFile" />
+                                        <input class="form-control" type="file" id="enrollmentFormFile" name="enrollmentFormFile" />
                                     </div>
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Birth Certificate</label>
-                                        <input class="form-control" type="file" id="formFile" />
+                                        <input class="form-control" type="file" id="birthCertFile" name="birthCertFile" />
                                     </div>
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Certificate of Low Income</label>
-                                        <input class="form-control" type="file" id="formFile" />
+                                        <input class="form-control" type="file" id="lowIncomeFile" name="lowIncomeFile" />
                                     </div>
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Report Card</label>
-                                        <input class="form-control" type="file" id="formFile" />
+                                        <input class="form-control" type="file" id="reportCardFile" name="reportCardFile"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="formFile" class="form-label">Endorsement Letter</label>
+                                        <input class="form-control" type="file" id="endorsementFile" name="reportCardFile"/>
                                     </div>
                                 </div>
 
@@ -293,7 +312,7 @@
     </div>
 
     <?php include "_scripts.php"; ?>
-
+    <script src="../../js/custom_validation.js"></script>
     <script>
         $('#scholarTalent').select2({
             multiple: true

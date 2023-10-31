@@ -1,5 +1,8 @@
 <?php
-include "_head.php";
+  require '../../config/includes.php';
+  require '_session.php';
+  include "_head.php";
+
 ?>
 
 <body>
@@ -53,9 +56,9 @@ include "_head.php";
                         <div class="mt-4">
                           <h5>Application Process</h5>
                           <ol>
-                            <li class="mt-3">High School Report Card for incoming freshmen</li>
-                            <li class="mt-1">Certificate of Low Income from the Barangay or BIR for incoming freshmen</li>
-                            <li class="mt-1">Birth Certificate for incoming freshmen</li>
+                            <li class="mt-3"><u>High School Report Card</u> for incoming freshmen</li>
+                            <li class="mt-1"><u>Certificate of Low Income</u> from the Barangay or BIR for incoming freshmen</li>
+                            <li class="mt-1"><u>Birth Certificate</u> for incoming freshmen</li>
                             <li class="mt-1">Report of rating of last semester attendance in college for non-freshmen or enrollment form</li>
                             <li class="mt-1">Must have at least a general average grade rating of 80%.</li>
                             <li class="mt-1">Endorsement Letter</li>

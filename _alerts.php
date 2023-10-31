@@ -28,6 +28,12 @@
                         toastr.error('Account is suspended');
                     </script>
                 ";
+            }else if ($note == "noverify") {
+                echo "
+                    <script>
+                        toastr.error('Verify Your Email First');
+                    </script>
+                ";
             } else if ($note == "captcha_error") {
                 echo "
                     <script>

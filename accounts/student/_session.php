@@ -4,11 +4,12 @@
         'cookie_lifetime' => 86400,
     ]);
 
-	if(!isset($_SESSION['hotkopi_prow_session_id'])){
-        header("location: ../../login");
-    }else if ($_SESSION['hotkopi_prow_session_type'] != 0) {
-        header("location: ../../login");
-    }
+    //check session code, there;s error
+	// if(!isset($_SESSION['hotkopi_prow_session_id'])){
+    //     header("location: ../../login");
+    // }else if ($_SESSION['hotkopi_prow_session_type'] != 0) {
+    //     header("location: ../../login");
+    // }
 
     $user_id = $_SESSION['hotkopi_prow_session_id'];
     $user_type = $_SESSION['hotkopi_prow_session_type'];

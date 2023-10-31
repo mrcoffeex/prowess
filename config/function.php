@@ -9,5 +9,5 @@
     include 'industry.methods.php';
     include 'joblistings.methods.php';
     include 'notifications.methods.php';
-
+    
 ?>

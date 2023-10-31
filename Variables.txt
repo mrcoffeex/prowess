@@ -117,15 +117,30 @@ scholarMotherOccu
 scholarGuardianName
 scholarGuardianCont
 scholarGuardianOccu
+scholarSchoolID
+enrollemntschooName
+enrollmentCourse
+enrollmentYearLevel
+enrollmentFormFile
+birthCertFile
+lowIncomeFile
+reportCardFile
+endorsementFile
 
 
+INSERT INTO
+
+prow_scholar_profile
+prow_scholar_academe
+prow_app_logs
+prow_scholar_requirements
+prow_notification
 
 
-
-
-
-
-
+UPDATE
+prow_scholar
+ ----> School ID
+ ----> scholar type - 1
 
 
 

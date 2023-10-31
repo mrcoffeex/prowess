@@ -20,15 +20,14 @@
         $count=$statement->rowCount();
         $row=$statement->fetch(PDO::FETCH_ASSOC);
 
+        $scholarCode = $row['prow_scholar_code'];
+
         $_SESSION['hotkopi_prow_session_id'] = $row['prow_user_id'];
         $_SESSION['hotkopi_prow_session_type'] = $row['prow_user_type'];
 
         if($count > 0){
-            if ($row['prow_user_status'] == 0) {
-
-                //reset unlock account
-                // unlockUser($row['prow_user_id']);
-                
+            if ($row['prow_user_verify'] == 1) {
+              
                 if($row['prow_user_type'] == 0){
     
                     createLog("Login", $prowUsername, "auth");
@@ -37,7 +36,12 @@
                 }else if($row['prow_user_type'] == 4){
     
                     createLog("Login", $prowUsername, "auth");
-                    header("location: ../accounts/student/");
+                    
+                    if (checkProfileForm($scholarCode)==0) {
+                        header("location: ../accounts/student/index_inc");
+                    } else {
+                        header("location: ../accounts/student/");
+                    }                   
     
                 }else{
                     createLog("Login Attempt", $prowUsername, "attempt");
@@ -46,9 +50,14 @@
                 }
 
             }else{
-                createLog("Login Attempt", $prowUsername, "attempt");
+
+                echo "Verify first the email";
                 session_destroy();
-                header("location: ../login?note=suspended&uname=$prowUsername");
+                header("location: ../login?note=noverify&uname=$prowUsername");
+
+                // createLog("Login Attempt", $prowUsername, "attempt");
+                // session_destroy();
+                // header("location: ../login?note=suspended&uname=$prowUsername");
             }
 
         }else{
