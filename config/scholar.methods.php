@@ -610,6 +610,8 @@
         return $statement;
 
     } 
+
+    //application history
     function checkAppLogs($scholarCode){
 
         $stmt=PWD()->prepare("SELECT 
@@ -627,5 +629,29 @@
         return $count;
 
     }
+
+    function getBannerImg($userType){
+
+        if ($userType==0){
+            $userbanner="../../assets/img/pages/profile-banner.png";
+        }else if($userType==1){
+            $userbanner="../../assets/img/pages/profile-banner.png";
+        }else if($userType==2){
+            $userbanner="../../assets/img/pages/profile-banner.png";
+        }else if($userType==3){
+            $userbanner="../../assets/img/pages/profile-banner.png";
+        }else if($userType==4){
+            $userbanner="../../assets/img/pages/header-light.png";
+        }else if($userType==5){
+            $userbanner="../../assets/img/pages/profile-banner.png";
+        }
+
+        return $userbanner;
+
+
+    }
+
+
+
 
 ?>

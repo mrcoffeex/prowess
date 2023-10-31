@@ -259,11 +259,54 @@
                                 <h5><i class="mdi mdi-file-upload-outline me-2 mdi-20px"></i>Upload Requirements</h5>
                                 <p class="fst-italic">*Ensure that the necessary documents are scanned clearly before uploading. Uploading blurred images will result in a delay in processing your scholarship application. Please take the time to review and provide high-quality scans for a smoother application process</p>
                                 <div class="row g-3">
-                                    <div class="col-md-4">
-                                        <label for="formFile" class="form-label">Enrollment Form</label>
-                                        <input class="form-control" type="file" id="enrollmentFormFile" name="enrollmentFormFile" />
+                                    
+                                <div class="row">
+                                    <!-- Basic  -->
+                                    <div class="col-12">
+                                    <div class="card mb-4">
+                                        <h5 class="card-header">Basic</h5>
+                                        <div class="card-body">
+                                        <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
+                                            <div class="dz-message needsclick">
+                                            Drop files here or click to upload
+                                            <span class="note needsclick"
+                                                >(This is just a demo dropzone. Selected files are <strong>not</strong> actually
+                                                uploaded.)</span
+                                            >
+                                            </div>
+                                            <div class="fallback">
+                                            <input name="file" type="file" />
+                                            </div>
+                                        </form>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    </div>
+                                    <!-- /Basic  -->
+                                    <!-- Multi  -->
+                                    <div class="col-12">
+                                    <div class="card">
+                                        <h5 class="card-header">Multiple</h5>
+                                        <div class="card-body">
+                                        <form action="/upload" class="dropzone needsclick" id="dropzone-multi">
+                                            <div class="dz-message needsclick">
+                                            Drop files here or click to upload
+                                            <span class="note needsclick"
+                                                >(This is just a demo dropzone. Selected files are <strong>not</strong> actually
+                                                uploaded.)</span
+                                            >
+                                            </div>
+                                            <div class="fallback">
+                                            <input name="file" type="file" />
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <!-- Multi  -->
+                                </div>
+                                    <!-- <label for="formFile" class="form-label">Enrollment Form</label>
+                                        <input class="form-control" type="file" id="enrollmentFormFile" name="enrollmentFormFile" accept="image/jpeg, image/png, image/gif"/> -->
+                                    <!-- <div class="col-md-4">
                                         <label for="formFile" class="form-label">Birth Certificate</label>
                                         <input class="form-control" type="file" id="birthCertFile" name="birthCertFile" />
                                     </div>
@@ -278,13 +321,14 @@
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Endorsement Letter</label>
                                         <input class="form-control" type="file" id="endorsementFile" name="reportCardFile"/>
-                                    </div>
-                                </div>
+                                    </div>--> 
+                                    <div class="pt-4">
+                                        <button type="reset" class="btn btn-label-secondary">Cancel</button>
+                                        <button type="submit" class="btn btn-primary me-sm-3 me-1">Submit</button>
+                                     </div>
+                                </div> 
 
-                                <div class="pt-4">
-                                    <button type="reset" class="btn btn-label-secondary">Cancel</button>
-                                    <button type="submit" class="btn btn-primary me-sm-3 me-1">Submit</button>
-                                </div>
+                               
                             </form>
                         </div>
                     </div>
@@ -313,6 +357,7 @@
 
     <?php include "_scripts.php"; ?>
     <script src="../../js/custom_validation.js"></script>
+    
     <script>
         $('#scholarTalent').select2({
             multiple: true

@@ -21,7 +21,7 @@
 <script src="../../assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
 <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
 <script src="../../assets/vendor/libs/bloodhound/bloodhound.js"></script>
-
+<script src="../../assets/vendor/libs/dropzone/dropzone.js"></script>
 <!-- Main JS -->
 <script src="../../assets/js/main.js"></script>
 
@@ -30,6 +30,7 @@
 <script src="../../assets/js/forms-selects.js"></script>
 <script src="../../assets/js/forms-tagify.js"></script>
 <script src="../../assets/js/forms-typeahead.js"></script>
+<script src="../../assets/js/forms-file-upload.js"></script>
 
 
 <!-- Custom JS -->

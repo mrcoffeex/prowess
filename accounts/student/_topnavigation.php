@@ -96,8 +96,8 @@
                           </div>
                         </div>
                         <div class="flex-grow-1">
-                          <span class="fw-semibold d-block"><? ?></span>
-                          <small class="text-muted"><? ?></small>
+                          <span class="fw-semibold d-block"><?= $userFullname ?></span>
+                          <small class="text-muted"><?= $user_role ?></small>
                         </div>
                       </div>
                     </a>
