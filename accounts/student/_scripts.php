@@ -26,11 +26,11 @@
 <script src="../../assets/js/main.js"></script>
 
 <!-- Page JS -->
-<!-- <script src="../../assets/js/dashboards-analytics.js"></script> -->
+<script src="../../assets/js/dashboards-analytics.js"></script>
 <script src="../../assets/js/forms-selects.js"></script>
 <script src="../../assets/js/forms-tagify.js"></script>
 <script src="../../assets/js/forms-typeahead.js"></script>
-<script src="../../assets/js/forms-file-upload.js"></script>
+<script src="../../js/fileUpload.js"></script>
 
 
 <!-- Custom JS -->

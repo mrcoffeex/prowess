@@ -43,19 +43,12 @@
   <link rel="stylesheet" href="../../assets/vendor/css/pages/cards-statistics.css" />
   <link rel="stylesheet" href="../../assets/vendor/css/pages/cards-analytics.css" />
   <link rel="stylesheet" href="../../assets/vendor/css/pages/page-profile.css" />
+  <!-- <link rel="stylesheet" href="../../assets/css/custom.css"> -->
 
   <!-- Helpers -->
   <script src="../../assets/vendor/js/helpers.js"></script>
-
-  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-  <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
   <script src="../../assets/vendor/js/template-customizer.js"></script>
-  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
   <script src="../../assets/js/config.js"></script>
-
-  <link rel="stylesheet" href="../../assets/css/custom.css">
-
-
   
   <!-- tables -->
   <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />

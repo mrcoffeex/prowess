@@ -258,7 +258,7 @@
                                 <hr class="my-4 mx-n4" />
                                 <h5><i class="mdi mdi-file-upload-outline me-2 mdi-20px"></i>Upload Requirements</h5>
                                 <p class="fst-italic">*Ensure that the necessary documents are scanned clearly before uploading. Uploading blurred images will result in a delay in processing your scholarship application. Please take the time to review and provide high-quality scans for a smoother application process</p>
-                                <div class="row g-3">
+                                <div class="row g-3 mt-3">
                                     
                                 <div class="row">
                                     <!-- Basic  -->
@@ -282,27 +282,6 @@
                                     </div>
                                     </div>
                                     <!-- /Basic  -->
-                                    <!-- Multi  -->
-                                    <div class="col-12">
-                                    <div class="card">
-                                        <h5 class="card-header">Multiple</h5>
-                                        <div class="card-body">
-                                        <form action="/upload" class="dropzone needsclick" id="dropzone-multi">
-                                            <div class="dz-message needsclick">
-                                            Drop files here or click to upload
-                                            <span class="note needsclick"
-                                                >(This is just a demo dropzone. Selected files are <strong>not</strong> actually
-                                                uploaded.)</span
-                                            >
-                                            </div>
-                                            <div class="fallback">
-                                            <input name="file" type="file" />
-                                            </div>
-                                        </form>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <!-- Multi  -->
                                 </div>
                                     <!-- <label for="formFile" class="form-label">Enrollment Form</label>
                                         <input class="form-control" type="file" id="enrollmentFormFile" name="enrollmentFormFile" accept="image/jpeg, image/png, image/gif"/> -->
