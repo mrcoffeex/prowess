@@ -143,6 +143,198 @@
 
     }
 
+    function addScholarInformation(
+            $scholarCode, 
+            $scholarHeight, 
+            $scholarWeight, 
+            $scholarBloodType, 
+            $scholarReligion, 
+            $scholarTalentArray, 
+            $scholarFatherName, 
+            $scholarFatherCont, 
+            $scholarFatherOccu, 
+            $scholarMotherName, 
+            $scholarMotherCont, 
+            $scholarMotherOccu, 
+            $scholarGuardianName, 
+            $scholarGuardianCont, 
+            $scholarGuardianOccu
+    ){
+
+        $stmt=PWD()->prepare("INSERT INTO prow_scholar_profile
+                (
+                    prow_scholar_code, 
+                    prow_prof_height, 
+                    prow_prof_weight, 
+                    prow_prof_blood_type, 
+                    prow_prof_religion, 
+                    prow_prof_talent, 
+                    prow_prof_father, 
+                    prow_prof_father_cont,
+                    prow_prof_father_occu,
+                    prow_prof_mother,
+                    prow_prof_mother_cont,
+                    prow_prof_mother_occu,
+                    prow_prof_guardian,
+                    prow_prof_guradian_cont,
+                    prow_prof_guardian_occu,
+                    prow_prof_created,
+                    prow_prof_updated
+
+
+                ) 
+                VALUES
+                (
+                    :prow_scholar_code, 
+                    :prow_prof_height, 
+                    :prow_prof_weight, 
+                    :prow_prof_blood_type, 
+                    :prow_prof_religion, 
+                    :prow_prof_talent, 
+                    :prow_prof_father, 
+                    :prow_prof_father_cont,
+                    :prow_prof_father_occu,
+                    :prow_prof_mother,
+                    :prow_prof_mother_cont,
+                    :prow_prof_mother_occu,
+                    :prow_prof_guardian,
+                    :prow_prof_guradian_cont,
+                    :prow_prof_guardian_occu,
+                    NOW(), 
+                    NOW()
+                )");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_prof_height' => $scholarHeight,
+            'prow_prof_weight' => $scholarWeight,
+            'prow_prof_blood_type' => $scholarBloodType,
+            'prow_prof_religion' => $scholarReligion,
+            'prow_prof_talent' => $scholarTalentArray,
+            'prow_prof_father' => $scholarFatherName,
+            'prow_prof_father_cont' => $scholarFatherCont,
+            'prow_prof_father_occu' => $scholarFatherOccu,
+            'prow_prof_mother' => $scholarMotherName,
+            'prow_prof_mother_cont' => $scholarMotherCont,
+            'prow_prof_mother_occu' => $scholarMotherOccu,
+            'prow_prof_guardian' => $scholarGuardianName,
+            'prow_prof_guradian_cont' => $scholarGuardianCont,
+            'prow_prof_guardian_occu' => $scholarGuardianOccu,
+        ]);
+
+        if ($stmt) {
+        return true;
+        } else {
+        return false;
+        }
+
+
+    }
+
+    function addScholarEnrollment(
+            $scholarCode, 
+            $enrollemntschooName, 
+            $enrollmentCourse, 
+            $enrollmentYearLevel, 
+            $enrollmentSchoolYear, 
+            $enrollmentSemester
+    ){
+        $stmt=PWD()->prepare("INSERT INTO prow_scholar_app_logs
+                            (
+                                prow_scholar_code, 
+                                prow_hei, 
+                                prow_course, 
+                                prow_yr_lvl, 
+                                prow_sy, 
+                                prow_sem, 
+                                prow_app_logs_created
+                            ) 
+                            VALUES
+                            (
+                                :prow_scholar_code, 
+                                :prow_hei, 
+                                :prow_course, 
+                                :prow_yr_lvl, 
+                                :prow_sy, 
+                                :prow_sem, 
+                                NOW()
+                            )");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode, 
+            'prow_hei' => $enrollemntschooName, 
+            'prow_course' => $enrollmentCourse, 
+            'prow_yr_lvl' => $enrollmentYearLevel, 
+            'prow_sy' => $enrollmentSchoolYear, 
+            'prow_sem' => $enrollmentSemester
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function addrequirements(
+        $scholarCode, 
+        $enrollmentFormFile, 
+        $birthCertFile, 
+        $lowIncomeFile, 
+        $reportCardFile, 
+        $endorsementFile
+    ){
+        $stmt=PWD()->prepare("INSERT INTO prow_scholar_requirements
+                (
+                    prow_scholar_code, 
+                    prow_req_cert_low_income, 
+                    prow_req_endorsement, 
+                    prow_req_birth_certificate,
+                    prow_req_school_card,
+                    prow_req_enrollment_form,
+                    prow_req_created
+                ) 
+                VALUES
+                (
+                    :prow_scholar_code, 
+                    :prow_req_cert_low_income, 
+                    :prow_req_endorsement, 
+                    :prow_req_birth_certificate,
+                    :prow_req_school_card,
+                    :prow_req_enrollment_form, 
+                    NOW()
+                )");
+        $stmt->execute([
+        'prow_scholar_code' => $scholarCode, 
+        'prow_req_cert_low_income' => $lowIncomeFile, 
+        'prow_req_endorsement' => $endorsementFile, 
+        'prow_req_birth_certificate' => $birthCertFile, 
+        'prow_req_school_card' => $reportCardFile, 
+        'prow_req_enrollment_form' => $enrollmentFormFile
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
+    function updateScholarSchoolID($scholarSchoolID){
+        $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_scholar_school_id = :prow_scholar_school_id");
+        $stmt->execute([
+            'prow_scholar_school_id' => $scholarSchoolID
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     //check if scholar has already fill up form
     function checkProfileForm($profileCode){
         $statement=PWD()->prepare("SELECT
@@ -438,10 +630,10 @@
         ]);
         $res=$statement->fetch(PDO::FETCH_ASSOC);
 
-        if (empty($res['prow_hei_id'])) {
+        if (empty($res['prow_hei'])) {
             return "Not yet enrolled";
         } else {         
-            return getSchoolName($res['prow_hei_id']);
+            return getSchoolName($res['prow_hei']);
         }
 
     }
@@ -456,12 +648,13 @@
         $statement->execute([
             'prow_scholar_code' => $profileCode
         ]);
+        
         $res=$statement->fetch(PDO::FETCH_ASSOC);
 
-        if (empty($res['prow_course_id'])) {
-            return "Not yet enrolled";
+        if (!empty($res['prow_course'])) {
+            return $res['prow_course'];
         } else {         
-            return getCourseName($res['prow_course_id']);
+            return "Not yet enrolled";
         }
 
     }
@@ -481,7 +674,7 @@
         if (empty($res['prow_yr_lvl'])) {
             return "Not yet enrolled";
         } else {         
-            return getCourseName($res['prow_yr_lvl']);
+            return $res['prow_yr_lvl'];
         }
 
     }
@@ -592,6 +785,22 @@
 
     }
 
+    function selectSY(){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_list_sy
+                                        Order By
+                                        prow_school_year
+                                        ASC");
+        $statement->execute();
+
+        return $statement;
+
+
+    }
+
     function selectCoursebyHeiId($courseId){
 
         $statement=PWD()->prepare("SELECT
@@ -648,10 +857,39 @@
 
         return $userbanner;
 
+    }
+    
+    function createScholarRequirementsEntry($scholarCode, $appLogId, $status){
+
+        $stmt=PWD()->prepare("INSERT INTO prow_scholar_requirements
+                            (
+                                prow_scholar_code, 
+                                prow_scholar_app_logs_id,
+                                prow_req_status, 
+                                prow_req_created, 
+                                prow_req_updated
+                            )
+                            Values
+                            (
+                                :prow_scholar_code, 
+                                :prow_scholar_app_logs_id,
+                                :prow_req_status,
+                                NOW(),
+                                NOW()
+                            )");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_scholar_app_logs_id' => $appLogId,
+            'prow_req_status' => $status
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        } 
 
     }
-
-
 
 
 ?>

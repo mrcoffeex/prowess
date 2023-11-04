@@ -37,6 +37,35 @@
     maxFiles: 1
   });
 
+  const myDropzone2 = new Dropzone('#dropzone-basic2', {
+    previewTemplate: previewTemplate,
+    parallelUploads: 1,
+    maxFilesize: 5,
+    addRemoveLinks: true,
+    maxFiles: 1
+  });
+  const myDropzone3 = new Dropzone('#dropzone-basic3', {
+    previewTemplate: previewTemplate,
+    parallelUploads: 1,
+    maxFilesize: 5,
+    addRemoveLinks: true,
+    maxFiles: 1
+  });
+  const myDropzone4 = new Dropzone('#dropzone-basic4', {
+    previewTemplate: previewTemplate,
+    parallelUploads: 1,
+    maxFilesize: 5,
+    addRemoveLinks: true,
+    maxFiles: 1
+  });
+  const myDropzone5 = new Dropzone('#dropzone-basic5', {
+    previewTemplate: previewTemplate,
+    parallelUploads: 1,
+    maxFilesize: 5,
+    addRemoveLinks: true,
+    maxFiles: 1
+  });
+
   // Multiple Dropzone
   // --------------------------------------------------------------------
   const dropzoneMulti = new Dropzone('#dropzone-multi', {

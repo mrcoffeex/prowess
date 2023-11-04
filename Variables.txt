@@ -121,6 +121,12 @@ scholarSchoolID
 enrollemntschooName
 enrollmentCourse
 enrollmentYearLevel
+enrollmentSemester
+enrollmentSchoolYear
+
+
+
+
 enrollmentFormFile
 birthCertFile
 lowIncomeFile
@@ -141,6 +147,85 @@ UPDATE
 prow_scholar
  ----> School ID
  ----> scholar type - 1
+
+        'prow_scholar_code' => $scholarCode, 
+
+'prow_scholar_code' => $scholarCode,
+'prow_prof_height => $scholarCode,
+'prow_prof_weight => $scholarCode,
+'prow_prof_blood_type => $scholarCode,
+'prow_prof_religion => $scholarCode,
+'prow_prof_talent => $scholarCode,
+'prow_prof_father => $scholarCode,
+'prow_prof_father_cont => $scholarCode,
+'prow_prof_father_occu => $scholarCode,
+'prow_prof_mother => $scholarCode,
+'prow_prof_mother_cont => $scholarCode,
+'prow_prof_mother_occu => $scholarCode,
+'prow_prof_guardian => $scholarCode,
+'prow_prof_guradian_cont => $scholarCode,
+'prow_prof_guardian_occu => $scholarCode,
+
+:prow_scholar_code, 
+:prow_hei, 
+:prow_course, 
+:prow_yr_lvl, 
+:prow_sy, 
+:prow_sem, 
+
+
+
+
+
+
+
+
+
+
+
+        $birthCertFile = $_POST['birthCertFile'];
+        $lowIncomeFile = $_POST['lowIncomeFile'];
+        $reportCardFile = $_POST['reportCardFile'];
+        $endorsementFile = $_POST['endorsementFile'];
+
+
+
+
+                               
+
+
+
+<?php  
+    require '../../config/includes.php';
+    require '_session.php';
+
+    if (isset($_FILES['file'])) {
+
+        $profileImg = ezImageUpload("file", "../../imagebank/");
+
+        if ($profileImg == "error") {
+
+            header("location: profile?rand=" . my_rand_str(30) . "&note=invalid_upload");
+				
+		}else{
+
+            $request = updateProfileImg($profileImg, $e4ps_user_id);
+
+            if ($request == true) {
+                header("location: profile?rand=".my_rand_str(30)."&note=profile_img_updated");
+            }else{
+                header("location: profile?rand=".my_rand_str(30)."&note=error");
+            }
+        }
+
+    }else{
+
+        header("location: profile?rand=".my_rand_str(30)."&note=invalid");
+
+    }
+    
+?>
+
 
 
 

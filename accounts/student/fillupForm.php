@@ -2,43 +2,24 @@
     require '../../config/includes.php';
     require '_session.php';
     include "_head.php";
-
-
 ?>
 
 <body>
-    <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <!-- Menu -->
-            <?php
-            include "_sidemenu.php";
-            ?>
-            <!-- / Menu -->
+            <?php include "_sidemenu_inc.php"; ?>
 
-            <!-- Layout container -->
             <div class="layout-page">
-                <!-- Navbar -->
-                <?php
-                include "_topnavigation.php";
-                ?>
-                <!-- / Navbar -->
-
-                <!-- Content wrapper -->
+                <?php include "_topnavigation.php";?>
+         
                 <div class="content-wrapper">
-                    <!-- Content -->
-
                     <div class="container-xxl flex-grow-1 container-p-y">
+                    <?php
+                        include "profile_header.php";
+                    ?>
                         <div class="card mb-4">
                             <h3 class="card-header">
-                            <i class="mdi mdi-book-edit-outline me-2 mdi-20px"></i>Scholar Information <?= $userUsername ?></h3>
-
-                            <div class="card-body divider text-start">
-                                <div class="divider-text">
-                                     <i class="mdi mdi-white-balance-sunny"></i>
-                                </div>
-                            </div>
-
+                            <i class="mdi mdi-book-edit-outline me-2 mdi-20px"></i>Scholar Information <?= $scholarCode ?></h3>
 
                             <form id="formValidation" class="card-body" enctype="multipart/form-data" method="POST" action="fillupformCreate">
                                 <h5><i class="mdi mdi-account me-2 mdi-20px"></i>Personal Information</h5>
@@ -89,6 +70,7 @@
                                                 <option value="Roman Catholicism">Roman Catholicism</option>
                                                 <option value="Sikhism">Sikhism</option>
                                                 <option value="Sikhism">No Religion</option>
+                                                <option value="Sikhism">Others</option>
                                             </select>
                                             <label for="scholarReligion">Religion</label>
                                         </div>
@@ -123,7 +105,7 @@
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text">PH (+63)</span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="contactNumber" name="scholarFatherCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
+                                                <input type="text" id="scholarFatherCont" name="scholarFatherCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
                                                 <label for="scholarFatherCont">Contact No.</label>
                                             </div>
                                         </div>
@@ -154,7 +136,7 @@
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text">PH (+63)</span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="contactNumber" name="scholarMotherCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
+                                                <input type="text" id="scholarMotherCont" name="scholarMotherCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
                                                 <label for="scholarMotherCont">Contact No.</label>
                                             </div>
                                         </div>
@@ -187,7 +169,7 @@
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text">PH (+63)</span>
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="contactNumber" name="scholarGuardianCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
+                                                <input type="text" id="scholarGuardianCont" name="scholarGuardianCont" class="form-control multi-steps-mobile" placeholder="09121314151" />
                                                 <label for="scholarGuardianCont">Contact No.</label>
                                             </div>
                                         </div>
@@ -253,10 +235,36 @@
                                             <label for="enrollmentYearLevel">Year Level</label>
                                         </div>
                                     </div>
-                                </div>
 
-                                <hr class="my-4 mx-n4" />
+                                    <div class="col-md-4">
+                                        <div class="form-floating form-floating-outline">
+                                            <select id="enrollmentSemester" name="enrollmentSemester" class="form-control">
+                                                <option value="1">1st</option>
+                                                <option value="2">2nd</option>
+                                            </select>
+                                            <label for="enrollmentYearLevel">Semester</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-floating form-floating-outline">
+                                            <select id="enrollmentSchoolYear" name="enrollmentSchoolYear" class="form-control">
+                                            <option>Select School Year</option>
+                                                         <?php
+                                                            //get SY
+                                                            $getSY=selectSY();
+                                                            while ($sy=$getSY->fetch(PDO::FETCH_ASSOC)) {
+                                                        ?>
+                                                        <option value="<?= $sy['prow_school_year'] ?>"><?= $sy['prow_school_year'] ?></option>
+                                                        <?php } ?>
+                                            </select>
+                                            <label for="enrollmentYearLevel">School Year</label>
+                                        </div>
+                                    </div>
+
+                                   <hr class="my-4 mx-n4" />
                                 <h5><i class="mdi mdi-file-upload-outline me-2 mdi-20px"></i>Upload Requirements</h5>
+<<<<<<< HEAD
                                 <p class="fst-italic">*Ensure that the necessary documents are scanned clearly before uploading. Uploading blurred images will result in a delay in processing your scholarship application. Please take the time to review and provide high-quality scans for a smoother application process</p>
                                 <div class="row g-3 mt-3">
                                     
@@ -282,66 +290,90 @@
                                     </div>
                                     </div>
                                     <!-- /Basic  -->
+=======
+                                <div class="row g-3">
+                               
+                                <div class="alert alert-primary alert-dismissible mb-0" role="alert">
+                                    <h4 class="alert-heading d-flex align-items-center">
+                                    <i class="mdi mdi-chat-alert-outline mdi-24px me-2"></i>Reminders!
+                                    </h4>
+                                    <p class="mb-0">
+                                    Ensure that the necessary documents are scanned clearly before uploading. Uploading blurred images will result in a delay in processing your scholarship application. Please take the time to review and provide high-quality scans for a smoother application process
+                                    </p>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+>>>>>>> d7512e602f8d6debe10fb38a3dc403f254a8bac0
                                 </div>
-                                    <!-- <label for="formFile" class="form-label">Enrollment Form</label>
-                                        <input class="form-control" type="file" id="enrollmentFormFile" name="enrollmentFormFile" accept="image/jpeg, image/png, image/gif"/> -->
-                                    <!-- <div class="col-md-4">
+                                <div class="my-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <span class="preview-image" id="enrollmentFormFile"></span>
+                                        <label for="formFile" class="form-label">Enrollment Form</label>
+                                        <input class="form-control" type="file" id="enrollmentFormFile" name="enrollmentFormFile" accept="image/jpeg, image/png, image/gif"/>
+                                    </div>
+                                    <div class="col-md-4">
                                         <label for="formFile" class="form-label">Birth Certificate</label>
-                                        <input class="form-control" type="file" id="birthCertFile" name="birthCertFile" />
+                                        <input class="form-control" type="file" id="birthCertFile" name="birthCertFile" accept="image/jpeg, image/png, image/gif" />
                                     </div>
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Certificate of Low Income</label>
-                                        <input class="form-control" type="file" id="lowIncomeFile" name="lowIncomeFile" />
+                                        <input class="form-control" type="file" id="lowIncomeFile" name="lowIncomeFile" accept="image/jpeg, image/png, image/gif" />
                                     </div>
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Report Card</label>
-                                        <input class="form-control" type="file" id="reportCardFile" name="reportCardFile"/>
+                                        <input class="form-control" type="file" id="reportCardFile" name="reportCardFile" accept="image/jpeg, image/png, image/gif"/>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Endorsement Letter</label>
-                                        <input class="form-control" type="file" id="endorsementFile" name="reportCardFile"/>
-                                    </div>--> 
+                                        <input class="form-control" type="file" id="endorsementFile" name="endorsementFile" accept="image/jpeg, image/png, image/gif"/>
+                                    </div> 
+                                </div>
+                                </div>                               
                                     <div class="pt-4">
                                         <button type="reset" class="btn btn-label-secondary">Cancel</button>
-                                        <button type="submit" class="btn btn-primary me-sm-3 me-1">Submit</button>
+                                        <button type="submit" class="btn btn-primary me-sm-3 me-1">Continue</button>
                                      </div>
-                                </div> 
+                                </div>  
+                                
 
                                
                             </form>
                         </div>
                     </div>
-                    <!-- / Content -->
-
-                    <!-- Footer -->
-                    <?php
-                    include "_footer.php";
-
-                    ?>
-                    <!-- / Footer -->
-
-                    <div class="content-backdrop fade"></div>
+                    <?php include "_footer.php";?>
+                   <div class="content-backdrop fade"></div>
                 </div>
-                <!-- Content wrapper -->
             </div>
-            <!-- / Layout page -->
         </div>
-
-        <!-- Overlay -->
         <div class="layout-overlay layout-menu-toggle"></div>
-
-        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
         <div class="drag-target"></div>
     </div>
 
     <?php include "_scripts.php"; ?>
-    <script src="../../js/custom_validation.js"></script>
+    <script src="../../js/fillUpForm.js"></script>
     
     <script>
         $('#scholarTalent').select2({
             multiple: true
         });
+      
+        $(document).ready(function() {
+            $('#enrollmentFormFile').on('change', function() {
+                var file = this.files[0];
+                if (file != null) {
+                    var reader = new FileReader();
+                    reader.onload = function(event) {
+                        var img = $('<img>').attr('src', event.target.result);
+                        $('#enrollmentFormFilePreview').empty().append(img);
+                    }
+                    reader.readAsDataURL(file);
+                    console.log("yes");
+                }else{
+                    console.log("no");
+                }
+                console.log("yes");
+            });
+        });
     </script>
 </body>
-
 </html>

@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
               },
               stringLength: {
                 max: 10,
-                message: 'The name must be more than 8 and less than 16 characters long'
+                message: 'Mobile number must be 10 character long ex. 9123456778'
               }
             }
           },

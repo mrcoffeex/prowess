@@ -30,7 +30,11 @@
 <script src="../../assets/js/forms-selects.js"></script>
 <script src="../../assets/js/forms-tagify.js"></script>
 <script src="../../assets/js/forms-typeahead.js"></script>
+<<<<<<< HEAD
 <script src="../../js/fileUpload.js"></script>
+=======
+
+>>>>>>> d7512e602f8d6debe10fb38a3dc403f254a8bac0
 
 
 <!-- Custom JS -->
