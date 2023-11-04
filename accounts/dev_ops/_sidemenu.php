@@ -33,7 +33,7 @@
     <!-- Scholar -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons mdi mdi-window-maximize"></i>
+        <i class="menu-icon tf-icons mdi mdi-school-outline"></i>
         <div data-i18n="Scholars">Scholars</div>
       </a>
 
@@ -71,13 +71,13 @@
     <!-- Institutions -->
     <li class="menu-item">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons mdi mdi-window-maximize"></i>
+        <i class="menu-icon tf-icons mdi mdi-domain"></i>
         <div data-i18n="Institutions">Institutions</div>
       </a>
 
       <ul class="menu-sub">
         <li class="menu-item">
-          <a href="layouts-collapsed-menu.html" class="menu-link">
+          <a href="hei_information" class="menu-link">
             <div data-i18n="HEI Information">HEI Information</div>
           </a>
         </li>

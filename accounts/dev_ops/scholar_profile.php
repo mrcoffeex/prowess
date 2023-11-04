@@ -47,8 +47,8 @@
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="pages-profile-teams.html"
-                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Educational Attainment</a
+                      <a class="nav-link" href="scholar_profile_information"
+                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Scholarship Information</a
                       >
                     </li>
 

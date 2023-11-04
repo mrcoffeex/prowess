@@ -29,9 +29,7 @@
                                 </div>
                                 <div class="ms-3">
                                 <div class="d-flex align-items-center">
-                                    <h5 class="mb-0">8,458</h5>
-                                    <div class="mdi mdi-chevron-down text-danger mdi-24px"></div>
-                                    <small class="text-danger">8.1%</small>
+                                    <h5 class="mb-0"><?= countScholarActive("") ?></h5>
                                 </div>
                                 <small class="text-muted">Active Scholars</small>
                                 </div>
@@ -45,14 +43,12 @@
                             <div class="d-flex align-items-center">
                                 <div class="avatar">
                                 <div class="avatar-initial bg-label-warning rounded">
-                                    <div class="mdi mdi-poll mdi-24px"></div>
+                                    <div class="mdi mdi-account-outline mdi-24px"></div>
                                 </div>
                                 </div>
                                 <div class="ms-3">
                                 <div class="d-flex align-items-center">
-                                    <h5 class="mb-0">$28.5K</h5>
-                                    <div class="mdi mdi-chevron-up text-success mdi-24px"></div>
-                                    <small class="text-success">18.2%</small>
+                                    <h5 class="mb-0">0</h5>
                                 </div>
                                 <small class="text-muted">Total Scholars</small>
                                 </div>
@@ -66,14 +62,12 @@
                             <div class="d-flex align-items-center">
                                 <div class="avatar">
                                 <div class="avatar-initial bg-label-info rounded">
-                                    <div class="mdi mdi-trending-up mdi-24px"></div>
+                                    <div class="mdi mdi-account-outline mdi-24px"></div>
                                 </div>
                                 </div>
                                 <div class="ms-3">
                                 <div class="d-flex align-items-center">
-                                    <h5 class="mb-0">2,450K</h5>
-                                    <div class="mdi mdi-chevron-down text-danger mdi-24px"></div>
-                                    <small class="text-danger">24.6%</small>
+                                    <h5 class="mb-0"><?= countScholarPending("") ?></h5>
                                 </div>
                                 <small class="text-muted">Pending Scholars</small>
                                 </div>
@@ -87,14 +81,12 @@
                             <div class="d-flex align-items-center">
                                 <div class="avatar">
                                 <div class="avatar-initial bg-label-success rounded">
-                                    <div class="mdi mdi-currency-usd mdi-24px"></div>
+                                    <div class="mdi mdi-account-outline mdi-24px"></div>
                                 </div>
                                 </div>
                                 <div class="ms-3">
                                 <div class="d-flex align-items-center">
-                                    <h5 class="mb-0">$48.2K</h5>
-                                    <div class="mdi mdi-chevron-down text-success mdi-24px"></div>
-                                    <small class="text-success">22.5%</small>
+                                    <h5 class="mb-0">0</h5>
                                 </div>
                                 <small class="text-muted">Graduated</small>
                                 </div>

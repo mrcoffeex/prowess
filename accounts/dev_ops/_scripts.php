@@ -24,7 +24,7 @@
 <!-- Page JS -->
 <script src="../../assets/js/dashboards-analytics.js"></script>
 <script src="../../assets/js/pages-profile.js"></script>
-<script src="../../assets/js/pages-profile.js"></script>
+
 
 <script>
 
@@ -34,5 +34,34 @@
         formObj.innerHTML = "processing ...";
         return true;  
     }
+
+    // Municipality to barangay
+
+    $(document).ready(function() {
+
+        $('#heimunicipality').change(function(){
+
+            $.ajax({
+				type: "GET",
+				url: "../../auto_gen_bgy.php",
+				data: {municipalityId: $('#heimunicipality').val()},              
+				success: function (data) {
+
+                    $('#heibarangay').find('option').remove();
+
+					var municipality = data.split(",");
+                    var option = '<option></option>';
+                    
+                    for (var i=0; i<municipality.length; i++){
+                        option += '<option>' + municipality[i] + '</option>';
+                    }
+
+                    $('#heibarangay').append(option);
+				}
+			});
+            
+        });
+
+    });
 
 </script>
