@@ -264,33 +264,6 @@
 
                                    <hr class="my-4 mx-n4" />
                                 <h5><i class="mdi mdi-file-upload-outline me-2 mdi-20px"></i>Upload Requirements</h5>
-<<<<<<< HEAD
-                                <p class="fst-italic">*Ensure that the necessary documents are scanned clearly before uploading. Uploading blurred images will result in a delay in processing your scholarship application. Please take the time to review and provide high-quality scans for a smoother application process</p>
-                                <div class="row g-3 mt-3">
-                                    
-                                <div class="row">
-                                    <!-- Basic  -->
-                                    <div class="col-12">
-                                    <div class="card mb-4">
-                                        <h5 class="card-header">Basic</h5>
-                                        <div class="card-body">
-                                        <form action="/upload" class="dropzone needsclick" id="dropzone-basic">
-                                            <div class="dz-message needsclick">
-                                            Drop files here or click to upload
-                                            <span class="note needsclick"
-                                                >(This is just a demo dropzone. Selected files are <strong>not</strong> actually
-                                                uploaded.)</span
-                                            >
-                                            </div>
-                                            <div class="fallback">
-                                            <input name="file" type="file" />
-                                            </div>
-                                        </form>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <!-- /Basic  -->
-=======
                                 <div class="row g-3">
                                
                                 <div class="alert alert-primary alert-dismissible mb-0" role="alert">
@@ -301,30 +274,33 @@
                                     Ensure that the necessary documents are scanned clearly before uploading. Uploading blurred images will result in a delay in processing your scholarship application. Please take the time to review and provide high-quality scans for a smoother application process
                                     </p>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
->>>>>>> d7512e602f8d6debe10fb38a3dc403f254a8bac0
                                 </div>
                                 <div class="my-4">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <span class="preview-image" id="enrollmentFormFile"></span>
                                         <label for="formFile" class="form-label">Enrollment Form</label>
+                                        <div id="enrollmentFormFilePreview" class="image-preview-div"></div>
                                         <input class="form-control" type="file" id="enrollmentFormFile" name="enrollmentFormFile" accept="image/jpeg, image/png, image/gif"/>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Birth Certificate</label>
+                                        <div id="birthCertFilePreview" class="image-preview-div"></div>
                                         <input class="form-control" type="file" id="birthCertFile" name="birthCertFile" accept="image/jpeg, image/png, image/gif" />
                                     </div>
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Certificate of Low Income</label>
+                                        <div id="lowIncomeFilePreview" class="image-preview-div"></div>
                                         <input class="form-control" type="file" id="lowIncomeFile" name="lowIncomeFile" accept="image/jpeg, image/png, image/gif" />
                                     </div>
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Report Card</label>
+                                        <div id="reportCardFilePreview" class="image-preview-div"></div>
                                         <input class="form-control" type="file" id="reportCardFile" name="reportCardFile" accept="image/jpeg, image/png, image/gif"/>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="formFile" class="form-label">Endorsement Letter</label>
+                                        <div id="endorsementFilePreview" class="image-preview-div"></div>
                                         <input class="form-control" type="file" id="endorsementFile" name="endorsementFile" accept="image/jpeg, image/png, image/gif"/>
                                     </div> 
                                 </div>
@@ -353,27 +329,6 @@
     <script src="../../js/fillUpForm.js"></script>
     
     <script>
-        $('#scholarTalent').select2({
-            multiple: true
-        });
-      
-        $(document).ready(function() {
-            $('#enrollmentFormFile').on('change', function() {
-                var file = this.files[0];
-                if (file != null) {
-                    var reader = new FileReader();
-                    reader.onload = function(event) {
-                        var img = $('<img>').attr('src', event.target.result);
-                        $('#enrollmentFormFilePreview').empty().append(img);
-                    }
-                    reader.readAsDataURL(file);
-                    console.log("yes");
-                }else{
-                    console.log("no");
-                }
-                console.log("yes");
-            });
-        });
     </script>
 </body>
 </html>

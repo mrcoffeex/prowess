@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="../../assets/vendor/css/pages/cards-statistics.css" />
   <link rel="stylesheet" href="../../assets/vendor/css/pages/cards-analytics.css" />
   <link rel="stylesheet" href="../../assets/vendor/css/pages/page-profile.css" />
-  <!-- <link rel="stylesheet" href="../../assets/css/custom.css"> -->
+  <link rel="stylesheet" href="../../assets/css/custom.css">
 
   <!-- Helpers -->
   <script src="../../assets/vendor/js/helpers.js"></script>
