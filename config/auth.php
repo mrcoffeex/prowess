@@ -52,8 +52,9 @@
             }else{
 
                 echo "Verify first the email";
-                session_destroy();
                 header("location: ../login?note=noverify&uname=$prowUsername");
+                session_destroy();
+                
 
                 // createLog("Login Attempt", $prowUsername, "attempt");
                 // session_destroy();

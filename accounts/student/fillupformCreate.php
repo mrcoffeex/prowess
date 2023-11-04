@@ -1,32 +1,40 @@
 <?php  
     
-    include '../../config/includes.php';
+    require '../../config/includes.php';
+    require '_session.php';
 
     if (isset($_POST['scholarBloodType'])) {
-        $scholarBloodType = $_POST['scholarBloodType'];
-        $scholarHeight = $_POST['scholarHeight'];
-        $scholarWeight = $_POST['scholarWeight'];
-        $scholarReligion = $_POST['scholarReligion'];
-        $scholarFatherName = $_POST['scholarFatherName'];
-        $scholarFatherCont = $_POST['scholarFatherCont'];
-        $scholarFatherOccu = $_POST['scholarFatherOccu'];
-        $scholarMotherName = $_POST['scholarMotherName'];
-        $scholarMotherCont = $_POST['scholarMotherCont'];
-        $scholarMotherOccu = $_POST['scholarMotherOccu'];
-        $scholarGuardianName = $_POST['scholarGuardianName'];
-        $scholarGuardianCont = $_POST['scholarGuardianCont'];
-        $scholarGuardianOccu = $_POST['scholarGuardianOccu'];
-        $scholarSchoolID = $_POST['scholarSchoolID'];
-        $enrollemntschooName = $_POST['enrollemntschooName'];
-        $enrollmentCourse = $_POST['enrollmentCourse'];
-        $enrollmentYearLevel = $_POST['enrollmentYearLevel'];
-        $birthCertFile = $_POST['birthCertFile'];
-        $lowIncomeFile = $_POST['lowIncomeFile'];
-        $reportCardFile = $_POST['reportCardFile'];
-        $endorsementFile = $_POST['endorsementFile'];
-        
+        $scholarBloodType =clean_string ($_POST['scholarBloodType']);
+        $scholarHeight = clean_float ($_POST['scholarHeight']);
+        $scholarWeight = clean_float ($_POST['scholarWeight']);
+        $scholarReligion = clean_string ($_POST['scholarReligion']);
+        $scholarFatherName = clean_string ($_POST['scholarFatherName']);
+        $scholarFatherCont = clean_int ($_POST['scholarFatherCont']);
+        $scholarFatherOccu = clean_string ($_POST['scholarFatherOccu']);
+        $scholarMotherName = clean_string ($_POST['scholarMotherName']);
+        $scholarMotherCont = clean_int ($_POST['scholarMotherCont']);
+        $scholarMotherOccu = clean_string ($_POST['scholarMotherOccu']);
+        $scholarGuardianName = clean_string ($_POST['scholarGuardianName']);
+        $scholarGuardianCont = clean_int ($_POST['scholarGuardianCont']);
+        $scholarGuardianOccu = clean_string ($_POST['scholarGuardianOccu']);
+        $scholarSchoolID = clean_int ($_POST['scholarSchoolID']);
+        $enrollemntschooName = clean_string ($_POST['enrollemntschooName']);
+        $enrollmentCourse = clean_string ($_POST['enrollmentCourse']);
+        $enrollmentYearLevel = clean_string ($_POST['enrollmentYearLevel']);
+        $enrollmentSemester = clean_string ($_POST['enrollmentSemester']);
+        $enrollmentSchoolYear = clean_string ($_POST['enrollmentSchoolYear']);
 
+        $enrollmentFormFile = imageUpload("enrollmentFormFile", "../../imagebank/");
+        $birthCertFile = imageUpload("birthCertFile", "../../imagebank/");
+        $lowIncomeFile = imageUpload("lowIncomeFile", "../../imagebank/");
+        $reportCardFile = imageUpload("reportCardFile", "../../imagebank/");
+        $endorsementFile = imageUpload("endorsementFile", "../../imagebank/");
 
+        if ($enrollmentFormFile == "error" || $birthCertFile == "error" || $lowIncomeFile == "error" || $reportCardFile == "error" || $endorsementFile == "error") {
+
+            header("location: profile?rand=" . my_rand_str(30) . "&note=invalid_upload");
+				
+		}else{}
 
         if (empty($_POST['scholarTalent'])) {
             $scholarTalentArray = "";
@@ -34,6 +42,55 @@
             $scholarTalentArray = implode(',', $_POST['scholarTalent']);
         }
         
+
+        $request1 = addScholarInformation(
+            $scholarCode, 
+            $scholarHeight, 
+            $scholarWeight, 
+            $scholarBloodType, 
+            $scholarReligion, 
+            $scholarTalentArray, 
+            $scholarFatherName, 
+            $scholarFatherCont, 
+            $scholarFatherOccu, 
+            $scholarMotherName, 
+            $scholarMotherCont, 
+            $scholarMotherOccu, 
+            $scholarGuardianName, 
+            $scholarGuardianCont, 
+            $scholarGuardianOccu
+        );
+
+        $request2 = addScholarEnrollment(
+            $scholarCode, 
+            $enrollemntschooName, 
+            $enrollmentCourse, 
+            $enrollmentYearLevel, 
+            $enrollmentSchoolYear, 
+            $enrollmentSemester
+        );
+
+        $request3 = updateScholarSchoolID(
+            $scholarSchoolID
+        );
+
+        $request4 = addrequirements(
+            $scholarCode, 
+            $enrollmentFormFile, 
+            $birthCertFile, 
+            $lowIncomeFile, 
+            $reportCardFile, 
+            $endorsementFile
+        );
+        
+
+       
+
+        if ($request1 == true && $request2 == true && $request3 == true  && $request4 == true) {
+            header("location: studentProfile?scholarCode=$scholarCode");
+        } else {
+            echo "error";
+        }
     
         
     } else {
