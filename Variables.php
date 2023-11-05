@@ -229,3 +229,11 @@ prow_scholar
 
 
 
+<div class="d-flex justify-content-end">
+                                <div class="mt-3">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+                                        Add HEI
+                                    </button>
+                                    <!-- Modal -->
+                                    
+                                </div>

@@ -50,7 +50,7 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="pages-profile-teams.html"
-                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Educational Attainment</a
+                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Scholarship Transaction </a
                       >
                     </li>
 
@@ -102,8 +102,7 @@
                       </ul>
                     </div>
                   </div>
-                  <!--/ Profile Overview -->
-                  <!-- About User -->
+
                   <div class="card mb-4">
                     <div class="card-body">
                       <small class="card-text text-uppercase text-muted">About</small>
@@ -175,140 +174,164 @@
                       </ul>
                     </div>
                   </div>
-                  <!--/ About User -->
+
                   
                 </div>
                 <div class="col-xl-8 col-lg-7 col-md-7">
                   <!-- Activity Timeline -->
                   <div class="card card-action mb-4">
-                    <div class="card-header align-items-center">
-                      <h5 class="card-action-title mb-0">
-                        <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>Scholarship Status
-                      </h5>
-                      <div class="card-action-element">
-                        <div class="dropdown">
-                          <button
-                            type="button"
-                            class="btn dropdown-toggle hide-arrow p-0"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="mdi mdi-dots-vertical mdi-24px text-muted"></i>
-                          </button>
-                          <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="javascript:void(0);">Share timeline</a></li>
-                            <li><a class="dropdown-item" href="javascript:void(0);">Suggest edits</a></li>
-                            <li>
-                              <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
-                          </ul>
+                      <div class="card-header align-items-center">
+                        <h5 class="card-action-title mb-0">
+                          <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>Scholarship Status
+                        </h5>
+                        <div class="card-action-element">
+                          <div class="dropdown">
+                            <button
+                              type="button"
+                              class="btn dropdown-toggle hide-arrow p-0"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false">
+                              <i class="mdi mdi-dots-vertical mdi-24px text-muted"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                              <li><a class="dropdown-item" href="javascript:void(0);">Share timeline</a></li>
+                              <li><a class="dropdown-item" href="javascript:void(0);">Suggest edits</a></li>
+                              <li>
+                                <hr class="dropdown-divider" />
+                              </li>
+                              <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
+                            </ul>
+                          </div>
                         </div>
+                        
                       </div>
-                      
-                    </div>
-                    <div class="card-body pt-3 pb-0">
-                      <ul class="timeline mb-0">
-                        <li class="timeline-item timeline-item-transparent">
-                          <span class="timeline-point timeline-point-danger"></span>
-                          <div class="timeline-event">
-                            <div class="timeline-header mb-1">
-                              <h6 class="mb-0">Create and Verified Account</h6>
-                              <span class="text-muted">Today</span>
-                            </div>
-                            <p class="text-muted mb-2">Finish Fill up Personal Information</p>
-                            <div class="d-flex flex-wrap">
-                              <div class="avatar me-3">
-                                <img src="../../assets/img/avatars/3.png" alt="Avatar" class="rounded-circle" />
+                      <div class="card-body pt-3 pb-0">
+                        <ul class="timeline mb-0">
+                          <li class="timeline-item timeline-item-transparent">
+                            <span class="timeline-point timeline-point-danger"></span>
+                            <div class="timeline-event">
+                              <div class="timeline-header mb-1">
+                                <h6 class="mb-0">Create and Verified Account</h6>
+                                <span class="text-muted">Today</span>
                               </div>
-                              <div>
-                                <h6 class="mb-0">Lester McCarthy (Client)</h6>
-                                <span class="text-muted">CEO of Infibeam</span>
+                              <p class="text-muted mb-2">Finish Fill up Personal Information</p>
+                              <div class="d-flex flex-wrap">
+                                <div class="avatar me-3">
+                                  <img src="../../assets/img/avatars/3.png" alt="Avatar" class="rounded-circle" />
+                                </div>
+                                <div>
+                                  <h6 class="mb-0">Lester McCarthy (Client)</h6>
+                                  <span class="text-muted">CEO of Infibeam</span>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </li>
-                        <li class="timeline-item timeline-item-transparent">
-                          <span class="timeline-point timeline-point-primary"></span>
-                          <div class="timeline-event">
-                            <div class="timeline-header mb-1">
-                              <h6 class="mb-0">Finish Fill up Personal Information</h6>
-                              <span class="text-muted">2 Day Ago</span>
+                          </li>
+                          <li class="timeline-item timeline-item-transparent">
+                            <span class="timeline-point timeline-point-primary"></span>
+                            <div class="timeline-event">
+                              <div class="timeline-header mb-1">
+                                <h6 class="mb-0">Finish Fill up Personal Information</h6>
+                                <span class="text-muted">2 Day Ago</span>
+                              </div>
+                              <p class="text-muted mb-0">Add files to new design folder</p>
                             </div>
-                            <p class="text-muted mb-0">Add files to new design folder</p>
-                          </div>
-                        </li>
-                        <li class="timeline-item timeline-item-transparent">
-                          <span class="timeline-point timeline-point-warning"></span>
-                          <div class="timeline-event">
-                            <div class="timeline-header mb-1">
-                              <h6 class="mb-0">Upload File Requirements</h6>
-                              <span class="text-muted">6 Day Ago</span>
-                            </div>
-                            <p class="text-muted mb-2">
-                              Sent by Mollie Dixon
-                              <img
-                                src="../../assets/img/avatars/4.png"
-                                class="rounded-circle me-3"
-                                alt="avatar"
-                                height="24"
-                                width="24" />
-                            </p>
-                            <div class="d-flex flex-wrap gap-2">
-                              <a href="javascript:void(0)" class="me-3">
+                          </li>
+                          <li class="timeline-item timeline-item-transparent">
+                            <span class="timeline-point timeline-point-warning"></span>
+                            <div class="timeline-event">
+                              <div class="timeline-header mb-1">
+                                <h6 class="mb-0">Upload File Requirements</h6>
+                                <span class="text-muted">6 Day Ago</span>
+                              </div>
+                              <p class="text-muted mb-2">
+                                Sent by Mollie Dixon
                                 <img
-                                  src="../../assets/img/icons/misc/doc.png"
-                                  alt="Document image"
-                                  width="15"
-                                  class="me-2" />
-                                <span class="fw-medium text-body">Highschool Report Card</span>
-                              </a>
-                              <a href="javascript:void(0)">
-                                <img
-                                  src="../../assets/img/icons/misc/xls.png"
-                                  alt="Excel image"
-                                  width="15"
-                                  class="me-2" />
-                                <span class="fw-medium text-body">Certificate of Low Income from Barangay</span>
-                              </a>
+                                  src="../../assets/img/avatars/4.png"
+                                  class="rounded-circle me-3"
+                                  alt="avatar"
+                                  height="24"
+                                  width="24" />
+                              </p>
+                              <div class="d-flex flex-wrap gap-2">
+                                <a href="javascript:void(0)" class="me-3">
+                                  <img
+                                    src="../../assets/img/icons/misc/doc.png"
+                                    alt="Document image"
+                                    width="15"
+                                    class="me-2" />
+                                  <span class="fw-medium text-body">Highschool Report Card</span>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <img
+                                    src="../../assets/img/icons/misc/xls.png"
+                                    alt="Excel image"
+                                    width="15"
+                                    class="me-2" />
+                                  <span class="fw-medium text-body">Certificate of Low Income from Barangay</span>
+                                </a>
+                              </div>
                             </div>
-                          </div>
-                        </li>
-                        <li class="timeline-item timeline-item-transparent border-0">
-                          <span class="timeline-point timeline-point-info"></span>
-                          <div class="timeline-event">
-                            <div class="timeline-header mb-1">
-                              <h6 class="mb-0">Initial Approval</h6>
-                              <span class="text-muted">10 Day Ago</span>
+                          </li>
+                          <li class="timeline-item timeline-item-transparent border-0">
+                            <span class="timeline-point timeline-point-info"></span>
+                            <div class="timeline-event">
+                              <div class="timeline-header mb-1">
+                                <h6 class="mb-0">Initial Approval</h6>
+                                <span class="text-muted">10 Day Ago</span>
+                              </div>
+                              <p class="text-muted mb-0">Approval by Scholarship Coordinator</p>
                             </div>
-                            <p class="text-muted mb-0">Approval by Scholarship Coordinator</p>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
+                          </li>
+                        </ul>
+                      </div>
+                  </div>
+                  <div class="card card-action mb-4">
+                      <div class="card-header align-items-center">
+                        <h5 class="card-action-title mb-0">
+                          <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>Scholar Requirements
+                        </h5>
+                        <div class="card-action-element">
+                          
+                        </div>
+                        
+                      </div>
+                      <div class="card-body pt-3 pb-0">
+
+                        <div class="form-floating form-floating-outline mb-5">
+                            <select id="enrollmentSchoolYear" name="enrollmentSchoolYear" class="form-control">
+                            <option>Select School Year</option>
+                                          <?php
+                                            //get SY
+                                            $getSY=selectSY();
+                                            while ($sy=$getSY->fetch(PDO::FETCH_ASSOC)) {
+                                        ?>
+                                        <option value="<?= $sy['prow_school_year'] ?>"><?= $sy['prow_school_year'] ?></option>
+                                        <?php } ?>
+                            </select>
+                            <label for="enrollmentYearLevel">School Year</label>
+                        </div>
+
+                        <div class="row mb-5">
+                              <div class="col-md-6 col-lg-6 mb-3">
+                                <div class="card h-100">
+                                  <img class="card-img-top" src="../../assets/img/elements/2.jpg" alt="Card image cap" />
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">
+                                      Some quick example text to build on the card title and make up the bulk of the card's content.
+                                    </p>
+                                    <a href="javascript:void(0)" class="btn btn-outline-primary">Go somewhere</a>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>                   
+                      </div>
                   </div>
 
-                  <!-- Projects table -->
-                  <!-- <div class="card mb-4">
-                    <div class="card-datatable table-responsive">
-                      <table class="datatables-projects table">
-                        <thead>
-                          <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Leader</th>
-                            <th>Team</th>
-                            <th class="w-px-200">Status</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                      </table>
-                    </div>
-                  </div> -->
-                  <!--/ Projects table -->
+
+
                 </div>
               </div>
-              <!--/ User Profile Content -->
             </div>
          
               <?php

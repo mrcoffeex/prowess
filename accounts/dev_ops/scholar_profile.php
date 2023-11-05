@@ -13,32 +13,20 @@
 ?>
 
   <body>
-    <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
-
         <div class="layout-page">
-
-
-         <?php
-          include "_sidemenu.php";
-         ?>
+         <?php include "_sidemenu.php";?>
 
           <div class="content-wrapper">
-            <?php
-              include "_topnavigation.php";
-            ?>
+            <?php include "_topnavigation.php"; ?>
             
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User Profile /</span> Profile</h4>
+             
+              <?php include "profile_header.php"; ?>
 
-              
-              <?php
-                include "profile_header.php";
-              ?>
-
-              <!-- Navbar pills -->
-              <div class="row">
+             <div class="row">
                 <div class="col-md-12">
                   <ul class="nav nav-pills flex-column flex-sm-row mb-4">
                     <li class="nav-item">
@@ -327,7 +315,6 @@
     <?php
       include "_scripts.php";
     ?>
-
     <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
   </body>
 </html>

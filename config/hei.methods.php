@@ -33,6 +33,60 @@
         return $count;
 
     }
+    function checkHeiCourseDuplicate($hei_id,$listcourse){
+        $statement=PWD()->prepare("SELECT
+                                    *
+                                    FROM
+                                    prow_hei_course
+                                    Where
+                                    prow_hei_id = :prow_hei_id
+                                    AND
+                                    prow_course_id = :prow_course_id");
+        $statement->execute([
+            'prow_hei_id' => $hei_id,
+            'prow_course_id' => $listcourse,
+        ]);
+
+        $count=$statement->rowCount();
+
+        return $count;
+    }
+
+    function createHeiCourse($hei_id,$listcourse, $courseName){
+
+
+        if (checkHeiCourseDuplicate($hei_id,$listcourse) > 0) {
+            //add alert for duplication
+        } else {
+                $stmt=PWD()->prepare("INSERT INTO prow_hei_course 
+                    (
+                        prow_hei_id, 
+                        prow_course_id, 
+                        prow_course_name
+                    ) 
+                    VALUES
+                    (
+                        :prow_hei_id, 
+                        :prow_course_id, 
+                        :prow_course_name
+                    )");
+            $stmt->execute([
+                    'prow_hei_id' => $hei_id, 
+                    'prow_course_id' => $listcourse, 
+                    'prow_course_name' => $courseName
+            ]);
+
+            if($stmt){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        
+
+       
+
+    }
 
     function createHEI($heicode, $heiname, $heicontactperson, $heicontact, $heiemail, $heiarradress, $heibarangay, $heimunicipality, $heiprovince, $heizip){
 
@@ -96,6 +150,229 @@
             }else{
                 return false;
             }
+    }
+
+    function selectCoursebyHeiId($courseId){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_hei_course
+                                        WHERE
+                                        prow_hei_id = :prow_hei_id
+                                        Order By
+                                        prow_course_name
+                                        ASC");
+        $statement->execute([
+            'prow_hei_id' => $courseId
+        ]);
+
+        return $statement;
+
+    } 
+
+    function getSchoolName($heiID){
+        
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_hei
+                                        Where
+                                        prow_hei_id = :prow_hei_id");
+        $statement->execute([
+            'prow_hei_id' => $heiID
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        
+        if (empty($res['prow_hei_name'])) {
+            return "";
+        } else {
+            return $res['prow_hei_name'];
+        }
+
+    }
+
+    
+    function getScholarSchool($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_app_logs
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($res['prow_hei'])) {
+            return "Not yet enrolled";
+        } else {         
+            return getSchoolName($res['prow_hei']);
+        }
+
+    }
+
+    function heiFullAddress($heiID){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_hei
+                                        Where
+                                        prow_hei_id = :prow_hei_id");
+        $statement->execute([
+            'prow_hei_id' => $heiID
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        return $res['prow_hei_street'].", ".$res['prow_hei_barangay'].", ".$res['prow_hei_municipality'];
+    }
+
+    function getHeiLong($heiID){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_hei
+                                        Where
+                                        prow_hei_id = :prow_hei_id");
+        $statement->execute([
+            'prow_hei_id' => $heiID
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        return $res['prow_hei_long'];
+
+    }
+
+    function getHeiLat($heiID){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_hei
+                                        Where
+                                        prow_hei_id = :prow_hei_id");
+        $statement->execute([
+            'prow_hei_id' => $heiID
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        return $res['prow_hei_lat'];
+
+    }
+
+    function selectHEIProfile($heiID){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_hei
+                                        Where
+                                        prow_hei_id = :prow_hei_id");
+        $statement->execute([
+            'prow_hei_id' => $heiID
+        ]);
+
+        
+        return $statement;
+
+    }
+
+
+    function heiStatus($heiID){
+         $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_hei
+                                        Where
+                                        prow_hei_id = :prow_hei_id");
+        $statement->execute([
+            'prow_hei_id' => $heiID
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        $hei_status = $res['prow_hei_acct_status'];
+
+        if ($hei_status==0){
+            $stat="Inactive";
+        }else if($hei_status==1){
+            $stat="Active";
+        }
+
+        return $stat;
+    }
+
+    function getHei_Joined($heiID){
+        $statement=PWD()->prepare("SELECT
+                                       prow_hei_created
+                                       From
+                                       prow_hei
+                                       Where
+                                       prow_hei_id = :prow_hei_id");
+       $statement->execute([
+           'prow_hei_id' => $heiID
+       ]);
+
+       $res=$statement->fetch(PDO::FETCH_ASSOC);
+       
+       $scholar_joined = $res['prow_hei_created'];
+   
+       $joined= separateMonthYear($scholar_joined);
+
+       return $joined;
+   }
+
+   function selectCoursebyHeiIds($heiID){
+
+    $statement=PWD()->prepare("SELECT
+                                    prow_course_name
+                                    FROM
+                                    prow_hei_course
+                                    WHERE
+                                    prow_hei_id = :prow_hei_id
+                                    Order By
+                                    prow_course_name
+                                    ASC");
+    $statement->execute([
+        'prow_hei_id' => $heiID
+    ]);
+
+    return $statement;
+
+    } 
+
+    function countCoursebyHei($heiID){
+
+        $stmt=PWD()->prepare("SELECT 
+                            prow_course_id
+                            FROM
+                            prow_hei_course
+                            Where
+                            prow_hei_id = :prow_hei_id");
+        $stmt->execute([
+            'prow_hei_id' => $heiID
+        ]);
+
+        $count=$stmt->rowCount();
+
+        return $count;
+
+    }
+
+    
+    function selectCourseList(){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_list_course
+                                        Order By
+                                        prow_course_name
+                                        ASC");
+        $statement->execute();
+
+        return $statement;
+
+
     }
 
 

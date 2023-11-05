@@ -1,39 +1,22 @@
 <?php
 include '../../config/includes.php';
+require '_session.php';
+include 'hei_information_paginate.php';
 include "_head.php";
 ?>
 
 <body>
-    <!-- Content -->
-
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <!-- Menu -->
-            <?php
-            include "_sidemenu.php";
-            ?>
-            <!-- / Menu -->
-
-            <!-- Layout container -->
+            <?php include "_sidemenu.php";?>
             <div class="layout-page">
-                <!-- Navbar -->
-                <?php
-                include "_topnavigation.php";
-                ?>
-                <!-- / Navbar -->
-
-                <!-- Content wrapper -->
+                <?php include "_topnavigation.php";?>
                 <div class="content-wrapper">
-                    <!-- Content -->
-
-                    <!-- Advanced Search -->
                     <div class="card">
                         <h5 class="card-header">HEI Information</h5>
-                        <!--Search Form -->
                         <div class="card-body">
                             <div class="d-flex justify-content-end">
                                 <div class="mt-3">
-                                    <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
                                         Add HEI
                                     </button>
@@ -74,7 +57,7 @@ include "_head.php";
                                                                         $getMunicipalities = selectMunicipalities();
                                                                         while ($municipalities = $getMunicipalities->fetch(PDO::FETCH_ASSOC)) {
                                                                         ?>
-                                                                            <option value="<?= $municipalities['prow_mun_id'] ?>"><?= $municipalities['prow_mun_name'] ?></option>
+                                                                            <option value="<?= $municipalities['prow_mun_name'] ?>"><?= $municipalities['prow_mun_name'] ?></option>
                                                                         <?php } ?>
                                                                     </select>
                                                                     <label for="heimunicipality">City/Municipality</label>
@@ -163,6 +146,13 @@ include "_head.php";
                                                     <label>Contact Person</label>
                                                 </div>
                                             </div>
+                                            <div class="col-12 col-sm-6 col-lg-4">
+                                                <button type="submit" id="searchStudent" class="btn btn-primary"><i class="mdi mdi mdi-magnify me-1"></i>Search</button>
+
+                                                <a href="" target="_blank" class="btn btn-success">
+                                                    <i class="mdi mdi-printer-outline me-1"></i>Print List
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -176,62 +166,52 @@ include "_head.php";
                                         <th>Action</th>
                                         <th>HEI Name</th>
                                         <th>Address</th>
-                                        <th>Contact</th>
+                                        <th>Contact Person</th>
                                     </tr>
                                 </thead>
-                                <!-- <tfoot>
-                                    <tr>
-                                        <th></th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Post</th>
-                                        <th>City</th>
-                                        <th>Date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                </tfoot> -->
+                               <tbody>
+                                    <?php
+                                        while ($row=$paginate->fetch(PDO::FETCH_ASSOC)) {
+                                    ?>                                            
+
+                                <tr>
+                                        <td class="text-center p-2">
+                                            <a href="hei_profile?rand=<?= my_rand_str(100) ?>&hei_id=<?= $row['prow_hei_id'] ?>" target="_NEW">
+                                                <button 
+                                                type="button" 
+                                                class="btn btn-primary btn-sm">
+                                                <i class="ti-user mdi mdi-town-hall"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td><?= getSchoolName($row['prow_hei_id'])?></td>
+                                        <td><?= heiFullAddress($row['prow_hei_id']) ?></td>
+                                        <td><?= $row['prow_hei_contact_person'] ?></td>
+                                </tr>
+                                <?php } ?>
+                               </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- / Content -->
-
-                    <!-- Footer -->
-                    <?php
-                    include "_footer.php";
-
-                    ?>
-                    <!-- / Footer -->
-
-                    <div class="content-backdrop fade"></div>
+                    <?php include "_footer.php"; ?>
+                   <div class="content-backdrop fade"></div>
                 </div>
-                <!-- Content wrapper -->
             </div>
-            <!-- / Layout page -->
         </div>
 
-        <!-- Overlay -->
         <div class="layout-overlay layout-menu-toggle"></div>
-
-        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
         <div class="drag-target"></div>
     </div>
 
-    <!-- / Content -->
-
     <script>
-        // Check selected custom option
-        window.Helpers.initCustomOptionCheck();
+      window.Helpers.initCustomOptionCheck();
     </script>
-    <!-- Core JS -->
-    <?php
-    include "_scripts.php";
-    ?>
+ 
+    <?php include "_scripts.php";?>
   
     <script src="../../assets/js/ui-modals.js"></script>
     <script src="../../js/signUp.js"></script>
     <script src="../../js/hei.js"></script>
-    <!-- Page JS -->
 </body>
-
 </html>

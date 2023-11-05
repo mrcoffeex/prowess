@@ -15,20 +15,20 @@
                         <div
                           class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
                           <div class="user-profile-info">
-                            <h4><?= getFullname($scholarCode) ?></h4>
+                            <h4><?= getSchoolName($hei_id) ?></h4>
                             <ul
                               class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                               <li class="list-inline-item">
                                 <i class="mdi mdi-invert-colors me-1 mdi-20px"></i
-                                ><span class="fw-semibold"><?= getUserRole($scholarCode) ?></span>
+                                ><span class="fw-semibold">HEI</span>
                               </li>
                               <li class="list-inline-item">
                                 <i class="mdi mdi-account-check me-1 mdi-20px"></i
-                                ><span class="fw-semibold"><?= getScholar_Status($scholarCode) ?></span>
+                                ><span class="fw-semibold"><?= heiStatus($hei_id) ?></span>
                               </li>
                               <li class="list-inline-item">
                                 <i class="mdi mdi-calendar-blank-outline me-1 mdi-20px"></i
-                                ><span class="fw-semibold"> Joined <?= getScholar_Joined($scholarCode) ?></span>
+                                ><span class="fw-semibold"> Joined <?= getHei_Joined($hei_id) ?></span>
                               </li>
                             </ul>
                           </div>
