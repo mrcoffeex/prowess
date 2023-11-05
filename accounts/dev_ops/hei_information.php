@@ -48,7 +48,7 @@ include "_head.php";
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form action="submitHEI.php" method="POST">
+                                                    <form action="hei_information_create" method="POST">
                                                         <div class="row">
                                                             <div class="col-sm-12">
                                                                 <div class="form-floating form-floating-outline">

@@ -28,7 +28,7 @@
     );
 
     if($request == true){
-        echo "success";
+        header("location: hei_information");
     }else{
         echo "error";
     }
