@@ -304,27 +304,16 @@
                                             //get SY
                                             $getSY=selectSY();
                                             while ($sy=$getSY->fetch(PDO::FETCH_ASSOC)) {
-                                        ?>
+                                          ?>
                                         <option value="<?= $sy['prow_school_year'] ?>"><?= $sy['prow_school_year'] ?></option>
                                         <?php } ?>
                             </select>
                             <label for="enrollmentYearLevel">School Year</label>
+                            <input type="hidden" name="scholarCode" id="scholarCode" value="<?= $scholarCode ?>">
                         </div>
 
-                        <div class="row mb-5">
-                              <div class="col-md-6 col-lg-6 mb-3">
-                                <div class="card h-100">
-                                  <img class="card-img-top" src="../../assets/img/elements/2.jpg" alt="Card image cap" />
-                                  <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">
-                                      Some quick example text to build on the card title and make up the bulk of the card's content.
-                                    </p>
-                                    <a href="javascript:void(0)" class="btn btn-outline-primary">Go somewhere</a>
-                                  </div>
-                                </div>
-                              </div>
-                        </div>                   
+                        <div class="row mb-5" id="showRequirements"></div> 
+
                       </div>
                   </div>
 
@@ -349,10 +338,38 @@
       <div class="drag-target"></div>
     </div>
 
-    <?php
-      include "_scripts.php";
-    ?>
+    <?php include "_scripts.php"; ?>
+    <script>
 
-    <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    $(document).ready(function() {
+        $('#enrollmentSchoolYear').change(function() {
+
+            var selectedYear = $(this).val();
+            var scholarCode = $('#scholarCode').val();
+
+            // Make an AJAX request to fetch student info
+            $.ajax({
+                url: 'autoRequirements', // Replace with your actual URL
+                method: 'GET',
+                data: { schoolYear: selectedYear, scholarCode: scholarCode },
+                success: function(data) {
+
+                    var list = $('#studentList');
+                    list.empty();
+
+                    $('#showRequirements').html(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching student info:', error);
+                }
+            });
+        });
+
+        // Trigger initial change event to populate list on page load
+        $('#enrollmentSchoolYear').trigger('change');
+    });
+
+    </script>
+   
   </body>
 </html>

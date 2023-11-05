@@ -42,6 +42,7 @@
             $scholarTalentArray = implode(',', $_POST['scholarTalent']);
         }
         
+        $appLogCode= randInt(6);
 
         $request1 = addScholarInformation(
             $scholarCode, 
@@ -63,6 +64,7 @@
 
         $request2 = addScholarEnrollment(
             $scholarCode, 
+            $appLogCode,
             $enrollemntschooName, 
             $enrollmentCourse, 
             $enrollmentYearLevel, 
@@ -75,7 +77,8 @@
         );
 
         $request4 = addrequirements(
-            $scholarCode, 
+            $scholarCode,
+            $appLogCode, 
             $enrollmentFormFile, 
             $birthCertFile, 
             $lowIncomeFile, 
@@ -87,7 +90,7 @@
        
 
         if ($request1 == true && $request2 == true && $request3 == true  && $request4 == true) {
-            header("location: studentProfile?scholarCode=$scholarCode");
+            header("location: studentProfile?scholarCode=$scholarCode&app_code=$appLogCode");
         } else {
             echo "error";
         }

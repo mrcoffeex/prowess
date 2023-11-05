@@ -232,6 +232,7 @@
 
     function addScholarEnrollment(
             $scholarCode, 
+            $appLogCode, 
             $enrollemntschooName, 
             $enrollmentCourse, 
             $enrollmentYearLevel, 
@@ -241,6 +242,7 @@
         $stmt=PWD()->prepare("INSERT INTO prow_scholar_app_logs
                             (
                                 prow_scholar_code, 
+                                prow_app_log_code,
                                 prow_hei, 
                                 prow_course, 
                                 prow_yr_lvl, 
@@ -251,6 +253,7 @@
                             VALUES
                             (
                                 :prow_scholar_code, 
+                                :prow_app_log_code,
                                 :prow_hei, 
                                 :prow_course, 
                                 :prow_yr_lvl, 
@@ -259,7 +262,8 @@
                                 NOW()
                             )");
         $stmt->execute([
-            'prow_scholar_code' => $scholarCode, 
+            'prow_scholar_code' => $scholarCode,
+            'prow_app_log_code' => $appLogCode,  
             'prow_hei' => $enrollemntschooName, 
             'prow_course' => $enrollmentCourse, 
             'prow_yr_lvl' => $enrollmentYearLevel, 
@@ -277,6 +281,7 @@
 
     function addrequirements(
         $scholarCode, 
+        $appLogCode,
         $enrollmentFormFile, 
         $birthCertFile, 
         $lowIncomeFile, 
@@ -285,7 +290,8 @@
     ){
         $stmt=PWD()->prepare("INSERT INTO prow_scholar_requirements
                 (
-                    prow_scholar_code, 
+                    prow_scholar_code,
+                    prow_scholar_app_logs_code, 
                     prow_req_cert_low_income, 
                     prow_req_endorsement, 
                     prow_req_birth_certificate,
@@ -296,6 +302,7 @@
                 VALUES
                 (
                     :prow_scholar_code, 
+                    :prow_scholar_app_logs_code,
                     :prow_req_cert_low_income, 
                     :prow_req_endorsement, 
                     :prow_req_birth_certificate,
@@ -305,6 +312,7 @@
                 )");
         $stmt->execute([
         'prow_scholar_code' => $scholarCode, 
+        'prow_scholar_app_logs_code' => $appLogCode, 
         'prow_req_cert_low_income' => $lowIncomeFile, 
         'prow_req_endorsement' => $endorsementFile, 
         'prow_req_birth_certificate' => $birthCertFile, 
@@ -692,6 +700,7 @@
         ]);
 
         $res=$statement->fetch(PDO::FETCH_ASSOC);
+
         return $res['prow_course_name'];
     }
 
@@ -724,6 +733,89 @@
 
         return $statement;
 
+    }
+
+    function getSYReqScholar($app_code,$scholarCode){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_app_logs
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code 
+                                        And
+                                        prow_app_log_code = :prow_app_log_code");
+        $statement->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_app_log_code' => $app_code
+        ]);
+
+        return $statement;
+
+    }
+
+    function getReqScholar($app_code,$scholarCode){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_requirements
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code 
+                                        And
+                                        prow_app_log_code = :prow_app_log_code");
+        $statement->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_app_log_code' => $app_code
+        ]);
+
+        return $statement;
+
+    }
+
+    function getScholarSYRequirements($scholarCode, $sy){
+        $statement=PWD()->prepare("SELECT
+                                    prow_app_log_code
+                                    From
+                                    prow_scholar_app_logs
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code
+                                    AND
+                                    prow_sy = :prow_sy");
+        $statement->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_sy' => $sy
+        ]);
+        
+        $count=$statement->rowCount();
+
+        if ($count > 0) {
+            
+            $res=$statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $res['prow_app_log_code'];
+
+        } else {
+            return null;
+        }     
+
+    }
+
+    function selectScholarRequirementsBylogCode($scholarCode, $logCode){
+
+        $statement=PWD()->prepare("SELECT 
+                                    *
+                                    FROM
+                                    prow_scholar_requirements
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code
+                                    AND
+                                    prow_scholar_app_logs_code = :prow_scholar_app_logs_code");
+        $statement->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_scholar_app_logs_code' => $logCode
+        ]);
+
+        return $statement;
+        
     }
 
     function selectTalent(){
