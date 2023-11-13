@@ -219,6 +219,5 @@
 
     <?php include "_scripts.php" ?>
     <?php include '_alerts.php' ?>
-    <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
   </body>
 </html>

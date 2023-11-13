@@ -43,7 +43,7 @@
         }
         
         $appLogCode= randInt(6);
-
+        $filledupStatus = 1;
         $request1 = addScholarInformation(
             $scholarCode, 
             $scholarHeight, 
@@ -73,7 +73,8 @@
         );
 
         $request3 = updateScholarSchoolID(
-            $scholarSchoolID
+            $scholarSchoolID,
+            $filledupStatus
         );
 
         $request4 = addrequirements(

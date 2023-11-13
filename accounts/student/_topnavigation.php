@@ -106,15 +106,9 @@
                     <div class="dropdown-divider"></div>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="profile">
-                      <i class="mdi mdi-account-outline me-2"></i>
-                      <span class="align-middle">My Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="pages-account-settings-account.html">
+                    <a class="dropdown-item" href="account_settings">
                       <i class="mdi mdi-cog-outline me-2"></i>
-                      <span class="align-middle">Settings</span>
+                      <span class="align-middle">Account Settings</span>
                     </a>
                   </li>
                   <li>

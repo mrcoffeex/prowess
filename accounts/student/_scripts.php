@@ -30,7 +30,6 @@
 <script src="../../assets/js/forms-selects.js"></script>
 <script src="../../assets/js/forms-tagify.js"></script>
 <script src="../../assets/js/forms-typeahead.js"></script>
-<<<<<<< HEAD
 <script src="../../js/fileUpload.js"></script>
 
 <!-- Custom JS -->
@@ -42,9 +41,7 @@
         formObj.innerHTML = "processing ...";
         return true;
     }
-
     // Municipality to barangay
-
     $(document).ready(function() {
 
         $('#heimunicipality').change(function() {
@@ -76,12 +73,8 @@
 
 
     const yearSelect = document.getElementById('scholarYrGrad');
-
-    // Define the range of years you want to include
     const startYear = 2000;
     const endYear = new Date().getFullYear();;
-
-    // Populate the select element with options for each year in the range
     for (let year = startYear; year <= endYear; year++) {
         const option = document.createElement('option');
         option.value = year;
@@ -92,16 +85,11 @@
 
 
 <script>
-
-	//validations
 	function btnLoader(formObj){
         formObj.disabled = true;
         formObj.innerHTML = "processing ...";
         return true;  
     }
-
-    // School courses
-
     $(document).ready(function() {
 
         $('#enrollemntschooName').change(function(){

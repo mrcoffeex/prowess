@@ -329,10 +329,11 @@
     }
 
 
-    function updateScholarSchoolID($scholarSchoolID){
-        $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_scholar_school_id = :prow_scholar_school_id");
+    function updateScholarSchoolID($scholarSchoolID,$filledupStatus){
+        $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_scholar_school_id = :prow_scholar_school_id, prow_scholar_filled_up = :prow_scholar_filled_up");
         $stmt->execute([
-            'prow_scholar_school_id' => $scholarSchoolID
+            'prow_scholar_school_id' => $scholarSchoolID,
+            'prow_scholar_filled_up' => $filledupStatus
         ]);
 
         if ($stmt) {
@@ -346,19 +347,22 @@
     //check if scholar has already fill up form
     function checkProfileForm($profileCode){
         $statement=PWD()->prepare("SELECT
-                                            prow_scholar_type
+                                            prow_scholar_filled_up
                                             FROM
                                             prow_scholar
                                             Where
-                                            prow_scholar_code = :prow_scholar_code");
+                                            prow_scholar_code = :prow_scholar_code
+                                            AND 
+                                            prow_scholar_filled_up = :prow_scholar_filled_up");
         $statement->execute([
-            'prow_scholar_code' => $profileCode
+            'prow_scholar_code' => $profileCode,
+            'prow_scholar_filled_up' => 1,
         ]);
 
         $res=$statement->fetch(PDO::FETCH_ASSOC);
-        $scholar_type = $res['prow_scholar_type'];
+        $filledUp = $res['prow_scholar_filled_up'];
 
-        return $scholar_type;
+        return $filledUp;
         
 
     }
@@ -898,7 +902,7 @@
         }else if($userType==3){
             $userbanner="../../assets/img/pages/profile-banner.png";
         }else if($userType==4){
-            $userbanner="../../assets/img/pages/header-light.png";
+            $userbanner="../../assets/img/pages/scholar1.png";
         }else if($userType==5){
             $userbanner="../../assets/img/pages/profile-banner.png";
         }

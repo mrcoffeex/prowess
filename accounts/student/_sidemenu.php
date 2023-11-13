@@ -34,24 +34,13 @@
         <div data-i18n="Student Profile">Student Profile</div>
       </a>
     </li>
-
     <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons mdi mdi-account-school-outline"></i>
-        <div data-i18n="Alumni Services">Alumni Services</div>
+      <a href="#" class="menu-link">
+        <i class="menu-icon tf-icons mdi mdi-download-box-outline"></i>
+        <div data-i18n="Download Mobile App">Download Mobile App</div>
       </a>
-
-      <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="joblistings" class="menu-link">
-            <div data-i18n="Job Listings">Job Listings</div>
-          </a>
-        </li>
-      </ul>
     </li>
-    <!-- Layouts -->
 
-    <!-- Scholar -->
     
     <li class="menu-item">
       <a href="#" target="_blank" class="menu-link">

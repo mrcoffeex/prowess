@@ -5,30 +5,16 @@
 ?>
 
 <body>
-  <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-      <!-- Menu -->
-      <?php
-      include "_sidemenu.php";
-      ?>
-      <!-- / Menu -->
-
-      <!-- Layout container -->
+      <?php include "_sidemenu.php"; ?>
       <div class="layout-page">
-        <!-- Navbar -->
-        <?php
-        include "_topnavigation.php";
-        ?>
-        <!-- / Navbar -->
-
-        <!-- Content wrapper -->
+        <?php include "_topnavigation.php"; ?>
+ 
         <div class="content-wrapper">
-          <!-- Content -->
-
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row gy-4">
-              <!-- Gamification Card -->
+
               <div class="col-md-12 col-lg-13">
                 <div class="card">
                   <div class="d-flex align-items-end row">
@@ -51,7 +37,7 @@
                   </div>
                 </div>
               </div>
-              <!-- Activity Timeline -->
+
               <div class="col-12 col-lg-13 col-xl-12 mb-4">
                 <div class="card h-100">
                   <img src="../../assets//img/elements/activity-timeline.png" alt="timeline-image" class="card-img-top h-px-200" style="object-fit: cover" />
@@ -104,39 +90,17 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-          <!-- / Content -->
-
-          <!-- Footer -->
-          <?php
-          include "_footer.php";
-
-          ?>
-          <!-- / Footer -->
-
+          <?php include "_footer.php";?>
           <div class="content-backdrop fade"></div>
         </div>
-        <!-- Content wrapper -->
+        
       </div>
-      <!-- / Layout page -->
     </div>
-
-    <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
-
-    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
     <div class="drag-target"></div>
   </div>
-  <!-- / Layout wrapper -->
-
-  <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
-  <?php
-  include "_scripts.php";
-
-  ?>
+  <?php include "_scripts.php"; ?>
 </body>
-
 </html>

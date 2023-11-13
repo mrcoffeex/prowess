@@ -54,5 +54,26 @@
         return getMunicipalityName($res['prow_address_municipality']);
     }
 
+
+    function getMunicipalityID($munName){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_municipalities
+                                        Where
+                                        prow_mun_name = :prow_mun_name");
+        $statement->execute([
+            'prow_mun_name' => $munName
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (!empty($res['prow_mun_id'])) {
+            return $res['prow_mun_id'];
+        } else {
+            return "";
+        }
+    }
+
     
 ?>

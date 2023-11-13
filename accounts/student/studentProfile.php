@@ -15,70 +15,40 @@
 ?>
 
   <body>
-    <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
-
         <div class="layout-page">
-
-
-         <?php
-          include "_sidemenu.php";
-         ?>
+         <?php include "_sidemenu.php";?>
 
           <div class="content-wrapper">
-            <?php
-              include "_topnavigation.php";
-            ?>
+            <?php include "_topnavigation.php";?>
             
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User Profile /</span> Profile</h4>
+              <?php include "profile_header.php"; ?>
 
-              
-              <?php
-                include "profile_header.php";
-              ?>
-
-              <!-- Navbar pills -->
               <div class="row">
                 <div class="col-md-12">
                   <ul class="nav nav-pills flex-column flex-sm-row mb-4">
                     <li class="nav-item">
                       <a class="nav-link active" href="javascript:void(0);"
-                        ><i class="mdi mdi-account-outline me-1 mdi-20px"></i>Profile</a
+                        ><i class="mdi mdi-account-outline me-1 mdi-20px"></i>Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="studentProfile2"
+                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Personal Information</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="pages-profile-teams.html"
-                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Scholarship Transaction </a
-                      >
-                    </li>
-
-                    <!-- Hide this if not graduated -->
-                    <!-- <li class="nav-item">
-                      <a class="nav-link" href="pages-profile-teams.html"
-                        ><i class="mdi mdi-badge-account-outline me-1 mdi-20px"></i>Skills</a
-                      >
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages-profile-teams.html"
-                        ><i class="mdi mdi-briefcase-outline me-1 mdi-20px"></i>Employment</a
-                      >
-                    </li> -->
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages-profile-teams.html"
+                      <a class="nav-link" href="notifications"
                         ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a
                       >
                     </li>
                   </ul>
                 </div>
               </div>
-              <!--/ Navbar pills -->
-              
-              <!-- User Profile Content -->
               <div class="row">
                 <div class="col-xl-4 col-lg-5 col-md-5">
-                  <!-- Profile Overview -->
+                 
                   <div class="card mb-4">
                     <div class="card-body">
                       <small class="card-text text-uppercase text-muted">School Information</small>
@@ -153,16 +123,16 @@
                       <small class="card-text text-uppercase text-muted">Address</small>
                       <ul class="list-unstyled my-3 py-1">
                         <li class="d-flex align-items-center mb-3">
-                          <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Street:</span>
-                          <span><?= $addressProfile['prow_address_description'] ?></span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Province:</span>
                           <span><?= $addressProfile['prow_address_province'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Municipality:</span>
                           <span><?= getMunicipalityName($addressProfile['prow_address_municipality']) ?></span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Street:</span>
+                          <span><?= $addressProfile['prow_address_description'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Barangay:</span>

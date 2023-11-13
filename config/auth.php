@@ -41,7 +41,22 @@
                         header("location: ../accounts/student/index_inc");
                     } else {
                         header("location: ../accounts/student/");
-                    }                   
+                    }
+    
+                }elseif($row['prow_user_type'] == 1){
+    
+                    createLog("Login", $prowUsername, "auth");
+                    header("location: ../accounts/hei/");
+    
+                }elseif($row['prow_user_type'] == 2){
+    
+                    createLog("Login", $prowUsername, "auth");
+                    header("location: ../accounts/industry/");
+    
+                }elseif($row['prow_user_type'] == 3){
+    
+                    createLog("Login", $prowUsername, "auth");
+                    header("location: ../accounts/staff/");
     
                 }else{
                     createLog("Login Attempt", $prowUsername, "attempt");

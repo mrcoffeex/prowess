@@ -1,7 +1,9 @@
 <?php  
     require 'config/includes.php';
 
-    $municipalityId = clean_int($_GET['municipalityId']);
+    $municipalityname = $_GET['municipalityId'];
+
+    $municipalityId = getMunicipalityID($municipalityname);
 
     $brgys="";
 

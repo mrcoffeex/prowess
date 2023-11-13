@@ -30,7 +30,7 @@
                     <img class="card-img-top" src="../../imagebank/'. $req['prow_req_endorsement'] .'" alt="image here .." />
                     <div class="card-body text-center">
                         <h5 class="card-title">Endoresement Letter</h5>
-                        <a href="viewImage?image='. $req['prow_req_cert_low_income'] .'" target="_blank" class="btn btn-outline-primary">Full view</a>
+                        <a href="viewImage?image='. $req['prow_req_endorsement'] .'" target="_blank" class="btn btn-outline-primary">Full view</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <img class="card-img-top" src="../../imagebank/'. $req['prow_req_school_card'] .'" alt="image here .." />
                     <div class="card-body text-center">
                         <h5 class="card-title">School Card</h5>
-                        <a href="viewImage?image='. $req['prow_req_cert_low_income'] .'" target="_blank" class="btn btn-outline-primary">Full view</a>
+                        <a href="viewImage?image='. $req['prow_req_school_card'] .'" target="_blank" class="btn btn-outline-primary">Full view</a>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <img class="card-img-top" src="../../imagebank/'. $req['prow_req_enrollment_form'] .'" alt="image here .." />
                     <div class="card-body text-center">
                         <h5 class="card-title">Encrollment Form</h5>
-                        <a href="viewImage?image='. $req['prow_req_cert_low_income'] .'" target="_blank" class="btn btn-outline-primary">Full view</a>
+                        <a href="viewImage?image='. $req['prow_req_enrollment_form'] .'" target="_blank" class="btn btn-outline-primary">Full view</a>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                     <img class="card-img-top" src="../../imagebank/'. $req['prow_req_birth_certificate'] .'" alt="image here .." />
                     <div class="card-body text-center">
                         <h5 class="card-title">Birth Certificate</h5>
-                        <a href="viewImage?image='. $req['prow_req_cert_low_income'] .'" target="_blank" class="btn btn-outline-primary">Full view</a>
+                        <a href="viewImage?image='. $req['prow_req_birth_certificate'] .'" target="_blank" class="btn btn-outline-primary">Full view</a>
                     </div>
                 </div>
             </div>
