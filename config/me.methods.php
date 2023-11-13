@@ -112,6 +112,35 @@
         return $res;
     }
 
+    function getTimePassed($basetime, $currenttime){
+
+        $secs = strtotime($currenttime) - strtotime($basetime);
+
+        $mins = $secs / 60;
+        $hours = $secs / 3600;
+        $days = $secs / 86400;
+
+        if ($secs < 60) {
+            $res = "Just Now";
+        } else if ($secs >= 60 && $secs < 3600) {
+            $res = floor($mins) . " minute(s) ago";
+        } else if ($secs >= 3600 && $secs < 86400) {
+            $res = floor($hours) . " hour(s) ago";
+        } else {
+            if ($days < 7) {
+                $res = floor($days) . " day(s) ago";
+            } else if ($days >= 7 && $days < 30.5) {
+                $res = floor($days / 7)." week(s) ago";
+            } else if ($days >= 30.5 && $days < 365.25) {
+                $res = floor(($days / 30.5))." month(s) ago";
+            } else {
+                $res = floor(($days / 365.25))." year(s) ago";
+            }
+        }
+        
+        return $res;
+    }
+
     function imageUpload($input, $location){
 
         $errors= array();
@@ -677,6 +706,22 @@
         $stmt->execute();
 
         return $stmt;
+
+    }
+
+    function getSchoolYearLatest(){
+
+        $stmt=PWD()->prepare("SELECT 
+                            prow_school_year
+                            FROM
+                            prow_list_sy
+                            Order By
+                            prow_sy_id
+                            DESC");
+        $stmt->execute();
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $res['prow_school_year'];
 
     }
 ?>

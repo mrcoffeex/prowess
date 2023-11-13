@@ -176,7 +176,7 @@
                     prow_prof_mother_cont,
                     prow_prof_mother_occu,
                     prow_prof_guardian,
-                    prow_prof_guradian_cont,
+                    prow_prof_guardian_cont,
                     prow_prof_guardian_occu,
                     prow_prof_created,
                     prow_prof_updated
@@ -198,7 +198,7 @@
                     :prow_prof_mother_cont,
                     :prow_prof_mother_occu,
                     :prow_prof_guardian,
-                    :prow_prof_guradian_cont,
+                    :prow_prof_guardian_cont,
                     :prow_prof_guardian_occu,
                     NOW(), 
                     NOW()
@@ -217,7 +217,7 @@
             'prow_prof_mother_cont' => $scholarMotherCont,
             'prow_prof_mother_occu' => $scholarMotherOccu,
             'prow_prof_guardian' => $scholarGuardianName,
-            'prow_prof_guradian_cont' => $scholarGuardianCont,
+            'prow_prof_guardian_cont' => $scholarGuardianCont,
             'prow_prof_guardian_occu' => $scholarGuardianOccu,
         ]);
 
@@ -765,10 +765,10 @@
                                         Where
                                         prow_scholar_code = :prow_scholar_code 
                                         And
-                                        prow_app_log_code = :prow_app_log_code");
+                                        prow_scholar_app_logs_code = :prow_scholar_app_logs_code");
         $statement->execute([
             'prow_scholar_code' => $scholarCode,
-            'prow_app_log_code' => $app_code
+            'prow_scholar_app_logs_code' => $app_code
         ]);
 
         return $statement;
@@ -939,6 +939,138 @@
             return true;
         } else {
             return false;
+        } 
+
+    }
+
+
+    function selectPersonalInfomation($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_scholar_profile
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        return $stmt;
+
+    }
+
+    function scholarshipStatus($scholarCode, $selected){
+
+        if ($selected == "personal_information") {
+            
+            $getPersonal=selectPersonalInfomation($scholarCode);
+            $countPersonal=$getPersonal->rowCount();
+            $personal=$getPersonal->fetch(PDO::FETCH_ASSOC);
+
+            if (empty($countPersonal)) {
+                $res = "empty";
+            } else {
+                if (
+                    !empty($personal['prow_prof_height']) && 
+                    !empty($personal['prow_prof_weight']) && 
+                    !empty($personal['prow_prof_blood_type']) && 
+                    !empty($personal['prow_prof_religion']) && 
+                    !empty($personal['prow_prof_father']) && 
+                    !empty($personal['prow_prof_mother']) && 
+                    !empty($personal['prow_prof_guardian']) 
+                    ) {
+                    $res = "complete";
+                } else {
+                    $res = "incomplete";
+                }
+            }
+
+        } else if ($selected == "requirements") {
+
+            $appLogCode = getScholarSYRequirements($scholarCode, getSchoolYearLatest());
+            $getRequirements=getReqScholar($appLogCode, $scholarCode);
+            $countReq=$getRequirements->rowCount();
+            $req=$getRequirements->fetch(PDO::FETCH_ASSOC);
+
+            if (empty($countReq)) {
+                $res = "empty";
+            } else {
+                if (
+                    !empty($req['prow_req_cert_low_income']) && 
+                    !empty($req['prow_req_endorsement']) && 
+                    !empty($req['prow_req_school_card']) && 
+                    !empty($req['prow_req_enrollment_form']) && 
+                    !empty($req['prow_req_birth_certificate'])
+                    ) {
+                    $res = "complete";
+                } else {
+                    $res = "incomplete";
+                }
+            }
+
+        } else if ($selected == "approval") {
+            $res = "empty";
+        } else {
+            $res = "empty";
+        }
+        
+        return $res;
+    }
+
+    function getPersonalInformationCreatedDate($scholarCode){
+
+        $statement=PWD()->prepare("SELECT
+                                    prow_prof_created
+                                    From
+                                    prow_scholar_profile
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+        
+        $count=$statement->rowCount();
+
+        if ($count > 0) {
+            
+            $res=$statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $res['prow_prof_created'];
+
+        } else {
+            return null;
+        } 
+
+    }
+
+    function getRequimentsCreatedDate($scholarCode){
+
+        $appLogCode = getScholarSYRequirements($scholarCode, getSchoolYearLatest());
+
+        $statement=PWD()->prepare("SELECT
+                                    prow_req_created
+                                    From
+                                    prow_scholar_requirements
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code
+                                    AND
+                                    prow_scholar_app_logs_code = :prow_scholar_app_logs_code");
+        $statement->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_scholar_app_logs_code' => $appLogCode
+        ]);
+        
+        $count=$statement->rowCount();
+
+        if ($count > 0) {
+            
+            $res=$statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $res['prow_req_created'];
+
+        } else {
+            return null;
         } 
 
     }

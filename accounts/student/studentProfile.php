@@ -30,7 +30,7 @@
                 <div class="col-md-12">
                   <ul class="nav nav-pills flex-column flex-sm-row mb-4">
                     <li class="nav-item">
-                      <a class="nav-link active" href="javascript:void(0);"
+                      <a class="nav-link active" href="studentProfile"
                         ><i class="mdi mdi-account-outline me-1 mdi-20px"></i>Profile</a>
                     </li>
                     <li class="nav-item">
@@ -178,72 +178,73 @@
                       <div class="card-body pt-3 pb-0">
                         <ul class="timeline mb-0">
                           <li class="timeline-item timeline-item-transparent">
-                            <span class="timeline-point timeline-point-danger"></span>
+                            <span class="timeline-point timeline-point-info"></span>
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
                                 <h6 class="mb-0">Create and Verified Account</h6>
-                                <span class="text-muted">Today</span>
+                                <span class="text-muted"><?=  getTimePassed($profile['prow_scholar_created'], date("Y-m-d H:i:s")) ?></span>
                               </div>
-                              <p class="text-muted mb-2">Finish Fill up Personal Information</p>
-                              <div class="d-flex flex-wrap">
-                                <div class="avatar me-3">
-                                  <img src="../../assets/img/avatars/3.png" alt="Avatar" class="rounded-circle" />
-                                </div>
-                                <div>
-                                  <h6 class="mb-0">Lester McCarthy (Client)</h6>
-                                  <span class="text-muted">CEO of Infibeam</span>
-                                </div>
-                              </div>
+                              <?php  
+                                if (getScholar_Status($scholarCode) == "Pending") {
+                                  echo '<p class="text-warning mb-2">Account Verification is still ' .  getScholar_Status($scholarCode) . '</p>';
+                                } else {
+                                  echo '<p class="text-success mb-2">Account is ' .  getScholar_Status($scholarCode) . '</p>';
+                                }
+                              ?>
                             </div>
                           </li>
+                          <?php  
+                            if (scholarshipStatus($scholarCode, "personal_information") == "complete") {
+                              $a_bullet = "timeline-point-info";
+                              $a_created = getPersonalInformationCreatedDate($scholarCode);
+                              $a_desc = "Personal information has been registered";
+                            } else if (scholarshipStatus($scholarCode, "personal_information") == "incomplete") {
+                              $a_bullet = "timeline-point-warning";
+                              $a_created = getPersonalInformationCreatedDate($scholarCode);
+                              $a_desc = "<span class='text-warning'>Please complete your personal information</span>";
+                            } else {
+                              $a_bullet = "timeline-point-secondary";
+                              $a_created = "xxxx-xx-xx";
+                              $a_desc = "Please put your personal information";
+                            }
+                          ?>
                           <li class="timeline-item timeline-item-transparent">
-                            <span class="timeline-point timeline-point-primary"></span>
+                            <span class="timeline-point <?= $a_bullet ?>"></span>
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
                                 <h6 class="mb-0">Finish Fill up Personal Information</h6>
-                                <span class="text-muted">2 Day Ago</span>
+                                <span class="text-muted"><?= getTimePassed($a_created, date("Y-m-d H:i:s")) ?></span>
                               </div>
-                              <p class="text-muted mb-0">Add files to new design folder</p>
+                              <p class="text-muted mb-0"><?= $a_desc ?></p>
                             </div>
                           </li>
+                          <?php  
+                            if (scholarshipStatus($scholarCode, "requirements") == "complete") {
+                              $b_bullet = "timeline-point-info";
+                              $b_created = getRequimentsCreatedDate($scholarCode);
+                              $b_desc = "All files has been uploaded";
+                            } else if (scholarshipStatus($scholarCode, "requirements") == "incomplete") {
+                              $b_bullet = "timeline-point-warning";
+                              $b_created = getRequimentsCreatedDate($scholarCode);
+                              $b_desc = "<span class='text-warning'>Please complete your requirements</span>";
+                            } else {
+                              $b_bullet = "timeline-point-secondary";
+                              $b_created = "xxxx-xx-xx";
+                              $b_desc = "Please upload your requirements";
+                            }
+                          ?>
                           <li class="timeline-item timeline-item-transparent">
-                            <span class="timeline-point timeline-point-warning"></span>
+                            <span class="timeline-point <?= $a_bullet ?>"></span>
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
                                 <h6 class="mb-0">Upload File Requirements</h6>
-                                <span class="text-muted">6 Day Ago</span>
+                                <span class="text-muted"><?= getTimePassed($b_created, date("Y-m-d H:i:s")) ?></span>
                               </div>
-                              <p class="text-muted mb-2">
-                                Sent by Mollie Dixon
-                                <img
-                                  src="../../assets/img/avatars/4.png"
-                                  class="rounded-circle me-3"
-                                  alt="avatar"
-                                  height="24"
-                                  width="24" />
-                              </p>
-                              <div class="d-flex flex-wrap gap-2">
-                                <a href="javascript:void(0)" class="me-3">
-                                  <img
-                                    src="../../assets/img/icons/misc/doc.png"
-                                    alt="Document image"
-                                    width="15"
-                                    class="me-2" />
-                                  <span class="fw-medium text-body">Highschool Report Card</span>
-                                </a>
-                                <a href="javascript:void(0)">
-                                  <img
-                                    src="../../assets/img/icons/misc/xls.png"
-                                    alt="Excel image"
-                                    width="15"
-                                    class="me-2" />
-                                  <span class="fw-medium text-body">Certificate of Low Income from Barangay</span>
-                                </a>
-                              </div>
+                              <p class="text-muted mb-0"><?= $b_desc ?></p>
                             </div>
                           </li>
                           <li class="timeline-item timeline-item-transparent border-0">
-                            <span class="timeline-point timeline-point-info"></span>
+                            <span class="timeline-point timeline-point-secondary"></span>
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
                                 <h6 class="mb-0">Initial Approval</h6>

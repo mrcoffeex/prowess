@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2023 at 04:16 PM
+-- Generation Time: Nov 13, 2023 at 03:54 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -856,7 +856,10 @@ INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_noti
 (84, 'auth', 'Login - annimay', 0, '2023-11-10 11:17:13'),
 (85, 'auth', 'Login - annimay', 0, '2023-11-10 11:28:00'),
 (86, 'auth', 'Login - annimay', 0, '2023-11-13 00:30:35'),
-(87, 'auth', 'Login - annimay', 0, '2023-11-13 00:33:24');
+(87, 'auth', 'Login - annimay', 0, '2023-11-13 00:33:24'),
+(88, 'attempt', 'Login Attempt - devmaster', 0, '2023-11-13 07:30:27'),
+(89, 'attempt', 'Login Attempt - devmaster', 0, '2023-11-13 07:30:32'),
+(90, 'auth', 'Login - annimay', 0, '2023-11-13 07:30:42');
 
 -- --------------------------------------------------------
 
@@ -1057,7 +1060,7 @@ CREATE TABLE `prow_scholar_profile` (
   `prow_prof_mother_cont` varchar(11) NOT NULL,
   `prow_prof_mother_occu` varchar(50) NOT NULL,
   `prow_prof_guardian` varchar(50) NOT NULL,
-  `prow_prof_guradian_cont` varchar(11) NOT NULL,
+  `prow_prof_guardian_cont` varchar(11) NOT NULL,
   `prow_prof_guardian_occu` varchar(50) NOT NULL,
   `prow_prof_created` datetime NOT NULL,
   `prow_prof_updated` datetime NOT NULL
@@ -1067,7 +1070,7 @@ CREATE TABLE `prow_scholar_profile` (
 -- Dumping data for table `prow_scholar_profile`
 --
 
-INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guradian_cont`, `prow_prof_guardian_occu`, `prow_prof_created`, `prow_prof_updated`) VALUES
+INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guardian_cont`, `prow_prof_guardian_occu`, `prow_prof_created`, `prow_prof_updated`) VALUES
 (1, '2023yDIcvq', 149, 47, 'A+', 'Sikhism', 'Coding/Programming,Drawin', 'Julieto', '9232765442', 'Police officer', 'Margie', '9835467221', 'Business Owner', 'Jessa', '9863627222', 'Freelancer', '2023-11-06 11:33:00', '2023-11-06 11:33:00'),
 (2, '2023CLBuDX', 12, 12, 'A+', 'Bahá\'í Faith', 'Coding/Programming,Cookin', 'Julieto', '9232765442', 'Freelancer', 'Margie', '9835467221', 'Freelancer', '', '', 'Select Occupation', '2023-11-06 14:31:11', '2023-11-06 14:31:11'),
 (3, '2023rR2dEC', 145, 129, 'O+', 'Roman Catholicism', 'Acting,Chess playing', 'Julieto', '9232765442', 'Architect', 'Margie', '9835467221', 'Flight attendant', 'Jessa', '9863627222', 'Freelancer', '2023-11-06 14:45:14', '2023-11-06 14:45:14');
@@ -1421,7 +1424,7 @@ ALTER TABLE `prow_my_project`
 -- AUTO_INCREMENT for table `prow_notifications`
 --
 ALTER TABLE `prow_notifications`
-  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `prow_notif_type`
