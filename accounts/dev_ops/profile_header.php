@@ -2,7 +2,7 @@
                 <div class="col-12">
                   <div class="card mb-4">
                     <div class="user-profile-header-banner">
-                      <img src="<?= getBannerImg($userType) ?>" alt="Banner image" class="rounded-top" />
+                      <img src="<?= getBannerImg(4) ?>" alt="Banner image" class="rounded-top" />
                     </div>
                     <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                       <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
@@ -20,7 +20,7 @@
                               class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                               <li class="list-inline-item">
                                 <i class="mdi mdi-invert-colors me-1 mdi-20px"></i
-                                ><span class="fw-semibold"><?= getUserRole($scholarCode) ?></span>
+                                ><span class="fw-semibold">Student</span> <?php //getUserRole($scholarCode) ?>
                               </li>
                               <li class="list-inline-item">
                                 <i class="mdi mdi-account-check me-1 mdi-20px"></i
@@ -32,9 +32,15 @@
                               </li>
                             </ul>
                           </div>
-                          <a href="javascript:void(0)" class="btn btn-primary">
-                            <i class="mdi mdi-image-edit-outline me-1"></i>Edit Profile
-                          </a>
+                          <div class="demo-inline-spacing">
+                            <a href="javascript:void(0)" class="btn btn-primary">
+                              <i class="mdi mdi-image-edit-outline me-1"></i>Edit Profile
+                            </a>
+
+                            <a href="initial" class="btn btn-secondary waves-effect waves-light">
+                              <i class="mdi mdi-check-decagram-outline me-1"></i>Initial Approve
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>

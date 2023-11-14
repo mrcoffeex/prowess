@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-md-6 text-center text-md-end order-1 order-md-2">
                       <div class="card-body pb-0 px-0 px-md-4 ps-0">
-                        <img src="../../assets/img/illustrations/illustration-john-light.png" height="180" alt="View Profile" data-app-light-img="illustrations/illustration-john-light.png" data-app-dark-img="illustrations/illustration-john-dark.png" />
+                        <img src="../../assets/img/illustrations/admin.png" height="180" alt="View Profile" data-app-light-img="illustrations/admin.png" data-app-dark-img="illustrations/admin.png" />
                       </div>
                     </div>
                   </div>
@@ -279,7 +279,7 @@
                   <div class="card-body">
                     <h4 class="mb-4">Activity Timeline</h4>
                     <ul class="timeline card-timeline mb-0">
-                      <li class="timeline-item timeline-item-transparent">
+                      <!-- <li class="timeline-item timeline-item-transparent">
                         <span class="timeline-point timeline-point-danger"></span>
                         <div class="timeline-event">
                           <div class="timeline-header mb-1">
@@ -320,7 +320,7 @@
                           </div>
                           <p class="text-muted mb-0">Invoices have been paid to the company.</p>
                         </div>
-                      </li>
+                      </li> -->
                     </ul>
                   </div>
                 </div>

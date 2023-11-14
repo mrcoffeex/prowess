@@ -51,7 +51,7 @@
 
         $res=$statement->fetch(PDO::FETCH_ASSOC);
 
-        return getMunicipalityName($res['prow_address_municipality']);
+        return $res['prow_address_municipality'];
     }
 
 

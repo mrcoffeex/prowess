@@ -59,11 +59,11 @@
                             </div>
                           </div>
                           <div class="d-flex flex-column flex-grow-1 overflow-hidden w-px-200">
-                            <h6 class="mb-1 text-truncate">Congratulation Lettie 🎉</h6>
-                            <small class="text-truncate text-body">Won the monthly best seller gold badge</small>
+                            <h6 class="mb-1 text-truncate">Congratulations <?= $userFullname ?> 🎉</h6>
+                            <small class="text-truncate text-body">Verified Email Account</small>
                           </div>
                           <div class="flex-shrink-0 dropdown-notifications-actions">
-                            <small class="text-muted">1h ago</small>
+                            <small class="text-muted">4 mins ago</small>
                           </div>
                         </div>
                       </li>

@@ -8,7 +8,7 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>PROWESS</title>
+  <title><?= (@$title != "") ? @$title : 'PROWESS' ?></title>
 
   <meta name="description" content="" />
 
@@ -35,11 +35,15 @@
   <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
   <link rel="stylesheet" href="../../assets/vendor/libs/apex-charts/apex-charts.css" />
   <link rel="stylesheet" href="../../assets/vendor/libs/swiper/swiper.css" />
+  <link rel="stylesheet" href="../../assets/vendor/libs/quill/typography.css" />
+  <link rel="stylesheet" href="../../assets/vendor/libs/quill/katex.css" />
+  <link rel="stylesheet" href="../../assets/vendor/libs/quill/editor.css" />
 
   <!-- Page CSS -->
   <link rel="stylesheet" href="../../assets/vendor/css/pages/cards-statistics.css" />
   <link rel="stylesheet" href="../../assets/vendor/css/pages/cards-analytics.css" />
   <link rel="stylesheet" href="../../assets/vendor/css/pages/page-profile.css" />
+  <link rel="stylesheet" href="../../assets/css/custom.css">
 
   <!-- Helpers -->
   <script src="../../assets/vendor/js/helpers.js"></script>

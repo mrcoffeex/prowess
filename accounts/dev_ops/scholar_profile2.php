@@ -3,9 +3,10 @@
   require '_session.php';
   include "_head.php";
 
+  $scholarCode = clean_string($_GET['scholarCode']);
+
   $getProfile=selectPersonalInfomation($scholarCode);
   $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
-
 ?>
 
   <body>
@@ -24,11 +25,11 @@
                 <div class="col-md-12">
                   <ul class="nav nav-pills flex-column flex-sm-row mb-4">
                     <li class="nav-item">
-                      <a class="nav-link " href="studentProfile"
+                      <a class="nav-link " href="scholar_profile?rand=<?= my_rand_str(100) ?>&scholarCode=<?= $scholarCode ?>"
                         ><i class="mdi mdi-account-outline me-1 mdi-20px"></i>Profile</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" href="studentProfile2"
+                      <a class="nav-link active" href="scholar_profile2?rand=<?= my_rand_str(100) ?>&scholarCode=<?= $scholarCode ?>"
                         ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Personal Information</a
                       >
                     </li>

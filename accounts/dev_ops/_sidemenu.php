@@ -23,7 +23,7 @@
       <a href="index" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
         <div data-i18n="Dashboards">Dashboards</div>
-        <div class="badge bg-primary rounded-pill ms-auto">3</div>
+        <div class="badge bg-primary rounded-pill ms-auto"></div>
       </a>
 
     </li>
@@ -44,20 +44,15 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="layouts-content-navbar.html" class="menu-link">
+          <a href="scholarInformation" class="menu-link">
             <div data-i18n="Pending Scholar">Pending Scholar</div>
             <div class="badge bg-primary rounded-pill ms-auto"><?= countScholarPending("") ?></div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="layouts-content-navbar-with-sidebar.html" class="menu-link">
+          <a href="scholarInformation" class="menu-link">
             <div data-i18n="New Scholars">New Scholars</div>
-            <div class="badge bg-primary rounded-pill ms-auto">2</div>
-          </a>
-        </li>
-        <li class="menu-item">
-          <a href="../horizontal-menu-template" class="menu-link" target="_blank">
-            <div data-i18n="Scholar Reports">Scholar Reports</div>
+            <div class="badge bg-primary rounded-pill ms-auto"></div>
           </a>
         </li>
         <li class="menu-item">
@@ -82,13 +77,13 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="layouts-content-navbar.html" class="menu-link">
+          <a href="industry_information" class="menu-link">
             <div data-i18n="Industry Information">Industry Information</div>
             <div class="badge bg-primary rounded-pill ms-auto">3</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="layouts-content-navbar-with-sidebar.html" class="menu-link">
+          <a href="reports" class="menu-link">
             <div data-i18n="Reports">Reports</div>
             <div class="badge bg-primary rounded-pill ms-auto">2</div>
           </a>
@@ -127,7 +122,7 @@
       </ul>
     </li>
     <li class="menu-item">
-      <a href="app-calendar.html" class="menu-link">
+      <a href="announcements" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-calendar-blank-outline"></i>
         <div data-i18n="Announcements & Events">Announcements & Events</div>
       </a>

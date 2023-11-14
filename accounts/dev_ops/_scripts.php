@@ -12,6 +12,8 @@
 <!-- endbuild -->
 
 <!-- Vendors JS -->
+<script src="../../assets/vendor/libs/quill/katex.js"></script>
+<script src="../../assets/vendor/libs/quill/quill.js"></script>
 <script src="../../assets/vendor/libs/apex-charts/apexcharts.js"></script>
 <script src="../../assets/vendor/libs/swiper/swiper.js"></script>
 

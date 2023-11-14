@@ -23,7 +23,8 @@
       <a href="index" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
         <div data-i18n="Dashboards">Dashboards</div>
-        <div class="badge bg-primary rounded-pill ms-auto">3</div>
+         <div class="badge bg-primary rounded-pill ms-auto"></div> <!--add code for Number of announcements -->
+
       </a>
 
     </li>

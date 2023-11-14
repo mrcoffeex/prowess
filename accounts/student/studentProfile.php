@@ -113,13 +113,7 @@
                           <span><?= $profile['prow_scholar_email'] ?></span>
                         </li>
                       </ul>
-                      <small class="card-text text-uppercase text-muted">Talents</small>
-                      <ul class="list-unstyled my-3 py-1">
-                        <li class="d-flex align-items-center mb-3">
-                          <i class="mdi mdi-star-check-outline mdi-24px"></i><span class="fw-semibold mx-2">Contact:</span>
-                          <span>(123) 456-7890</span>
-                        </li>
-                      </ul>
+                     
                       <small class="card-text text-uppercase text-muted">Address</small>
                       <ul class="list-unstyled my-3 py-1">
                         <li class="d-flex align-items-center mb-3">
@@ -247,12 +241,45 @@
                             <span class="timeline-point timeline-point-secondary"></span>
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
-                                <h6 class="mb-0">Initial Approval</h6>
-                                <span class="text-muted">10 Day Ago</span>
+                                <h6 class="mb-0">Checking and Initial Approval</h6>
+                                <span class="text-muted"></span>
+                              </div>
+                              <p class="text-muted mb-0">Checking of Requirements - Approval by Scholarship Coordinator</p>
+                            </div>
+                          </li>
+
+                          <li class="timeline-item timeline-item-transparent border-0">
+                            <span class="timeline-point timeline-point-secondary"></span>
+                            <div class="timeline-event">
+                              <div class="timeline-header mb-1">
+                                <h6 class="mb-0">Examination</h6>
+                                <span class="text-muted"></span>
+                              </div>
+                              <p class="text-muted mb-0">Scheduled by Scholarship Coordinator</p>
+                            </div>
+                          </li>
+
+                          <li class="timeline-item timeline-item-transparent border-0">
+                            <span class="timeline-point timeline-point-secondary"></span>
+                            <div class="timeline-event">
+                              <div class="timeline-header mb-1">
+                                <h6 class="mb-0">Interview</h6>
+                                <span class="text-muted"></span>
+                              </div>
+                              <p class="text-muted mb-0">Scheduled by Scholarship Coordinator</p>
+                            </div>
+                          </li>
+                          <li class="timeline-item timeline-item-transparent border-0">
+                            <span class="timeline-point timeline-point-secondary"></span>
+                            <div class="timeline-event">
+                              <div class="timeline-header mb-1">
+                                <h6 class="mb-0">Approval Status</h6>
+                                <span class="text-muted"></span>
                               </div>
                               <p class="text-muted mb-0">Approval by Scholarship Coordinator</p>
                             </div>
                           </li>
+
                         </ul>
                       </div>
                   </div>

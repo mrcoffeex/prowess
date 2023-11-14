@@ -4,10 +4,9 @@
         'cookie_lifetime' => 86400,
     ]);
 
-    
 	if(!isset($_SESSION['hotkopi_prow_session_id'])){
         header("location: ../../login");
-    }else if ($_SESSION['hotkopi_prow_session_type'] != 4) {
+    }else if ($_SESSION['hotkopi_prow_session_type'] != 0) {
         header("location: ../../login");
     }
 

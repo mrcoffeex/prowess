@@ -295,7 +295,7 @@
                                   $getMunicipalities=selectMunicipalities();
                                   while ($municipalities=$getMunicipalities->fetch(PDO::FETCH_ASSOC)) {
                               ?>
-                            <option value="<?= $municipalities['prow_mun_id'] ?>"><?= $municipalities['prow_mun_name'] ?></option>
+                            <option value="<?= $municipalities['prow_mun_name'] ?>"><?= $municipalities['prow_mun_name'] ?></option>
                               <?php } ?>
                           </select>
                           <label for="multiStepsMunicipality">City/Municipality</label>
