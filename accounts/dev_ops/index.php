@@ -126,7 +126,7 @@
                       </div>
                       <div class="card-info">
                         <div class="d-flex align-items-center">
-                          <h4 class="mb-0">100</h4>
+                          <h4 class="mb-0">0</h4>
                           <!-- {{-- <i class="mdi mdi-chevron-down text-danger mdi-24px"></i> --}} -->
                         </div>
                         <small class="text-muted">No. of Alumni</small>

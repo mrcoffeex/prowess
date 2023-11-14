@@ -46,7 +46,7 @@
                 }elseif($row['prow_user_type'] == 1){
     
                     createLog("Login", $prowUsername, "auth");
-                    header("location: ../accounts/hei/");
+                    header("location: ../accounts/staff/");
     
                 }elseif($row['prow_user_type'] == 2){
     
@@ -56,7 +56,7 @@
                 }elseif($row['prow_user_type'] == 3){
     
                     createLog("Login", $prowUsername, "auth");
-                    header("location: ../accounts/staff/");
+                    header("location: ../accounts/hei/");
     
                 }else{
                     createLog("Login Attempt", $prowUsername, "attempt");

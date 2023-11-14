@@ -1,4 +1,4 @@
-<div class="row">
+              <div class="row">
                 <div class="col-12">
                   <div class="card mb-4">
                     <div class="user-profile-header-banner">
@@ -33,11 +33,11 @@
                             </ul>
                           </div>
                           <div class="demo-inline-spacing">
-                            <a href="javascript:void(0)" class="btn btn-primary">
+                            <a href="#" class="btn btn-primary">
                               <i class="mdi mdi-image-edit-outline me-1"></i>Edit Profile
                             </a>
 
-                            <a href="initial" class="btn btn-secondary waves-effect waves-light">
+                            <a href="initial_approve?scholarCode=<?=$scholarCode?>" class="btn btn-secondary waves-effect waves-light">
                               <i class="mdi mdi-check-decagram-outline me-1"></i>Initial Approve
                             </a>
                           </div>

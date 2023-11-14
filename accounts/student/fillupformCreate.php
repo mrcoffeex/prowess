@@ -74,7 +74,9 @@
 
         $request3 = updateScholarSchoolID(
             $scholarSchoolID,
-            $filledupStatus
+            $filledupStatus,
+            $scholarCode
+
         );
 
         $request4 = addrequirements(

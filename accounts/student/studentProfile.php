@@ -228,7 +228,7 @@
                             }
                           ?>
                           <li class="timeline-item timeline-item-transparent">
-                            <span class="timeline-point <?= $a_bullet ?>"></span>
+                            <span class="timeline-point <?= $b_bullet ?>"></span>
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
                                 <h6 class="mb-0">Upload File Requirements</h6>
@@ -237,14 +237,25 @@
                               <p class="text-muted mb-0"><?= $b_desc ?></p>
                             </div>
                           </li>
+                          <?php  
+                            if (initialApproveStatus($scholarCode) == "true") {
+                              $c_bullet = "timeline-point-info";
+                              $c_created = getRequimentsCreatedDate($scholarCode);
+                              $c_desc = "Initially approved by Scholarship Coordinator";
+                            }else {
+                              $c_bullet = "timeline-point-secondary";
+                              $c_created = "xxxx-xx-xx";
+                              $c_desc = "Wait for the Initial approval of Scholarship Coordinator";
+                            }
+                          ?>
                           <li class="timeline-item timeline-item-transparent border-0">
-                            <span class="timeline-point timeline-point-secondary"></span>
+                            <span class="timeline-point <?= $c_bullet ?>"></span>
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
                                 <h6 class="mb-0">Checking and Initial Approval</h6>
                                 <span class="text-muted"></span>
                               </div>
-                              <p class="text-muted mb-0">Checking of Requirements - Approval by Scholarship Coordinator</p>
+                              <p class="text-muted mb-0"><?= $c_desc ?></p>
                             </div>
                           </li>
 
