@@ -7,6 +7,7 @@
 <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
 <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
 <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="../../assets/vendor/libs/toastr/toastr.js"></script>
 
 <script src="../../assets/vendor/js/menu.js"></script>
 <!-- endbuild -->
@@ -29,6 +30,12 @@
 
 
 <script>
+
+    //modal autofocus
+    $(document).on('shown.bs.modal', function() {
+      $(this).find('[autofocus]').focus();
+      $(this).find('[autofocus]').select();
+    });
 
 	//validations
 	function btnLoader(formObj){

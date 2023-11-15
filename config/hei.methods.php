@@ -324,14 +324,14 @@
    function selectCoursebyHeiIds($heiID){
 
     $statement=PWD()->prepare("SELECT
-                                    prow_course_name
-                                    FROM
-                                    prow_hei_course
-                                    WHERE
-                                    prow_hei_id = :prow_hei_id
-                                    Order By
-                                    prow_course_name
-                                    ASC");
+                                *
+                                FROM
+                                prow_hei_course
+                                WHERE
+                                prow_hei_id = :prow_hei_id
+                                Order By
+                                prow_course_name
+                                ASC");
     $statement->execute([
         'prow_hei_id' => $heiID
     ]);
@@ -372,7 +372,121 @@
 
         return $statement;
 
+    }
 
+    
+    function selectHeiCourse($courseId){
+
+        $statement=PWD()->prepare("SELECT
+                                *
+                                FROM
+                                prow_hei_course
+                                Where
+                                prow_hei_course_id = :prow_hei_course_id");
+        $statement->execute([
+            'prow_hei_course_id' => $courseId
+        ]);
+
+        return $statement;
+
+    }
+
+    function selectHeiCourseSubjects($courseId){
+
+        $statement=PWD()->prepare("SELECT
+                                *
+                                FROM
+                                prow_hei_subjects
+                                Where
+                                prow_hei_course_id = :prow_hei_course_id
+                                Order By
+                                prow_subject_code
+                                ASC");
+        $statement->execute([
+            'prow_hei_course_id' => $courseId
+        ]);
+
+        return $statement;
+
+    }
+
+    function createHeiCourseSubject($courseId, $subjectCode, $subjectDesc, $subjectUnits){
+
+        $statement=PWD()->prepare("INSERT INTO prow_hei_subjects
+                                ( 
+                                    prow_hei_course_id, 
+                                    prow_subject_code, 
+                                    prow_subject_desc, 
+                                    prow_subject_units, 
+                                    prow_subject_created, 
+                                    prow_subject_updated
+                                ) 
+                                VALUES
+                                (
+                                    :prow_hei_course_id, 
+                                    :prow_subject_code, 
+                                    :prow_subject_desc, 
+                                    :prow_subject_units, 
+                                    NOW(), 
+                                    NOW()
+                                )");
+        $statement->execute([
+            'prow_hei_course_id' => $courseId,
+            'prow_subject_code' => $subjectCode,
+            'prow_subject_desc' => $subjectDesc,
+            'prow_subject_units' => $subjectUnits
+        ]);
+
+        if ($statement) {
+            return true;
+        } else {
+            return true;
+        }
+        
+    }
+
+    function updateHeiCourseSubject($subjectCode, $subjectDesc, $subjectUnits, $subjectId){
+
+        $statement=PWD()->prepare("UPDATE prow_hei_subjects
+                                SET
+                                prow_subject_code = :prow_subject_code, 
+                                prow_subject_desc = :prow_subject_desc, 
+                                prow_subject_units = :prow_subject_units,  
+                                prow_subject_updated = NOW()
+                                Where
+                                prow_subject_id = :prow_subject_id
+                                ");
+        $statement->execute([
+            'prow_subject_code' => $subjectCode,
+            'prow_subject_desc' => $subjectDesc,
+            'prow_subject_units' => $subjectUnits,
+            'prow_subject_id' => $subjectId
+        ]);
+
+        if ($statement) {
+            return true;
+        } else {
+            return true;
+        }
+        
+    }
+
+    function removeHeiCourseSubject($subjectId){
+
+        $statement=PWD()->prepare("DELETE FROM prow_hei_subjects
+                                Where
+                                prow_subject_id = :prow_subject_id
+                                ");
+        $statement->execute([
+            'prow_subject_id' => $subjectId
+        ]);
+
+        if ($statement) {
+            return true;
+        } else {
+            return true;
+        }
+        
     }
 
 

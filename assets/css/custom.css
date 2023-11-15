@@ -10,3 +10,8 @@
     justify-content: center;
     align-items: center;
 }
+
+.btn-block{
+    display: block;
+    width: 100%;
+}

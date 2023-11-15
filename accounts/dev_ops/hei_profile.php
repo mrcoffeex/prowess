@@ -126,24 +126,34 @@
                                                 <tr>
                                                     <th>Courses</th>
                                                     <th>No. of Scholars</th>
-                                                    <th>Action</th>
+                                                    <th class="text-center">Subjects</th>
+                                                    <th class="text-center">Actions</th>
                                                 </tr>
                                             </thead>
                                         <tbody>
                                                 <?php
-                                                    while ($row=$getHeiCourse->fetch(PDO::FETCH_ASSOC)) {
+                                                    while ($course=$getHeiCourse->fetch(PDO::FETCH_ASSOC)) {
                                                 ?>                                            
 
                                             <tr>
                                                     
-                                                    <td><?= $row['prow_course_name']?></td>
+                                                    <td><?= $course['prow_course_name']?></td>
                                                     <td><? ?></td>
+                                                    <td class="text-center p-2">
+                                                        <a href="hei_subjects?rand=<?= my_rand_str(100) ?>&hei_id=<?=$hei_id ?>&course_id=<?=$course['prow_hei_course_id'] ?>">
+                                                            <button 
+                                                            type="button" 
+                                                            class="btn btn-primary btn-sm">
+                                                              <i class="mdi mdi-book-outline"></i>
+                                                            </button>
+                                                        </a>
+                                                    </td>
                                                     <td class="text-center p-2">
                                                         <a href="hei_delete?rand=<?= my_rand_str(100) ?>&hei_id=<?=$hei_id ?>">
                                                             <button 
                                                             type="button" 
-                                                            class="btn btn-primary btn-sm">
-                                                            <i class="ti-user mdi mdi-delete-outline"></i>
+                                                            class="btn btn-danger btn-sm">
+                                                              <i class="mdi mdi-delete-outline"></i>
                                                             </button>
                                                         </a>
                                                     </td>

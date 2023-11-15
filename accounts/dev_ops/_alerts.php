@@ -7,12 +7,18 @@
     if ($note == "error") {
         echo "
             <script>
-                toastr.error('Course cannot be duplicated');
+                toastr.error('Course cannot be duplicated!');
+            </script>
+        ";
+    }else if ($note == "invalid") {
+        echo "
+            <script>
+                toastr.error('Invalid!');
             </script>
         ";
     } else {
 
-        //index
+        //hei_profile
         
         if ($currpage == "hei_profile") {
         
@@ -22,7 +28,43 @@
                         toastr.error('Course already exists');
                     </script>
                 ";
-            } 
+            } else if ($note == "added") {
+                echo "
+                    <script>
+                        toastr.success('Course added');
+                    </script>
+                ";
+            } else {
+                echo "";
+            }
+
+        }
+
+        // hei_subjects
+        
+        if ($currpage == "hei_subjects") {
+        
+            if ($note == "added") {
+                echo "
+                    <script>
+                        toastr.success('Subject added');
+                    </script>
+                ";
+            } else if ($note == "updated") {
+                echo "
+                    <script>
+                        toastr.success('Changes saved');
+                    </script>
+                ";
+            } else if ($note == "removed") {
+                echo "
+                    <script>
+                        toastr.success('Subject removed');
+                    </script>
+                ";
+            } else {
+                echo "";
+            }
 
         }
 

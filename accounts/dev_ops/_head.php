@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="../../assets/vendor/libs/quill/typography.css" />
   <link rel="stylesheet" href="../../assets/vendor/libs/quill/katex.css" />
   <link rel="stylesheet" href="../../assets/vendor/libs/quill/editor.css" />
+  <link rel="stylesheet" href="../../assets/vendor/libs/toastr/toastr.css" />
 
   <!-- Page CSS -->
   <link rel="stylesheet" href="../../assets/vendor/css/pages/cards-statistics.css" />
