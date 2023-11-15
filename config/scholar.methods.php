@@ -16,8 +16,7 @@
                                 prow_scholar_birthday, 
                                 prow_scholar_birthplace, 
                                 prow_scholar_con, 
-                                prow_scholar_email,
-                                prow_initial_updated,  
+                                prow_scholar_email,  
                                 prow_scholar_created, 
                                 prow_scholar_updated
                             ) 
@@ -37,7 +36,6 @@
                                 :prow_scholar_con, 
                                 :prow_scholar_email,
                                 NOW(), 
-                                NOW(),
                                 NOW()
                             )");
         $stmt->execute([
@@ -331,27 +329,11 @@
     }
 
 
-    function updateScholarSchoolID($scholarSchoolID,$filledupStatus,$scholarCode){
-        $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_scholar_school_id = :prow_scholar_school_id, prow_scholar_filled_up = :prow_scholar_filled_up WHERE prow_scholar_code =:prow_scholar_code");
+    function updateScholarSchoolID($scholarSchoolID,$filledupStatus){
+        $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_scholar_school_id = :prow_scholar_school_id, prow_scholar_filled_up = :prow_scholar_filled_up");
         $stmt->execute([
             'prow_scholar_school_id' => $scholarSchoolID,
-            'prow_scholar_filled_up' => $filledupStatus,
-            'prow_scholar_code' => $scholarCode
-        ]);
-
-        if ($stmt) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    function updateInitialApprove($scholarCode){
-        $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_initial_approve = :prow_initial_approve, prow_initial_updated = NOW()  WHERE prow_scholar_code = :prow_scholar_code");
-        $stmt->execute([
-            'prow_initial_approve' => 1,
-            'prow_scholar_code' => $scholarCode
+            'prow_scholar_filled_up' => $filledupStatus
         ]);
 
         if ($stmt) {
@@ -912,17 +894,17 @@
     function getBannerImg($userType){
 
         if ($userType==0){
-            $userbanner="../../assets/img/pages/header-light.png";
+            $userbanner="../../assets/img/pages/profile-banner.png";
         }else if($userType==1){
-            $userbanner="../../assets/img/pages/2.png";
+            $userbanner="../../assets/img/pages/profile-banner.png";
         }else if($userType==2){
-            $userbanner="../../assets/img/pages/3.png";
+            $userbanner="../../assets/img/pages/profile-banner.png";
         }else if($userType==3){
-            $userbanner="../../assets/img/pages/4.png";
+            $userbanner="../../assets/img/pages/profile-banner.png";
         }else if($userType==4){
             $userbanner="../../assets/img/pages/scholar1.png";
         }else if($userType==5){
-            $userbanner="../../assets/img/pages/4.png";
+            $userbanner="../../assets/img/pages/profile-banner.png";
         }
 
         return $userbanner;
@@ -993,7 +975,10 @@
                     !empty($personal['prow_prof_height']) && 
                     !empty($personal['prow_prof_weight']) && 
                     !empty($personal['prow_prof_blood_type']) && 
-                    !empty($personal['prow_prof_religion'])
+                    !empty($personal['prow_prof_religion']) && 
+                    !empty($personal['prow_prof_father']) && 
+                    !empty($personal['prow_prof_mother']) && 
+                    !empty($personal['prow_prof_guardian']) 
                     ) {
                     $res = "complete";
                 } else {
@@ -1031,28 +1016,6 @@
         }
         
         return $res;
-    }
-
-    function initialApproveStatus($scholarCode){
-
-        $stmt=PWD()->prepare("SELECT
-                            *
-                            FROM
-                            prow_scholar
-                            Where
-                            prow_scholar_code = :prow_scholar_code
-                            AND
-                            prow_initial_approve = :prow_initial_approve");
-        $stmt->execute([
-            'prow_scholar_code' => $scholarCode,
-            'prow_initial_approve' => 1
-        ]);   
-        
-        if ($stmt) {
-            return true;
-        } else {
-            return false;
-        } 
     }
 
     function getPersonalInformationCreatedDate($scholarCode){

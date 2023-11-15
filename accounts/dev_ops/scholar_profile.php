@@ -124,7 +124,7 @@
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Municipality:</span>
-                          <span><?= getMunicipalityName($addressProfile['prow_address_municipality']) ?></span>
+                          <span><?= $addressProfile['prow_address_municipality']?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Street:</span>
