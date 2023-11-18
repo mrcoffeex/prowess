@@ -45,7 +45,7 @@
                     width="160" />
 
                     <div class="d-flex flex-column align-items-center">
-                            <a href="login" target="_blank" class="btn btn-primary text-center my-4">Login Now</a>
+                            <a href="login"  class="btn btn-primary text-center my-4">Login Now</a>
                         </div>
                     </div>
                 </div>

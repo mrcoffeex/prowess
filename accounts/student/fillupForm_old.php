@@ -19,10 +19,18 @@ include "_head.php";
                         ?>
                         <div class="card mb-4">
                             <h3 class="card-header">
-                                <i class="mdi mdi-book-edit-outline me-2 mdi-20px"></i>Scholar Information <?= $scholarCode ?>
+                                <i class="mdi mdi-book-edit-outline me-2 mdi-20px"></i>Scholar Information (Existing)
                             </h3>
 
                             <form id="formValidation" class="card-body" enctype="multipart/form-data" method="POST" action="fillupformCreate">
+                                    
+                                <h5><i class="mdi mdi-home-map-marker me-2 mdi-20px"></i>Pin your address</h5>
+                                <div class="row g-3">
+
+                                </div>
+
+
+                                <hr class="my-4 mx-n4" />
                                 <h5><i class="mdi mdi-account me-2 mdi-20px"></i>Personal Information</h5>
                                 <div class="row g-3">
                                     <div class="col-md-4">
@@ -91,6 +99,9 @@ include "_head.php";
                                             <label for="scholarTalent">Talents (You can select multiple)</label>
                                         </div>
                                     </div>
+
+                                    <hr class="my-4 mx-n4" />
+                                    <h5><i class="mdi mdi-star-settings-outline me-2 mdi-20px"></i>Skills Information</h5>
                                     <div class="col-md-4 select2-primary">
                                         <div class="form-floating form-floating-outline">
                                             <select id="scholarTechskills" name="scholarTechskills[]" class="select2 form-select" multiple>
@@ -149,7 +160,7 @@ include "_head.php";
                                     </div>
                                 </div>
                                 <hr class="my-4 mx-n4" />
-                                <h5><i class="mdi mdi-account-group-outline me-2 mdi-20px"></i>Family Information</h5>
+                                <h5><i class="mdi mdi-account-group-outline me-2 mdi-20px"></i>Family Background Information</h5>
                                 <div class="row g-3">
                                     <!-- Father Information -->
                                     <div class="col-md-4">
@@ -249,7 +260,7 @@ include "_head.php";
                                     <div class="col-md-4">
                                         <div class="form-floating form-floating-outline">
                                             <select id="scholarIncome" name="scholarIncome" class="form-control">
-                                                <option>Select Monthly Income</option>
+                                                <option>Select Household Monthly Income</option>
                                                 <option value="Less than ₱9,000">Less than ₱9,000</option>
                                                 <option value="₱9,100 - ₱18,000">₱9,100 - ₱18,000</option>
                                                 <option value="₱9,100 - ₱18,000">₱18,100 - ₱36,000</option>

@@ -382,6 +382,25 @@
 
     }
 
+    //check if scholar if new or old
+    function checkscholartype($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                            prow_account_type
+                                            FROM
+                                            prow_scholar
+                                            Where
+                                            prow_scholar_code = :prow_scholar_code
+                                           ");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        $accountype = $res['prow_account_type'];
+        return $accountype;
+
+    }
+
     //Count all Active Scholars
      function countScholarActive($scholarID){
 
@@ -641,8 +660,13 @@
             'prow_scholar_code' => $profileCode
         ]);
         
-        return $statement;
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
 
+        if (!empty($res['prow_hei'])) {
+            return $res['prow_hei'];
+        } else {         
+            return "Not yet enrolled";
+        }
     }
 
     function getScholarCourse($profileCode){

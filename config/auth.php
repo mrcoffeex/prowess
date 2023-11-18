@@ -26,7 +26,7 @@
         $_SESSION['hotkopi_prow_session_type'] = $row['prow_user_type'];
 
         if($count > 0){
-            if ($row['prow_user_verify'] == 1) {
+            if ($row['prow_user_verify'] == 1 ) {
               
                 if($row['prow_user_type'] == 0){
     
@@ -37,9 +37,14 @@
     
                     createLog("Login", $prowUsername, "auth");
                     
-                    if (checkProfileForm($scholarCode)==0) {
+
+                    //scholar type 1- old ,2-new
+                    //scholar already fill up 0- no ,1-yes
+                    if (checkProfileForm($scholarCode)==0 && checkscholartype($scholarCode) == 2 ) {
                         header("location: ../accounts/student/index_inc");
-                    } else {
+                    } else if(checkProfileForm($scholarCode)==0 && checkscholartype($scholarCode) == 1){
+                        header("location: ../accounts/student/fillupForm_old");
+                    }else {
                         header("location: ../accounts/student/");
                     }
     

@@ -61,7 +61,7 @@
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-town-hall mdi-24px"></i><span class="fw-semibold mx-2">School:</span>
-                          <span><?= getSchoolName($schoolProfile['prow_hei']) ?></span>
+                          <span><?=getSchoolScholar($scholarCode) ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-book-check-outline mdi-24px"></i

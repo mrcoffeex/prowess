@@ -1,4 +1,4 @@
-a<?php  
+<?php  
   include 'config/includes.php';
   $title = $my_project_name;
 ?>

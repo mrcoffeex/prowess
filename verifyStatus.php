@@ -58,7 +58,7 @@
                     width="160" />
 
                     <div class="d-flex flex-column align-items-center">
-                            <a href="./" target="_blank" class="btn btn-primary text-center my-4">Back to Homepage</a>
+                            <a href="./" class="btn btn-primary text-center my-4">Back to Homepage</a>
                         </div>
                     </div>
                 </div>
