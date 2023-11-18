@@ -344,6 +344,21 @@
 
     }
 
+    function updateInitialApprove($scholarCode){
+        $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_initial_approve = :prow_initial_approve, prow_initial_updated = NOW()  WHERE prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_initial_approve' => 1,
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     //check if scholar has already fill up form
     function checkProfileForm($profileCode){
         $statement=PWD()->prepare("SELECT
