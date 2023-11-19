@@ -943,7 +943,27 @@
 
     }
 
+    function initialApproveStatus($scholarCode){
 
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_scholar
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            AND
+                            prow_initial_approve = :prow_initial_approve");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_initial_approve' => 1
+        ]);   
+        
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        } 
+    }
     function selectPersonalInfomation($scholarCode){
 
         $stmt=PWD()->prepare("SELECT
