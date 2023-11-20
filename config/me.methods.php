@@ -684,9 +684,28 @@
     function semester($semester){
 
         if ($semester == 1) {
-            $res = "First Semester";
+            $res = "1st Semester";
         } else if ($semester == 2) {
-            $res = "Second Semester";
+            $res = "2nd Semester";
+        } else {
+            $res = "";
+        }
+        
+        return $res;
+    }
+
+    function yearLevel($yearLevel){
+
+        if ($yearLevel == 1) {
+            $res = "1st";
+        } else if ($yearLevel == 2) {
+            $res = "2nd";
+        } else if ($yearLevel == 3) {
+            $res = "3rd";
+        } else if ($yearLevel == 4) {
+            $res = "4th";
+        } else if ($yearLevel == 5) {
+            $res = "5th";
         } else {
             $res = "";
         }
@@ -701,7 +720,7 @@
                             FROM
                             prow_list_sy
                             Order By
-                            prow_school_year
+                            prow_sy_year
                             DESC");
         $stmt->execute();
 
@@ -712,16 +731,69 @@
     function getSchoolYearLatest(){
 
         $stmt=PWD()->prepare("SELECT 
-                            prow_school_year
+                            prow_sy_year
                             FROM
                             prow_list_sy
-                            Order By
-                            prow_sy_id
-                            DESC");
-        $stmt->execute();
+                            Where
+                            prow_sy_current = :prow_sy_current");
+        $stmt->execute([
+            'prow_sy_current' => 1
+        ]);
         $res=$stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $res['prow_school_year'];
+        return $res['prow_sy_year'];
+
+    }
+
+    function selectSkillTypes(){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_skill_type
+                            Order By
+                            prow_skill_type_name
+                            ASC");
+        $stmt->execute();
+
+        return $stmt;
+
+    }
+
+    function selectSkillsByType($skillTypeId){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_skills
+                            Where
+                            prow_skill_type_id = :prow_skill_type_id
+                            Order By
+                            prow_skill_name
+                            ASC");
+        $stmt->execute([
+            'prow_skill_type_id' => $skillTypeId
+        ]);
+
+        return $stmt;
+
+    }
+
+    function getSkillType($skillTypeId){
+
+        $stmt=PWD()->prepare("SELECT
+                            prow_skill_type_name
+                            FROM
+                            prow_skill_type
+                            Where
+                            prow_skill_type_id = :prow_skill_type_id");
+        $stmt->execute([
+            'prow_skill_type_id' => $skillTypeId
+        ]);
+
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $res['prow_skill_type_name'];
 
     }
 ?>

@@ -1,15 +1,13 @@
 <?php
   require '../../config/includes.php';
   require '_session.php';
+  require '_restriction.php';
   include "_head.php";
 
-  $getProfile=selectProfile($scholarCode);
+  $getProfile=selectScholar($scholarCode);
   $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
 
-  $getSchoolProfile=getSchoolScholar($scholarCode);
-  $schoolProfile=$getSchoolProfile->fetch(PDO::FETCH_ASSOC);
-
-  $getAddressProfile=getAddressScholar($scholarCode);
+  $getAddressProfile=selectScholarAddress($scholarCode);
   $addressProfile=$getAddressProfile->fetch(PDO::FETCH_ASSOC);
 
 ?>
@@ -314,7 +312,7 @@
                                             $getSY=selectSY();
                                             while ($sy=$getSY->fetch(PDO::FETCH_ASSOC)) {
                                           ?>
-                                        <option value="<?= $sy['prow_school_year'] ?>"><?= $sy['prow_school_year'] ?></option>
+                                        <option value="<?= $sy['prow_sy_year'] ?>"><?= $sy['prow_sy_year'] ?></option>
                                         <?php } ?>
                             </select>
                             <label for="enrollmentYearLevel">School Year</label>

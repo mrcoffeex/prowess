@@ -1,6 +1,9 @@
 <?php
   require '../../config/includes.php';
   require '_session.php';
+  require '_restriction.php';
+
+  $title = "Welcome " . $userFullname;
   include "_head.php";
 ?>
 
@@ -25,7 +28,15 @@
                         <p class="mb-0">Welcome to Prowess your
                         </p>
                         <p>Online Scholarship Management System.</p>
-                        <a href="application_info" class="btn btn-primary">View Scholarship Requirements</a>
+                        <?php  
+                          if ($fillUpStatus == "new") {
+                            echo '<a href="fillupForm_old" class="btn btn-success mb-2">Create Application</a>';
+                          } else {
+                            echo '<a href="fillupForm_old" class="btn btn-warning mb-2">Update Application</a>';
+                          }
+                        ?>
+
+                        <a href="application_info" target="_blank" class="btn btn-primary">View Scholarship Requirements</a>
                       </div>
                     </div>
                     <div class="col-md-8 text-center text-md-end order-1 order-md-2">

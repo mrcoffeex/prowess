@@ -1,6 +1,7 @@
 <?php
   require '../../config/includes.php';
   require '_session.php';
+  require '_restriction.php';
   include "_head.php";
 
   $getProfile=selectPersonalInfomation($scholarCode);

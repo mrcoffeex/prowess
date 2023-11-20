@@ -5,13 +5,13 @@
 
   $scholarCode = clean_string($_GET['scholarCode']);
 
-  $getProfile=selectProfile($scholarCode);
+  $getProfile=selectScholar($scholarCode);
   $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
 
   $getSchoolProfile=getSchoolScholar($scholarCode);
   $schoolProfile=$getSchoolProfile->fetch(PDO::FETCH_ASSOC);
 
-  $getAddressProfile=getAddressScholar($scholarCode);
+  $getAddressProfile=selectScholarAddress($scholarCode);
   $addressProfile=$getAddressProfile->fetch(PDO::FETCH_ASSOC);
 
 ?>
@@ -317,7 +317,7 @@
                                             $getSY=selectSY();
                                             while ($sy=$getSY->fetch(PDO::FETCH_ASSOC)) {
                                           ?>
-                                        <option value="<?= $sy['prow_school_year'] ?>"><?= $sy['prow_school_year'] ?></option>
+                                        <option value="<?= $sy['prow_sy_year'] ?>"><?= $sy['prow_sy_year'] ?></option>
                                         <?php } ?>
                             </select>
                             <label for="enrollmentYearLevel">School Year</label>

@@ -255,7 +255,7 @@
                                                             $getSY=selectSY();
                                                             while ($sy=$getSY->fetch(PDO::FETCH_ASSOC)) {
                                                         ?>
-                                                        <option value="<?= $sy['prow_school_year'] ?>"><?= $sy['prow_school_year'] ?></option>
+                                                        <option value="<?= $sy['prow_sy_year'] ?>"><?= $sy['prow_sy_year'] ?></option>
                                                         <?php } ?>
                                             </select>
                                             <label for="enrollmentYearLevel">School Year</label>

@@ -1,8 +1,8 @@
 <?php
   require '../../config/includes.php';
   require '_session.php';
+  
   include "_head.php";
-
 ?>
 
 <body>

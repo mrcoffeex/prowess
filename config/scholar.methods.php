@@ -62,7 +62,7 @@
 
     }
 
-    function createScholarAddress($scholarCode, $addressDescription, $barangay, $municipality, $province, $zipcode){
+    function createScholarAddress($scholarCode, $addressDescription, $barangay, $municipality, $province, $zipcode, $long, $lat){
 
         $stmt=PWD()->prepare("INSERT INTO prow_scholar_address
                             (
@@ -72,6 +72,8 @@
                                 prow_address_municipality, 
                                 prow_address_province, 
                                 prow_address_zipcode, 
+                                prow_address_long, 
+                                prow_address_lat, 
                                 prow_address_created, 
                                 prow_address_updated
                             ) 
@@ -83,6 +85,8 @@
                                 :prow_address_municipality, 
                                 :prow_address_province, 
                                 :prow_address_zipcode, 
+                                :prow_address_long, 
+                                :prow_address_lat, 
                                 NOW(), 
                                 NOW()
                             )");
@@ -92,7 +96,31 @@
             'prow_address_brgy' => $barangay, 
             'prow_address_municipality' => $municipality, 
             'prow_address_province' => $province, 
-            'prow_address_zipcode' => $zipcode
+            'prow_address_zipcode' => $zipcode, 
+            'prow_address_long' => $long, 
+            'prow_address_lat' => $lat
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function updateScholarCoordinates($scholarCode, $long, $lat){
+
+        $stmt=PWD()->prepare("UPDATE prow_scholar_address
+                            SET
+                            prow_address_long = :prow_address_long,
+                            prow_address_lat = :prow_address_lat
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_address_long' => $long,
+            'prow_address_lat' => $lat,
+            'prow_scholar_code' => $scholarCode
         ]);
 
         if ($stmt) {
@@ -129,7 +157,7 @@
 
         $createUser = createUser($userCode, $scholarCode, $fullname, $uname, $pword);
         $createScholar = createScholarProfile($scholarCode, $lname, $fname, $mname, $suffix, $gender, $cs, $birthday, $birthplace, $contact, $email);
-        $createScholarAddress = createScholarAddress($scholarCode, $addressDescription, $barangay, $municipality, $province, $zipcode);
+        $createScholarAddress = createScholarAddress($scholarCode, $addressDescription, $barangay, $municipality, $province, $zipcode, 0, 0);
 
         //send email
 
@@ -158,7 +186,8 @@
             $scholarMotherOccu, 
             $scholarGuardianName, 
             $scholarGuardianCont, 
-            $scholarGuardianOccu
+            $scholarGuardianOccu, 
+            $scholarIncome
     ){
 
         $stmt=PWD()->prepare("INSERT INTO prow_scholar_profile
@@ -178,6 +207,7 @@
                     prow_prof_guardian,
                     prow_prof_guardian_cont,
                     prow_prof_guardian_occu,
+                    prow_prof_income,
                     prow_prof_created,
                     prow_prof_updated
 
@@ -200,6 +230,7 @@
                     :prow_prof_guardian,
                     :prow_prof_guardian_cont,
                     :prow_prof_guardian_occu,
+                    :prow_prof_income,
                     NOW(), 
                     NOW()
                 )");
@@ -219,6 +250,7 @@
             'prow_prof_guardian' => $scholarGuardianName,
             'prow_prof_guardian_cont' => $scholarGuardianCont,
             'prow_prof_guardian_occu' => $scholarGuardianOccu,
+            'prow_prof_income' => $scholarIncome
         ]);
 
         if ($stmt) {
@@ -227,7 +259,93 @@
         return false;
         }
 
+    }
 
+    function updateScholarInformation(
+            $scholarCode, 
+            $scholarHeight, 
+            $scholarWeight, 
+            $scholarBloodType, 
+            $scholarReligion, 
+            $scholarTalentArray, 
+            $scholarFatherName, 
+            $scholarFatherCont, 
+            $scholarFatherOccu, 
+            $scholarMotherName, 
+            $scholarMotherCont, 
+            $scholarMotherOccu, 
+            $scholarGuardianName, 
+            $scholarGuardianCont, 
+            $scholarGuardianOccu, 
+            $scholarIncome
+    ){
+
+        $stmt=PWD()->prepare("UPDATE prow_scholar_profile
+                            SET 
+                            prow_prof_height = :prow_prof_height, 
+                            prow_prof_weight = :prow_prof_weight, 
+                            prow_prof_blood_type = :prow_prof_blood_type, 
+                            prow_prof_religion = :prow_prof_religion, 
+                            prow_prof_talent = :prow_prof_talent, 
+                            prow_prof_father = :prow_prof_father, 
+                            prow_prof_father_cont = :prow_prof_father_cont,
+                            prow_prof_father_occu = :prow_prof_father_occu,
+                            prow_prof_mother = :prow_prof_mother,
+                            prow_prof_mother_cont = :prow_prof_mother_cont,
+                            prow_prof_mother_occu = :prow_prof_mother_occu,
+                            prow_prof_guardian = :prow_prof_guardian,
+                            prow_prof_guardian_cont = :prow_prof_guardian_cont,
+                            prow_prof_guardian_occu = :prow_prof_guardian_occu,
+                            prow_prof_income = :prow_prof_income,
+                            prow_prof_updated = NOW()
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_prof_height' => $scholarHeight,
+            'prow_prof_weight' => $scholarWeight,
+            'prow_prof_blood_type' => $scholarBloodType,
+            'prow_prof_religion' => $scholarReligion,
+            'prow_prof_talent' => $scholarTalentArray,
+            'prow_prof_father' => $scholarFatherName,
+            'prow_prof_father_cont' => $scholarFatherCont,
+            'prow_prof_father_occu' => $scholarFatherOccu,
+            'prow_prof_mother' => $scholarMotherName,
+            'prow_prof_mother_cont' => $scholarMotherCont,
+            'prow_prof_mother_occu' => $scholarMotherOccu,
+            'prow_prof_guardian' => $scholarGuardianName,
+            'prow_prof_guardian_cont' => $scholarGuardianCont,
+            'prow_prof_guardian_occu' => $scholarGuardianOccu,
+            'prow_prof_income' => $scholarIncome,
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        if ($stmt) {
+        return true;
+        } else {
+        return false;
+        }
+
+    }
+
+    function checkScholarInformation($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT prow_prof_id
+                            FROM
+                            prow_scholar_profile
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        $count=$stmt->rowCount();
+
+        if ($count > 0) {
+            return true;
+        } else {
+            return false;
+        }
+        
     }
 
     function addScholarEnrollment(
@@ -329,7 +447,8 @@
     }
 
 
-    function updateScholarSchoolID($scholarSchoolID,$filledupStatus){
+    function updateScholarSchoolID($scholarSchoolID, $filledupStatus){
+
         $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_scholar_school_id = :prow_scholar_school_id, prow_scholar_filled_up = :prow_scholar_filled_up");
         $stmt->execute([
             'prow_scholar_school_id' => $scholarSchoolID,
@@ -362,13 +481,13 @@
     //check if scholar has already fill up form
     function checkProfileForm($profileCode){
         $statement=PWD()->prepare("SELECT
-                                            prow_scholar_filled_up
-                                            FROM
-                                            prow_scholar
-                                            Where
-                                            prow_scholar_code = :prow_scholar_code
-                                            AND 
-                                            prow_scholar_filled_up = :prow_scholar_filled_up");
+                                    prow_scholar_filled_up
+                                    FROM
+                                    prow_scholar
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code
+                                    AND 
+                                    prow_scholar_filled_up = :prow_scholar_filled_up");
         $statement->execute([
             'prow_scholar_code' => $profileCode,
             'prow_scholar_filled_up' => 1,
@@ -385,12 +504,12 @@
     //check if scholar if new or old
     function checkscholartype($profileCode){
         $statement=PWD()->prepare("SELECT
-                                            prow_account_type
-                                            FROM
-                                            prow_scholar
-                                            Where
-                                            prow_scholar_code = :prow_scholar_code
-                                           ");
+                                prow_account_type
+                                FROM
+                                prow_scholar
+                                Where
+                                prow_scholar_code = :prow_scholar_code
+                                ");
         $statement->execute([
             'prow_scholar_code' => $profileCode
         ]);
@@ -649,13 +768,28 @@
     }
 
     //Get School of Scholar
+    function selectScholarApplogs($profileCode){
+
+        $statement=PWD()->prepare("SELECT
+                                    *
+                                    From
+                                    prow_scholar_app_logs
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+        
+        return $statement;
+    }
+
     function getSchoolScholar($profileCode){
         $statement=PWD()->prepare("SELECT
-                                        *
-                                        From
-                                        prow_scholar_app_logs
-                                        Where
-                                        prow_scholar_code = :prow_scholar_code");
+                                    *
+                                    From
+                                    prow_scholar_app_logs
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code");
         $statement->execute([
             'prow_scholar_code' => $profileCode
         ]);
@@ -671,7 +805,7 @@
 
     function getScholarCourse($profileCode){
         $statement=PWD()->prepare("SELECT
-                                        *
+                                        prow_course
                                         From
                                         prow_scholar_app_logs
                                         Where
@@ -711,50 +845,13 @@
     }
 
 
-    function getCourseName($courseID){
+    function selectScholar($profileCode){
         $statement=PWD()->prepare("SELECT
-                                        *
-                                        From
-                                        prow_list_course
-                                        Where
-                                        prow_course_id = :prow_course_id");
-        $statement->execute([
-            'prow_course_id' => $courseID
-        ]);
-
-        $res=$statement->fetch(PDO::FETCH_ASSOC);
-        if (empty($res['prow_course_name'])) {
-            return "Not yet enrolled";
-        } else {
-            return $res['prow_course_name'];
-        }        
-
-    }
-
-    function getCourse($courseID){
-        $statement=PWD()->prepare("SELECT
-                                        *
-                                        From
-                                        prow_list_course
-                                        Where
-                                        prow_course_id = :prow_course_id");
-        $statement->execute([
-            'prow_course_id' => $courseID
-        ]);
-
-        $res=$statement->fetch(PDO::FETCH_ASSOC);
-
-        return $res['prow_course_name'];
-    }
-
-
-    function selectProfile($profileCode){
-        $statement=PWD()->prepare("SELECT
-                                      *
-                                        From
-                                        prow_scholar
-                                        Where
-                                        prow_scholar_code = :prow_scholar_code");
+                                    *
+                                    From
+                                    prow_scholar
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code");
         $statement->execute([
             'prow_scholar_code' => $profileCode
         ]);
@@ -763,13 +860,13 @@
 
     }
 
-    function getAddressScholar($profileCode){
+    function selectScholarAddress($profileCode){
         $statement=PWD()->prepare("SELECT
-                                        *
-                                        From
-                                        prow_scholar_address
-                                        Where
-                                        prow_scholar_code = :prow_scholar_code");
+                                    *
+                                    From
+                                    prow_scholar_address
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code");
         $statement->execute([
             'prow_scholar_code' => $profileCode
         ]);
@@ -900,7 +997,7 @@
                                         FROM
                                         prow_list_sy
                                         Order By
-                                        prow_school_year
+                                        prow_sy_year
                                         ASC");
         $statement->execute();
 
@@ -927,6 +1024,26 @@
         $count=$stmt->rowCount();
 
         return $count;
+
+    }
+
+    function selectCurrentApplication($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT 
+                            *
+                            FROM
+                            prow_scholar_app_logs
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            Order By
+                            prow_app_logs_created
+                            DESC
+                            LIMIT 1");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        return $stmt;
 
     }
 
@@ -1132,6 +1249,124 @@
             return null;
         } 
 
+    }
+
+    function getScholarLong($scholarCode){
+
+        $statement=PWD()->prepare("SELECT
+                                    prow_address_long
+                                    From
+                                    prow_scholar_address
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+        
+        $count=$statement->rowCount();
+
+        if ($count > 0) {
+            
+            $res=$statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $res['prow_address_long'];
+
+        } else {
+            return null;
+        } 
+
+    }
+
+    function getScholarLat($scholarCode){
+
+        $statement=PWD()->prepare("SELECT
+                                    prow_address_lat
+                                    From
+                                    prow_scholar_address
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+        
+        $count=$statement->rowCount();
+
+        if ($count > 0) {
+            
+            $res=$statement->fetch(PDO::FETCH_ASSOC);
+            
+            return $res['prow_address_lat'];
+
+        } else {
+            return null;
+        } 
+
+    }
+
+    function selectScholarSkills($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_scholar_skills
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        return $stmt;
+
+    }
+
+    function createScholarSkill($scholarCode, $skillTypeId, $skill, $proficiency){
+
+        $stmt=PWD()->prepare("INSERT INTO
+                            prow_scholar_skills
+                            (
+                                prow_scholar_code,
+                                prow_skill_type_id,
+                                prow_skills,
+                                prow_skills_proficiency
+                            )
+                            Values
+                            (
+                                :prow_scholar_code,
+                                :prow_skill_type_id,
+                                :prow_skills,
+                                :prow_skills_proficiency
+                            )");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_skill_type_id' => $skillTypeId,
+            'prow_skills' => $skill,
+            'prow_skills_proficiency' => $proficiency
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
+    function removeScholarSkill($skillsId){
+
+        $stmt=PWD()->prepare("DELETE FROM
+                            prow_scholar_skills
+                            Where
+                            prow_skills_id = :prow_skills_id");
+        $stmt->execute([
+            'prow_skills_id' => $skillsId
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+        
     }
 
 

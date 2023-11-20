@@ -97,7 +97,7 @@
                         </div>
                         <div class="flex-grow-1">
                           <span class="fw-semibold d-block"><?= $userFullname ?></span>
-                          <small class="text-muted"><?= $user_role ?></small>
+                          <small class="text-muted"><?= getUserType($userType) ?></small>
                         </div>
                       </div>
                     </a>
@@ -112,7 +112,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="logout" target="_blank">
+                    <a class="dropdown-item" href="logout">
                       <i class="mdi mdi-logout me-2"></i>
                       <span class="align-middle">Log Out</span>
                     </a>

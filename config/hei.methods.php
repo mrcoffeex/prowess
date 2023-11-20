@@ -174,11 +174,11 @@
     function getSchoolName($heiID){
         
         $statement=PWD()->prepare("SELECT
-                                        *
-                                        From
-                                        prow_hei
-                                        Where
-                                        prow_hei_id = :prow_hei_id");
+                                    prow_hei_name
+                                    From
+                                    prow_hei
+                                    Where
+                                    prow_hei_id = :prow_hei_id");
         $statement->execute([
             'prow_hei_id' => $heiID
         ]);
@@ -487,6 +487,42 @@
             return true;
         }
         
+    }
+
+    function getCourseName($courseID){
+        $statement=PWD()->prepare("SELECT
+                                    *
+                                    From
+                                    prow_list_course
+                                    Where
+                                    prow_course_id = :prow_course_id");
+        $statement->execute([
+            'prow_course_id' => $courseID
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        if (empty($res['prow_course_name'])) {
+            return "";
+        } else {
+            return $res['prow_course_name'];
+        }        
+
+    }
+
+    function getCourse($courseID){
+        $statement=PWD()->prepare("SELECT
+                                    *
+                                    From
+                                    prow_list_course
+                                    Where
+                                    prow_course_id = :prow_course_id");
+        $statement->execute([
+            'prow_course_id' => $courseID
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        return $res['prow_course_name'];
     }
 
 

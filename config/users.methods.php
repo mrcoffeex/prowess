@@ -44,4 +44,26 @@
         
     }
 
+    function getUserType($userType){
+
+        if ($userType == 0){
+            $res = "SuperAdmin";
+        } else if ($userType == 1){
+            $res = "Admin";
+        } else if ($userType == 2){
+            $res = "Staff";
+        } else if ($userType == 3){
+            $res = "HEI";
+        } else if ($userType == 4){
+            $res = "Student";
+        } else if ($userType == 5){
+            $res = "Industry";
+        }else{
+            $res = "unknown";
+        }
+
+        return $res;
+
+    }
+
 ?>

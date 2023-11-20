@@ -3,13 +3,13 @@
   require '_session.php';
   include "_head.php";
 
-  $getProfile=selectProfile($scholarCode);
+  $getProfile=selectScholar($scholarCode);
   $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
 
   $getSchoolProfile=getSchoolScholar($scholarCode);
   $schoolProfile=$getSchoolProfile->fetch(PDO::FETCH_ASSOC);
 
-  $getAddressProfile=getAddressScholar($scholarCode);
+  $getAddressProfile=selectScholarAddress($scholarCode);
   $addressProfile=$getAddressProfile->fetch(PDO::FETCH_ASSOC);
 
 ?>

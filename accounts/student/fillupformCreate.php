@@ -59,7 +59,8 @@
             $scholarMotherOccu, 
             $scholarGuardianName, 
             $scholarGuardianCont, 
-            $scholarGuardianOccu
+            $scholarGuardianOccu, 
+            ""
         );
 
         $request2 = addScholarEnrollment(

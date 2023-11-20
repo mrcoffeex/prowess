@@ -43,7 +43,7 @@
                                     AND
                                     (prow_address_municipality LIKE :prow_address_municipality)
                                     AND
-                                    (prow_school_year LIKE :prow_school_year)
+                                    (prow_sy_year LIKE :prow_sy_year)
                                     AND
                                     (prow_sem LIKE :prow_sem)
                                     Order By
@@ -56,7 +56,7 @@
             'prow_hei_id' => $schoolText,
             'prow_scholar_acct_status' => $statusText,
             'prow_address_municipality' => $municipalityText,
-            'prow_school_year' => $schoolYearText,
+            'prow_sy_year' => $schoolYearText,
             'prow_sem' => $semesterText
         ]);
     } else {
@@ -154,7 +154,7 @@
                                 AND
                                 (prow_address_municipality LIKE :prow_address_municipality)
                                 AND
-                                (prow_school_year LIKE :prow_school_year)
+                                (prow_sy_year LIKE :prow_sy_year)
                                 AND
                                 (prow_sem LIKE :prow_sem)
                                 Order By
@@ -168,7 +168,7 @@
             'prow_hei_id' => $schoolText,
             'prow_scholar_acct_status' => $statusText,
             'prow_address_municipality' => $municipalityText,
-            'prow_school_year' => $schoolYearText,
+            'prow_sy_year' => $schoolYearText,
             'prow_sem' => $semesterText
         ]);
     } else {

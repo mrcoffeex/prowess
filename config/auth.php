@@ -36,17 +36,7 @@
                 }else if($row['prow_user_type'] == 4){
     
                     createLog("Login", $prowUsername, "auth");
-                    
-
-                    //scholar type 1- old ,2-new
-                    //scholar already fill up 0- no ,1-yes
-                    if (checkProfileForm($scholarCode)==0 && checkscholartype($scholarCode) == 2 ) {
-                        header("location: ../accounts/student/index_inc");
-                    } else if(checkProfileForm($scholarCode)==0 && checkscholartype($scholarCode) == 1){
-                        header("location: ../accounts/student/fillupForm_old");
-                    }else {
-                        header("location: ../accounts/student/");
-                    }
+                    header("location: ../accounts/student/");
     
                 }elseif($row['prow_user_type'] == 1){
     
@@ -74,11 +64,6 @@
                 echo "Verify first the email";
                 header("location: ../login?note=noverify&uname=$prowUsername");
                 session_destroy();
-                
-
-                // createLog("Login Attempt", $prowUsername, "attempt");
-                // session_destroy();
-                // header("location: ../login?note=suspended&uname=$prowUsername");
             }
 
         }else{

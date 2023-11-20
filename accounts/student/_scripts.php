@@ -7,6 +7,7 @@
 <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
 <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
 <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="../../assets/vendor/libs/toastr/toastr.js"></script>
 
 <script src="../../assets/vendor/js/menu.js"></script>
 <!-- endbuild -->
@@ -90,6 +91,7 @@
         formObj.innerHTML = "processing ...";
         return true;  
     }
+
     $(document).ready(function() {
 
         $('#enrollemntschooName').change(function(){
@@ -110,6 +112,29 @@
                     }
 
                     $('#enrollmentCourse').append(option);
+				}
+			});
+            
+        });
+
+        $('#skillCategory').change(function(){
+
+            $.ajax({
+				type: "GET",
+				url: "auto_gen_skills.php",
+				data: {skillTypeId: $('#skillCategory').val()},              
+				success: function (data) {
+
+                    $('#skills').find('option').remove();
+
+					var skills = data.split(",");
+                    var option = '<option></option>';
+                    
+                    for (var i=0; i<skills.length; i++){
+                        option += '<option>' + skills[i] + '</option>';
+                    }
+
+                    $('#skills').append(option);
 				}
 			});
             
