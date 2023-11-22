@@ -25,8 +25,8 @@
 
     } else {
         // new
-        $fillUpStatus = "";
-        header("location: fillupForm");
+        $fillUpStatus = "new";
+        //header("location: fillupForm");
     }
     
 

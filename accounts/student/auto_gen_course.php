@@ -8,7 +8,7 @@
     $getcourse=selectCoursebyHeiId($courseId);
     while ($course=$getcourse->fetch(PDO::FETCH_ASSOC)) {
         
-        $courses .= ",".$course['prow_course_name'];
+        $courses .= ",<option value='".$course['prow_course_id']."'>".$course['prow_course_name']."</option>";
 
     }
 

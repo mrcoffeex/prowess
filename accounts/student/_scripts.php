@@ -108,7 +108,7 @@
                     var option = '<option></option>';
                     
                     for (var i=0; i<course.length; i++){
-                        option += '<option>' + course[i] + '</option>';
+                        option += '' + course[i] + '';
                     }
 
                     $('#enrollmentCourse').append(option);

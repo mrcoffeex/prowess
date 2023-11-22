@@ -2,38 +2,38 @@
     require '../../config/includes.php';
     require '_session.php';
 
-    $getScholar=selectScholar($scholarCode);
-    $scholar=$getScholar->fetch(PDO::FETCH_ASSOC);
+    @$getScholar=selectScholar($scholarCode);
+    @$scholar=$getScholar->fetch(PDO::FETCH_ASSOC);
 
-    $getScholarProfile=selectPersonalInfomation($scholarCode);
-    $scholarProfile=$getScholarProfile->fetch(PDO::FETCH_ASSOC);
+    @$getScholarProfile=selectPersonalInfomation($scholarCode);
+    @$scholarProfile=$getScholarProfile->fetch(PDO::FETCH_ASSOC);
 
-    $getScholarAppLogs=selectScholarApplogs($scholarCode);
-    $scholarAppLogs=$getScholarAppLogs->fetch(PDO::FETCH_ASSOC);
+    @$getScholarAppLogs=selectScholarApplogs($scholarCode);
+    @$scholarAppLogs=$getScholarAppLogs->fetch(PDO::FETCH_ASSOC);
 
-    $valBloodType = ($scholarProfile['prow_prof_blood_type'] != "") ? $scholarProfile['prow_prof_blood_type'] : "";
-    $valHeight = ($scholarProfile['prow_prof_height'] != "") ? $scholarProfile['prow_prof_height'] : "";
-    $valWeight = ($scholarProfile['prow_prof_weight'] != "") ? $scholarProfile['prow_prof_weight'] : "";
-    $valReligion = ($scholarProfile['prow_prof_religion'] != "") ? $scholarProfile['prow_prof_religion'] : "";
-    $valTalents = $scholarProfile['prow_prof_talent'];                        
+    @$valBloodType = ($scholarProfile['prow_prof_blood_type'] != "") ? $scholarProfile['prow_prof_blood_type'] : "";
+    @$valHeight = ($scholarProfile['prow_prof_height'] != "") ? $scholarProfile['prow_prof_height'] : "";
+    @$valWeight = ($scholarProfile['prow_prof_weight'] != "") ? $scholarProfile['prow_prof_weight'] : "";
+    @$valReligion = ($scholarProfile['prow_prof_religion'] != "") ? $scholarProfile['prow_prof_religion'] : "";
+    @$valTalents = $scholarProfile['prow_prof_talent'];                        
 
-    $valFatherName = ($scholarProfile['prow_prof_father'] != "") ? $scholarProfile['prow_prof_father'] : "";
-    $valFatherContact = ($scholarProfile['prow_prof_father_cont'] != "") ? $scholarProfile['prow_prof_father_cont'] : "";
-    $valFatherOccu = ($scholarProfile['prow_prof_father_occu'] != "") ? $scholarProfile['prow_prof_father_occu'] : "";
-    $valMotherName = ($scholarProfile['prow_prof_mother'] != "") ? $scholarProfile['prow_prof_mother'] : "";
-    $valMotherContact = ($scholarProfile['prow_prof_mother_cont'] != "") ? $scholarProfile['prow_prof_mother_cont'] : "";
-    $valMotherOccu = ($scholarProfile['prow_prof_mother_occu'] != "") ? $scholarProfile['prow_prof_mother_occu'] : "";
-    $valGuardianName = ($scholarProfile['prow_prof_guardian'] != "") ? $scholarProfile['prow_prof_guardian'] : "";
-    $valGuardianContact = ($scholarProfile['prow_prof_guardian_cont'] != "") ? $scholarProfile['prow_prof_guardian_cont'] : "";
-    $valGuardianOccu = ($scholarProfile['prow_prof_guardian_occu'] != "") ? $scholarProfile['prow_prof_guardian_occu'] : "";
-    $valIncome = ($scholarProfile['prow_prof_income'] != "") ? $scholarProfile['prow_prof_income'] : "";
+    @$valFatherName = ($scholarProfile['prow_prof_father'] != "") ? $scholarProfile['prow_prof_father'] : "";
+    @$valFatherContact = ($scholarProfile['prow_prof_father_cont'] != "") ? $scholarProfile['prow_prof_father_cont'] : "";
+    @$valFatherOccu = ($scholarProfile['prow_prof_father_occu'] != "") ? $scholarProfile['prow_prof_father_occu'] : "";
+    @$valMotherName = ($scholarProfile['prow_prof_mother'] != "") ? $scholarProfile['prow_prof_mother'] : "";
+    @$valMotherContact = ($scholarProfile['prow_prof_mother_cont'] != "") ? $scholarProfile['prow_prof_mother_cont'] : "";
+    @$valMotherOccu = ($scholarProfile['prow_prof_mother_occu'] != "") ? $scholarProfile['prow_prof_mother_occu'] : "";
+    @$valGuardianName = ($scholarProfile['prow_prof_guardian'] != "") ? $scholarProfile['prow_prof_guardian'] : "";
+    @$valGuardianContact = ($scholarProfile['prow_prof_guardian_cont'] != "") ? $scholarProfile['prow_prof_guardian_cont'] : "";
+    @$valGuardianOccu = ($scholarProfile['prow_prof_guardian_occu'] != "") ? $scholarProfile['prow_prof_guardian_occu'] : "";
+    @$valIncome = ($scholarProfile['prow_prof_income'] != "") ? $scholarProfile['prow_prof_income'] : "";
 
-    $valSchoolId = ($scholar['prow_scholar_school_id'] != "") ? $scholar['prow_scholar_school_id'] : "";
-    $valSchoolName = ($scholarAppLogs['prow_hei'] != "") ? $scholarAppLogs['prow_hei'] : "";
-    $valCourse = ($scholarAppLogs['prow_course'] != "") ? $scholarAppLogs['prow_course'] : "";
-    $valYearLevel = ($scholarAppLogs['prow_yr_lvl'] != "") ? $scholarAppLogs['prow_yr_lvl'] : "";
-    $valSem = ($scholarAppLogs['prow_sem'] != "") ? $scholarAppLogs['prow_sem'] : "";
-    $valSY = ($scholarAppLogs['prow_sy'] != "") ? $scholarAppLogs['prow_sy'] : "";
+    @$valSchoolId = ($scholar['prow_scholar_school_id'] != "") ? $scholar['prow_scholar_school_id'] : "";
+    @$valSchoolName = ($scholarAppLogs['prow_hei'] != "") ? $scholarAppLogs['prow_hei'] : "";
+    @$valCourse = ($scholarAppLogs['prow_course'] != "") ? $scholarAppLogs['prow_course'] : "";
+    @$valYearLevel = ($scholarAppLogs['prow_yr_lvl'] != "") ? $scholarAppLogs['prow_yr_lvl'] : "";
+    @$valSem = ($scholarAppLogs['prow_sem'] != "") ? $scholarAppLogs['prow_sem'] : "";
+    @$valSY = ($scholarAppLogs['prow_sy'] != "") ? $scholarAppLogs['prow_sy'] : "";
 
     $title = "Fill Up Form Step 1";
     include "_head.php";
