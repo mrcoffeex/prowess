@@ -42,6 +42,7 @@ include "_head.php";
                                         <thead>
                                             <tr>
                                                 <th>Category</th>
+                                                <th>Type of Skills</th>
                                                 <th>Skill</th>
                                                 <th class="text-center">Proficiency</th>
                                                 <th class="text-center">Actions</th>
@@ -53,6 +54,7 @@ include "_head.php";
                                                 while ($scholarSkills=$getScholarSkills->fetch(PDO::FETCH_ASSOC)) {
                                             ?>
                                             <tr>
+                                                <td><?= getSkillCategory($scholarSkills['prow_skill_type_id'])?></td>
                                                 <td><?= getSkillType($scholarSkills['prow_skill_type_id']) ?></td>
                                                 <td><?= $scholarSkills['prow_skills'] ?></td>
                                                 <td class="text-center"><span class="badge bg-primary"><?= $scholarSkills['prow_skills_proficiency'] ?></span></td>
@@ -235,19 +237,41 @@ include "_head.php";
                 <form action="fillupSubjectCreate" enctype="multipart/form-data" method="post">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6 mb-4">
                                 <div class="form-floating form-floating-outline">
-                                    <select id="enrollmentSchoolYear" name="enrollmentSchoolYear" class="form-control">
-                                    <option>Select School Year</option>
-                                                    <?php
-                                                    //get SY
-                                                    $getSY=selectSY();
-                                                    while ($sy=$getSY->fetch(PDO::FETCH_ASSOC)) {
-                                                ?>
-                                                <option value="<?= $sy['prow_sy_year'] ?>"><?= $sy['prow_sy_year'] ?></option>
-                                                <?php } ?>
+                                    <select id="gradeSY" name="gradeSY" class="form-control">
+                                                <option value="2018-2019">2018-2019</option>
+                                                <option value="2019-2020">2019-2020</option>
+                                                <option value="2020-2021">2020-2021</option>
+                                                <option value="2021-2022">2021-2022</option>
+                                                <option value="2022-2023">2022-2023</option>
+                                                <option value="2023-2024">2023-2024</option>
                                     </select>
-                                    <label for="enrollmentYearLevel">School Year</label>
+                                    <label for="gradeSY">School Year</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating form-floating-outline">
+                                    <select id="gradeSem" name="gradeSem" class="form-control">
+                                                <option value="1">1st</option>
+                                                <option value="2">2nd</option>
+                                    </select>
+                                    <label for="gradeSem">Semester</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating form-floating-outline">
+                                    	<select id="gradeCourseCode" name="gradeCourseCode" class="form-control" >
+                                            <option></option>
+                                            <?php  
+                                                //get course code according to Degree
+                                                $getMunicipalities=selectMunicipalities();
+                                                while ($municipalities=$getMunicipalities->fetch(PDO::FETCH_ASSOC)) {
+                                            ?>
+                                            <option value="<?= $municipalities['prow_mun_name'] ?>"><?= $municipalities['prow_mun_name'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    <label for="gradeCourseCode">Course Code</label>
                                 </div>
                             </div>
                         </div>

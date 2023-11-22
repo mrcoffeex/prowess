@@ -30,19 +30,59 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link active" href="studentProfile2"
-                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Personal Information</a
-                      >
+                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Personal Information</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="studentProfile3"
+                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Academic Information</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="notifications"
-                        ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a
-                      >
+                        ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a>
                     </li>
                   </ul>
                 </div>
               </div>
               <div class="row">
                   <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <ul class="list-unstyled mb-0 mt-3 pt-1">
+                          <li class="d-flex align-items-center mb-3">
+                            <span class="fw-semibold mx-2">Height:</span>
+                            <span><?= $profile['prow_prof_height'] ?> cm</span>
+                          </li>
+                          <li class="d-flex align-items-center mb-3">
+                            <span class="fw-semibold mx-2">Weight:</span>
+                            <span><?= $profile['prow_prof_weight'] ?> kg</span>
+                          </li>
+                          <li class="d-flex align-items-center mb-3">
+                            <span class="fw-semibold mx-2">Blood Type:</span> 
+                            <span><?= $profile['prow_prof_blood_type'] ?></span>
+                          </li>
+
+                          <hr>
+
+                          <li class="d-flex align-items-center mb-3">
+                            <span class="fw-semibold mx-2">Religion:</span> 
+                            <span><?= $profile['prow_prof_religion'] ?></span>
+                          </li>
+                          <li class="d-flex align-items-center mb-3">
+                            <span class="fw-semibold mx-2">Talent:</span> 
+                            <span>
+                              <?php 
+                                $talentArray = explode(",", $profile['prow_prof_talent']);
+                                
+                                foreach ($talentArray as $talent) {
+                                  echo "<span class='badge bg-primary'>" . $talent . "</span> ";
+                                }
+                              ?>
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
                     <div class="card mb-4">
                       <div class="card-body">
                         <ul class="list-unstyled mb-0 mt-3 pt-1">

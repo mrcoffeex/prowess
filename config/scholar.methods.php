@@ -796,10 +796,32 @@
         
         $res=$statement->fetch(PDO::FETCH_ASSOC);
 
-        if (!empty($res['prow_hei'])) {
-            return $res['prow_hei'];
+        $schoolName = getSchoolNamebyID($res['prow_hei']);
+
+        if (!empty($schoolName)) {
+            return $schoolName;
         } else {         
             return "Not yet enrolled";
+        }
+    }
+
+    function getSchoolNamebyID($schoolId){
+         $statement=PWD()->prepare("SELECT
+                                    *
+                                    From
+                                    prow_hei
+                                    Where
+                                    prow_hei_id = :prow_school_id");
+        $statement->execute([
+            'prow_school_id' => $schoolId
+        ]);
+        
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (!empty($res['prow_hei_name'])) {
+            return $res['prow_hei_name'];
+        } else {         
+            return null;
         }
     }
 
@@ -1368,6 +1390,5 @@
         }
         
     }
-
 
 ?>

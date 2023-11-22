@@ -796,4 +796,22 @@
         return $res['prow_skill_type_name'];
 
     }
+
+    function getSkillCategory($skillTypeId){
+
+        $stmt=PWD()->prepare("SELECT
+                            prow_skill_category
+                            FROM
+                            prow_skill_type
+                            Where
+                            prow_skill_type_id = :prow_skill_type_id");
+        $stmt->execute([
+            'prow_skill_type_id' => $skillTypeId
+        ]);
+
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $res['prow_skill_category'];
+
+    }
 ?>

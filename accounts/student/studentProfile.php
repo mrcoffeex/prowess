@@ -33,13 +33,15 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="studentProfile2"
-                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Personal Information</a
-                      >
+                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Personal Information</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="studentProfile3"
+                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Academic Information</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="notifications"
-                        ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a
-                      >
+                        ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a>
                     </li>
                   </ul>
                 </div>
@@ -75,10 +77,10 @@
                     <div class="card-body">
                       <small class="card-text text-uppercase text-muted">About</small>
                       <ul class="list-unstyled my-3 py-1">
-                        <li class="d-flex align-items-center mb-3">
+                        <!-- <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-qrcode mdi-24px"></i
                           ><span class="fw-semibold mx-2">Scholar Code:</span> <span><?= $profile['prow_scholar_code'] ?></span>
-                        </li>
+                        </li> -->
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-account-outline mdi-24px"></i
                           ><span class="fw-semibold mx-2">User Name:</span> <span><?= getUserName($scholarCode) ?></span>
@@ -113,6 +115,8 @@
                       </ul>
                      
                       <small class="card-text text-uppercase text-muted">Address</small>
+                      <iframe style="width: 100%; height: 200px; position: relative;" src="studentProfileMap?scholarCode=<?= $scholarCode ?>" allowfullscreen></iframe>
+
                       <ul class="list-unstyled my-3 py-1">
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Province:</span>
