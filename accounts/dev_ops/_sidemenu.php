@@ -132,7 +132,7 @@
       <span class="menu-header-text">Misc</span>
     </li>
     <li class="menu-item">
-      <a href="#" target="_blank" class="menu-link">
+      <a href="settings" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-cog-outline"></i>
         <div data-i18n="Settings">Settings</div>
       </a>

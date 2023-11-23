@@ -410,6 +410,25 @@
 
     }
 
+    function selectHeiCourseDesc($heiCID,$subCode){
+
+        $statement=PWD()->prepare("SELECT
+                                *
+                                FROM
+                                prow_hei_subjects
+                                Where
+                                prow_hei_course_id = :prow_hei_course_id
+                                and
+                                prow_subject_code = :prow_subject_code");
+        $statement->execute([
+            'prow_hei_course_id' => $heiCID,
+            'prow_subject_code' => $subCode
+        ]);
+
+        return $statement;
+
+    }
+
     function createHeiCourseSubject($courseId, $subjectCode, $subjectDesc, $subjectUnits){
 
         $statement=PWD()->prepare("INSERT INTO prow_hei_subjects
@@ -526,5 +545,37 @@
     }
 
 
+    function getScholarHeiCourse($scholarCode){
+         $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_app_logs
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        $heiID=$res['prow_hei'];
+        $courseID=$res['prow_course'];
+
+        $stmt=PWD()->prepare("SELECT
+                                *
+                                From
+                                prow_hei_course
+                                Where
+                                prow_hei_id = :prow_hei_id
+                                and
+                                prow_course_id = :prow_course_id");
+        $stmt->execute([
+            'prow_hei_id' => $heiID,
+            'prow_course_id' => $courseID
+        ]);
+
+        $res2=$stmt->fetch(PDO::FETCH_ASSOC);
+        return $heiCourseID=$res2['prow_hei_course_id'];
+
+    }
 
 ?>

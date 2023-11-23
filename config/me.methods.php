@@ -814,4 +814,19 @@
         return $res['prow_skill_category'];
 
     }
+
+    function getAllSkill(){
+
+        $stmt=PWD()->prepare("SELECT 
+                            * FROM 
+                            `prow_skills` 
+                            INNER JOIN 
+                            prow_skill_type 
+                            ON 
+                            prow_skills.prow_skill_type_id = prow_skill_type.prow_skill_type_id");
+        $stmt->execute();
+    
+        return $stmt;
+
+    }
 ?>

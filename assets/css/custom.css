@@ -15,3 +15,11 @@
     display: block;
     width: 100%;
 }
+
+.btn-align-vertical{
+    padding-top: 5px;
+}
+
+.w-23{
+    width: 15%;
+}

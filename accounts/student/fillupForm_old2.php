@@ -247,7 +247,7 @@ include "_head.php";
                                                 <option value="2022-2023">2022-2023</option>
                                                 <option value="2023-2024">2023-2024</option>
                                     </select>
-                                    <label for="gradeSY">School Year</label>
+                                    <label for="gradeSY">Select School Year</label>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-4">
@@ -256,28 +256,37 @@ include "_head.php";
                                                 <option value="1">1st</option>
                                                 <option value="2">2nd</option>
                                     </select>
-                                    <label for="gradeSem">Semester</label>
+                                    <label for="gradeSem">Select Semester</label>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-4">
+                            <div class="col-md-4 mb-4">
                                 <div class="form-floating form-floating-outline">
-                                    	<select id="gradeCourseCode" name="gradeCourseCode" class="form-control" >
-                                            <option></option>
+                                    	<select id="gradeCourseCode" name="gradeCourseCode" class="form-control" 
+                                        onchange="updateCourseDesc()">
+                                            <option value="" disabled selected>Select a Course Code</option>
                                             <?php  
                                                 //get course code according to Degree
-                                                $getMunicipalities=selectMunicipalities();
-                                                while ($municipalities=$getMunicipalities->fetch(PDO::FETCH_ASSOC)) {
+                                                $heiCourseID= getScholarHeiCourse($scholarCode);
+                                                $getSubject=selectHeiCourseSubjects($heiCourseID);
+                                                while ($row=$getSubject->fetch(PDO::FETCH_ASSOC)) {
                                             ?>
-                                            <option value="<?= $municipalities['prow_mun_name'] ?>"><?= $municipalities['prow_mun_name'] ?></option>
+                                            <option value="<?=$row['prow_hei_course_id'] ?>"><?=  $subCode = $row['prow_subject_code']; ?></option>
                                             <?php } ?>
                                         </select>
                                     <label for="gradeCourseCode">Course Code</label>
                                 </div>
                             </div>
+
+                            <div class="col-md-8 mb-4">
+                                <div class="form-floating form-floating-outline">
+                                    <input type="text" id="gradecourseDesc" name="gradecourseDesc" class="form-control" readonly />
+                                    <label for="gradecourseDesc">Course Description</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="addSkillsBtn" name="addSkillsBtn" class="btn btn-primary">Add</button>
+                        <button type="button" id="addSubjectGrade" name="addSubjectGrade" class="btn btn-primary">Add</button>
                     </div>
                 </form>
             </div>
@@ -341,7 +350,39 @@ include "_head.php";
 
     <?php include "_scripts.php"; ?>
     <?php include "_alerts.php"; ?>
+
     <script src="../../js/fillUpForm.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Function to update the textbox when the dropdown changes
+        $('#gradeCourseCode').change(function() {
+            updateCourseDesc();
+        });
+
+        // Initial call to set the initial value
+        updateCourseDesc();
+    });
+
+    function updateCourseDesc() {
+
+        var selectedValue = $('#gradeCourseCode').val();
+
+        $.ajax({
+            type: "GET",
+            url: "auto_gen_course_desc.php",
+            data: {
+                heiCID: $('#gradeCourseCode').val(),
+                subCode: <?= $subCode; ?>
+            },
+            success: function (data) {
+                $('#gradecourseDesc').val(data);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+    </script>
 </body>
 
 </html>

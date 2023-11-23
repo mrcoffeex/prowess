@@ -1,11 +1,12 @@
 <?php  
     //pagination
         
-    $getPaginate=PWD()->prepare("SELECT COUNT(prow_hei_id) FROM prow_hei");
+
+    $getPaginate=PWD()->prepare("SELECT COUNT(prow_skills_id) FROM prow_skills");
     $getPaginate->execute();
     $paginates=$getPaginate->fetch(PDO::FETCH_BOTH);
 
-    $page_rows = 1;
+    $page_rows = 15;
     $last = ceil($paginates[0]/$page_rows);
     
     if($last < 1){
@@ -26,11 +27,11 @@
     
     $limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
     
-    $paginate=PWD()->prepare("SELECT * FROM 
-                                    prow_hei
-                                    Order By
-                                    prow_hei_name
-                                    $limit");
+    $paginate=PWD()->prepare("SELECT 
+                            * FROM `prow_skills` 
+                            INNER JOIN prow_skill_type 
+                            ON prow_skills.prow_skill_type_id = prow_skill_type.prow_skill_type_id 
+                            ORDER BY prow_skill_name $limit");
     $paginate->execute();
     
     $paginationCtrls = '';
