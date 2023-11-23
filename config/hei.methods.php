@@ -578,4 +578,70 @@
 
     }
 
+    function getSubjectCode($subjectId){
+        
+        $statement=PWD()->prepare("SELECT
+                                prow_subject_code
+                                From
+                                prow_hei_subjects
+                                Where
+                                prow_subject_id = :prow_subject_id");
+        $statement->execute([
+            'prow_subject_id' => $subjectId
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($res['prow_subject_code'])) {
+            return "";
+        } else {
+            return $res['prow_subject_code'];
+        }        
+
+    }
+
+    function getSubjectDesc($subjectId){
+
+        $statement=PWD()->prepare("SELECT
+                                prow_subject_desc
+                                From
+                                prow_hei_subjects
+                                Where
+                                prow_subject_id = :prow_subject_id");
+        $statement->execute([
+            'prow_subject_id' => $subjectId
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($res['prow_subject_desc'])) {
+            return "";
+        } else {
+            return $res['prow_subject_desc'];
+        }        
+
+    }
+
+    function getSubjectUnits($subjectId){
+
+        $statement=PWD()->prepare("SELECT
+                                prow_subject_units
+                                From
+                                prow_hei_subjects
+                                Where
+                                prow_subject_id = :prow_subject_id");
+        $statement->execute([
+            'prow_subject_id' => $subjectId
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($res['prow_subject_units'])) {
+            return "";
+        } else {
+            return $res['prow_subject_units'];
+        }        
+
+    }
+
 ?>

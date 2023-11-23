@@ -397,6 +397,45 @@
 
     }
 
+    function updateScholarEnrollment(
+            $scholarCode, 
+            $appLogCode, 
+            $enrollemntschooName, 
+            $enrollmentCourse, 
+            $enrollmentYearLevel, 
+            $enrollmentSchoolYear, 
+            $enrollmentSemester
+    ){
+        $stmt=PWD()->prepare("UPDATE prow_scholar_app_logs
+                            SET
+                            prow_hei = :prow_hei, 
+                            prow_course = :prow_course, 
+                            prow_yr_lvl = :prow_yr_lvl, 
+                            prow_sy = :prow_sy, 
+                            prow_sem = :prow_sem
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            AND
+                            prow_app_log_code = :prow_app_log_code
+                            ");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_app_log_code' => $appLogCode,  
+            'prow_hei' => $enrollemntschooName, 
+            'prow_course' => $enrollmentCourse, 
+            'prow_yr_lvl' => $enrollmentYearLevel, 
+            'prow_sy' => $enrollmentSchoolYear, 
+            'prow_sem' => $enrollmentSemester
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     function addrequirements(
         $scholarCode, 
         $appLogCode,
@@ -765,22 +804,6 @@
 
         return $status;
     
-    }
-
-    //Get School of Scholar
-    function selectScholarApplogs($profileCode){
-
-        $statement=PWD()->prepare("SELECT
-                                    *
-                                    From
-                                    prow_scholar_app_logs
-                                    Where
-                                    prow_scholar_code = :prow_scholar_code");
-        $statement->execute([
-            'prow_scholar_code' => $profileCode
-        ]);
-        
-        return $statement;
     }
 
     function getSchoolScholar($profileCode){
@@ -1389,6 +1412,172 @@
             return false;
         }
         
+    }
+
+    function selectScholarPendingApplication($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_scholar_app_logs
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            AND
+                            prow_app_log_status = :prow_app_log_status
+                            Order By
+                            prow_scholar_app_logs_id
+                            DESC LIMIT 1");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_app_log_status' => 0
+        ]);
+
+        return $stmt;
+
+    }
+
+    function selectScholarGrades($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_scholar_grades
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            Order By
+                            prow_scholar_grades_sy
+                            DESC");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        return $stmt;
+
+    }
+
+    function checkScholarSubject($scholarCode, $subjectId, $sy, $sem){
+
+        $stmt=PWD()->prepare("SELECT
+                            prow_scholar_grades_id
+                            FROM
+                            prow_scholar_grades
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            AND
+                            prow_subject_id = :prow_subject_id
+                            AND
+                            prow_scholar_grades_sy = :prow_scholar_grades_sy
+                            AND
+                            prow_scholar_grades_semester = :prow_scholar_grades_semester");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_subject_id' => $subjectId,
+            'prow_scholar_grades_sy' => $sy,
+            'prow_scholar_grades_semester' => $sem
+        ]);
+
+        $count=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $count;
+
+    }
+
+    function createScholarGrade($scholarCode, $sy, $sem, $subjectId, $grade){
+
+        $stmt=PWD()->prepare("INSERT INTO 
+                            prow_scholar_grades
+                            (
+                                prow_scholar_code, 
+                                prow_subject_id, 
+                                prow_scholar_grades_semester, 
+                                prow_scholar_grades_sy, 
+                                prow_scholar_grades_percent, 
+                                prow_scholar_grades_created, 
+                                prow_scholar_grades_updated
+                            )
+                            Values
+                            (
+                                :prow_scholar_code, 
+                                :prow_subject_id, 
+                                :prow_scholar_grades_semester, 
+                                :prow_scholar_grades_sy, 
+                                :prow_scholar_grades_percent, 
+                                NOW(), 
+                                NOW()
+                            )");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_subject_id' => $subjectId,
+            'prow_scholar_grades_semester' => $sem,
+            'prow_scholar_grades_sy' => $sy,
+            'prow_scholar_grades_percent' => $grade
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
+    function updateScholarGrade($grade, $gradeId){
+
+        $stmt=PWD()->prepare("UPDATE
+                            prow_scholar_grades
+                            SET
+                            prow_scholar_grades_percent = :prow_scholar_grades_percent, 
+                            prow_scholar_grades_updated = NOW()
+                            Where
+                            prow_scholar_grades_id = :prow_scholar_grades_id
+                            ");
+        $stmt->execute([
+            'prow_scholar_grades_percent' => $grade,
+            'prow_scholar_grades_id' => $gradeId
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function removeScholarSubject($gradeId){
+
+        $stmt=PWD()->prepare("DELETE FROM
+                            prow_scholar_grades
+                            Where
+                            prow_scholar_grades_id = :prow_scholar_grades_id
+                            ");
+        $stmt->execute([
+            'prow_scholar_grades_id' => $gradeId
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function selectScholarGradeByid($gradeId){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_scholar_grades
+                            Where
+                            prow_scholar_grades_id = :prow_scholar_grades_id
+                            ");
+        $stmt->execute([
+            'prow_scholar_grades_id' => $gradeId
+        ]);
+
+        return $stmt;
+
     }
 
 ?>

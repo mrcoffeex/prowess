@@ -8,7 +8,7 @@
     @$getScholarProfile=selectPersonalInfomation($scholarCode);
     @$scholarProfile=$getScholarProfile->fetch(PDO::FETCH_ASSOC);
 
-    @$getScholarAppLogs=selectScholarApplogs($scholarCode);
+    @$getScholarAppLogs=selectScholarPendingApplication($scholarCode);
     @$scholarAppLogs=$getScholarAppLogs->fetch(PDO::FETCH_ASSOC);
 
     @$valBloodType = ($scholarProfile['prow_prof_blood_type'] != "") ? $scholarProfile['prow_prof_blood_type'] : "";
@@ -64,7 +64,7 @@
                                 <i class="mdi mdi-book-edit-outline me-2 mdi-20px"></i>Scholar Information (Existing)
                             </h3>
 
-                            <form id="formValidation" class="card-body" enctype="multipart/form-data" method="POST" action="fillupformOldCreate">
+                            <form id="formValidation" class="card-body" enctype="multipart/form-data" method="POST" action="fillupformOldCreate" onsubmit="btnLoader(this.fillUpFormStep1)">
                                     
                                 <h5><i class="mdi mdi-home-map-marker me-2 mdi-20px"></i>Pin your address</h5>
                                 <h6 class="fst-italic">*Drag the Pin to your exact address</h6>

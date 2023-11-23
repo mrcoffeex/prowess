@@ -37,7 +37,25 @@
             } else if ($note == "skill_removed") {
                 echo "
                     <script>
-                        toastr.success('Skill added');
+                        toastr.success('Skill removed');
+                    </script>
+                ";
+            } else if ($note == "subject_added") {
+                echo "
+                    <script>
+                        toastr.success('Subject added');
+                    </script>
+                ";
+            } else if ($note == "subject_removed") {
+                echo "
+                    <script>
+                        toastr.success('Subject removed');
+                    </script>
+                ";
+            } else if ($note == "duplicate") {
+                echo "
+                    <script>
+                        toastr.error('Duplicate entry');
                     </script>
                 ";
             } else {

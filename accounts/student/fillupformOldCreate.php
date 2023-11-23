@@ -56,6 +56,26 @@
                 $scholarGuardianOccu,
                 $scholarIncome
             );
+
+            //add update handler
+            $request2 = updateScholarEnrollment(
+                $scholarCode, 
+                $appLogCode,
+                $enrollemntschooName, 
+                $enrollmentCourse, 
+                $enrollmentYearLevel, 
+                $enrollmentSchoolYear, 
+                $enrollmentSemester
+            );
+
+            $request3 = updateScholarSchoolID(
+                $scholarSchoolID,
+                $filledupStatus,
+                $scholarCode
+
+            );
+
+            $request4 == true;
         } else {
             $request1 = addScholarInformation(
                 $scholarCode, 
@@ -75,34 +95,38 @@
                 $scholarGuardianOccu,
                 $scholarIncome
             );
+
+            //add update handler
+            $request2 = addScholarEnrollment(
+                $scholarCode, 
+                $appLogCode,
+                $enrollemntschooName, 
+                $enrollmentCourse, 
+                $enrollmentYearLevel, 
+                $enrollmentSchoolYear, 
+                $enrollmentSemester
+            );
+
+            $request3 = updateScholarSchoolID(
+                $scholarSchoolID,
+                $filledupStatus,
+                $scholarCode
+
+            );
+
+            //add update handler
+            $request4 = addrequirements(
+                $scholarCode,
+                $appLogCode, 
+                "", 
+                "", 
+                "", 
+                "", 
+                ""
+            );
         }
 
-        $request2 = addScholarEnrollment(
-            $scholarCode, 
-            $appLogCode,
-            $enrollemntschooName, 
-            $enrollmentCourse, 
-            $enrollmentYearLevel, 
-            $enrollmentSchoolYear, 
-            $enrollmentSemester
-        );
-
-        $request3 = updateScholarSchoolID(
-            $scholarSchoolID,
-            $filledupStatus,
-            $scholarCode
-
-        );
-
-        $request4 = addrequirements(
-            $scholarCode,
-            $appLogCode, 
-            "", 
-            "", 
-            "", 
-            "", 
-            ""
-        );
+        
 
         $request5 = updateScholarCoordinates($scholarCode, $scholarLong, $scholarLat);
 

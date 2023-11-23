@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2023 at 08:24 PM
+-- Generation Time: Nov 23, 2023 at 01:43 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -802,7 +802,10 @@ CREATE TABLE `prow_notifications` (
 INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_notif_text`, `prow_notif_to`, `prow_notif_date`) VALUES
 (1, 'auth', 'Login - annimay', 0, '2023-11-21 21:24:50'),
 (2, 'auth', 'Login - annimay', 0, '2023-11-21 21:26:21'),
-(3, 'auth', 'Login - annimay', 0, '2023-11-22 11:06:18');
+(3, 'auth', 'Login - annimay', 0, '2023-11-22 11:06:18'),
+(4, 'attempt', 'Login Attempt - annimay', 0, '2023-11-23 13:33:34'),
+(5, 'auth', 'Login - annimay', 0, '2023-11-23 13:33:38'),
+(6, 'auth', 'Login - annimay', 0, '2023-11-23 20:15:34');
 
 -- --------------------------------------------------------
 
@@ -928,7 +931,7 @@ CREATE TABLE `prow_scholar_app_logs` (
   `prow_scholar_app_logs_id` int(11) NOT NULL,
   `prow_scholar_code` varchar(50) NOT NULL,
   `prow_app_log_code` varchar(11) NOT NULL,
-  `prow_application_type` int(11) NOT NULL,
+  `prow_app_log_status` int(1) NOT NULL,
   `prow_hei` varchar(255) NOT NULL,
   `prow_course` varchar(255) NOT NULL,
   `prow_yr_lvl` int(11) NOT NULL,
@@ -941,8 +944,8 @@ CREATE TABLE `prow_scholar_app_logs` (
 -- Dumping data for table `prow_scholar_app_logs`
 --
 
-INSERT INTO `prow_scholar_app_logs` (`prow_scholar_app_logs_id`, `prow_scholar_code`, `prow_app_log_code`, `prow_application_type`, `prow_hei`, `prow_course`, `prow_yr_lvl`, `prow_sy`, `prow_sem`, `prow_app_logs_created`) VALUES
-(1, '20234fMHuh', '427019', 0, '1', '44', 1, '2023-2024', '1', '2023-11-22 11:20:52');
+INSERT INTO `prow_scholar_app_logs` (`prow_scholar_app_logs_id`, `prow_scholar_code`, `prow_app_log_code`, `prow_app_log_status`, `prow_hei`, `prow_course`, `prow_yr_lvl`, `prow_sy`, `prow_sem`, `prow_app_logs_created`) VALUES
+(1, '20234fMHuh', '427019', 0, '1', '1', 1, '2023-2024', '1', '2023-11-22 11:20:52');
 
 -- --------------------------------------------------------
 
@@ -989,12 +992,21 @@ CREATE TABLE `prow_scholar_grades` (
   `prow_scholar_grades_id` int(11) NOT NULL,
   `prow_scholar_code` varchar(60) NOT NULL,
   `prow_subject_id` int(11) NOT NULL,
-  `prow_scholar_grades_semester` int(11) NOT NULL,
-  `prow_scholar_grades_sy` varchar(10) NOT NULL,
+  `prow_scholar_grades_semester` int(1) NOT NULL,
+  `prow_scholar_grades_sy` varchar(9) NOT NULL,
   `prow_scholar_grades_percent` double NOT NULL,
   `prow_scholar_grades_created` datetime NOT NULL,
   `prow_scholar_grades_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prow_scholar_grades`
+--
+
+INSERT INTO `prow_scholar_grades` (`prow_scholar_grades_id`, `prow_scholar_code`, `prow_subject_id`, `prow_scholar_grades_semester`, `prow_scholar_grades_sy`, `prow_scholar_grades_percent`, `prow_scholar_grades_created`, `prow_scholar_grades_updated`) VALUES
+(2, '20234fMHuh', 8, 2, '2022-2023', 93, '2023-11-23 18:35:18', '2023-11-23 18:35:18'),
+(3, '20234fMHuh', 12, 2, '2021-2022', 100, '2023-11-23 20:08:49', '2023-11-23 20:21:43'),
+(4, '20234fMHuh', 7, 1, '2023-2024', 92, '2023-11-23 20:33:09', '2023-11-23 20:33:09');
 
 -- --------------------------------------------------------
 
@@ -1029,7 +1041,7 @@ CREATE TABLE `prow_scholar_profile` (
 --
 
 INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guardian_cont`, `prow_prof_guardian_occu`, `prow_prof_income`, `prow_prof_created`, `prow_prof_updated`) VALUES
-(1, '20234fMHuh', 149, 49, 'B+', 'Sikhism', 'Coding/Programming,Drawing,Photography,Writing', 'Julieto Delima', '9232765442', 'Police officer', 'Margie Delima', '9835467221', 'Business Owner', 'Jessa Delima', '9863627222', 'Civil engineer', '₱9,100 - ₱18,000', '2023-11-22 11:20:52', '2023-11-22 11:20:52');
+(1, '20234fMHuh', 149, 49, 'B+', 'Sikhism', 'Coding/Programming,Drawing,Photography,Writing', 'Julieto Delima', '9232765442', 'Police officer', 'Margie Delima', '9835467221', 'Business Owner', 'Jessa Delima', '9863627222', 'Civil engineer', '₱9,100 - ₱18,000', '2023-11-22 11:20:52', '2023-11-23 20:41:07');
 
 -- --------------------------------------------------------
 
@@ -1610,7 +1622,7 @@ ALTER TABLE `prow_my_project`
 -- AUTO_INCREMENT for table `prow_notifications`
 --
 ALTER TABLE `prow_notifications`
-  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `prow_notif_type`
@@ -1646,7 +1658,7 @@ ALTER TABLE `prow_scholar_address`
 -- AUTO_INCREMENT for table `prow_scholar_app_logs`
 --
 ALTER TABLE `prow_scholar_app_logs`
-  MODIFY `prow_scholar_app_logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_scholar_app_logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_educ_attain`
@@ -1664,7 +1676,7 @@ ALTER TABLE `prow_scholar_employment`
 -- AUTO_INCREMENT for table `prow_scholar_grades`
 --
 ALTER TABLE `prow_scholar_grades`
-  MODIFY `prow_scholar_grades_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `prow_scholar_grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_profile`
@@ -1676,7 +1688,7 @@ ALTER TABLE `prow_scholar_profile`
 -- AUTO_INCREMENT for table `prow_scholar_requirements`
 --
 ALTER TABLE `prow_scholar_requirements`
-  MODIFY `prow_req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_skills`
