@@ -3,7 +3,6 @@
     $currpage = str_replace('.php', '', basename($_SERVER['PHP_SELF']));
     $note = @$_GET['note'];
 
-
     if ($note == "error") {
         echo "
             <script>

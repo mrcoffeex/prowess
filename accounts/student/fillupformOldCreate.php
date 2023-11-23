@@ -75,7 +75,7 @@
 
             );
 
-            $request4 == true;
+            $request4 = true;
         } else {
             $request1 = addScholarInformation(
                 $scholarCode, 
@@ -125,8 +125,6 @@
                 ""
             );
         }
-
-        
 
         $request5 = updateScholarCoordinates($scholarCode, $scholarLong, $scholarLat);
 

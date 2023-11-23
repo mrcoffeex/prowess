@@ -125,6 +125,8 @@
                                     <table class="datatables-ajax dt-advanced-search table table-bordered">
                                         <thead>
                                             <tr>
+                                                <th>School Year</th>
+                                                <th>Semester</th>
                                                 <th>Subject Code</th>
                                                 <th>Description</th>
                                                 <th class="text-center">Units</th>
@@ -138,6 +140,8 @@
                                                 while ($grade=$getGrades->fetch(PDO::FETCH_ASSOC)) {
                                             ?>
                                             <tr>
+                                                <td><?= $grade['prow_scholar_grades_sy'] ?></td>
+                                                <td><?= semester($grade['prow_scholar_grades_semester']) ?></td>
                                                 <td><?= getSubjectCode($grade['prow_subject_id']) ?></td>
                                                 <td><?= getSubjectDesc($grade['prow_subject_id']) ?></td>
                                                 <td class="text-center p-2"><?= getSubjectUnits($grade['prow_subject_id']) ?></td>
