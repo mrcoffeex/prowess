@@ -18,15 +18,15 @@
             $request = createScholarGrade($scholarCode, $gradeSY, $gradeSem, $gradeSubjectId, $gradeScore);
 
             if ($request == true) {
-                header("location: fillupForm_old2?note=subject_added");
+                header("location: fillupForm_old3?note=subject_added");
             } else {
-                header("location: fillupForm_old2?note=error");
+                header("location: fillupForm_old3?note=error");
             }
 
         }
 
     } else {
-        header("location: fillupForm_old2?note=invalid");
+        header("location: fillupForm_old3?note=invalid");
     }
     
 ?>

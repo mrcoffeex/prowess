@@ -26,18 +26,13 @@
       <div class="authentication-inner row m-0">
         <!-- /Left Section -->
         <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center justify-content-center p-5 pb-2">
+
           <img
-            src="assets/img/illustrations/auth-login-illustration-light.png"
-            class="auth-cover-illustration w-100"
-            alt="auth-illustration"
-            data-app-light-img="illustrations/auth-login-illustration-light.png"
-            data-app-dark-img="illustrations/auth-login-illustration-dark.png" />
-          <img
-            src="assets/img/illustrations/auth-cover-login-mask-light.png"
+            src="assets/img/illustrations/Leftimg.png"
             class="authentication-image"
             alt="mask"
-            data-app-light-img="illustrations/auth-cover-login-mask-light.png"
-            data-app-dark-img="illustrations/auth-cover-login-mask-dark.png" />
+            data-app-light-img="illustrations/Leftimg.png"
+            data-app-dark-img="illustrations/Leftimg.png" />
         </div>
         <!-- /Left Section -->
 
@@ -46,7 +41,7 @@
           class="d-flex col-12 col-lg-5 col-xl-4 align-items-center authentication-bg position-relative py-sm-5 px-4 py-4">
           <div class="w-px-400 mx-auto pt-5 pt-lg-0">
             <h4 class="mb-2 fw-semibold">Welcome to PROWESS! 👋</h4>
-            <p class="mb-4">Please sign-in to your account and start the journey with us!</p>
+            <p class="mb-4"></p>
 
             <form enctype="plain/text" class="mb-3" action="config/auth" method="POST" onsubmit="btnLoader(this.loginUser)">
               <div class="form-floating form-floating-outline mb-3">

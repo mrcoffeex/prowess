@@ -9,6 +9,10 @@
         $scholarHeight = clean_float ($_POST['scholarHeight']);
         $scholarWeight = clean_float ($_POST['scholarWeight']);
         $scholarReligion = clean_string ($_POST['scholarReligion']);
+        $scholarPWD = clean_string ($_POST['scholarPWD']);
+        $scholarSingleP = clean_string ($_POST['scholarSingleP']);
+        $scholarSingleID = clean_string ($_POST['scholarSingleID']);
+        $scholarTribe = clean_string ($_POST['scholarTribe']);
         $scholarFatherName = clean_string ($_POST['scholarFatherName']);
         $scholarFatherCont = clean_string ($_POST['scholarFatherCont']);
         $scholarFatherOccu = clean_string ($_POST['scholarFatherOccu']);
@@ -44,7 +48,7 @@
                 $scholarWeight, 
                 $scholarBloodType, 
                 $scholarReligion, 
-                $scholarTalentArray, 
+                $scholarTalentArray,
                 $scholarFatherName, 
                 $scholarFatherCont, 
                 $scholarFatherOccu, 
@@ -54,7 +58,11 @@
                 $scholarGuardianName, 
                 $scholarGuardianCont, 
                 $scholarGuardianOccu,
-                $scholarIncome
+                $scholarIncome,
+                $scholarPWD,
+                $scholarSingleP,
+                $scholarSingleID,
+                $scholarTribe
             );
 
             //add update handler
@@ -93,7 +101,11 @@
                 $scholarGuardianName, 
                 $scholarGuardianCont, 
                 $scholarGuardianOccu,
-                $scholarIncome
+                $scholarIncome,
+                $scholarPWD,
+                $scholarSingleP,
+                $scholarSingleID,
+                $scholarTribe
             );
 
             //add update handler
@@ -138,5 +150,22 @@
         header("location: fillupForm_old?note=invalid");
     }
     
+
+    if(isset($_POST['reportCardFile'])){
+
+        $getPendingAppLog=selectScholarPendingApplication($scholarCode);
+        $pending=$getPendingAppLog->fetch(PDO::FETCH_ASSOC);
+        $appLogCode = $pending['prow_app_log_code'];
+
+        $reportCardFile = imageUpload("reportCardFile", "../../imagebank/");
+
+        $request6=updaterequirementsOld( $scholarCode,$appLogCode,$reportCardFile);
+
+        if ($request6) {
+            header("location: studentProfile?note=updated");
+        } else {
+            header("location: fillupForm_old3?note=error");
+        }
+    }
 
 ?>

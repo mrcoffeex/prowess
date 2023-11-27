@@ -187,7 +187,11 @@
             $scholarGuardianName, 
             $scholarGuardianCont, 
             $scholarGuardianOccu, 
-            $scholarIncome
+            $scholarIncome,
+            $scholarPWD,
+            $scholarSingleP,
+            $scholarSingleID,
+            $scholarTribe
     ){
 
         $stmt=PWD()->prepare("INSERT INTO prow_scholar_profile
@@ -208,6 +212,10 @@
                     prow_prof_guardian_cont,
                     prow_prof_guardian_occu,
                     prow_prof_income,
+                    prow_scholar_pwd,
+                    prow_scholar_single_p,
+                    prow_scholar_single_id,
+                    prow_scholar_tribal,
                     prow_prof_created,
                     prow_prof_updated
 
@@ -231,6 +239,10 @@
                     :prow_prof_guardian_cont,
                     :prow_prof_guardian_occu,
                     :prow_prof_income,
+                    :prow_scholar_pwd,
+                    :prow_scholar_single_p,
+                    :prow_scholar_single_id,
+                    :prow_scholar_tribal,
                     NOW(), 
                     NOW()
                 )");
@@ -250,7 +262,11 @@
             'prow_prof_guardian' => $scholarGuardianName,
             'prow_prof_guardian_cont' => $scholarGuardianCont,
             'prow_prof_guardian_occu' => $scholarGuardianOccu,
-            'prow_prof_income' => $scholarIncome
+            'prow_prof_income' => $scholarIncome,
+            'prow_scholar_pwd' => $scholarPWD,
+            'prow_scholar_single_p' => $scholarSingleP,
+            'prow_scholar_single_id' => $scholarSingleID,
+            'prow_scholar_tribal' => $scholarTribe
         ]);
 
         if ($stmt) {
@@ -277,7 +293,11 @@
             $scholarGuardianName, 
             $scholarGuardianCont, 
             $scholarGuardianOccu, 
-            $scholarIncome
+            $scholarIncome,
+            $scholarPWD,
+            $scholarSingleP,
+            $scholarSingleID,
+            $scholarTribe
     ){
 
         $stmt=PWD()->prepare("UPDATE prow_scholar_profile
@@ -297,6 +317,10 @@
                             prow_prof_guardian_cont = :prow_prof_guardian_cont,
                             prow_prof_guardian_occu = :prow_prof_guardian_occu,
                             prow_prof_income = :prow_prof_income,
+                            prow_scholar_pwd = :prow_scholar_pwd,
+                            prow_scholar_single_p = :prow_scholar_single_p,
+                            prow_scholar_single_id = :prow_scholar_single_id,
+                            prow_scholar_tribal = :prow_scholar_tribal,
                             prow_prof_updated = NOW()
                             Where
                             prow_scholar_code = :prow_scholar_code");
@@ -316,6 +340,10 @@
             'prow_prof_guardian_cont' => $scholarGuardianCont,
             'prow_prof_guardian_occu' => $scholarGuardianOccu,
             'prow_prof_income' => $scholarIncome,
+            'prow_scholar_pwd' => $scholarPWD,
+            'prow_scholar_single_p' => $scholarSingleP,
+            'prow_scholar_single_id' => $scholarSingleID,
+            'prow_scholar_tribal' => $scholarTribe,
             'prow_scholar_code' => $scholarCode
         ]);
 
@@ -475,6 +503,34 @@
         'prow_req_birth_certificate' => $birthCertFile, 
         'prow_req_school_card' => $reportCardFile, 
         'prow_req_enrollment_form' => $enrollmentFormFile
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function updaterequirementsOld(
+        $scholarCode, 
+        $appLogCode,
+        $reportCardFile
+    ){
+        $stmt=PWD()->prepare("UPDATE 
+                            prow_scholar_requirements
+                            SET
+                            prow_req_school_card = :prow_req_school_card
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            AND
+                            prow_scholar_app_logs_code = :prow_scholar_app_logs_code
+                            ");
+        $stmt->execute([
+        'prow_scholar_code' => $scholarCode,
+        'prow_scholar_app_logs_code' => $appLogCode,
+        'prow_req_school_card' => $reportCardFile
         ]);
 
         if ($stmt) {
@@ -1015,8 +1071,6 @@
         $statement->execute();
 
         return $statement;
-
-
     }
 
     function selectOccupation(){
@@ -1031,8 +1085,6 @@
         $statement->execute();
 
         return $statement;
-
-
     }
 
     function selectSY(){
@@ -1577,6 +1629,22 @@
         ]);
 
         return $stmt;
+
+    }
+
+    function selectTribe(){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_list_tribe
+                                        Order By
+                                        prow_tribe_name
+                                        ASC");
+        $statement->execute();
+
+        return $statement;
+
 
     }
 

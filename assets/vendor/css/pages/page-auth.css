@@ -31,6 +31,7 @@
 }
 .authentication-wrapper.authentication-cover .authentication-image {
   inline-size: 70%;
+  margin-bottom: -45px;
 }
 html:not([dir=rtl]) .authentication-wrapper.authentication-cover .authentication-image {
   inset-inline-start: unset;

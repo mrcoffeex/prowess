@@ -28,9 +28,7 @@
                 </li>
               </ul>
             </div>
-          <a href="javascript:void(0)" class="btn btn-primary">
-            <i class="mdi mdi-image-edit-outline me-1"></i>Edit Profile
-          </a>
+          
           </div>
         </div>
       </div>

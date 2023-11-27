@@ -35,8 +35,6 @@
                             echo '<a href="fillupForm_old" class="btn btn-warning mb-2">Update Application</a>';
                           }
                         ?>
-
-                        <a href="application_info" target="_blank" class="btn btn-primary">View Scholarship Requirements</a>
                       </div>
                     </div>
                     <div class="col-md-8 text-center text-md-end order-1 order-md-2">

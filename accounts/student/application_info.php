@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="mt-4">
-                          <h5>Application Process</h5>
+                          <h5>Application Process for New Applicant</h5>
                           <ol>
                             <li class="mt-3"><u>High School Report Card</u> for incoming freshmen</li>
                             <li class="mt-1"><u>Certificate of Low Income</u> from the Barangay or BIR for incoming freshmen</li>
@@ -54,6 +54,17 @@
                             <li class="mt-1">Report of rating of last semester attendance in college for non-freshmen or enrollment form</li>
                             <li class="mt-1">Must have at least a general average grade rating of 80%.</li>
                             <li class="mt-1">Endorsement Letter</li>
+                          </ol>
+                        </div>
+                        
+                        <hr class="my-4 mx-n4" />
+                        <div class="mt-4">
+                          <h5>Application Process for <strong>Existing Scholar</strong></h5>
+                          <ol>
+                            <li class="mt-3">Step 1: Fill up necessesary personal, family, socio economic and enrollment information in the System</li>
+                            <li class="mt-1">Step 2: Add your skills </li>
+                            <li class="mt-1">Step 3: Add your grades and upload the proof of your grades</li>
+                            <li class="mt-1">Step 4: Wait for the final verification of the Scholarship Coordinator</li>
                           </ol>
                         </div>
                         <div class="alert alert-primary alert-dismissible mb-0" role="alert">

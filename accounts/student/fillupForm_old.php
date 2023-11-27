@@ -27,7 +27,8 @@
     @$valGuardianContact = ($scholarProfile['prow_prof_guardian_cont'] != "") ? $scholarProfile['prow_prof_guardian_cont'] : "";
     @$valGuardianOccu = ($scholarProfile['prow_prof_guardian_occu'] != "") ? $scholarProfile['prow_prof_guardian_occu'] : "";
     @$valIncome = ($scholarProfile['prow_prof_income'] != "") ? $scholarProfile['prow_prof_income'] : "";
-
+    @$valSingID = ($scholarProfile['prow_scholar_single_id'] != "") ? $scholarProfile['prow_scholar_single_id'] : "";
+    @$valTribe = ($scholarProfile['prow_scholar_tribal'] != "") ? $scholarProfile['prow_scholar_tribal'] : "";
     @$valSchoolId = ($scholar['prow_scholar_school_id'] != "") ? $scholar['prow_scholar_school_id'] : "";
     @$valSchoolName = ($scholarAppLogs['prow_hei'] != "") ? $scholarAppLogs['prow_hei'] : "";
     @$valCourse = ($scholarAppLogs['prow_course'] != "") ? $scholarAppLogs['prow_course'] : "";
@@ -165,6 +166,65 @@
                                             <label for="scholarTalent">Talents (You can select multiple)</label>
                                         </div>
                                     </div>
+
+                                    <hr class="my-2 mx-n4" />
+                                    <h6 class="fst-italic">*Other Personal Information</h6>
+                                    <div class="col-md-4">
+                                        <label class=""> Are you a person with disability (PWD)? </label>
+                                        <div class="form-floating form-floating-outline">
+                                            
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="0" id="scholarPWDNo" name="scholarPWD" checked />
+                                                <label class="form-check-label" for="scholarPWD"> No </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="1" id="scholarPWDYes"
+                                                name="scholarPWD"/>
+                                                <label class="" for="scholarPWD"> Yes </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class=""> Are you a single parent?</label>
+                                        <div class="form-floating form-floating-outline">
+                                            
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="0" id="scholarSinglePNo" name="scholarSingleP" checked />
+                                                <label class="form-check-label" for="scholarSingleP"> No </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="1" id="scholarSinglePYes"
+                                                name="scholarSingleP"/>
+                                                <label class="" for="scholarSingleP"> Yes </label>
+                                            </div>
+                                            <div class="form-floating form-floating-outline">
+                                                <input type="text" id="scholarSingleID" name="scholarSingleID" class="form-control" placeholder="Single Parent ID No." value="<?= $valSingID; ?>" />
+                                                <label for="scholarSingleID">Single Parent ID No.</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-floating form-floating-outline">
+                                            <select id="scholarTribe" name="scholarTribe" class="form-control">
+                                                
+                                                <option value="<?= $valTribe; ?>"><?= $valTribe; ?></option>
+                                                <option value="None">None</option>
+                                                <?php
+                                                //get tribe
+                                                $getTribe = selectTribe();
+                                                while ($tribe = $getTribe->fetch(PDO::FETCH_ASSOC)) {
+                                                ?>
+                                                    <option value="<?= $tribe['prow_tribe_name'] ?>"><?= $tribe['prow_tribe_name'] ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <label for="scholarTribe">Tribal Affiliation</label>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <hr class="my-4 mx-n4" />
                                 <h5><i class="mdi mdi-account-group-outline me-2 mdi-20px"></i>Family Background Information</h5>

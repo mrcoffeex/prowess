@@ -25,8 +25,8 @@
         <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-center p-5">
           <img
             alt="register-multi-steps-illustration"
-            src="assets/img/illustrations/auth-register-multi-steps-illustration.png"
-            class="h-auto mh-100 w-px-200" />
+            src="assets/img/illustrations/leftim.png"
+            class="h-auto mh-200 w-px-300" />
         </div>
         <!-- /Left Text -->
 

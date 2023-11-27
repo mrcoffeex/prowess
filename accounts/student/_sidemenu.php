@@ -36,6 +36,13 @@
       </a>
     </li>
     <li class="menu-item">
+      <a href="application_info" class="menu-link">
+        <i class="menu-icon tf-icons mdi mdi-format-list-checks"></i>
+        <div data-i18n="View Requirements">View Requirements</div>
+      </a>
+    </li>
+    
+    <li class="menu-item">
       <a href="#" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-download-box-outline"></i>
         <div data-i18n="Download Mobile App">Download Mobile App</div>
