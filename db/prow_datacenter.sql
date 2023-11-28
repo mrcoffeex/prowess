@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2023 at 01:43 PM
+-- Generation Time: Nov 28, 2023 at 04:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -736,6 +736,47 @@ INSERT INTO `prow_list_talents` (`prow_talent_id`, `prow_talent_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prow_list_tribe`
+--
+
+CREATE TABLE `prow_list_tribe` (
+  `prow_tribe_id` int(11) NOT NULL,
+  `prow_tribe_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prow_list_tribe`
+--
+
+INSERT INTO `prow_list_tribe` (`prow_tribe_id`, `prow_tribe_name`) VALUES
+(1, 'Lumad'),
+(2, 'Blaan people'),
+(3, 'Tausūg people'),
+(4, 'Igorot people'),
+(5, 'Yakan people'),
+(6, 'Sama-Bajau'),
+(7, 'Tagbanwa'),
+(8, 'Maranao people'),
+(9, 'Mangyan'),
+(10, 'Mamanwa'),
+(11, 'Mandaya'),
+(12, 'Ibaloi'),
+(13, 'Negrito'),
+(14, 'Aeta people'),
+(15, 'Kapampangan'),
+(16, 'Bukid language'),
+(17, 'Tboli people'),
+(18, 'Bugkalot'),
+(19, 'Batak people'),
+(20, 'Kankanaey people'),
+(21, 'Palawan people'),
+(22, 'Bukidnon'),
+(23, 'Molbog'),
+(24, 'Tagabawa');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prow_municipalities`
 --
 
@@ -805,7 +846,14 @@ INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_noti
 (3, 'auth', 'Login - annimay', 0, '2023-11-22 11:06:18'),
 (4, 'attempt', 'Login Attempt - annimay', 0, '2023-11-23 13:33:34'),
 (5, 'auth', 'Login - annimay', 0, '2023-11-23 13:33:38'),
-(6, 'auth', 'Login - annimay', 0, '2023-11-23 20:15:34');
+(6, 'auth', 'Login - annimay', 0, '2023-11-23 20:15:34'),
+(7, 'auth', 'Login - annimay', 0, '2023-11-24 21:10:46'),
+(8, 'auth', 'Login - annimay', 0, '2023-11-25 11:12:44'),
+(9, 'auth', 'Login - annimay', 0, '2023-11-25 20:45:24'),
+(10, 'attempt', 'Login Attempt - annimay', 0, '2023-11-26 11:39:58'),
+(11, 'auth', 'Login - annimay', 0, '2023-11-26 13:15:13'),
+(12, 'auth', 'Login - annimay', 0, '2023-11-26 14:46:26'),
+(13, 'auth', 'Login - annimay', 0, '2023-11-27 12:58:17');
 
 -- --------------------------------------------------------
 
@@ -1006,7 +1054,11 @@ CREATE TABLE `prow_scholar_grades` (
 INSERT INTO `prow_scholar_grades` (`prow_scholar_grades_id`, `prow_scholar_code`, `prow_subject_id`, `prow_scholar_grades_semester`, `prow_scholar_grades_sy`, `prow_scholar_grades_percent`, `prow_scholar_grades_created`, `prow_scholar_grades_updated`) VALUES
 (2, '20234fMHuh', 8, 2, '2022-2023', 93, '2023-11-23 18:35:18', '2023-11-23 18:35:18'),
 (3, '20234fMHuh', 12, 2, '2021-2022', 100, '2023-11-23 20:08:49', '2023-11-23 20:21:43'),
-(4, '20234fMHuh', 7, 1, '2023-2024', 92, '2023-11-23 20:33:09', '2023-11-23 20:33:09');
+(4, '20234fMHuh', 7, 1, '2023-2024', 92, '2023-11-23 20:33:09', '2023-11-23 20:33:09'),
+(5, '20234fMHuh', 18, 1, '2023-2024', 75, '2023-11-24 21:22:18', '2023-11-24 21:22:18'),
+(6, '20234fMHuh', 19, 1, '2023-2024', 90, '2023-11-27 13:39:39', '2023-11-27 13:39:39'),
+(7, '20234fMHuh', 15, 1, '2023-2024', 89, '2023-11-27 13:40:11', '2023-11-27 13:40:11'),
+(8, '20234fMHuh', 11, 1, '2023-2024', 90, '2023-11-27 13:41:36', '2023-11-27 13:41:36');
 
 -- --------------------------------------------------------
 
@@ -1032,6 +1084,10 @@ CREATE TABLE `prow_scholar_profile` (
   `prow_prof_guardian_cont` varchar(11) NOT NULL,
   `prow_prof_guardian_occu` varchar(100) NOT NULL,
   `prow_prof_income` varchar(50) NOT NULL,
+  `prow_scholar_pwd` int(11) NOT NULL,
+  `prow_scholar_single_p` int(11) NOT NULL,
+  `prow_scholar_single_id` int(11) NOT NULL,
+  `prow_scholar_tribal` varchar(255) NOT NULL,
   `prow_prof_created` datetime NOT NULL,
   `prow_prof_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -1040,8 +1096,8 @@ CREATE TABLE `prow_scholar_profile` (
 -- Dumping data for table `prow_scholar_profile`
 --
 
-INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guardian_cont`, `prow_prof_guardian_occu`, `prow_prof_income`, `prow_prof_created`, `prow_prof_updated`) VALUES
-(1, '20234fMHuh', 149, 49, 'B+', 'Sikhism', 'Coding/Programming,Drawing,Photography,Writing', 'Julieto Delima', '9232765442', 'Police officer', 'Margie Delima', '9835467221', 'Business Owner', 'Jessa Delima', '9863627222', 'Civil engineer', '₱9,100 - ₱18,000', '2023-11-22 11:20:52', '2023-11-23 20:41:07');
+INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guardian_cont`, `prow_prof_guardian_occu`, `prow_prof_income`, `prow_scholar_pwd`, `prow_scholar_single_p`, `prow_scholar_single_id`, `prow_scholar_tribal`, `prow_prof_created`, `prow_prof_updated`) VALUES
+(1, '20234fMHuh', 149, 49, 'B+', 'Sikhism', 'Coding/Programming,Drawing,Photography,Writing', 'Julieto Delima', '9232765442', 'Police officer', 'Margie Delima', '9835467221', 'Business Owner', 'Jessa Delima', '9863627222', 'Civil engineer', '₱9,100 - ₱18,000', 0, 0, 1234, 'Aeta people', '2023-11-22 11:20:52', '2023-11-27 13:28:45');
 
 -- --------------------------------------------------------
 
@@ -1094,7 +1150,8 @@ CREATE TABLE `prow_scholar_skills` (
 INSERT INTO `prow_scholar_skills` (`prow_skills_id`, `prow_scholar_code`, `prow_skill_type_id`, `prow_skills`, `prow_skills_proficiency`) VALUES
 (1, '20234fMHuh', 1, 'Java', 'Advanced'),
 (2, '20234fMHuh', 1, 'PHP', 'Advanced'),
-(3, '20234fMHuh', 15, 'Active listening', 'Intermediate');
+(3, '20234fMHuh', 15, 'Active listening', 'Intermediate'),
+(4, '20234fMHuh', 5, 'Microsoft Azure', 'Being Developed');
 
 -- --------------------------------------------------------
 
@@ -1423,6 +1480,12 @@ ALTER TABLE `prow_list_talents`
   ADD PRIMARY KEY (`prow_talent_id`);
 
 --
+-- Indexes for table `prow_list_tribe`
+--
+ALTER TABLE `prow_list_tribe`
+  ADD PRIMARY KEY (`prow_tribe_id`);
+
+--
 -- Indexes for table `prow_municipalities`
 --
 ALTER TABLE `prow_municipalities`
@@ -1607,6 +1670,12 @@ ALTER TABLE `prow_list_talents`
   MODIFY `prow_talent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
+-- AUTO_INCREMENT for table `prow_list_tribe`
+--
+ALTER TABLE `prow_list_tribe`
+  MODIFY `prow_tribe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
 -- AUTO_INCREMENT for table `prow_municipalities`
 --
 ALTER TABLE `prow_municipalities`
@@ -1622,7 +1691,7 @@ ALTER TABLE `prow_my_project`
 -- AUTO_INCREMENT for table `prow_notifications`
 --
 ALTER TABLE `prow_notifications`
-  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `prow_notif_type`
@@ -1676,7 +1745,7 @@ ALTER TABLE `prow_scholar_employment`
 -- AUTO_INCREMENT for table `prow_scholar_grades`
 --
 ALTER TABLE `prow_scholar_grades`
-  MODIFY `prow_scholar_grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `prow_scholar_grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_profile`
@@ -1694,7 +1763,7 @@ ALTER TABLE `prow_scholar_requirements`
 -- AUTO_INCREMENT for table `prow_scholar_skills`
 --
 ALTER TABLE `prow_scholar_skills`
-  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `prow_skills`
