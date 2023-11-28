@@ -1,11 +1,29 @@
 <?php
-  require '../../config/includes.php';
-  require '_session.php';
-  require '_restriction.php';
-  include "_head.php";
+    require '../../config/includes.php';
+    require '_session.php';
+    require '_restriction.php';
 
-  $getProfile=selectPersonalInfomation($scholarCode);
-  $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
+    $getProfile=selectPersonalInfomation($scholarCode);
+    $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
+
+    if (isset($_POST['schoolyear'])) {
+        
+        $schoolYear = clean_string($_POST['schoolyear']);
+        $semester = clean_string($_POST['semester']);
+
+        $getGrades=selectScholarGradesBySySem($scholarCode, $schoolYear, $semester);
+        $countRes=$getGrades->rowCount();
+
+    } else {
+        $schoolYear = getSchoolYearLatest();
+        $semester = "1";
+
+        $getGrades=selectScholarGradesBySySem($scholarCode, $schoolYear, $semester);
+        $countRes=$getGrades->rowCount();
+    }
+    
+
+    include "_head.php";
 
 ?>
 
@@ -18,183 +36,114 @@
           <div class="content-wrapper">
             <?php include "_topnavigation.php";?>
             
-            <div class="container-xxl flex-grow-1 container-p-y">
-              <?php include "profile_header.php"; ?>
+                <div class="container-xxl flex-grow-1 container-p-y">
+                <?php include "profile_header.php"; ?>
 
-              <div class="row">
-                <div class="col-md-12">
-                  <ul class="nav nav-pills flex-column flex-sm-row mb-4">
-                    <li class="nav-item">
-                      <a class="nav-link " href="studentProfile"
-                        ><i class="mdi mdi-account-outline me-1 mdi-20px"></i>Profile</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="studentProfile2"
-                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Personal Information</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" href="studentProfile3"
-                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Academic Information</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="notifications"
-                        ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="row">
-                  <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="card mb-4">
-                      <div class="card-body">
-                        <ul class="list-unstyled mb-0 mt-3 pt-1">
-                          <li class="d-flex align-items-center mb-3">
-                            <span class="fw-semibold mx-2">Height:</span>
-                            <span><?= $profile['prow_prof_height'] ?> cm</span>
-                          </li>
-                          <li class="d-flex align-items-center mb-3">
-                            <span class="fw-semibold mx-2">Weight:</span>
-                            <span><?= $profile['prow_prof_weight'] ?> kg</span>
-                          </li>
-                          <li class="d-flex align-items-center mb-3">
-                            <span class="fw-semibold mx-2">Blood Type:</span> 
-                            <span><?= $profile['prow_prof_blood_type'] ?></span>
-                          </li>
-
-                          <hr>
-
-                          <li class="d-flex align-items-center mb-3">
-                            <span class="fw-semibold mx-2">Religion:</span> 
-                            <span><?= $profile['prow_prof_religion'] ?></span>
-                          </li>
-                          <li class="d-flex align-items-center mb-3">
-                            <span class="fw-semibold mx-2">Talent:</span> 
-                            <span>
-                              <?php 
-                                $talentArray = explode(",", $profile['prow_prof_talent']);
-                                
-                                foreach ($talentArray as $talent) {
-                                  echo "<span class='badge bg-primary'>" . $talent . "</span> ";
-                                }
-                              ?>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div class="card mb-4">
-                      <div class="card-body">
-                        <ul class="list-unstyled mb-0 mt-3 pt-1">
-                          <li class="d-flex align-items-center mb-3">
-                            <span class="fw-semibold mx-2">Height:</span>
-                            <span><?= $profile['prow_prof_height'] ?> cm</span>
-                          </li>
-                          <li class="d-flex align-items-center mb-3">
-                            <span class="fw-semibold mx-2">Weight:</span>
-                            <span><?= $profile['prow_prof_weight'] ?> kg</span>
-                          </li>
-                          <li class="d-flex align-items-center mb-3">
-                            <span class="fw-semibold mx-2">Blood Type:</span> 
-                            <span><?= $profile['prow_prof_blood_type'] ?></span>
-                          </li>
-
-                          <hr>
-
-                          <li class="d-flex align-items-center mb-3">
-                            <span class="fw-semibold mx-2">Religion:</span> 
-                            <span><?= $profile['prow_prof_religion'] ?></span>
-                          </li>
-                          <li class="d-flex align-items-center mb-3">
-                            <span class="fw-semibold mx-2">Talent:</span> 
-                            <span>
-                              <?php 
-                                $talentArray = explode(",", $profile['prow_prof_talent']);
-                                
-                                foreach ($talentArray as $talent) {
-                                  echo "<span class='badge bg-primary'>" . $talent . "</span> ";
-                                }
-                              ?>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-xl-8 col-lg-8 col-md-12">
                     <div class="row">
-                      <div class="col-xl-12 col-lg-12 col-md-12">
-                        <div class="card mb-4">
-                          <div class="card-body">
-                          <small class="card-text text-uppercase text-muted">Father</small>
-                            <ul class="list-unstyled mb-0 mt-3 pt-1">
-                              <li class="d-flex align-items-center mb-3 text-primary">
-                                <span class="fw-semibold mx-2">Name:</span>
-                                <span><?= $profile['prow_prof_father'] ?></span>
-                              </li>
-                              <li class="d-flex align-items-center mb-3">
-                                <span class="fw-semibold mx-2">Contact:</span>
-                                <span><?= $profile['prow_prof_father_cont'] ?></span>
-                              </li>
-                              <li class="d-flex align-items-center mb-3">
-                                <span class="fw-semibold mx-2">Occupation:</span> 
-                                <span><?= $profile['prow_prof_father_occu'] ?></span>
-                              </li>
+                        <div class="col-md-12">
+                            <ul class="nav nav-pills flex-column flex-sm-row mb-4">
+                                <li class="nav-item">
+                                    <a class="nav-link " href="studentProfile"
+                                    ><i class="mdi mdi-account-outline me-1 mdi-20px"></i>Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="studentProfile2"
+                                    ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Personal Information</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="studentProfile3"
+                                    ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Academic Information</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="notifications"
+                                    ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a>
+                                </li>
                             </ul>
-                          </div>
                         </div>
-                      </div>
-                      <div class="col-xl-12 col-lg-12 col-md-12">
-                        <div class="card mb-4">
-                          <div class="card-body">
-                          <small class="card-text text-uppercase text-muted">Mother</small>
-                            <ul class="list-unstyled mb-0 mt-3 pt-1">
-                              <li class="d-flex align-items-center mb-3 text-primary">
-                                <span class="fw-semibold mx-2">Name:</span>
-                                <span><?= $profile['prow_prof_mother'] ?></span>
-                              </li>
-                              <li class="d-flex align-items-center mb-3">
-                                <span class="fw-semibold mx-2">Contact:</span>
-                                <span><?= $profile['prow_prof_mother_cont'] ?></span>
-                              </li>
-                              <li class="d-flex align-items-center mb-3">
-                                <span class="fw-semibold mx-2">Occupation:</span> 
-                                <span><?= $profile['prow_prof_mother_occu'] ?></span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-12 col-lg-12 col-md-12">
-                        <div class="card mb-4">
-                          <div class="card-body">
-                          <small class="card-text text-uppercase text-muted">Guardian</small>
-                            <ul class="list-unstyled mb-0 mt-3 pt-1">
-                              <li class="d-flex align-items-center mb-3 text-primary">
-                                <span class="fw-semibold mx-2">Name:</span>
-                                <span><?= $profile['prow_prof_guardian'] ?></span>
-                              </li>
-                              <li class="d-flex align-items-center mb-3">
-                                <span class="fw-semibold mx-2">Contact:</span>
-                                <span><?= $profile['prow_prof_guardian_cont'] ?></span>
-                              </li>
-                              <li class="d-flex align-items-center mb-3">
-                                <span class="fw-semibold mx-2">Occupation:</span> 
-                                <span><?= $profile['prow_prof_guardian_occu'] ?></span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card card-action mb-4">
+                                <div class="card-header align-items-center">
+                                    <h5 class="card-action-title mb-0">
+                                    <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>Grades
+                                    <span class="float-end"><?= $countRes ?> result(s)</span>
+                                    </h5>
+                                    <div class="card-action-element"></div>
+                                </div>
+                                <div class="card-body pt-3 pb-0">
+                                    <form action="studentProfile3" enctype="multipart/form-data" method="post" onsubmit="this.showGrades">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <div class="form-floating form-floating-outline mb-5">
+                                                <select id="schoolyear" name="schoolyear" class="form-control">
+                                                    <option value="<?= $schoolYear ?>"><?= $schoolYear ?></option>
+                                                    <?php
+                                                        //get SY
+                                                        $getSY=selectSchoolYears();
+                                                        while ($sy=$getSY->fetch(PDO::FETCH_ASSOC)) {
+                                                    ?>
+                                                    <option value="<?= $sy['prow_sy_year'] ?>"><?= $sy['prow_sy_year'] ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                                <label for="schoolyear">School Year</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-floating form-floating-outline">
+                                                <select id="semester" name="semester" class="form-control" required>
+                                                    <option value="<?= $semester ?>"><?= semester($semester) ?></option>
+                                                    <option value="1">1st Semester</option>
+                                                    <option value="2">2nd Semester</option>
+                                                </select>
+                                                <label for="semester">Select Semester</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <button type="submit" id="showGrades" class="btn btn-primary btn-lg">Show</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </form>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-12">
+                                            <div class="card-datatable table-responsive">
+                                                <table class="datatables-ajax dt-advanced-search table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Subject Code</th>
+                                                            <th>Subject Description</th>
+                                                            <th class="text-center">Units</th>
+                                                            <th class="text-center text-primary">Grade</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php 
+                                                            while ($grade=$getGrades->fetch(PDO::FETCH_ASSOC)) {
+                                                        ?>
+                                                        <tr>
+                                                            <td><?= getSubjectCode($grade['prow_subject_id']) ?></td>
+                                                            <td><?= getSubjectDesc($grade['prow_subject_id']) ?></td>
+                                                            <td class="text-center"><?= getSubjectUnits($grade['prow_subject_id']) ?></td>
+                                                            <td class="text-center text-primary"><?= $grade['prow_scholar_grades_percent'] ?></td>
+                                                        </tr>
+                                                        <?php } ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
          
               <?php
                 include "_footer.php";
               ?>
-         
 
             <div class="content-backdrop fade"></div>
           </div>
@@ -207,37 +156,6 @@
     </div>
 
     <?php include "_scripts.php"; ?>
-    <script>
-
-    $(document).ready(function() {
-        $('#enrollmentSchoolYear').change(function() {
-
-            var selectedYear = $(this).val();
-            var scholarCode = $('#scholarCode').val();
-
-            // Make an AJAX request to fetch student info
-            $.ajax({
-                url: 'autoRequirements', // Replace with your actual URL
-                method: 'GET',
-                data: { schoolYear: selectedYear, scholarCode: scholarCode },
-                success: function(data) {
-
-                    var list = $('#studentList');
-                    list.empty();
-
-                    $('#showRequirements').html(data);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching student info:', error);
-                }
-            });
-        });
-
-        // Trigger initial change event to populate list on page load
-        $('#enrollmentSchoolYear').trigger('change');
-    });
-
-    </script>
    
   </body>
 </html>

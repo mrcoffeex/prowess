@@ -8,6 +8,9 @@
     $appLogCourse = $pending['prow_course'];
     $appLogCode = $pending['prow_app_log_code'];
 
+    $getRequirements=selectScholarRequirementsBylogCode($scholarCode, $appLogCode);
+    $requirement=$getRequirements->fetch(PDO::FETCH_ASSOC);
+
     $title = "Fill Up Form Step 3";
     include "_head.php";
 ?>
@@ -27,11 +30,11 @@
 
                         <div class="row mb-4">
                             <div class="col-md-12">
-                                <a href="fillupForm_old">
+                                <a href="fillupForm_old2">
                                     <button type="button" class="btn btn-dark">go back</button>
                                 </a>
                                 <a href="studentProfile">
-                                    <button type="button" class="btn btn-primary">Continue</button>
+                                    <button type="button" class="btn btn-primary">Done</button>
                                 </a>
                             </div>
                         </div>
@@ -155,22 +158,50 @@
                                 </h4>
                             </div>
                             
-                            <div class="card-body pt-3  mb-4">
-                                <form id="formValidation" class="card-body" enctype="multipart/form-data" method="POST" action="fillupformOldCreate" onsubmit="btnLoader(this.fillUpFormStep1)">
-                                    <div class="alert alert-primary alert-dismissible mb-4" role="alert">
-                                        <h5 class="alert-heading d-flex align-items-center">
-                                        <i class="mdi mdi-chat-alert-outline mdi-24px me-2"></i>Reminders!
-                                        </h5>
-                                        <p class="mb-0">
-                                        Upload image of proof of your grades provided by your School. Make sure that it's clear and readable. 
-                                        </p>
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
-                                    <div class="col-md-4">
-                                            <label for="formFile" class="form-label">Upload Proof of Grades</label>
-                                            <div id="reportCardFilePreview" class="image-preview-div mb-4"></div>
-                                            <input class="form-control mb-4" type="file" id="reportCardFile" name="reportCardFile" accept="image/jpeg, image/png, image/gif"/>
+                            <div class="card-body pt-3 mb-4">
+                                <form enctype="multipart/form-data" method="POST" action="fillupformUpdateCard" onsubmit="btnLoader(this.uploadReportCard)">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="alert alert-primary alert-dismissible mb-4" role="alert">
+                                                <h5 class="alert-heading d-flex align-items-center">
+                                                <i class="mdi mdi-chat-alert-outline mdi-24px me-2"></i>Reminders!
+                                                </h5>
+                                                <p class="mb-0">
+                                                Upload image of proof of your grades provided by your School. Make sure that it's clear and readable. 
+                                                </p>
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="col-md-8 mb-4">
+                                                <div id="reportCardFilePreview" class="image-preview-div mb-4"></div>
+                                                <div class="form-floating form-floating-outline">
+                                                    <input class="form-control" type="file" id="reportCardFile" name="reportCardFile" accept="image/jpeg, image/png, image/gif"/>
+                                                    <label for="reportCardFile">Select File</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <button type="submit" id="uploadReportCard" class="btn btn-primary">Upload file</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <h5 for="" class="text-center text-primary text-uppercase">Uploaded Image</h5>
+                                            </div>
+                                            <?php 
+                                                if (empty($requirement['prow_req_school_card'])) {
+                                                    echo "<span class='badge bg-danger mt-3 text-center'>upload your report card</span>";
+                                                } else {
+                                            ?>
+                                            <img src="../../imagebank/<?= $requirement['prow_req_school_card'] ?>" class="img-fluid" alt="">
 
+                                            <div class="text-center mt-2">
+                                                <a href="viewImage?image=<?= $requirement['prow_req_school_card'] ?>" target="_blank" class="btn btn-primary">Full image view</a>
+                                            </div>
+                                            <?php } ?>
+                                        </div>
                                     </div>
                                 </form>
                             </div>

@@ -9,10 +9,16 @@
                 toastr.error('Course cannot be duplicated!');
             </script>
         ";
-    }else if ($note == "invalid") {
+    } else if ($note == "invalid") {
         echo "
             <script>
                 toastr.error('Invalid!');
+            </script>
+        ";
+    } else if ($note == "invalid_upload") {
+        echo "
+            <script>
+                toastr.error('Invalid upload!');
             </script>
         ";
     } else {
@@ -55,6 +61,22 @@
                 echo "
                     <script>
                         toastr.error('Duplicate entry');
+                    </script>
+                ";
+            } else {
+                echo "";
+            }
+
+        }
+
+        //fillupForm_old3
+        
+        if ($currpage == "fillupForm_old3") {
+        
+            if ($note == "uploaded") {
+                echo "
+                    <script>
+                        toastr.success('File has been uploaded');
                     </script>
                 ";
             } else {

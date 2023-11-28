@@ -1013,6 +1013,7 @@
     }
 
     function getScholarSYRequirements($scholarCode, $sy){
+
         $statement=PWD()->prepare("SELECT
                                     prow_app_log_code
                                     From
@@ -1086,24 +1087,6 @@
 
         return $statement;
     }
-
-    function selectSY(){
-
-        $statement=PWD()->prepare("SELECT
-                                        *
-                                        FROM
-                                        prow_list_sy
-                                        Order By
-                                        prow_sy_year
-                                        ASC");
-        $statement->execute();
-
-        return $statement;
-
-
-    }
-
-
 
     //application history
     function checkAppLogs($scholarCode){
@@ -1507,6 +1490,31 @@
 
     }
 
+    function selectScholarGradesBySySem($scholarCode, $sy, $sem){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_scholar_grades
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            AND
+                            prow_scholar_grades_semester = :prow_scholar_grades_semester
+                            AND
+                            prow_scholar_grades_sy = :prow_scholar_grades_sy
+                            Order By
+                            prow_subject_id
+                            ASC");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_scholar_grades_sy' => $sy,
+            'prow_scholar_grades_semester' => $sem
+        ]);
+
+        return $stmt;
+
+    }
+
     function checkScholarSubject($scholarCode, $subjectId, $sy, $sem){
 
         $stmt=PWD()->prepare("SELECT
@@ -1645,6 +1653,30 @@
 
         return $statement;
 
+    }
+
+    function updateReportCard($scholarCode, $appLogCode, $reportCardFile){
+
+        $stmt=PWD()->prepare("UPDATE
+                            prow_scholar_requirements
+                            SET
+                            prow_req_school_card = :prow_req_school_card
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            AND
+                            prow_scholar_app_logs_code = :prow_scholar_app_logs_code
+                            ");
+        $stmt->execute([
+            'prow_req_school_card' => $reportCardFile,
+            'prow_scholar_code' => $scholarCode,
+            'prow_scholar_app_logs_code' => $appLogCode
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
