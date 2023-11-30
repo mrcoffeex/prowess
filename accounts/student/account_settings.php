@@ -27,11 +27,13 @@
                     <!-- Account -->
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <img
+                        <!-- <img
                           src="../../assets/img/avatars/1.png"
                           alt="user-avatar"
                           class="d-block w-px-120 h-px-120 rounded"
-                          id="uploadedAvatar" />
+                          id="uploadedAvatar" /> -->
+                        <div id="uploadedAvatar"></div>
+
                         <div class="button-wrapper">
                           <label for="upload" class="btn btn-primary me-2 mb-3" tabindex="0">
                             <span class="d-none d-sm-block">Upload new photo</span>

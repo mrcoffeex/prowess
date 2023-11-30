@@ -143,3 +143,58 @@
     });
 
 </script>
+
+<script>
+    var selDiv = $("#uploadedAvatar");
+    var storedFiles = [];
+    var defaultImage = '../../assets/img/avatars/1.png'; // Replace with the path to your default image
+    var userImageURL = '<?= $userImg?>'; 
+    var imageDir = '../../imagebank_userprofiles/';// Variable to store the user's image URL
+
+    $(document).ready(function () {
+        // Fetch the user's image URL from the database using AJAX
+        console.log(userImageURL);
+        if(userImageURL != ""){
+            displayUserImage();
+        }else{
+            displayDefaultImage();
+        }
+
+        $("#upload").on("change", handleFileSelect);
+        selDiv = $("#uploadedAvatar");
+    });
+
+    function displayDefaultImage() {
+        var html = '<img src="' + defaultImage + '" alt="default-avatar" class="d-block w-px-120 h-px-120 rounded">';
+        selDiv.html(html);
+    }
+
+    function displayUserImage() {
+        var html = '<img src="' + imageDir + userImageURL + '" alt="user-avatar" class="d-block w-px-120 h-px-120 rounded">';
+        selDiv.html(html);
+    }
+
+    function handleFileSelect(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+        console.log(filesArr);
+        filesArr.forEach(function (f) {
+        if (!f.type.match("image.*")) {
+            return;
+        }
+        storedFiles.push(f);
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var html =
+            '<img src="' +
+            e.target.result +
+            '" data-file="' +
+            f.name +
+            '" alt="user-avatar" class="d-block w-px-120 h-px-120 rounded">';
+            selDiv.html(html);
+        };
+        reader.readAsDataURL(f);
+        });
+    }
+</script>

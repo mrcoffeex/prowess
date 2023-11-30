@@ -5,10 +5,10 @@
 
     if (isset($_POST['scholarBloodType'])) {
 
-        $scholarBloodType =clean_string ($_POST['scholarBloodType']);
+        $scholarBloodType =$_POST['scholarBloodType'];
         $scholarHeight = clean_float ($_POST['scholarHeight']);
         $scholarWeight = clean_float ($_POST['scholarWeight']);
-        $scholarReligion = clean_string ($_POST['scholarReligion']);
+        $scholarReligion = $_POST['scholarReligion'];
         $scholarPWD = clean_string ($_POST['scholarPWD']);
         $scholarSingleP = clean_string ($_POST['scholarSingleP']);
         $scholarSingleID = clean_string ($_POST['scholarSingleID']);

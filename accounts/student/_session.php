@@ -32,6 +32,7 @@
     $userUsername = $row['prow_user_uname'];
     $userId = $row['prow_user_id'];
     $userType = $row['prow_user_type'];
+    $userImg = $row['prow_user_picture'];
 
     //dates
     $datenow = date("Y-m-d H:i:s");

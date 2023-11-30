@@ -829,4 +829,20 @@
         return $stmt;
 
     }
+
+    function getImg($userCode){
+
+        $stmt=PWD()->prepare("SELECT 
+                            * FROM 
+                            prow_users
+                            WHERE 
+                            prow_scholar_code = :userCode");
+        $stmt->execute([
+            'userCode' => $userCode
+        ]);
+
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $res['prow_user_picture'];
+    }
 ?>

@@ -91,18 +91,28 @@
                           <li class="d-flex align-items-center mb-3">
                             <span class="fw-semibold mx-2">Single Parent ID:</span> 
                             <span><?php
-                            $parent=$profile['prow_scholar_single_p'];
-                            $parentID=$profile['prow_scholar_single_id'];
-                            if ($parent==0) {
-                              echo "None";
-                            } else {
-                              echo $parentID;
-                            }
-                            ?></span>
+                                    $parent=$profile['prow_scholar_single_p'];
+                                    $parentID=$profile['prow_scholar_single_id'];
+                                    if ($parent==0) {
+                                      echo "None";
+                                    } else {
+                                      echo $parentID;
+                                    }
+                                  ?>
+                            </span>
                           </li>
                           <li class="d-flex align-items-center mb-3">
                             <span class="fw-semibold mx-2">Tribal Affiliation:</span> 
-                            <span><?= $profile['prow_scholar_tribal'] ?></span>
+                            <span><?php
+                            
+                                    $tribe= $profile['prow_scholar_tribal']; 
+                                    if (empty($tribe)) {
+                                      echo "None";
+                                    } else {
+                                      echo $tribe;
+                                    }
+                                  ?>
+                            </span>
                           </li>
                           <li class="d-flex align-items-center mb-3">
                             <span class="fw-semibold mx-2">Talent:</span> 
@@ -221,7 +231,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="fillupSkillsRemove?rand=<?= my_rand_str(100) ?>&skills_id=<?= $scholarSkills['prow_skills_id'] ?>">
+                                                            <a href="fillupSkillsRemove_profile?rand=<?= my_rand_str(100) ?>&skills_id=<?= $scholarSkills['prow_skills_id'] ?>">
                                                                 <button type="button" id="removeSkill" name="removeSkill" class="btn btn-danger">Remove Skill</button>
                                                             </a>
                                                         </div>
@@ -240,6 +250,61 @@
                   </div>
                 </div>
             </div>
+
+      <div class="modal fade" id="addSkills" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel1"><i class="mdi mdi-plus-outline"></i> Add Skills</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="fillupSkillsCreate_profile" enctype="multipart/form-data" method="post" onsubmit="btnLoader(this.addSkillsBtn)">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <div class="form-floating form-floating-outline">
+                                    <select id="skillCategory" name="skillCategory" class="form-control" required>
+                                    <option></option>
+                                    <?php
+                                        $getSkillTypes=selectSkillTypes();
+                                        while ($skillType=$getSkillTypes->fetch(PDO::FETCH_ASSOC)) {
+                                    ?>
+                                        <option value="<?= $skillType['prow_skill_type_id'] ?>"><?= $skillType['prow_skill_type_name'] ?></option>
+                                    <?php } ?>
+                                    </select>
+                                    <label for="skillCategory">Skill Category</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <div class="form-floating form-floating-outline">
+                                    <select id="skills" name="skills" class="form-control" required>
+                                        <option></option>
+                                    </select>
+                                    <label for="skills">Skills</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <div class="form-floating form-floating-outline">
+                                    <select id="proficiency" name="proficiency" class="form-control" required>
+                                        <option></option>
+                                        <option>Being Developed</option>
+                                        <option>Basic</option>
+                                        <option>Intermediate</option>
+                                        <option>Advanced</option>
+                                        <option>Expert</option>
+                                    </select>
+                                    <label for="proficiency">Proficiency</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="addSkillsBtn" name="addSkillsBtn" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
          
               <?php
                 include "_footer.php";

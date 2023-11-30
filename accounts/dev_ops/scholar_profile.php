@@ -9,7 +9,7 @@
   $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
 
   $getSchoolProfile=getSchoolScholar($scholarCode);
-  $schoolProfile=$getSchoolProfile->fetch(PDO::FETCH_ASSOC);
+  // $schoolProfile=$getSchoolProfile->fetch(PDO::FETCH_ASSOC);
 
   $getAddressProfile=selectScholarAddress($scholarCode);
   $addressProfile=$getAddressProfile->fetch(PDO::FETCH_ASSOC);

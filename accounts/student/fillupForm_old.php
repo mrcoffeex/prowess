@@ -136,8 +136,8 @@
                                                 <option value="Protestantism">Protestantism</option>
                                                 <option value="Roman Catholicism">Roman Catholicism</option>
                                                 <option value="Sikhism">Sikhism</option>
-                                                <option value="Sikhism">No Religion</option>
-                                                <option value="Sikhism">Others</option>
+                                                <option value="No Religion">No Religion</option>
+                                                <option value="Others">Others</option>
                                             </select>
                                             <label for="scholarReligion">Religion</label>
                                         </div>

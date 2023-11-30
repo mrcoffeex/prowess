@@ -542,12 +542,13 @@
     }
 
 
-    function updateScholarSchoolID($scholarSchoolID, $filledupStatus){
+    function updateScholarSchoolID($scholarSchoolID, $filledupStatus,$scholarCode){
 
-        $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_scholar_school_id = :prow_scholar_school_id, prow_scholar_filled_up = :prow_scholar_filled_up");
+        $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_scholar_school_id = :prow_scholar_school_id, prow_scholar_filled_up = :prow_scholar_filled_up WHERE prow_scholar_code = :prow_scholar_code");
         $stmt->execute([
             'prow_scholar_school_id' => $scholarSchoolID,
-            'prow_scholar_filled_up' => $filledupStatus
+            'prow_scholar_filled_up' => $filledupStatus,
+            'prow_scholar_code' => $scholarCode
         ]);
 
         if ($stmt) {

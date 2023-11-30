@@ -5,7 +5,7 @@
     $getPaginate->execute();
     $paginates=$getPaginate->fetch(PDO::FETCH_BOTH);
 
-    $page_rows = 1;
+    $page_rows = 15;
     $last = ceil($paginates[0]/$page_rows);
     
     if($last < 1){

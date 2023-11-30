@@ -51,13 +51,13 @@
 
     
     <li class="menu-item">
-      <a href="#" target="_blank" class="menu-link">
+      <a href="_support" target="" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-lifebuoy"></i>
         <div data-i18n="Support">Support</div>
       </a>
     </li>
     <li class="menu-item">
-      <a href="#" target="_blank" class="menu-link">
+      <a href="_about" target="" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-file-document-multiple-outline"></i>
         <div data-i18n="About">About</div>
       </a>

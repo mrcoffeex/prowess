@@ -22,6 +22,13 @@
         $countRes=$getGrades->rowCount();
     }
     
+    
+    if (isset($_POST['showGradesAll'])) {
+        
+        $getGrades=selectScholarGrades($scholarCode);
+        $countRes=$getGrades->rowCount();
+    }
+    
 
     include "_head.php";
 
@@ -78,7 +85,7 @@
                                         <div class="col-lg-3">
                                             <div class="form-floating form-floating-outline mb-5">
                                                 <select id="schoolyear" name="schoolyear" class="form-control">
-                                                    <option value="<?= $schoolYear ?>"><?= $schoolYear ?></option>
+                                                    <!-- <option value="<?= $schoolYear ?>"><?= $schoolYear ?></option> -->
                                                     <?php
                                                         //get SY
                                                         $getSY=selectSchoolYears();
@@ -90,21 +97,35 @@
                                                 <label for="schoolyear">School Year</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-2">
                                             <div class="form-floating form-floating-outline">
                                                 <select id="semester" name="semester" class="form-control" required>
-                                                    <option value="<?= $semester ?>"><?= semester($semester) ?></option>
+                                                    <!-- <option value="<?= $semester ?>"><?= semester($semester) ?></option> -->
                                                     <option value="1">1st Semester</option>
                                                     <option value="2">2nd Semester</option>
                                                 </select>
                                                 <label for="semester">Select Semester</label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3">
-                                            <div class="form-group">
+                                        <div class="col-lg-2">
+                                            <div class="row form-group mx-1">
                                                 <button type="submit" id="showGrades" class="btn btn-primary btn-lg">Show</button>
                                             </div>
                                         </div>
+                                        <div class="col-lg-2">
+                                            <div class="row form-group mx-1 ">
+                                                <button type="submit" id="showGradesAll"  name="showGradesAll" class="btn btn-primary btn-lg">Show All</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <a href="generate_reportcard?scholarCode=<?= $scholarCode?>">
+                                                    <button type="button" class="btn btn-dark btn-lg"><i class="mdi mdi-download-box-outline me-1"></i>Download PDF</button>
+                                                </a>
+                                            </div>
+                                        </div>
+
+
                                     </div>
                                     </form>
                                     <div class="row mb-3">
@@ -113,6 +134,7 @@
                                                 <table class="datatables-ajax dt-advanced-search table table-bordered">
                                                     <thead>
                                                         <tr>
+                                                            <th>School Year</th>
                                                             <th>Subject Code</th>
                                                             <th>Subject Description</th>
                                                             <th class="text-center">Units</th>
@@ -124,6 +146,7 @@
                                                             while ($grade=$getGrades->fetch(PDO::FETCH_ASSOC)) {
                                                         ?>
                                                         <tr>
+                                                            <td><?= $grade['prow_scholar_grades_sy'] ?></td>
                                                             <td><?= getSubjectCode($grade['prow_subject_id']) ?></td>
                                                             <td><?= getSubjectDesc($grade['prow_subject_id']) ?></td>
                                                             <td class="text-center"><?= getSubjectUnits($grade['prow_subject_id']) ?></td>

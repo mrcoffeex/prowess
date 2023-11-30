@@ -39,7 +39,7 @@
         <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-center p-5">
           <img
             alt="register-multi-steps-illustration"
-            src="assets/img/illustrations/auth-register-multi-steps-illustration.png"
+            src="assets/img/illustrations/leftim.png"
             class="h-auto mh-100 w-px-200" />
         </div>
         <!-- /Left Text -->
