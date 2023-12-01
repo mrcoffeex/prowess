@@ -15334,8 +15334,18 @@ html:not([dir=rtl]) .card .card-separator {
 
 .text-success {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
+  color: #0B7142!important;
 }
+
+.text-successnew {
+  --bs-text-opacity: 1;
+  color:#54A27E!important;
+}
+.text-ongoing {
+  --bs-text-opacity: 1;
+  color:#ffc658!important;
+}
+
 
 .text-info {
   --bs-text-opacity: 1;
@@ -25013,6 +25023,11 @@ html:not([dir=rtl]) .timeline-item {
 
 .timeline.timeline-outline .timeline-point-info {
   border: 2px solid #26c6f9 !important;
+}
+
+.timeline .timeline-point-successnew {
+  outline: 3px solid rgba(114, 225, 40, 0.12);
+  background-color: #148550 !important;
 }
 
 .timeline .timeline-indicator-info {

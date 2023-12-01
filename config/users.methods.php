@@ -66,4 +66,80 @@
 
     }
 
+    function updateUser($scholarCode, $username, $password, $image){
+        
+
+        $stmt = PWD()->prepare("UPDATE `prow_users` 
+                                SET 
+                                `prow_user_uname`= :username,
+                                `prow_user_pword`= :userPassword,
+                                `prow_user_picture`= :userImage,
+                                `prow_user_updated` = NOW()
+                                WHERE 
+                                `prow_scholar_code`= :scholarCode");
+
+        $stmt->execute([
+            'username' => $username,
+            'userPassword' => $password,
+            'userImage' => $image,
+            'scholarCode' => $scholarCode
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+        
+        
+    }
+
+    function imageUpdate($input, $location){
+
+        $errors= array();
+        $file_name = $_FILES[$input]['name'];
+
+        if (empty($file_name)) {
+            $res = "empty";
+        } else {
+            $file_size =$_FILES[$input]['size'];
+            $file_tmp =$_FILES[$input]['tmp_name'];
+            $file_type=$_FILES[$input]['type'];
+            $file_extension = pathinfo($_FILES[$input]['name'], PATHINFO_EXTENSION);
+
+            $final_filename = date("YmdHis")."_".$file_name;
+
+            $extensions= array("jpeg","jpg","png");
+
+            if(in_array($file_extension, $extensions)=== false){
+                $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+            }
+
+            if($file_size > 26000000){
+                $errors[]='File size must be excately 10 MB';
+            }
+
+            $file_directory = $location."".$final_filename;
+
+            if(empty($errors)==true){
+
+                move_uploaded_file($file_tmp, $file_directory);
+                $res = $final_filename;
+
+            }else{
+
+                if ($file_tmp == "") {
+                    $res = "empty";
+                }else{
+                    $res = "error";
+                }
+
+            }
+        }
+
+        return $res;
+
+    }
+
+
 ?>

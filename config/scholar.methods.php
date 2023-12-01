@@ -946,7 +946,6 @@
 
     }
 
-
     function selectScholar($profileCode){
         $statement=PWD()->prepare("SELECT
                                     *
@@ -1275,6 +1274,59 @@
         return $res;
     }
 
+    function scholarshipStatusOld($scholarCode, $selected){
+
+        if ($selected == "personal_information") {
+            
+            $getPersonal=selectPersonalInfomation($scholarCode);
+            $countPersonal=$getPersonal->rowCount();
+            $personal=$getPersonal->fetch(PDO::FETCH_ASSOC);
+
+            if (empty($countPersonal)) {
+                $res = "empty";
+            } else {
+                if (
+                    !empty($personal['prow_prof_height']) && 
+                    !empty($personal['prow_prof_weight']) && 
+                    !empty($personal['prow_prof_blood_type']) && 
+                    !empty($personal['prow_prof_religion']) && 
+                    !empty($personal['prow_prof_father']) && 
+                    !empty($personal['prow_prof_mother']) && 
+                    !empty($personal['prow_prof_guardian']) 
+                    ) {
+                    $res = "complete";
+                } else {
+                    $res = "incomplete";
+                }
+            }
+
+        } else if ($selected == "requirements") {
+
+            $appLogCode = getScholarSYRequirements($scholarCode, getSchoolYearLatest());
+            $getRequirements=getReqScholar($appLogCode, $scholarCode);
+            $countReq=$getRequirements->rowCount();
+            $req=$getRequirements->fetch(PDO::FETCH_ASSOC);
+
+            if (empty($countReq)) {
+                $res = "empty";
+            } else {
+                if (
+                    !empty($req['prow_req_school_card'])
+                    ) {
+                    $res = "complete";
+                } else {
+                    $res = "incomplete";
+                }
+            }
+
+        } else if ($selected == "approval") {
+            $res = "empty";
+        } else {
+            $res = "empty";
+        }
+        
+        return $res;
+    }
     function getPersonalInformationCreatedDate($scholarCode){
 
         $statement=PWD()->prepare("SELECT
@@ -1491,6 +1543,23 @@
 
     }
 
+    function selectScholarType($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_scholar
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            ");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+        return $res['prow_account_type'];
+
+
+    }
     function selectScholarGradesBySySem($scholarCode, $sy, $sem){
 
         $stmt=PWD()->prepare("SELECT

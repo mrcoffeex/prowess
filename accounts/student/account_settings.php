@@ -26,6 +26,7 @@
                     <h4 class="card-header">Profile Details</h4>
                     <!-- Account -->
                     <div class="card-body">
+                    <form id="formAccountSettings" action="account_update.php" method="POST" enctype="multipart/form-data">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <!-- <img
                           src="../../assets/img/avatars/1.png"
@@ -33,16 +34,17 @@
                           class="d-block w-px-120 h-px-120 rounded"
                           id="uploadedAvatar" /> -->
                         <div id="uploadedAvatar"></div>
-
+                        
                         <div class="button-wrapper">
-                          <label for="upload" class="btn btn-primary me-2 mb-3" tabindex="0">
+                          <label for="userImage" class="btn btn-primary me-2 mb-3" tabindex="0">
                             <span class="d-none d-sm-block">Upload new photo</span>
                             <i class="mdi mdi-tray-arrow-up d-block d-sm-none"></i>
                             <input
                               type="file"
-                              id="upload"
+                              id="userImage"
                               class="account-file-input"
                               hidden
+                              name = "userImage"
                               accept="image/png, image/jpeg" />
                           </label>
                           <button type="button" class="btn btn-outline-secondary account-image-reset mb-3">
@@ -55,7 +57,7 @@
                       </div>
                     </div>
                     <div class="card-body pt-2 mt-1">
-                      <form id="formAccountSettings" method="POST" onsubmit="return false">
+                      
                         <div class="row mt-2 gy-4">
                           <div class="col-md-6">
                             <div class="form-floating form-floating-outline">
@@ -63,15 +65,16 @@
                                 class="form-control"
                                 type="text"
                                 id="firstName"
-                                name="firstName"
-                                value="John"
-                                autofocus />
+                                name="username"
+                                value=<?= $userUsername?>
+                                autofocus
+                                required />
                               <label for="firstName">Username</label>
                             </div>
                           </div>
                         </div>
 
-                                            <h5 class="card-header">Change Password</h5>
+                        <h5 class="card-header">Change Password</h5>
                     
                         <div class="row">
                           <div class="mb-3 col-md-6 form-password-toggle">
@@ -82,7 +85,8 @@
                                   type="password"
                                   name="currentPassword"
                                   id="currentPassword"
-                                  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                  required />
                                 <label for="currentPassword">Current Password</label>
                               </div>
                               <span class="input-group-text cursor-pointer"
@@ -98,9 +102,10 @@
                                 <input
                                   class="form-control"
                                   type="password"
-                                  id="newPassword"
-                                  name="newPassword"
-                                  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                  id="password"
+                                  name="password"
+                                  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" 
+                                  required/>
                                 <label for="newPassword">New Password</label>
                               </div>
                               <span class="input-group-text cursor-pointer"
@@ -116,13 +121,16 @@
                                   type="password"
                                   name="confirmPassword"
                                   id="confirmPassword"
-                                  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                  placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" 
+                                  required/>
                                 <label for="confirmPassword">Confirm New Password</label>
                               </div>
                               <span class="input-group-text cursor-pointer"
                                 ><i class="mdi mdi-eye-off-outline"></i
                               ></span>
+                             
                             </div>
+                            
                           </div>
                         </div>
                         <h6 class="text-body">Password Requirements:</h6>

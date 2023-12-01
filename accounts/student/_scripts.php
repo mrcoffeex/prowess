@@ -144,34 +144,49 @@
 
 </script>
 
+
+<!-- IDSS -->
+
 <script>
     var selDiv = $("#uploadedAvatar");
+    var userprof = $("#userprofileAvatar");
+    var navDiv = $("#navigationDiv");
+    var navpopDiv = $("#navpopDiv");
     var storedFiles = [];
     var defaultImage = '../../assets/img/avatars/1.png'; // Replace with the path to your default image
     var userImageURL = '<?= $userImg?>'; 
-    var imageDir = '../../imagebank_userprofiles/';// Variable to store the user's image URL
+    var imageDir = '../../imagebankProfiles/';// Variable to store the user's image URL
 
     $(document).ready(function () {
         // Fetch the user's image URL from the database using AJAX
-        console.log(userImageURL);
         if(userImageURL != ""){
             displayUserImage();
         }else{
             displayDefaultImage();
         }
 
-        $("#upload").on("change", handleFileSelect);
+        $("#userImage").on("change", handleFileSelect);
         selDiv = $("#uploadedAvatar");
     });
 
     function displayDefaultImage() {
-        var html = '<img src="' + defaultImage + '" alt="default-avatar" class="d-block w-px-120 h-px-120 rounded">';
-        selDiv.html(html);
+        var htmlset = '<img src="' + defaultImage + '" alt="default-avatar" class="d-block w-px-120 h-px-120 rounded">';
+        var html = '<img src="' + defaultImage + '" alt="default-avatar" class="d-block w-px-120 h-px-120 ms-0 ms-sm-4 rounded user-profile-img">';
+        var Navhtml = '<img src="' + defaultImage + '" alt="default-avatar" class="h-px-40 w-px-40 rounded-circle">';
+        selDiv.html(htmlset);
+        userprof.html(html);
+        navDiv.html(Navhtml);
+        navpopDiv.html(Navhtml);
     }
 
     function displayUserImage() {
-        var html = '<img src="' + imageDir + userImageURL + '" alt="user-avatar" class="d-block w-px-120 h-px-120 rounded">';
-        selDiv.html(html);
+        var htmlset = '<img src="' + imageDir + userImageURL + '" alt="user-avatar" class="d-block w-px-120 h-px-120 rounded">';
+        var html = '<img src="' + imageDir + userImageURL + '" alt="user-avatar" class="d-block w-px-120 h-px-120 ms-0 ms-sm-4 rounded user-profile-img">';
+        var Navhtml = '<img src="' + imageDir + userImageURL + '" alt="user-avatar" class="h-px-40 w-px-40 rounded-circle">';
+        selDiv.html(htmlset);
+        userprof.html(html);
+        navDiv.html(Navhtml);
+        navpopDiv.html(Navhtml);
     }
 
     function handleFileSelect(e) {
@@ -186,15 +201,51 @@
 
         var reader = new FileReader();
         reader.onload = function (e) {
-            var html =
+            var htmlset =
             '<img src="' +
             e.target.result +
             '" data-file="' +
             f.name +
             '" alt="user-avatar" class="d-block w-px-120 h-px-120 rounded">';
-            selDiv.html(html);
+            selDiv.html(htmlset);
         };
         reader.readAsDataURL(f);
         });
     }
 </script>
+
+
+<!-- <script>
+    
+    var storedFiles = [];
+    var defaultImage = '../../assets/img/avatars/1.png'; // Replace with the path to your default image
+    var userImageURL = ''; 
+    var imageDir = '../../imagebankProfiles/';// Variable to store the user's image URL
+
+    $(document).ready(function () {
+        // Fetch the user's image URL from the database using AJAX
+        console.log(userImageURL);
+        if(userImageURL != ""){
+            displayUserImage();
+        }else{
+            displayDefaultImage();
+        }
+    });
+
+    function displayDefaultImage() {
+        var html = '<img src="' + defaultImage + '" alt="default-avatar" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">';
+        var Navhtml = '<img src="' + defaultImage + '" alt="default-avatar" class="h-px-40 w-px-40 rounded-circle">';
+        userprof.html(html);
+        navDiv.html(Navhtml);
+        navpopDiv.html(Navhtml);
+    }
+
+    function displayUserImage() {
+        var html = '<img src="' + imageDir + userImageURL + '" alt="user-avatar" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img">';
+        var Navhtml = '<img src="' + imageDir + userImageURL + '" alt="user-avatar" class="h-px-40 w-px-40 rounded-circle">';
+        userprof.html(html);
+        navDiv.html(Navhtml);
+        navpopDiv.html(Navhtml);
+    }
+
+</script> -->
