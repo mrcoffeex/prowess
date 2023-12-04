@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2023 at 10:09 AM
+-- Generation Time: Dec 04, 2023 at 03:37 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -316,7 +316,7 @@ CREATE TABLE `prow_hei` (
 --
 
 INSERT INTO `prow_hei` (`prow_hei_id`, `prow_hei_code`, `prow_hei_name`, `prow_hei_logo`, `prow_hei_cover_photo`, `prow_hei_contact_person`, `prow_hei_contact`, `prow_hei_email`, `prow_hei_street`, `prow_hei_barangay`, `prow_hei_municipality`, `prow_hei_province`, `prow_hei_zip`, `prow_hei_lat`, `prow_hei_long`, `prow_hei_acct_status`, `prow_hei_created`, `prow_hei_updated`) VALUES
-(1, 'PQRS7890-230928155678', 'UM Digos College', '', '', 'Person1', '09712371727', 'umindanao.edu.ph', 'Roxas Ext,', 'Zone 2', 'Digos CIty', 'Davao del Sur', '8002', 6.75017587061783, 125.35052536820952, 1, '2023-09-29 02:11:00', '2023-09-29 02:11:00'),
+(1, 'PQRS7890-230928155678', 'UM Digos College', 'um.png', '', 'Person1', '09712371727', 'umindanao.edu.ph', 'Roxas Ext,', 'Zone 2', 'Digos CIty', 'Davao del Sur', '8002', 6.75017587061783, 125.35052536820952, 1, '2023-09-29 02:11:00', '2023-09-29 02:11:00'),
 (2, '20231104223741sYrnj2w3su', 'Cor Jesu College', '', '', 'Person2', '09282657552', 'joanemaydelima@gmail.com', 'Datoc Compound, Digos City', 'Aplaya', 'Digos City', 'Davao del Sur', '8002', 6.751216719909428, 125.3532739952844, 1, '2023-11-04 22:37:41', '2023-11-04 22:37:41');
 
 -- --------------------------------------------------------
@@ -749,7 +749,7 @@ INSERT INTO `prow_list_talents` (`prow_talent_id`, `prow_talent_name`) VALUES
 (4, 'Painting'),
 (5, 'Drawing'),
 (6, 'Writing'),
-(7, 'Playing a musical instrument (e.g., piano, guitar, violin)'),
+(7, 'Playing a musical instrument'),
 (8, 'Composing music'),
 (9, 'Sculpting'),
 (10, 'Photography'),
@@ -759,7 +759,7 @@ INSERT INTO `prow_list_talents` (`prow_talent_id`, `prow_talent_name`) VALUES
 (14, 'Graphic design'),
 (15, 'Poetry'),
 (16, 'Public speaking'),
-(17, 'Playing sports (e.g., basketball, soccer, tennis)'),
+(17, 'Playing sports'),
 (18, 'Chess playing'),
 (19, 'Coding/Programming'),
 (20, 'Problem-solving'),
@@ -768,7 +768,7 @@ INSERT INTO `prow_list_talents` (`prow_talent_id`, `prow_talent_name`) VALUES
 (23, 'Critical thinking'),
 (24, 'Scientific research'),
 (25, 'Mathematical ability'),
-(26, 'Crafting (e.g., woodworking, pottery, jewelry-making)'),
+(26, 'Crafting'),
 (27, 'Gardening'),
 (28, 'Singing in multiple languages'),
 (29, 'Storytelling'),
@@ -810,8 +810,8 @@ CREATE TABLE `prow_list_tribe` (
 
 INSERT INTO `prow_list_tribe` (`prow_tribe_id`, `prow_tribe_name`) VALUES
 (1, 'Lumad'),
-(2, 'Blaan people'),
-(3, 'Tausūg people'),
+(2, 'Blaan'),
+(3, 'Tausūg'),
 (4, 'Igorot people'),
 (5, 'Yakan people'),
 (6, 'Sama-Bajau'),
@@ -927,7 +927,8 @@ INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_noti
 (24, 'auth', 'Login - annimay2', 0, '2023-11-30 15:31:32'),
 (25, 'auth', 'Login - Angiii', 0, '2023-11-30 15:54:24'),
 (26, 'auth', 'Login - admin', 0, '2023-11-30 16:27:42'),
-(27, 'auth', 'Login - Angiii', 0, '2023-11-30 16:35:34');
+(27, 'auth', 'Login - Angiii', 0, '2023-11-30 16:35:34'),
+(28, 'auth', 'Login - Angiii', 0, '2023-12-04 13:31:11');
 
 -- --------------------------------------------------------
 
@@ -1001,7 +1002,7 @@ CREATE TABLE `prow_scholar` (
 
 INSERT INTO `prow_scholar` (`prow_scholar_id`, `prow_scholar_code`, `prow_scholar_school_id`, `prow_scholar_img`, `prow_scholar_lastname`, `prow_scholar_firstname`, `prow_scholar_middlename`, `prow_scholar_suffix`, `prow_scholar_gender`, `prow_scholar_cs`, `prow_scholar_birthday`, `prow_scholar_birthplace`, `prow_scholar_con`, `prow_scholar_email`, `prow_scholar_acct_status`, `prow_account_type`, `prow_initial_approve`, `prow_initial_updated`, `prow_scholar_filled_up`, `prow_scholar_created`, `prow_scholar_updated`) VALUES
 (1, '20234fMHuh', '59317', '', 'Delima', 'Joane May', 'Berdera', '', 'Female', 'Single', '1994-02-06', 'Valenzuela Metro Manila', '9282657552', 'joanemaydelima@gmail.com', 2, 1, 0, '2023-11-21 21:23:51', 0, '2023-11-21 21:23:51', '2023-11-21 21:23:51'),
-(2, '202392kVbM', '59318', '', 'Libanan', 'Angelika', 'Ligutan', '', 'Female', 'Single', '2002-06-03', 'New Israel, Makilala', '9639765214', 'angelikalibanan@gmail.com', 2, 1, 0, '2023-11-28 17:15:08', 0, '2023-11-28 17:15:08', '2023-11-28 17:15:08'),
+(2, '202392kVbM', '59318', '22.jpg', 'Libanan', 'Angelika', 'Ligutan', '', 'Female', 'Single', '2002-06-03', 'New Israel, Makilala', '9639765214', 'angelikalibanan@gmail.com', 2, 1, 0, '2023-11-28 17:15:08', 0, '2023-11-28 17:15:08', '2023-11-28 17:15:08'),
 (3, '2023FA1swO', '59319', '', 'Delima', 'Jessa Mae', 'Berdera', '', 'Female', 'Single', '1994-11-27', 'Digos City', '9282657552', 'jmdelima@umindanao.edu.ph', 2, 1, 0, '2023-11-30 15:29:10', 0, '2023-11-30 15:29:10', '2023-11-30 15:29:10');
 
 -- --------------------------------------------------------
@@ -1212,7 +1213,7 @@ CREATE TABLE `prow_scholar_profile` (
 
 INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guardian_cont`, `prow_prof_guardian_occu`, `prow_prof_income`, `prow_scholar_pwd`, `prow_scholar_single_p`, `prow_scholar_single_id`, `prow_scholar_tribal`, `prow_prof_created`, `prow_prof_updated`) VALUES
 (1, '20234fMHuh', 149, 49, 'B+', 'Sikhism', 'Coding/Programming,Drawing,Photography,Writing', 'Julieto Delima', '9232765442', 'Police officer', 'Margie Delima', '9835467221', 'Business Owner', 'Jessa Delima', '9863627222', 'Civil engineer', '₱9,100 - ₱18,000', 0, 0, 1234, 'Aeta people', '2023-11-22 11:20:52', '2023-11-28 17:25:44'),
-(2, '202392kVbM', 152, 39, 'A+', 'Others', 'Chess playing,Playing sports (e.g.,basketball,soccer,tennis),Storytelling', 'Gerardo Libanan', '09127028382', '', 'Dahlia Libanan', '', '', '', '', '', 'Less than ₱9,000', 0, 0, 0, '', '2023-11-28 17:21:12', '2023-11-30 16:01:46'),
+(2, '202392kVbM', 152, 39, 'A+', 'Others', 'Chess playing,Playing sports,Storytelling', '', '', '', '', '', '', 'Gerardo Libanan', '', '', 'Less than ₱9,000', 0, 0, 0, '', '2023-11-28 17:21:12', '2023-12-04 16:19:20'),
 (3, '2023FA1swO', 149, 45, 'O-', 'Sikhism', 'Designing clothes,Entrepreneurship', 'Julieto Delima', '92828282828', 'Event planner', 'Margie Delima', '9236677876', 'Graphic designer', 'Kent John Gocotano', '9121610673', 'Freelancer', 'Less than ₱9,000', 0, 0, 0, 'None', '2023-11-30 15:43:53', '2023-11-30 15:43:53');
 
 -- --------------------------------------------------------
@@ -1815,7 +1816,7 @@ ALTER TABLE `prow_my_project`
 -- AUTO_INCREMENT for table `prow_notifications`
 --
 ALTER TABLE `prow_notifications`
-  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `prow_notif_type`
