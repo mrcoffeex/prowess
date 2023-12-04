@@ -35,6 +35,13 @@ $(document).ready(function() {
                 }
               }
             },
+            scholarGuardianName: {
+              validators: {
+                notEmpty: {
+                  message: 'Please enter your Guardian Name'
+                }
+              }
+            },
             scholarSchoolID: {
               validators: {
                 notEmpty: {

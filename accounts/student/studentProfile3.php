@@ -119,7 +119,7 @@
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
-                                                <a href="generate_reportcard?scholarCode=<?= $scholarCode?>">
+                                                <a href="scholarReportCard?scholarCode=<?= $scholarCode?>">
                                                     <button type="button" class="btn btn-dark btn-lg"><i class="mdi mdi-download-box-outline me-1"></i>Download PDF</button>
                                                 </a>
                                             </div>

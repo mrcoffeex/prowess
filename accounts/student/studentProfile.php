@@ -63,7 +63,7 @@
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-book-check-outline mdi-24px"></i
-                          ><span class="fw-semibold mx-2">Course:</span> <span><?= getCourseName(getScholarCourse($scholarCode))  ?></span>
+                          ><span class="fw-semibold mx-2">Course:</span> <span><?= getScholarCourse($scholarCode)  ?></span>
                         </li>
                         <li class="d-flex align-items-center">
                           <i class="mdi mdi-book-open-outline mdi-24px"></i

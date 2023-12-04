@@ -214,6 +214,40 @@
 
     }
 
+    function getScholarSchoolImage($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_scholar_app_logs
+                                        Where
+                                        prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+        $heiID=$res['prow_hei'];
+        
+
+        $stmt=PWD()->prepare("SELECT
+                                        *
+                                        From
+                                        prow_hei
+                                        Where
+                                        prow_hei_id = :prow_hei_id");
+        $stmt->execute([
+            'prow_hei_id' => $heiID
+        ]);
+        $res2=$statement->fetch(PDO::FETCH_ASSOC);
+       
+        if (empty($res2['prow_hei_logo'])) {
+            $logo=$res2['prow_hei_logo'];
+            return $logo;
+        } else {         
+            return "empty";
+        }
+               
+    }
+
     function heiFullAddress($heiID){
         $statement=PWD()->prepare("SELECT
                                         *
@@ -596,6 +630,35 @@
             return "";
         } else {
             return $res['prow_subject_code'];
+        }        
+
+    }
+
+    function getSubjectSemester($subjectId,$scholarCode){
+        
+        $statement=PWD()->prepare("SELECT
+                                prow_scholar_grades_semester	
+                                From
+                                prow_scholar_grades
+                                Where
+                                prow_subject_id = :prow_subject_id 
+                                and
+                                prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_subject_id' => $subjectId,
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        $res=$statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($res['prow_scholar_grades_semester'])) {
+            return "";
+        } else {
+            if($res['prow_scholar_grades_semester']==1){
+                return "1st";
+            }else{
+                return "2nd";
+            }
         }        
 
     }
