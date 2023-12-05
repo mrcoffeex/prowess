@@ -9,6 +9,7 @@
   $heiLogo = $profile['prow_hei_logo'];
   $heiCover = $profile['prow_hei_cover_photo'];
   $getHeiCourse=selectCoursebyHeiIds($hei_id);
+ 
 ?>
 
   <body>
@@ -127,7 +128,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Courses</th>
-                                                    <th>No. of Scholars</th>
+                                                    <th>No. of Subjects</th>
                                                     <th class="text-center">Subjects</th>
                                                     <th class="text-center">Actions</th>
                                                 </tr>
@@ -140,7 +141,7 @@
                                             <tr>
                                                     
                                                     <td><?= $course['prow_course_name']?></td>
-                                                    <td><? ?></td>
+                                                    <td><?= selectCountCoursebyHeiIds($course['prow_hei_course_id']) ?></td>
                                                     <td class="text-center p-2">
                                                         <a href="hei_subjects?rand=<?= my_rand_str(100) ?>&hei_id=<?=$hei_id ?>&course_id=<?=$course['prow_hei_course_id'] ?>">
                                                             <button 

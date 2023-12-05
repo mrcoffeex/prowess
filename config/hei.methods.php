@@ -29,8 +29,12 @@
             ]);
 
         $count=$statement->rowCount();
-
-        return $count;
+        if(empty($count)){
+            return $count;
+        }else{
+            return "0";
+        }
+        
 
     }
     function checkHeiCourseDuplicate($hei_id,$listcourse){
@@ -424,6 +428,25 @@
         return $statement;
 
     }
+
+    function selectCountCoursebyHeiIds($heiID){
+
+        $statement=PWD()->prepare("SELECT
+                                    *
+                                    FROM
+                                    prow_hei_subjects
+                                    WHERE
+                                    prow_hei_course_id = :prow_hei_course_id 
+                                    ");
+        $statement->execute([
+            'prow_hei_course_id' => $heiID
+        ]);
+    
+         $count=$statement->rowCount();
+    
+         return $count;
+    
+    }  
 
     function selectHeiCourseSubjects($courseId){
 
