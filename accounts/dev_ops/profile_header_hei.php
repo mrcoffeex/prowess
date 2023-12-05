@@ -6,10 +6,11 @@
                     </div>
                     <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                       <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-                        <img
+                        <div id="heiLogo"></div>
+                        <!-- <img
                           src="../../assets/img/avatars/1.png"
                           alt="user image"
-                          class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" />
+                          class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" /> -->
                       </div>
                       <div class="flex-grow-1 mt-3 mt-sm-5">
                         <div
@@ -32,7 +33,7 @@
                               </li>
                             </ul>
                           </div>
-                          <a href="javascript:void(0)" class="btn btn-primary">
+                          <a href="hei_profile_edit?rand=<?= my_rand_str(100) ?>&hei_id=<?=$hei_id ?>" class="btn btn-primary">
                             <i class="mdi mdi-image-edit-outline me-1"></i>Edit Profile
                           </a>
                         </div>

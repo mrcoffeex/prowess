@@ -15,19 +15,11 @@ if($curPass == $userPassword){
     }
 
     if($updateProfile == true){
-        echo 'success';
+        header("location: account_settings?note=updated");
     }else{
-        echo 'error';
-    }   
+        header("location: account_settings?note=error");
+    }
 }else{
-    echo 'Wrong pass';
-
+    header("location: account_settings?note=incorrect_pass");
 }
-
-
-
-
-
-
-
 ?>

@@ -6,6 +6,8 @@
   $getHeiProfile=selectHEIProfile($hei_id);
   $profile=$getHeiProfile->fetch(PDO::FETCH_ASSOC);
 
+  $heiLogo = $profile['prow_hei_logo'];
+  $heiCover = $profile['prow_hei_cover_photo'];
   $getHeiCourse=selectCoursebyHeiIds($hei_id);
 ?>
 

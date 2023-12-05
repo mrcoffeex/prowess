@@ -21,9 +21,28 @@
                 toastr.error('Invalid upload!');
             </script>
         ";
+    } else if ($note == "incorrect_pass") {
+        echo "
+            <script>
+                toastr.error('Current password does not match');
+            </script>
+        ";
     } else {
 
         //fillupForm_old2
+        if ($currpage == "account_settings") {
+        
+            if ($note == "updated") {
+                echo "
+                    <script>
+                        toastr.success('Changes saved');
+                    </script>
+                ";
+            } else {
+                echo "";
+            }
+
+        }
         
         if ($currpage == "fillupForm_old2") {
         

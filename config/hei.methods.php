@@ -644,4 +644,22 @@
 
     }
 
+    function updateHei($heicode, $imgdir){
+        $statement=PWD()->prepare("UPDATE `prow_hei`
+                                    SET `prow_hei_logo`= :prow_hei_logo,
+                                    `prow_hei_updated`= NOW()
+                                    WHERE prow_hei_code = :prow_hei_code");
+        $statement->execute([
+            'prow_hei_logo' => $imgdir,
+            'prow_hei_code' => $imgdir
+        ]);
+
+        if ($statement) {
+            return true;
+        } else {
+            return false;
+        }        
+    }
+
+
 ?>
