@@ -50,7 +50,7 @@
 <body>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <?php include "_sidemenu.php"; ?>
+            <?php include "_sidemenu_inc.php"; ?>
 
             <div class="layout-page">
                 <?php include "_topnavigation.php"; ?>

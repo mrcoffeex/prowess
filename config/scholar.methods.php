@@ -917,13 +917,25 @@
         ]);
         
         $res=$statement->fetch(PDO::FETCH_ASSOC);
+        $heiCOurse= $res['prow_course'];
 
-        if (!empty($res['prow_course'])) {
-            return $res['prow_course'];
+        if (!empty($heiCOurse)) {
+            $stmt=PWD()->prepare("SELECT
+                                    *
+                                    From
+                                    prow_hei_course
+                                    Where
+                                    prow_hei_course_id = :prow_hei_course_id");
+            $stmt->execute([
+            'prow_hei_course_id' => $heiCOurse
+            ]);
+
+            $res2=$stmt->fetch(PDO::FETCH_ASSOC);
+            return $res2['prow_course_name'];
+
         } else {         
             return "Not yet enrolled";
         }
-
     }
 
     function getScholarYrLvl($profileCode){
@@ -1216,6 +1228,38 @@
 
     }
 
+    function selectEnrollment($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_scholar_app_logs
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        return $stmt;
+
+    }
+
+    function selectGrades($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT
+                            *
+                            FROM
+                            prow_scholar_grades
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        return $stmt;
+
+    }
+
     function scholarshipStatus($scholarCode, $selected){
 
         if ($selected == "personal_information") {
@@ -1290,17 +1334,143 @@
                     !empty($personal['prow_prof_weight']) && 
                     !empty($personal['prow_prof_blood_type']) && 
                     !empty($personal['prow_prof_religion']) && 
-                    !empty($personal['prow_prof_father']) && 
-                    !empty($personal['prow_prof_mother']) && 
-                    !empty($personal['prow_prof_guardian']) 
+                    !empty($personal['prow_prof_talent'])
                     ) {
-                    $res = "complete";
+                     $res = "complete";
                 } else {
-                    $res = "incomplete";
+                     $res = "incomplete";
                 }
             }
 
-        } else if ($selected == "requirements") {
+            return $res;
+
+        } 
+        
+        if ($selected == "address_information") {
+            
+            $getAddress=selectScholarAddress($scholarCode);
+            $countAddress=$getAddress->rowCount();
+            $address=$getAddress->fetch(PDO::FETCH_ASSOC);
+
+            if (empty($countAddress)) {
+                $res = "empty";
+            } else {
+                if (
+                    !empty($address['prow_address_description']) && 
+                    !empty($address['prow_address_brgy']) && 
+                    !empty($address['prow_address_municipality']) && 
+                    !empty($address['prow_address_province']) && 
+                    !empty($address['prow_address_zipcode']) &&
+                    !empty($address['prow_address_long']) && 
+                    !empty($address['prow_address_lat'])
+                    ) {
+                     $res = "complete";
+                } else {
+                     $res = "incomplete";
+                }
+            }
+
+            return $res;
+
+        } 
+
+        if ($selected == "family_information") {
+            
+            $getPersonal=selectPersonalInfomation($scholarCode);
+            $countPersonal=$getPersonal->rowCount();
+            $personal=$getPersonal->fetch(PDO::FETCH_ASSOC);
+
+            if (empty($countPersonal)) {
+                $res = "empty";
+            } else {
+                if (
+                    !empty($personal['prow_prof_guardian']) && 
+                    !empty($personal['prow_prof_income'])
+                    ) {
+                     $res = "complete";
+                } else {
+                     $res = "incomplete";
+                }
+            }
+
+            return $res;
+
+        } 
+
+
+        if ($selected == "skills_information") {
+            
+            $getPersonal=selectScholarSkills($scholarCode);
+            $countPersonal=$getPersonal->rowCount();
+            $personal=$getPersonal->fetch(PDO::FETCH_ASSOC);
+
+            if (empty($countPersonal)) {
+                $res = "empty";
+            } else {
+                if (
+                    !empty($personal['prow_skills'])
+                    ) {
+                     $res = "complete";
+                } else {
+                     $res = "incomplete";
+                }
+            }
+
+            return $res;
+
+        } 
+
+        if ($selected == "enroll_information") {
+            
+            $getPersonal=selectEnrollment($scholarCode);
+            $countPersonal=$getPersonal->rowCount();
+            $personal=$getPersonal->fetch(PDO::FETCH_ASSOC);
+
+            if (empty($countPersonal)) {
+                $res = "empty";
+            } else {
+                if (
+                    !empty($personal['prow_hei']) &&
+                    !empty($personal['prow_course']) &&
+                    !empty($personal['prow_yr_lvl']) &&
+                    !empty($personal['prow_sy']) &&
+                    !empty($personal['prow_sem']) 
+                    ) {
+                     $res = "complete";
+                } else {
+                     $res = "incomplete";
+                }
+            }
+
+            return $res;
+
+        } 
+      
+        if ($selected == "grades") {
+            
+            $getPersonal=selectGrades($scholarCode);
+            $countPersonal=$getPersonal->rowCount();
+            $personal=$getPersonal->fetch(PDO::FETCH_ASSOC);
+
+            if (empty($countPersonal)) {
+                $res = "empty";
+            } else {
+                if (
+                    !empty($personal['prow_subject_id']) &&
+                    !empty($personal['prow_scholar_grades_semester']) &&
+                    !empty($personal['prow_scholar_grades_sy']) &&
+                    !empty($personal['prow_scholar_grades_percent'])
+                    ) {
+                     $res = "complete";
+                } else {
+                     $res = "incomplete";
+                }
+            }
+
+            return $res;
+
+        } 
+        if ($selected == "requirements") {
 
             $appLogCode = getScholarSYRequirements($scholarCode, getSchoolYearLatest());
             $getRequirements=getReqScholar($appLogCode, $scholarCode);
@@ -1327,6 +1497,9 @@
         
         return $res;
     }
+
+
+    
     function getPersonalInformationCreatedDate($scholarCode){
 
         $statement=PWD()->prepare("SELECT
@@ -1533,8 +1706,8 @@
                             Where
                             prow_scholar_code = :prow_scholar_code
                             Order By
-                            prow_scholar_grades_sy
-                            DESC");
+                            prow_scholar_grades_sy DESC,  
+                            prow_scholar_grades_semester ASC");
         $stmt->execute([
             'prow_scholar_code' => $scholarCode
         ]);
