@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 03:37 PM
+-- Generation Time: Dec 06, 2023 at 10:46 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -346,13 +346,12 @@ INSERT INTO `prow_hei_course` (`prow_hei_course_id`, `prow_hei_id`, `prow_course
 (7, 1, 48, 'Bachelor of Secondary Education major in Sciences'),
 (8, 2, 1, 'Bachelor of Arts in Communication'),
 (9, 2, 23, 'Bachelor of Arts in English Language'),
-(10, 3, 1, 'Bachelor of Arts in Communication'),
-(11, 3, 40, 'Bachelor of Elementary Education'),
 (12, 2, 2, 'Bachelor of Arts in History'),
 (13, 1, 30, 'Bachelor of Science in Computer Engineering'),
 (14, 1, 3, 'Bachelor of Arts in Political Science'),
 (15, 1, 43, 'Bachelor of Science in Business Administration major in Financial Management'),
-(16, 1, 33, 'Bachelor of Science in Psychology');
+(16, 1, 33, 'Bachelor of Science in Psychology'),
+(17, 1, 19, 'Bachelor of Special Needs Education major in Generalist');
 
 -- --------------------------------------------------------
 
@@ -467,7 +466,56 @@ INSERT INTO `prow_hei_subjects` (`prow_subject_id`, `prow_hei_course_id`, `prow_
 (90, 13, 'CEE 108', 'Engineering Management', 3, '2023-11-28 16:26:23', '2023-11-28 16:26:23'),
 (91, 13, 'DRAW 102/L', 'Computer-Aided Drafting', 2, '2023-11-28 16:26:44', '2023-11-28 16:26:44'),
 (92, 13, 'CPE 111', 'Computer Engineering as a Dicsipline', 1, '2023-11-28 16:27:14', '2023-11-28 16:27:14'),
-(93, 13, 'CPE 112/L', 'Programming Logic and Design', 2, '2023-11-28 16:27:35', '2023-11-28 16:27:35');
+(93, 13, 'CPE 112/L', 'Programming Logic and Design', 2, '2023-11-28 16:27:35', '2023-11-28 16:27:35'),
+(94, 13, 'CPE 113/L', 'Programming Logic and Design', 2, '2023-12-06 16:31:43', '2023-12-06 16:31:43'),
+(95, 13, 'CPE 121/L', 'Object Oriented Programming', 2, '2023-12-06 16:33:59', '2023-12-06 16:43:15'),
+(96, 13, 'CPE 122', 'Discrete Mathematics', 3, '2023-12-06 16:34:22', '2023-12-06 16:34:22'),
+(97, 13, 'CPE 211/L', 'Data Structures and Algorithms', 2, '2023-12-06 16:35:16', '2023-12-06 16:35:16'),
+(98, 13, 'BEE 212/L', 'Fundamentals of Electrical Circuits', 4, '2023-12-06 16:35:50', '2023-12-06 16:35:50'),
+(99, 13, 'CPE 222/L', 'Numerical Methods', 3, '2023-12-06 16:36:41', '2023-12-06 16:36:41'),
+(100, 13, 'CPE 223/L', 'Software Design', 4, '2023-12-06 16:37:15', '2023-12-06 16:37:15'),
+(101, 13, 'BECE 225/L', 'Fundamentals of Electronic Circuits', 4, '2023-12-06 16:41:17', '2023-12-06 16:41:17'),
+(102, 13, 'CPE 224/L', 'Logic Circuits and Design', 5, '2023-12-06 16:42:01', '2023-12-06 16:42:01'),
+(103, 13, 'CPE 317/L', 'CPE Elective 1', 3, '2023-12-06 16:43:02', '2023-12-06 16:43:02'),
+(104, 13, 'CPE 311/L', 'Introduction to Hardware Description Language', 2, '2023-12-06 16:44:00', '2023-12-06 16:44:00'),
+(105, 13, 'CPE 312/L', 'Operating Systems', 4, '2023-12-06 16:44:37', '2023-12-06 16:44:37'),
+(106, 13, 'CPE 313/L', 'Data and Digital Communications', 3, '2023-12-06 16:45:22', '2023-12-06 16:45:22'),
+(107, 13, 'CPE 314/L', 'Feedback and Control Systems', 3, '2023-12-06 16:45:51', '2023-12-06 16:45:51'),
+(108, 13, 'CPE 315/L', 'Fundamentals of Mixed Signals and Sensors', 3, '2023-12-06 16:46:56', '2023-12-06 16:46:56'),
+(109, 13, 'CPE 316/L', 'Computer Engineering Drafting and Design', 2, '2023-12-06 16:47:25', '2023-12-06 16:47:25'),
+(110, 13, 'CPE 324/L', 'Computer Networks and Security', 3, '2023-12-06 16:47:53', '2023-12-06 16:47:53'),
+(111, 13, 'CPE 325/L', 'Computer Networks and Security', 4, '2023-12-06 16:48:24', '2023-12-06 16:48:24'),
+(112, 13, 'CPE 326/L', 'Microprocessor', 4, '2023-12-06 16:48:48', '2023-12-06 16:48:48'),
+(113, 13, 'CPE 328', 'CPE Laws and Professional Practice', 2, '2023-12-06 16:49:31', '2023-12-06 16:49:31'),
+(114, 13, 'CPE 329/L', 'CPE Practice and Design 1', 2, '2023-12-06 16:49:55', '2023-12-06 16:49:55'),
+(115, 13, 'CPE 333/L', 'Seminars and Fieldtrips', 2, '2023-12-06 16:50:31', '2023-12-06 16:50:31'),
+(116, 13, 'CPE 412/L', 'CPE Elective 3', 3, '2023-12-06 16:50:59', '2023-12-06 16:50:59'),
+(117, 13, 'CPE 413/L', 'Embedded Systems', 4, '2023-12-06 16:51:31', '2023-12-06 16:51:31'),
+(118, 13, 'CPE 414/L', 'Computer Architecture and Organization', 4, '2023-12-06 16:52:13', '2023-12-06 16:52:13'),
+(119, 13, 'CPE 415/L', 'Digital Signal Processing', 4, '2023-12-06 16:52:39', '2023-12-06 16:52:39'),
+(120, 13, 'CPE 416', 'Emerging Technologies in CPE', 3, '2023-12-06 16:53:04', '2023-12-06 16:53:04'),
+(121, 13, 'CPE 417/L', 'CPE Practice and Design 2', 2, '2023-12-06 16:53:27', '2023-12-06 16:53:27'),
+(122, 13, 'CPE 422', 'On the Job Training', 6, '2023-12-06 16:53:51', '2023-12-06 16:53:51'),
+(123, 13, 'CPE 421', 'Methods of Research - CPE', 3, '2023-12-06 16:54:19', '2023-12-06 16:54:19'),
+(124, 13, 'GE 15', 'Environmental Science', 3, '2023-12-06 16:54:31', '2023-12-06 16:54:31'),
+(125, 13, 'GE 11', 'The Entrepreneurial Mind', 3, '2023-12-06 16:54:54', '2023-12-06 16:54:54'),
+(126, 13, 'GE 20', 'Reading Visual Arts', 3, '2023-12-06 16:55:08', '2023-12-06 16:55:08'),
+(127, 3, 'GE 1', 'Understanding the Self', 3, '2023-12-06 16:56:36', '2023-12-06 16:56:36'),
+(128, 3, 'GE 2', 'Purposive Communication with Interactive Learning', 6, '2023-12-06 16:57:17', '2023-12-06 16:57:17'),
+(129, 3, 'GE 3', 'The Contemporary World', 3, '2023-12-06 16:57:35', '2023-12-06 16:57:35'),
+(130, 3, 'TME 100', 'Tourism Promotions and Services', 3, '2023-12-06 16:58:07', '2023-12-06 16:58:07'),
+(131, 3, 'THC 1', 'Macro Perspective of Tourism and Hospitality', 3, '2023-12-06 16:58:49', '2023-12-06 16:58:49'),
+(132, 3, 'THC 2', 'Risk Management as Applied to Safety, Security and Sanitation', 3, '2023-12-06 16:59:35', '2023-12-06 16:59:35'),
+(133, 3, 'GPE 1', 'Movement Enhancement', 2, '2023-12-06 16:59:48', '2023-12-06 16:59:48'),
+(134, 3, 'NSTP 1', 'National Service Training Program 1', 3, '2023-12-06 17:00:02', '2023-12-06 17:00:02'),
+(135, 3, 'UGE 1', 'Reading Comprehension', 6, '2023-12-06 17:00:23', '2023-12-06 17:00:23'),
+(136, 3, 'GE 4', 'Mathematics in the Modern World', 3, '2023-12-06 17:00:40', '2023-12-06 17:00:40'),
+(137, 3, 'THC 3', 'Quality Service Management in Tourism and Hospitality', 3, '2023-12-06 17:01:14', '2023-12-06 17:01:14'),
+(138, 3, 'THC 4', 'Philippine Culture and Tourism Geography', 3, '2023-12-06 17:01:47', '2023-12-06 17:01:47'),
+(139, 3, 'TME 106', 'Travel Writing and Photography', 3, '2023-12-06 17:02:26', '2023-12-06 17:02:26'),
+(140, 3, 'GPE 2', 'Fitness Exercises', 2, '2023-12-06 17:02:42', '2023-12-06 17:02:42'),
+(141, 3, 'NSTP 2', 'National Service Training Program 2', 3, '2023-12-06 17:02:55', '2023-12-06 17:02:55'),
+(142, 3, 'THC 5', 'Micro Perspective of Tourism and Hospitality', 3, '2023-12-06 17:16:14', '2023-12-06 17:16:14');
 
 -- --------------------------------------------------------
 
@@ -812,24 +860,24 @@ INSERT INTO `prow_list_tribe` (`prow_tribe_id`, `prow_tribe_name`) VALUES
 (1, 'Lumad'),
 (2, 'Blaan'),
 (3, 'Tausūg'),
-(4, 'Igorot people'),
-(5, 'Yakan people'),
+(4, 'Igorot'),
+(5, 'Yakan'),
 (6, 'Sama-Bajau'),
 (7, 'Tagbanwa'),
-(8, 'Maranao people'),
+(8, 'Maranao'),
 (9, 'Mangyan'),
 (10, 'Mamanwa'),
 (11, 'Mandaya'),
 (12, 'Ibaloi'),
 (13, 'Negrito'),
-(14, 'Aeta people'),
+(14, 'Aeta'),
 (15, 'Kapampangan'),
 (16, 'Bukid language'),
-(17, 'Tboli people'),
+(17, 'Tboli'),
 (18, 'Bugkalot'),
-(19, 'Batak people'),
-(20, 'Kankanaey people'),
-(21, 'Palawan people'),
+(19, 'Batak'),
+(20, 'Kankanaey'),
+(21, 'Palawan'),
 (22, 'Bukidnon'),
 (23, 'Molbog'),
 (24, 'Tagabawa');
@@ -928,7 +976,20 @@ INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_noti
 (25, 'auth', 'Login - Angiii', 0, '2023-11-30 15:54:24'),
 (26, 'auth', 'Login - admin', 0, '2023-11-30 16:27:42'),
 (27, 'auth', 'Login - Angiii', 0, '2023-11-30 16:35:34'),
-(28, 'auth', 'Login - Angiii', 0, '2023-12-04 13:31:11');
+(28, 'auth', 'Login - Angiii', 0, '2023-12-04 13:31:11'),
+(29, 'auth', 'Login - Angiii', 0, '2023-12-05 10:36:34'),
+(30, 'auth', 'Login - admin', 0, '2023-12-05 11:51:17'),
+(31, 'auth', 'Login - Angiii', 0, '2023-12-05 15:29:11'),
+(32, 'auth', 'Login - admin', 0, '2023-12-05 15:45:59'),
+(33, 'auth', 'Login - admin', 0, '2023-12-05 15:50:33'),
+(34, 'auth', 'Login - admin', 0, '2023-12-06 16:17:02'),
+(35, 'auth', 'Login - Angiii', 0, '2023-12-06 16:27:03'),
+(36, 'auth', 'Login - admin', 0, '2023-12-06 16:31:59'),
+(37, 'attempt', 'Login Attempt - Angiii', 0, '2023-12-06 17:16:53'),
+(38, 'auth', 'Login - Angiii', 0, '2023-12-06 17:16:58'),
+(39, 'auth', 'Login - admin', 0, '2023-12-06 17:25:54'),
+(40, 'auth', 'Login - annimay2', 0, '2023-12-06 17:29:57'),
+(41, 'auth', 'Login - annimay', 0, '2023-12-06 17:40:04');
 
 -- --------------------------------------------------------
 
@@ -962,9 +1023,7 @@ CREATE TABLE `prow_otp` (
 --
 
 INSERT INTO `prow_otp` (`prow_otp_id`, `prow_otp_code`, `prow_user_code`, `prow_otp_status`, `prow_otp_created`, `prow_otp_updated`) VALUES
-(1, '996472', '20231122132351ieG23Djs94', 1, '2023-11-21 21:23:51', '2023-11-21 21:23:51'),
-(2, '426977', '20231128171508XVXE2EiZlQ', 1, '2023-11-28 17:15:08', '2023-11-28 17:15:08'),
-(3, '256245', '20231130152910ZxMgOPWWpm', 1, '2023-11-30 15:29:10', '2023-11-30 15:29:10');
+(1, '230419', '20231206173921ujlJEVFvDE', 1, '2023-12-06 17:39:21', '2023-12-06 17:39:21');
 
 -- --------------------------------------------------------
 
@@ -1001,9 +1060,7 @@ CREATE TABLE `prow_scholar` (
 --
 
 INSERT INTO `prow_scholar` (`prow_scholar_id`, `prow_scholar_code`, `prow_scholar_school_id`, `prow_scholar_img`, `prow_scholar_lastname`, `prow_scholar_firstname`, `prow_scholar_middlename`, `prow_scholar_suffix`, `prow_scholar_gender`, `prow_scholar_cs`, `prow_scholar_birthday`, `prow_scholar_birthplace`, `prow_scholar_con`, `prow_scholar_email`, `prow_scholar_acct_status`, `prow_account_type`, `prow_initial_approve`, `prow_initial_updated`, `prow_scholar_filled_up`, `prow_scholar_created`, `prow_scholar_updated`) VALUES
-(1, '20234fMHuh', '59317', '', 'Delima', 'Joane May', 'Berdera', '', 'Female', 'Single', '1994-02-06', 'Valenzuela Metro Manila', '9282657552', 'joanemaydelima@gmail.com', 2, 1, 0, '2023-11-21 21:23:51', 0, '2023-11-21 21:23:51', '2023-11-21 21:23:51'),
-(2, '202392kVbM', '59318', '22.jpg', 'Libanan', 'Angelika', 'Ligutan', '', 'Female', 'Single', '2002-06-03', 'New Israel, Makilala', '9639765214', 'angelikalibanan@gmail.com', 2, 1, 0, '2023-11-28 17:15:08', 0, '2023-11-28 17:15:08', '2023-11-28 17:15:08'),
-(3, '2023FA1swO', '59319', '', 'Delima', 'Jessa Mae', 'Berdera', '', 'Female', 'Single', '1994-11-27', 'Digos City', '9282657552', 'jmdelima@umindanao.edu.ph', 2, 1, 0, '2023-11-30 15:29:10', 0, '2023-11-30 15:29:10', '2023-11-30 15:29:10');
+(1, '2023L7C85y', '59319', '', 'Delima', 'Joane May', 'Berdera', '', 'Female', 'Single', '1994-02-06', 'Valenzuela, Metro Manila', '9282657552', 'joanemaydelima@gmail.com', 2, 1, 0, '2023-12-06 17:39:21', 0, '2023-12-06 17:39:21', '2023-12-06 17:39:21');
 
 -- --------------------------------------------------------
 
@@ -1046,9 +1103,7 @@ CREATE TABLE `prow_scholar_address` (
 --
 
 INSERT INTO `prow_scholar_address` (`prow_address_id`, `prow_scholar_code`, `prow_address_description`, `prow_address_brgy`, `prow_address_municipality`, `prow_address_province`, `prow_address_zipcode`, `prow_address_long`, `prow_address_lat`, `prow_address_created`, `prow_address_updated`) VALUES
-(1, '20234fMHuh', 'Datoc Compound, Digos City', 'Zone 1', 'Digos City', 'Davao del Sur', 8002, '125.36036183208988', '6.75898860884635', '2023-11-21 21:23:51', '2023-11-21 21:23:51'),
-(2, '202392kVbM', 'Datoc Compound, Digos City', 'Zone 1', 'Digos City', 'Davao del Sur', 8002, '125.36034037441776', '6.759009917387818', '2023-11-28 17:15:08', '2023-11-28 17:15:08'),
-(3, '2023FA1swO', 'Luna Bangoy, Prk Skyler', 'Zone 3', 'Digos City', 'Davao del Sur', 8002, '125.35077561707065', '6.747199514651449', '2023-11-30 15:29:10', '2023-11-30 15:29:10');
+(1, '2023L7C85y', 'Datoc Compound, Digos City', 'Zone 1', 'Digos City', 'Davao del Sur', 8002, '125.36037256092594', '6.758988608846323', '2023-12-06 17:39:21', '2023-12-06 17:39:21');
 
 -- --------------------------------------------------------
 
@@ -1074,9 +1129,7 @@ CREATE TABLE `prow_scholar_app_logs` (
 --
 
 INSERT INTO `prow_scholar_app_logs` (`prow_scholar_app_logs_id`, `prow_scholar_code`, `prow_app_log_code`, `prow_app_log_status`, `prow_hei`, `prow_course`, `prow_yr_lvl`, `prow_sy`, `prow_sem`, `prow_app_logs_created`) VALUES
-(1, '20234fMHuh', '427019', 0, '1', '1', 1, '2023-2024', '1', '2023-11-22 11:20:52'),
-(4, '202392kVbM', '969501', 0, '1', '1', 3, '2023-2024', '1', '2023-11-28 17:21:12'),
-(5, '2023FA1swO', '503210', 0, '1', '1', 2, '2023-2024', '1', '2023-11-30 15:43:53');
+(1, '2023L7C85y', '845651', 0, '1', '3', 1, '2023-2024', '1', '2023-12-06 17:42:19');
 
 -- --------------------------------------------------------
 
@@ -1135,45 +1188,8 @@ CREATE TABLE `prow_scholar_grades` (
 --
 
 INSERT INTO `prow_scholar_grades` (`prow_scholar_grades_id`, `prow_scholar_code`, `prow_subject_id`, `prow_scholar_grades_semester`, `prow_scholar_grades_sy`, `prow_scholar_grades_percent`, `prow_scholar_grades_created`, `prow_scholar_grades_updated`) VALUES
-(2, '20234fMHuh', 8, 2, '2022-2023', 93, '2023-11-23 18:35:18', '2023-11-23 18:35:18'),
-(3, '20234fMHuh', 12, 2, '2021-2022', 100, '2023-11-23 20:08:49', '2023-11-23 20:21:43'),
-(4, '20234fMHuh', 7, 1, '2023-2024', 92, '2023-11-23 20:33:09', '2023-11-23 20:33:09'),
-(5, '20234fMHuh', 18, 1, '2023-2024', 75, '2023-11-24 21:22:18', '2023-11-24 21:22:18'),
-(6, '20234fMHuh', 19, 1, '2023-2024', 90, '2023-11-27 13:39:39', '2023-11-27 13:39:39'),
-(7, '20234fMHuh', 15, 1, '2023-2024', 89, '2023-11-27 13:40:11', '2023-11-27 13:40:11'),
-(8, '20234fMHuh', 11, 1, '2023-2024', 90, '2023-11-27 13:41:36', '2023-11-27 13:41:36'),
-(9, '202392kVbM', 7, 1, '2021-2022', 95, '2023-11-28 17:28:56', '2023-11-28 17:28:56'),
-(10, '202392kVbM', 8, 1, '2021-2022', 95, '2023-11-28 17:29:15', '2023-11-28 17:29:15'),
-(11, '202392kVbM', 1, 1, '2021-2022', 95, '2023-11-28 17:29:32', '2023-11-28 17:29:32'),
-(12, '202392kVbM', 2, 1, '2021-2022', 95, '2023-11-28 17:29:55', '2023-11-28 17:29:55'),
-(13, '202392kVbM', 3, 1, '2021-2022', 95, '2023-11-28 17:30:10', '2023-11-28 17:30:10'),
-(14, '202392kVbM', 4, 1, '2021-2022', 95, '2023-11-28 17:30:22', '2023-11-28 17:30:22'),
-(15, '202392kVbM', 5, 1, '2021-2022', 95, '2023-11-28 17:30:42', '2023-11-28 17:30:42'),
-(16, '202392kVbM', 6, 1, '2021-2022', 95, '2023-11-28 17:30:57', '2023-11-28 17:30:57'),
-(17, '202392kVbM', 12, 2, '2021-2022', 95, '2023-11-28 17:31:26', '2023-11-28 17:31:26'),
-(18, '202392kVbM', 9, 2, '2021-2022', 99, '2023-11-28 17:31:46', '2023-11-28 17:31:46'),
-(19, '202392kVbM', 14, 2, '2021-2022', 95, '2023-11-28 17:32:24', '2023-11-28 17:32:24'),
-(20, '202392kVbM', 15, 2, '2021-2022', 95, '2023-11-28 17:33:19', '2023-11-28 17:33:19'),
-(21, '202392kVbM', 11, 1, '2021-2022', 95, '2023-11-28 17:33:33', '2023-11-28 17:33:33'),
-(22, '202392kVbM', 13, 2, '2021-2022', 90, '2023-11-28 17:33:50', '2023-11-28 17:33:50'),
-(23, '202392kVbM', 16, 2, '2021-2022', 99, '2023-11-28 17:34:08', '2023-11-28 17:34:08'),
-(24, '202392kVbM', 10, 1, '2021-2022', 90, '2023-11-28 17:34:37', '2023-11-28 17:34:37'),
-(25, '202392kVbM', 18, 1, '2022-2023', 95, '2023-11-28 17:34:57', '2023-11-28 17:34:57'),
-(26, '202392kVbM', 19, 1, '2022-2023', 90, '2023-11-28 17:35:08', '2023-11-28 17:35:08'),
-(27, '202392kVbM', 21, 1, '2022-2023', 95, '2023-11-28 17:35:19', '2023-11-28 17:35:19'),
-(28, '202392kVbM', 17, 1, '2022-2023', 95, '2023-11-28 17:35:50', '2023-11-28 17:35:50'),
-(29, '202392kVbM', 24, 1, '2022-2023', 99, '2023-11-28 17:36:10', '2023-11-28 17:36:10'),
-(30, '202392kVbM', 20, 1, '2022-2023', 95, '2023-11-28 17:36:40', '2023-11-28 17:36:40'),
-(31, '202392kVbM', 22, 1, '2022-2023', 95, '2023-11-28 17:36:59', '2023-11-28 17:36:59'),
-(32, '202392kVbM', 23, 1, '2022-2023', 95, '2023-11-28 17:37:18', '2023-11-28 17:37:18'),
-(33, '202392kVbM', 37, 2, '2022-2023', 95, '2023-11-28 17:39:08', '2023-11-28 17:39:08'),
-(34, '202392kVbM', 27, 2, '2022-2023', 99, '2023-11-28 17:39:59', '2023-11-28 17:39:59'),
-(37, '202392kVbM', 34, 2, '2022-2023', 95, '2023-11-28 17:41:01', '2023-11-28 17:41:01'),
-(38, '202392kVbM', 25, 2, '2022-2023', 95, '2023-11-28 17:42:12', '2023-11-28 17:42:12'),
-(39, '202392kVbM', 36, 2, '2022-2023', 95, '2023-11-28 17:42:49', '2023-11-28 17:42:49'),
-(40, '202392kVbM', 26, 2, '2022-2023', 95, '2023-11-28 17:43:19', '2023-11-28 17:43:19'),
-(41, '202392kVbM', 42, 1, '2023-2024', 90, '2023-11-28 17:44:54', '2023-11-28 17:44:54'),
-(42, '2023FA1swO', 8, 1, '2023-2024', 76, '2023-11-30 15:44:37', '2023-11-30 15:44:37');
+(1, '2023L7C85y', 127, 1, '2023-2024', 89, '2023-12-06 17:42:54', '2023-12-06 17:42:54'),
+(2, '2023L7C85y', 128, 1, '2023-2024', 98, '2023-12-06 17:43:04', '2023-12-06 17:43:04');
 
 -- --------------------------------------------------------
 
@@ -1212,9 +1228,7 @@ CREATE TABLE `prow_scholar_profile` (
 --
 
 INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guardian_cont`, `prow_prof_guardian_occu`, `prow_prof_income`, `prow_scholar_pwd`, `prow_scholar_single_p`, `prow_scholar_single_id`, `prow_scholar_tribal`, `prow_prof_created`, `prow_prof_updated`) VALUES
-(1, '20234fMHuh', 149, 49, 'B+', 'Sikhism', 'Coding/Programming,Drawing,Photography,Writing', 'Julieto Delima', '9232765442', 'Police officer', 'Margie Delima', '9835467221', 'Business Owner', 'Jessa Delima', '9863627222', 'Civil engineer', '₱9,100 - ₱18,000', 0, 0, 1234, 'Aeta people', '2023-11-22 11:20:52', '2023-11-28 17:25:44'),
-(2, '202392kVbM', 152, 39, 'A+', 'Others', 'Chess playing,Playing sports,Storytelling', '', '', '', '', '', '', 'Gerardo Libanan', '', '', 'Less than ₱9,000', 0, 0, 0, '', '2023-11-28 17:21:12', '2023-12-04 16:19:20'),
-(3, '2023FA1swO', 149, 45, 'O-', 'Sikhism', 'Designing clothes,Entrepreneurship', 'Julieto Delima', '92828282828', 'Event planner', 'Margie Delima', '9236677876', 'Graphic designer', 'Kent John Gocotano', '9121610673', 'Freelancer', 'Less than ₱9,000', 0, 0, 0, 'None', '2023-11-30 15:43:53', '2023-11-30 15:43:53');
+(1, '2023L7C85y', 149, 48, 'O-', 'Others', 'Coding/Programming,Critical thinking,Drawing', 'Julieto Delima', '92828282828', 'Police officer', 'Margie Delima', '92366778762', 'Business Owner', 'Kent John Gocotano', '9121610673', 'Freelancer', '₱9,100 - ₱18,000', 0, 0, 0, 'None', '2023-12-06 17:42:19', '2023-12-06 17:43:31');
 
 -- --------------------------------------------------------
 
@@ -1244,9 +1258,7 @@ CREATE TABLE `prow_scholar_requirements` (
 --
 
 INSERT INTO `prow_scholar_requirements` (`prow_req_id`, `prow_scholar_code`, `prow_scholar_app_logs_code`, `prow_req_cert_low_income`, `prow_req_endorsement`, `prow_req_school_card`, `prow_req_enrollment_form`, `prow_req_birth_certificate`, `prow_req_exam_score`, `prow_req_exam_date`, `prow_req_interview_date`, `prow_req_status`, `prow_req_created`, `prow_req_updated`) VALUES
-(1, '20234fMHuh', '427019', '', '', '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2023-11-22 11:20:52', '0000-00-00 00:00:00'),
-(4, '202392kVbM', '969501', '', '', '20231128174852_1.png', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2023-11-28 17:21:12', '0000-00-00 00:00:00'),
-(5, '2023FA1swO', '503210', '', '', '', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2023-11-30 15:43:53', '0000-00-00 00:00:00');
+(1, '2023L7C85y', '845651', '', '', '20231206174348_13.png', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2023-12-06 17:42:19', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1267,14 +1279,8 @@ CREATE TABLE `prow_scholar_skills` (
 --
 
 INSERT INTO `prow_scholar_skills` (`prow_skills_id`, `prow_scholar_code`, `prow_skill_type_id`, `prow_skills`, `prow_skills_proficiency`) VALUES
-(1, '20234fMHuh', 1, 'Java', 'Advanced'),
-(2, '20234fMHuh', 1, 'PHP', 'Advanced'),
-(3, '20234fMHuh', 15, 'Active listening', 'Intermediate'),
-(4, '20234fMHuh', 5, 'Microsoft Azure', 'Being Developed'),
-(5, '2023FA1swO', 17, 'Adaptability to change', 'Advanced'),
-(6, '2023FA1swO', 15, 'Active listening', 'Basic'),
-(8, '202392kVbM', 17, 'Adaptability to change', 'Basic'),
-(9, '202392kVbM', 12, 'Computer Vision', 'Being Developed');
+(1, '2023L7C85y', 52, 'Animal husbandry', 'Basic'),
+(2, '2023L7C85y', 15, 'Presentation skills', 'Intermediate');
 
 -- --------------------------------------------------------
 
@@ -1304,33 +1310,33 @@ INSERT INTO `prow_skills` (`prow_skills_id`, `prow_skill_type_id`, `prow_skill_n
 (9, 1, 'TypeScript'),
 (10, 1, 'R'),
 (11, 1, 'MATLAB'),
-(12, 1, 'Shell scripting languages (Bash, PowerShell)'),
+(12, 1, 'Shell scripting languages (Bash PowerShell)'),
 (13, 2, 'HTML/CSS'),
-(14, 2, 'Frontend frameworks (React, Angular, Vue.js)'),
-(15, 2, 'Backend frameworks (Node.js, Django, Flask, Ruby on Rails)'),
-(16, 2, 'Web services (RESTful APIs, GraphQL)'),
+(14, 2, 'Frontend frameworks (React Angular Vue.js)'),
+(15, 2, 'Backend frameworks (Node.js Django Flask Ruby on Rails)'),
+(16, 2, 'Web services (RESTful APIs GraphQL)'),
 (17, 3, 'iOS development (Swift, Objective-C)'),
-(18, 3, 'Android development (Kotlin, Java)'),
+(18, 3, 'Android development (Kotlin Java)'),
 (19, 4, 'SQL (MySQL, PostgreSQL, SQLite, SQL Server)'),
-(20, 4, 'NoSQL databases (MongoDB, Cassandra, Redis)'),
+(20, 4, 'NoSQL databases (MongoDB Cassandra Redis)'),
 (21, 5, 'Amazon Web Services (AWS)'),
 (22, 5, 'Microsoft Azure'),
 (23, 5, 'Google Cloud Platform (GCP)'),
-(24, 6, 'Configuration management (Ansible, Puppet, Chef)'),
-(25, 6, 'Containerization (Docker, Kubernetes)'),
+(24, 6, 'Configuration management (Ansible Puppet Chef)'),
+(25, 6, 'Containerization (Docker Kubernetes)'),
 (26, 6, 'Continuous Integration/Continuous Deployment (CI/CD) tools'),
 (27, 7, 'Ethical hacking'),
 (28, 7, 'Network security'),
 (29, 7, 'Penetration testing'),
-(30, 8, 'Machine learning (scikit-learn, TensorFlow, Keras, PyTorch)'),
-(31, 8, 'Big data tools (Hadoop, Spark)'),
-(32, 8, 'Networking: Network configuration and troubleshooting, TCP/IP protocols, Routing and switching'),
+(30, 8, 'Machine learning (scikit-learn TensorFlow Keras PyTorch)'),
+(31, 8, 'Big data tools (Hadoop Spark)'),
+(32, 8, 'Networking: Network configuration and troubleshooting TCP/IP protocols Routing and switching'),
 (33, 9, 'Windows'),
-(34, 9, 'Linux (Ubuntu, CentOS, Red Hat, etc.)'),
+(34, 9, 'Linux (Ubuntu CentOS Red Hat etc.)'),
 (35, 9, 'macOS'),
-(36, 10, 'Version control systems (Git, SVN)'),
-(37, 10, 'Integrated Development Environments (IDEs) (Visual Studio Code, IntelliJ IDEA, Eclipse)'),
-(38, 11, 'Prototyping tools (Sketch, Adobe XD, Figma)'),
+(36, 10, 'Version control systems (Git SVN)'),
+(37, 10, 'Integrated Development Environments (IDEs) (Visual Studio Code IntelliJ IDEA Eclipse)'),
+(38, 11, 'Prototyping tools (Sketch Adobe XD Figma)'),
 (39, 11, 'User research and usability testing'),
 (40, 12, 'Natural Language Processing (NLP)'),
 (41, 12, 'Computer Vision'),
@@ -1392,19 +1398,116 @@ INSERT INTO `prow_skills` (`prow_skills_id`, `prow_skill_type_id`, `prow_skill_n
 (97, 28, 'Self-discipline'),
 (98, 29, 'Patient care'),
 (99, 29, 'Medical knowledge'),
-(100, 29, 'Healthcare technology (Electronic Health Records - EHR, medical imaging software)'),
+(100, 29, 'Healthcare technology (Electronic Health Records - EHR medical imaging software)'),
 (101, 29, 'Clinical procedures'),
 (102, 29, 'Regulatory compliance (HIPAA, medical ethics)'),
 (103, 30, 'Financial analysis'),
 (104, 30, 'Risk management'),
 (105, 30, 'Investment strategies'),
 (106, 30, 'Accounting principles'),
-(107, 30, 'Compliance and regulatory knowledge (Sarbanes-Oxley Act, Dodd-Frank Act)'),
+(107, 30, 'Compliance and regulatory knowledge (Sarbanes-Oxley Act Dodd-Frank Act)'),
 (108, 31, 'Cybersecurity'),
 (109, 31, 'Network administration'),
 (110, 31, 'Cloud computing'),
 (111, 31, 'Software development'),
-(112, 31, 'IT project management');
+(112, 31, 'IT project management'),
+(113, 32, 'Curriculum development'),
+(114, 32, 'Classroom management'),
+(115, 32, 'Teaching methodologies'),
+(116, 32, 'Educational technology integration'),
+(117, 32, 'Assessment and evaluation'),
+(118, 33, 'Technical design skills (CAD CAM)'),
+(119, 33, 'Problem-solving and innovation'),
+(120, 33, 'Structural analysis'),
+(121, 33, 'Knowledge of engineering principles (mechanical electrical civil etc.)'),
+(122, 34, 'Customer service'),
+(123, 34, 'Event management'),
+(124, 34, 'Food and beverage knowledge'),
+(125, 34, 'Hotel management software'),
+(126, 34, 'Travel planning and reservation systems'),
+(127, 35, 'Lean manufacturing principles'),
+(128, 35, 'Quality control'),
+(129, 35, 'Supply chain management'),
+(130, 35, 'Machinery operation and maintenance'),
+(131, 35, 'Production scheduling'),
+(132, 36, 'Crop management'),
+(133, 36, 'Soil science'),
+(134, 36, 'Pest control'),
+(135, 36, 'Sustainable farming practices'),
+(136, 36, 'Agricultural technology (precision farming drones)'),
+(137, 37, 'Sales techniques'),
+(138, 37, 'Inventory management'),
+(139, 37, 'Customer relationship management (CRM)'),
+(140, 37, 'Point of Sale (POS) systems'),
+(141, 37, 'Visual merchandising'),
+(142, 38, 'Property management'),
+(143, 38, 'Real estate law and regulations'),
+(144, 38, 'Market analysis'),
+(145, 38, 'Negotiation skills'),
+(146, 38, 'Property valuation'),
+(147, 39, 'Content creation (writing filming editing)'),
+(148, 39, 'Digital media production'),
+(149, 39, 'Audience engagement strategies'),
+(150, 39, 'Media planning and buying'),
+(151, 39, 'Entertainment law and contracts'),
+(152, 40, 'Automotive engineering'),
+(153, 40, 'Vehicle diagnostics and repair'),
+(154, 40, 'Manufacturing processes'),
+(155, 40, 'Sales and dealership management'),
+(156, 40, 'Electric vehicle technology'),
+(157, 41, 'Arc welding'),
+(158, 41, 'Gas welding'),
+(159, 41, 'Metal fabrication'),
+(160, 41, 'Blueprint reading'),
+(161, 42, 'Framing'),
+(162, 42, 'Cabinetmaking'),
+(163, 42, 'Finishing techniques'),
+(164, 42, 'Carpentry tools and equipment usage'),
+(165, 43, 'Pipefitting'),
+(166, 43, 'Installation and repair of plumbing systems'),
+(167, 43, 'Reading blueprints and schematics'),
+(168, 44, 'Wiring installation'),
+(169, 44, 'Electrical system troubleshooting'),
+(170, 44, 'Knowledge of electrical codes and safety standards'),
+(171, 45, 'Engine diagnostics'),
+(172, 45, 'Automotive repair and maintenance'),
+(173, 45, 'Brake and suspension systems'),
+(174, 45, 'Vehicle computer systems'),
+(175, 46, 'HVAC system installation and repair'),
+(176, 46, 'Refrigeration systems'),
+(177, 46, 'Troubleshooting heating and cooling systems'),
+(178, 47, 'Food preparation'),
+(179, 47, 'Culinary techniques'),
+(180, 47, 'Menu planning'),
+(181, 47, 'Kitchen management'),
+(182, 48, 'Basic patient care'),
+(183, 48, 'Medical terminology'),
+(184, 48, 'Vital signs monitoring'),
+(185, 48, 'Assisting healthcare professionals'),
+(186, 49, 'Hair cutting and styling'),
+(187, 49, 'Nail care'),
+(188, 49, 'Skincare treatments'),
+(189, 49, 'Makeup application'),
+(190, 50, 'Bricklaying techniques'),
+(191, 50, 'Concrete work'),
+(192, 50, 'Masonry repair and restoration'),
+(193, 51, 'Design software proficiency (Adobe Creative Suite etc.)'),
+(194, 51, 'Print production techniques'),
+(195, 51, 'Typography and layout design'),
+(196, 52, 'Crop planting and harvesting'),
+(197, 52, 'Animal husbandry'),
+(198, 52, 'Irrigation techniques'),
+(199, 52, 'Farm equipment operation and maintenance'),
+(200, 53, 'Waste sorting and recycling processes'),
+(201, 53, 'Environmental regulations'),
+(202, 53, 'Waste treatment and disposal methods'),
+(203, 54, 'Child development'),
+(204, 54, 'Classroom management'),
+(205, 54, 'Creating educational activities'),
+(206, 54, 'Childcare safety and regulations'),
+(207, 55, 'Facility maintenance'),
+(208, 55, 'Cleaning procedures'),
+(209, 55, 'Repairing and maintaining building systems');
 
 -- --------------------------------------------------------
 
@@ -1524,9 +1627,7 @@ INSERT INTO `prow_users` (`prow_user_id`, `prow_user_code`, `prow_scholar_code`,
 (1, '202311070330122dkOqNEDMi', '2023yDIcvq', 'Ralph Noynay', 'admin', '1bbd886460827015e5d605ed44252251', '', 0, 0, 1, '', '2023-11-06 11:30:12', '2023-11-06 11:30:12'),
 (2, '20231107062613TqKiMdHGMv', '2023CLBuDX', 'HEI sample', 'hei', '1bbd886460827015e5d605ed44252251', '', 3, 0, 1, '', '2023-11-06 14:26:13', '2023-11-06 14:26:13'),
 (3, '20231107064135RNEwoa4c6a', '2023rR2dEC', 'Industry Sample', 'industry', '1bbd886460827015e5d605ed44252251', '', 4, 0, 1, '', '2023-11-06 14:41:35', '2023-11-06 14:41:35'),
-(6, '20231122132351ieG23Djs94', '20234fMHuh', 'Joane May Delima', 'annimay', '1bbd886460827015e5d605ed44252251', 'download.jpg', 4, 0, 1, '', '2023-11-21 21:23:51', '2023-11-21 21:23:51'),
-(7, '20231128171508XVXE2EiZlQ', '202392kVbM', 'Angelika Libanan', 'Angiii', 'df24971c03abb2394af42ecd598b7262', '', 4, 0, 1, '', '2023-11-28 17:15:08', '2023-11-28 17:15:08'),
-(8, '20231130152910ZxMgOPWWpm', '2023FA1swO', 'Jessa Mae Delima', 'annimay2', '1bbd886460827015e5d605ed44252251', '', 4, 0, 1, '', '2023-11-30 15:29:10', '2023-11-30 15:29:10');
+(9, '20231206173921ujlJEVFvDE', '2023L7C85y', 'Joane May Delima', 'Annimay', '1bbd886460827015e5d605ed44252251', '', 4, 0, 1, '', '2023-12-06 17:39:21', '2023-12-06 17:39:21');
 
 --
 -- Indexes for dumped tables
@@ -1750,13 +1851,13 @@ ALTER TABLE `prow_hei`
 -- AUTO_INCREMENT for table `prow_hei_course`
 --
 ALTER TABLE `prow_hei_course`
-  MODIFY `prow_hei_course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `prow_hei_course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `prow_hei_subjects`
 --
 ALTER TABLE `prow_hei_subjects`
-  MODIFY `prow_subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `prow_subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `prow_industry`
@@ -1816,7 +1917,7 @@ ALTER TABLE `prow_my_project`
 -- AUTO_INCREMENT for table `prow_notifications`
 --
 ALTER TABLE `prow_notifications`
-  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `prow_notif_type`
@@ -1828,13 +1929,13 @@ ALTER TABLE `prow_notif_type`
 -- AUTO_INCREMENT for table `prow_otp`
 --
 ALTER TABLE `prow_otp`
-  MODIFY `prow_otp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_otp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar`
 --
 ALTER TABLE `prow_scholar`
-  MODIFY `prow_scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_academe`
@@ -1846,13 +1947,13 @@ ALTER TABLE `prow_scholar_academe`
 -- AUTO_INCREMENT for table `prow_scholar_address`
 --
 ALTER TABLE `prow_scholar_address`
-  MODIFY `prow_address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_app_logs`
 --
 ALTER TABLE `prow_scholar_app_logs`
-  MODIFY `prow_scholar_app_logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `prow_scholar_app_logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_educ_attain`
@@ -1870,31 +1971,31 @@ ALTER TABLE `prow_scholar_employment`
 -- AUTO_INCREMENT for table `prow_scholar_grades`
 --
 ALTER TABLE `prow_scholar_grades`
-  MODIFY `prow_scholar_grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `prow_scholar_grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_profile`
 --
 ALTER TABLE `prow_scholar_profile`
-  MODIFY `prow_prof_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_prof_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_requirements`
 --
 ALTER TABLE `prow_scholar_requirements`
-  MODIFY `prow_req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `prow_req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_skills`
 --
 ALTER TABLE `prow_scholar_skills`
-  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_skills`
 --
 ALTER TABLE `prow_skills`
-  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT for table `prow_skill_type`
@@ -1912,7 +2013,7 @@ ALTER TABLE `prow_transaction`
 -- AUTO_INCREMENT for table `prow_users`
 --
 ALTER TABLE `prow_users`
-  MODIFY `prow_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `prow_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

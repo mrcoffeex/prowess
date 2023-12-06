@@ -150,16 +150,17 @@
                             }
 
 
-                            if (scholarshipStatusOld($scholarCode, "grades") == "complete") {
+                            if (scholarshipStatusOld($scholarCode, "requirements") == "complete") {
                               $g_bullet = "timeline-point-successnew";
                               $g_text ="text-muted";
                               $g_text1 ="text-success";
                               $g_created = getPersonalInformationCreatedDate($scholarCode);
                               $g_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $g_desc = " Proof of Grades image uploaded.";
-                            } else if (scholarshipStatusOld($scholarCode, "grades") == "incomplete") {
-                              $g_bullet = "timeline-point-warning";
+                            } else if (scholarshipStatusOld($scholarCode, "requirements") == "incomplete") {
+                              $g_bullet = "timeline-point-info";
                               $g_text ="text-ongoing";
+                              $g_text1 ="text-ongoing";
                               $g_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
                               $g_created = getPersonalInformationCreatedDate($scholarCode);
                               $g_desc = "<span class='text-ongoing'><i class=''>Please upload image of your Proof of Grades</span>";
