@@ -25,6 +25,35 @@ $(document).ready(function() {
 
   }
 
+  // function previewImages(elemId, elemPreview) {
+
+  //   $(elemId).on("change", function() {
+  //     const previewContainer = document.getElementById(elemPreview);
+  //     previewContainer.innerHTML = '';
+
+  //     const files = elemId.target.files;
+
+  //     for (const file of files) {
+  //         if (file.type.startsWith('image/')) {
+
+  //             const reader = new FileReader();
+
+  //             reader.onload = function (e) {
+  //                 const img = document.createElement('img');
+  //                 img.src = e.target.result;
+  //                 img.classList.add('image-preview');
+  //                 previewContainer.appendChild(img);
+  //             };
+
+  //             reader.readAsDataURL(file);
+  //         }
+  //     }
+  //   });
+    
+  // }
+
+  // previewImages("reportCards", "reportCardsPreview");
+
   imagePreview("#enrollmentFormFile", "#enrollmentFormFilePreview");
   imagePreview("#birthCertFile", "#birthCertFilePreview");
   imagePreview("#lowIncomeFile", "#lowIncomeFilePreview");

@@ -174,10 +174,10 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="col-md-8 mb-4">
-                                                <div id="reportCardFilePreview" class="image-preview-div mb-4"></div>
+                                                <div id="reportCardsPreview" class="image-preview-div mb-4"></div>
                                                 <div class="form-floating form-floating-outline">
-                                                    <input class="form-control" type="file" id="reportCardFile" name="reportCardFile" accept="image/jpeg, image/png, image/gif"/>
-                                                    <label for="reportCardFile">Select File</label>
+                                                    <input class="form-control" type="file" id="reportCards" name="reportCards[]" accept="image/jpeg, image/png, image/gif" multiple>
+                                                    <label for="reportCards">Select File</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -186,21 +186,31 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6 text-center">
                                             <div class="form-group">
-                                                <h5 for="" class="text-center text-primary text-uppercase">Uploaded Image</h5>
+                                                <h5 for="" class="text-center text-primary text-uppercase">Uploaded Images</h5>
                                             </div>
-                                            <?php 
-                                                if (empty($requirement['prow_req_school_card'])) {
-                                                    echo "<span class='badge bg-danger mt-3 text-center'>upload your report card</span>";
-                                                } else {
-                                            ?>
-                                            <img src="../../imagebank/<?= $requirement['prow_req_school_card'] ?>" class="img-fluid" alt="">
+                                            <div class="row">
+                                                <?php 
+                                                    if (empty($requirement['prow_req_school_card'])) {
+                                                        echo "<span class='badge bg-danger mt-3'>upload your report card</span>";
+                                                    } else {
 
-                                            <div class="text-center mt-2">
-                                                <a href="viewImage?image=<?= $requirement['prow_req_school_card'] ?>" target="_blank" class="btn btn-primary">Full image view</a>
+                                                        $reportCardArray = explode(",", $requirement['prow_req_school_card']);
+                                    
+                                                        foreach ($reportCardArray as $reportCard) {
+                                                ?>
+                                                    <div class="col-md-6">
+                                                        <img src="../../imagebank/<?= $reportCard ?>" class="img-fluid" alt="">
+                                                        <div class="text-center mt-2">
+                                                            <a href="viewImage?image=<?= $reportCard ?>" target="_blank" class="btn btn-primary">Full image view</a>
+                                                        </div>
+                                                    </div>
+                                                <?php 
+                                                        } 
+                                                    }
+                                                ?>
                                             </div>
-                                            <?php } ?>
                                         </div>
                                     </div>
                                 </form>
