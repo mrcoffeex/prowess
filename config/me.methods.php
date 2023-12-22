@@ -141,6 +141,17 @@
         return $res;
     }
 
+    function isChecked($value, $checkboxValue){
+
+        if ($checkboxValue == $value) {
+            $res = "checked";
+        } else {
+            $res = "";
+        }
+        
+        return $res;
+    }
+
     function imageUpload($input, $location){
 
         $errors= array();

@@ -15,7 +15,11 @@
     @$valHeight = ($scholarProfile['prow_prof_height'] != "") ? $scholarProfile['prow_prof_height'] : "";
     @$valWeight = ($scholarProfile['prow_prof_weight'] != "") ? $scholarProfile['prow_prof_weight'] : "";
     @$valReligion = ($scholarProfile['prow_prof_religion'] != "") ? $scholarProfile['prow_prof_religion'] : "";
-    @$valTalents = $scholarProfile['prow_prof_talent'];                        
+    @$valTalents = $scholarProfile['prow_prof_talent'];     
+    @$valPWD = ($scholarProfile['prow_prof_pwd'] != "") ? $scholarProfile['prow_prof_pwd'] : "";
+    @$valSingleParent = ($scholarProfile['prow_prof_single_p'] != "") ? $scholarProfile['prow_prof_single_p'] : "";
+    @$valSingleParentId = ($scholarProfile['prow_prof_single_id'] != "") ? $scholarProfile['prow_prof_single_id'] : ""; 
+    @$valTribe = ($scholarProfile['prow_prof_tribe'] != "") ? $scholarProfile['prow_prof_tribe'] : "";                    
 
     @$valFatherName = ($scholarProfile['prow_prof_father'] != "") ? $scholarProfile['prow_prof_father'] : "";
     @$valFatherContact = ($scholarProfile['prow_prof_father_cont'] != "") ? $scholarProfile['prow_prof_father_cont'] : "";
@@ -27,8 +31,6 @@
     @$valGuardianContact = ($scholarProfile['prow_prof_guardian_cont'] != "") ? $scholarProfile['prow_prof_guardian_cont'] : "";
     @$valGuardianOccu = ($scholarProfile['prow_prof_guardian_occu'] != "") ? $scholarProfile['prow_prof_guardian_occu'] : "";
     @$valIncome = ($scholarProfile['prow_prof_income'] != "") ? $scholarProfile['prow_prof_income'] : "";
-    @$valSingID = ($scholarProfile['prow_scholar_single_id'] != "") ? $scholarProfile['prow_scholar_single_id'] : "";
-    @$valTribe = ($scholarProfile['prow_scholar_tribal'] != "") ? $scholarProfile['prow_scholar_tribal'] : "";
     @$valSchoolId = ($scholar['prow_scholar_school_id'] != "") ? $scholar['prow_scholar_school_id'] : "";
     @$valSchoolName = ($scholarAppLogs['prow_hei'] != "") ? $scholarAppLogs['prow_hei'] : "";
     @$valCourse = ($scholarAppLogs['prow_course'] != "") ? $scholarAppLogs['prow_course'] : "";
@@ -174,13 +176,13 @@
                                         <div class="form-floating form-floating-outline">
                                             
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="0" id="scholarPWDNo" name="scholarPWD" checked />
+                                                <input class="form-check-input" type="radio" value="0" id="scholarPWDNo" name="scholarPWD" <?= isChecked($valPWD, 0) ?> />
                                                 <label class="form-check-label" for="scholarPWD"> No </label>
                                             </div>
 
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" value="1" id="scholarPWDYes"
-                                                name="scholarPWD"/>
+                                                name="scholarPWD" <?= isChecked($valPWD, 1) ?> />
                                                 <label class="" for="scholarPWD"> Yes </label>
                                             </div>
                                         </div>
@@ -189,19 +191,18 @@
                                     <div class="col-md-4">
                                         <label class=""> Are you a single parent?</label>
                                         <div class="form-floating form-floating-outline">
-                                            
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="0" id="scholarSinglePNo" name="scholarSingleP" checked />
+                                                <input class="form-check-input" type="radio" value="0" id="scholarSinglePNo" name="scholarSingleP" <?= isChecked($valSingleParent, 0) ?> />
                                                 <label class="form-check-label" for="scholarSingleP"> No </label>
                                             </div>
-
-                                            <div class="form-check">
+                                            <div class="form-check mb-3">
                                                 <input class="form-check-input" type="radio" value="1" id="scholarSinglePYes"
-                                                name="scholarSingleP"/>
+                                                name="scholarSingleP" <?= isChecked($valSingleParent, 1) ?> />
                                                 <label class="" for="scholarSingleP"> Yes </label>
                                             </div>
+
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="scholarSingleID" name="scholarSingleID" class="form-control" placeholder="Single Parent ID No." value="<?= $valSingID; ?>" />
+                                                <input type="text" id="scholarSingleID" name="scholarSingleID" class="form-control" placeholder="Single Parent ID No." value="<?= $valSingleParentId ?>" />
                                                 <label for="scholarSingleID">Single Parent ID No.</label>
                                             </div>
                                         </div>
@@ -211,7 +212,7 @@
                                         <div class="form-floating form-floating-outline">
                                             <select id="scholarTribe" name="scholarTribe" class="form-control">
                                                 
-                                                <option value="<?= $valTribe; ?>"><?= $valTribe; ?></option>
+                                                <option value="<?= $valTribe ?>"><?= $valTribe ?></option>
                                                 <option value="None">None</option>
                                                 <?php
                                                 //get tribe

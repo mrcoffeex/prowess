@@ -212,10 +212,10 @@
                     prow_prof_guardian_cont,
                     prow_prof_guardian_occu,
                     prow_prof_income,
-                    prow_scholar_pwd,
-                    prow_scholar_single_p,
-                    prow_scholar_single_id,
-                    prow_scholar_tribal,
+                    prow_prof_pwd,
+                    prow_prof_single_p,
+                    prow_prof_single_id,
+                    prow_prof_tribal,
                     prow_prof_created,
                     prow_prof_updated
 
@@ -239,10 +239,10 @@
                     :prow_prof_guardian_cont,
                     :prow_prof_guardian_occu,
                     :prow_prof_income,
-                    :prow_scholar_pwd,
-                    :prow_scholar_single_p,
-                    :prow_scholar_single_id,
-                    :prow_scholar_tribal,
+                    :prow_prof_pwd,
+                    :prow_prof_single_p,
+                    :prow_prof_single_id,
+                    :prow_prof_tribal,
                     NOW(), 
                     NOW()
                 )");
@@ -263,10 +263,10 @@
             'prow_prof_guardian_cont' => $scholarGuardianCont,
             'prow_prof_guardian_occu' => $scholarGuardianOccu,
             'prow_prof_income' => $scholarIncome,
-            'prow_scholar_pwd' => $scholarPWD,
-            'prow_scholar_single_p' => $scholarSingleP,
-            'prow_scholar_single_id' => $scholarSingleID,
-            'prow_scholar_tribal' => $scholarTribe
+            'prow_prof_pwd' => $scholarPWD,
+            'prow_prof_single_p' => $scholarSingleP,
+            'prow_prof_single_id' => $scholarSingleID,
+            'prow_prof_tribal' => $scholarTribe
         ]);
 
         if ($stmt) {
@@ -317,10 +317,10 @@
                             prow_prof_guardian_cont = :prow_prof_guardian_cont,
                             prow_prof_guardian_occu = :prow_prof_guardian_occu,
                             prow_prof_income = :prow_prof_income,
-                            prow_scholar_pwd = :prow_scholar_pwd,
-                            prow_scholar_single_p = :prow_scholar_single_p,
-                            prow_scholar_single_id = :prow_scholar_single_id,
-                            prow_scholar_tribal = :prow_scholar_tribal,
+                            prow_prof_pwd = :prow_prof_pwd,
+                            prow_prof_single_p = :prow_prof_single_p,
+                            prow_prof_single_id = :prow_prof_single_id,
+                            prow_prof_tribal = :prow_prof_tribal,
                             prow_prof_updated = NOW()
                             Where
                             prow_scholar_code = :prow_scholar_code");
@@ -340,10 +340,10 @@
             'prow_prof_guardian_cont' => $scholarGuardianCont,
             'prow_prof_guardian_occu' => $scholarGuardianOccu,
             'prow_prof_income' => $scholarIncome,
-            'prow_scholar_pwd' => $scholarPWD,
-            'prow_scholar_single_p' => $scholarSingleP,
-            'prow_scholar_single_id' => $scholarSingleID,
-            'prow_scholar_tribal' => $scholarTribe,
+            'prow_prof_pwd' => $scholarPWD,
+            'prow_prof_single_p' => $scholarSingleP,
+            'prow_prof_single_id' => $scholarSingleID,
+            'prow_prof_tribal' => $scholarTribe,
             'prow_scholar_code' => $scholarCode
         ]);
 

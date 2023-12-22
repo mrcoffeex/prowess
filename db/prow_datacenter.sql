@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 10:46 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Dec 22, 2023 at 06:58 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `prow_alumni_requirements` (
   `prow_scholar_code` varchar(50) NOT NULL,
   `prow_scholar_resume` text NOT NULL,
   `prow_scholar_website` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -44,7 +44,7 @@ CREATE TABLE `prow_barangay` (
   `prow_brgy_id` int(11) NOT NULL,
   `prow_mun_id` int(11) NOT NULL,
   `prow_brgy_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_barangay`
@@ -309,14 +309,14 @@ CREATE TABLE `prow_hei` (
   `prow_hei_acct_status` int(11) NOT NULL DEFAULT 1,
   `prow_hei_created` datetime NOT NULL,
   `prow_hei_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_hei`
 --
 
 INSERT INTO `prow_hei` (`prow_hei_id`, `prow_hei_code`, `prow_hei_name`, `prow_hei_logo`, `prow_hei_cover_photo`, `prow_hei_contact_person`, `prow_hei_contact`, `prow_hei_email`, `prow_hei_street`, `prow_hei_barangay`, `prow_hei_municipality`, `prow_hei_province`, `prow_hei_zip`, `prow_hei_lat`, `prow_hei_long`, `prow_hei_acct_status`, `prow_hei_created`, `prow_hei_updated`) VALUES
-(1, 'PQRS7890-230928155678', 'UM Digos College', 'um.png', '', 'Person1', '09712371727', 'umindanao.edu.ph', 'Roxas Ext,', 'Zone 2', 'Digos CIty', 'Davao del Sur', '8002', 6.75017587061783, 125.35052536820952, 1, '2023-09-29 02:11:00', '2023-09-29 02:11:00'),
+(1, 'PQRS7890-230928155678', 'UM Digos College', '', '', 'Person1', '09712371727', 'umindanao.edu.ph', 'Roxas Ext,', 'Zone 2', 'Digos CIty', 'Davao del Sur', '8002', 6.75017587061783, 125.35052536820952, 1, '2023-09-29 02:11:00', '2023-09-29 02:11:00'),
 (2, '20231104223741sYrnj2w3su', 'Cor Jesu College', '', '', 'Person2', '09282657552', 'joanemaydelima@gmail.com', 'Datoc Compound, Digos City', 'Aplaya', 'Digos City', 'Davao del Sur', '8002', 6.751216719909428, 125.3532739952844, 1, '2023-11-04 22:37:41', '2023-11-04 22:37:41');
 
 -- --------------------------------------------------------
@@ -330,7 +330,7 @@ CREATE TABLE `prow_hei_course` (
   `prow_hei_id` int(11) NOT NULL,
   `prow_course_id` int(11) NOT NULL,
   `prow_course_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_hei_course`
@@ -346,12 +346,13 @@ INSERT INTO `prow_hei_course` (`prow_hei_course_id`, `prow_hei_id`, `prow_course
 (7, 1, 48, 'Bachelor of Secondary Education major in Sciences'),
 (8, 2, 1, 'Bachelor of Arts in Communication'),
 (9, 2, 23, 'Bachelor of Arts in English Language'),
+(10, 3, 1, 'Bachelor of Arts in Communication'),
+(11, 3, 40, 'Bachelor of Elementary Education'),
 (12, 2, 2, 'Bachelor of Arts in History'),
 (13, 1, 30, 'Bachelor of Science in Computer Engineering'),
 (14, 1, 3, 'Bachelor of Arts in Political Science'),
 (15, 1, 43, 'Bachelor of Science in Business Administration major in Financial Management'),
-(16, 1, 33, 'Bachelor of Science in Psychology'),
-(17, 1, 19, 'Bachelor of Special Needs Education major in Generalist');
+(16, 1, 33, 'Bachelor of Science in Psychology');
 
 -- --------------------------------------------------------
 
@@ -367,7 +368,7 @@ CREATE TABLE `prow_hei_subjects` (
   `prow_subject_units` int(2) NOT NULL,
   `prow_subject_created` datetime NOT NULL,
   `prow_subject_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_hei_subjects`
@@ -406,116 +407,7 @@ INSERT INTO `prow_hei_subjects` (`prow_subject_id`, `prow_hei_course_id`, `prow_
 (30, 16, 'GE 2', 'Purposive Commo w/ Interactive Learning', 6, '2023-11-21 21:13:06', '2023-11-21 21:13:06'),
 (31, 16, 'PSY 111', 'Introduction to Psychology', 3, '2023-11-21 21:13:33', '2023-11-21 21:13:33'),
 (32, 16, 'BIO 2014L', 'Biological Science', 5, '2023-11-21 21:13:59', '2023-11-21 21:13:59'),
-(33, 16, 'PSY 112L', 'Psychological Statistics', 5, '2023-11-21 21:14:27', '2023-11-21 21:14:27'),
-(34, 1, 'MTH 103/L', 'Probabilities and Statistics', 3, '2023-11-28 15:56:27', '2023-11-28 15:56:27'),
-(35, 1, 'IT 26/L', 'Professional Track for IT 3', 6, '2023-11-28 15:56:48', '2023-11-28 15:56:48'),
-(36, 1, 'IT 10/L', 'IT Elective 3', 3, '2023-11-28 15:57:06', '2023-11-28 15:57:06'),
-(37, 1, 'GPE 4', 'Physical Activities Towards Health and Fitness 2', 2, '2023-11-28 15:57:33', '2023-11-28 15:57:33'),
-(38, 1, 'IT 11/L', 'Networking 2', 3, '2023-11-28 15:58:06', '2023-11-28 15:58:06'),
-(39, 1, 'IT 12/L', 'System Integration & Architecture', 3, '2023-11-28 15:58:29', '2023-11-28 15:58:29'),
-(40, 1, 'IT 13/L', 'Professional Track for IT 4', 3, '2023-11-28 15:58:48', '2023-11-28 15:58:48'),
-(41, 1, 'PHYS 101/L', 'College Physics 1', 4, '2023-11-28 16:00:04', '2023-11-28 16:00:04'),
-(42, 1, 'GE 11', 'The Entrepreneurial Mind', 3, '2023-11-28 16:00:18', '2023-11-28 16:00:18'),
-(43, 1, 'GE 8', 'Reading in Philippine History', 3, '2023-11-28 16:01:20', '2023-11-28 16:01:20'),
-(44, 1, 'IT 14/L', 'Professional Track for IT 5', 3, '2023-11-28 16:01:33', '2023-11-28 16:01:33'),
-(45, 1, 'GE 9', 'Ethics (Disciplinal)', 3, '2023-11-28 16:01:42', '2023-11-28 16:01:42'),
-(46, 1, 'IT 15/L', 'Integrative Programming and Technologies', 3, '2023-11-28 16:02:14', '2023-11-28 16:02:14'),
-(47, 1, 'IT 16/L', 'Information Assurance and Security 1', 3, '2023-11-28 16:02:41', '2023-11-28 16:02:41'),
-(48, 1, 'UGE 1', 'Technical Writing in the Discipline', 3, '2023-11-28 16:03:01', '2023-11-28 16:03:01'),
-(49, 1, 'IT 18', 'Quantitative Methods', 3, '2023-11-28 16:03:32', '2023-11-28 16:03:32'),
-(50, 1, 'PHYS 102/L', 'College Physics 2', 4, '2023-11-28 16:03:52', '2023-11-28 16:03:52'),
-(51, 1, 'IT 19/L', 'Technopreneurship', 3, '2023-11-28 16:04:18', '2023-11-28 16:04:18'),
-(52, 1, 'GE 7', 'Art Appreciation', 3, '2023-11-28 16:04:29', '2023-11-28 16:04:29'),
-(53, 1, 'IT 20/L', 'Professional Track for IT 6', 3, '2023-11-28 16:05:10', '2023-11-28 16:05:10'),
-(54, 1, 'IT 21/L', 'Information Assurance and Security 2', 3, '2023-11-28 16:06:06', '2023-11-28 16:06:06'),
-(55, 1, 'IT 22/L', 'Capstone Project 1', 3, '2023-11-28 16:06:25', '2023-11-28 16:06:25'),
-(56, 1, 'IT 23/L', 'Systems Administration and Maintenance', 3, '2023-11-28 16:06:52', '2023-11-28 16:06:52'),
-(57, 1, 'IT 24/L', 'Capstone Project 2', 6, '2023-11-28 16:07:14', '2023-11-28 16:07:14'),
-(58, 1, 'IT 17', 'Social and Professional Issues', 3, '2023-11-28 16:08:27', '2023-11-28 16:08:27'),
-(59, 1, 'CCE 106/L', 'Application Development and Emerging Technologies', 3, '2023-11-28 16:08:58', '2023-11-28 16:08:58'),
-(60, 1, 'CAED 500c', 'Career and Personality Development', 3, '2023-11-28 16:09:06', '2023-11-28 16:09:06'),
-(61, 1, 'IT 25', 'Practicum', 9, '2023-11-28 16:09:24', '2023-11-28 16:09:24'),
-(62, 13, 'GE 2', 'Purposive Communication w/ Interactive Learning', 6, '2023-11-28 16:16:55', '2023-11-28 16:16:55'),
-(63, 13, 'GE 1', 'Understanding the Self', 3, '2023-11-28 16:17:03', '2023-11-28 16:17:03'),
-(64, 13, 'GE 4', 'Mathematics in the Modern World (2ndT)', 3, '2023-11-28 16:17:26', '2023-11-28 16:17:26'),
-(65, 13, 'GE 5', 'Science, Technology, and Society', 3, '2023-11-28 16:17:45', '2023-11-28 16:17:45'),
-(66, 13, 'GE 6', 'Rizal\'s Life and Works', 3, '2023-11-28 16:17:57', '2023-11-28 16:17:57'),
-(67, 13, 'GE 3', 'The Contemporary World', 3, '2023-11-28 16:18:21', '2023-11-28 16:18:21'),
-(68, 13, 'GE 8', 'Readings in Philippine History', 3, '2023-11-28 16:18:48', '2023-11-28 16:18:48'),
-(69, 13, 'GE 7', 'Art Appreciation', 3, '2023-11-28 16:18:56', '2023-11-28 16:18:56'),
-(70, 13, 'GE 9', 'Ethics (Disciplinal)', 3, '2023-11-28 16:19:06', '2023-11-28 16:19:06'),
-(71, 13, 'GPE 1', 'Movement Enhancement', 2, '2023-11-28 16:19:30', '2023-11-28 16:19:30'),
-(72, 13, 'GPE 2', 'Fitness Exercises', 2, '2023-11-28 16:19:45', '2023-11-28 16:19:45'),
-(73, 13, 'GPE 3', 'Physical Activities Towards Health and Fitness 1', 2, '2023-11-28 16:20:23', '2023-11-28 16:20:23'),
-(74, 13, 'GPE 4', 'Physical Activities Towards Health and Fitness 2', 2, '2023-11-28 16:20:37', '2023-11-28 16:20:37'),
-(75, 13, 'NSTP 1', 'National Service Training Program 1', 3, '2023-11-28 16:20:50', '2023-11-28 16:20:50'),
-(76, 13, 'NSTP 2', 'National Service Training Program 2', 3, '2023-11-28 16:21:11', '2023-11-28 16:21:11'),
-(77, 13, 'UGE 2', 'Technical Writing in the Discipline', 3, '2023-11-28 16:21:32', '2023-11-28 16:21:32'),
-(78, 13, 'CEE 100', 'Math Plus (1stT)', 6, '2023-11-28 16:22:00', '2023-11-28 16:22:00'),
-(79, 13, 'CAED 500c', 'Career and Personality Development', 3, '2023-11-28 16:22:10', '2023-11-28 16:22:10'),
-(80, 13, 'UGE 1', 'Reading Comprehension', 6, '2023-11-28 16:22:23', '2023-11-28 16:22:23'),
-(81, 13, 'CEE 101', 'Engineering Calculus 1', 5, '2023-11-28 16:22:56', '2023-11-28 16:22:56'),
-(82, 13, 'CEE 103', 'Engineering Calculus 2', 5, '2023-11-28 16:23:10', '2023-11-28 16:23:10'),
-(83, 13, 'CEE 102/L', 'Physics 1 for Engineers (Calculus Based) (2ndT)', 4, '2023-11-28 16:23:48', '2023-11-28 16:23:48'),
-(84, 13, 'CEE 105', 'Engineering Data Analysis', 3, '2023-11-28 16:24:19', '2023-11-28 16:24:19'),
-(85, 13, 'CEE 104', 'Differential Equations', 3, '2023-11-28 16:24:40', '2023-11-28 16:24:40'),
-(86, 13, 'CEE 109', 'Engineering Economics', 3, '2023-11-28 16:25:06', '2023-11-28 16:25:06'),
-(87, 13, 'CEE 112', 'Basic Occupational Safety and Health', 3, '2023-11-28 16:25:25', '2023-11-28 16:25:25'),
-(88, 13, 'CEE 115', 'Technopreneurship', 3, '2023-11-28 16:25:37', '2023-11-28 16:25:37'),
-(89, 13, 'BCHE 111/L', 'Chemistry for Engineers', 4, '2023-11-28 16:26:01', '2023-11-28 16:26:01'),
-(90, 13, 'CEE 108', 'Engineering Management', 3, '2023-11-28 16:26:23', '2023-11-28 16:26:23'),
-(91, 13, 'DRAW 102/L', 'Computer-Aided Drafting', 2, '2023-11-28 16:26:44', '2023-11-28 16:26:44'),
-(92, 13, 'CPE 111', 'Computer Engineering as a Dicsipline', 1, '2023-11-28 16:27:14', '2023-11-28 16:27:14'),
-(93, 13, 'CPE 112/L', 'Programming Logic and Design', 2, '2023-11-28 16:27:35', '2023-11-28 16:27:35'),
-(94, 13, 'CPE 113/L', 'Programming Logic and Design', 2, '2023-12-06 16:31:43', '2023-12-06 16:31:43'),
-(95, 13, 'CPE 121/L', 'Object Oriented Programming', 2, '2023-12-06 16:33:59', '2023-12-06 16:43:15'),
-(96, 13, 'CPE 122', 'Discrete Mathematics', 3, '2023-12-06 16:34:22', '2023-12-06 16:34:22'),
-(97, 13, 'CPE 211/L', 'Data Structures and Algorithms', 2, '2023-12-06 16:35:16', '2023-12-06 16:35:16'),
-(98, 13, 'BEE 212/L', 'Fundamentals of Electrical Circuits', 4, '2023-12-06 16:35:50', '2023-12-06 16:35:50'),
-(99, 13, 'CPE 222/L', 'Numerical Methods', 3, '2023-12-06 16:36:41', '2023-12-06 16:36:41'),
-(100, 13, 'CPE 223/L', 'Software Design', 4, '2023-12-06 16:37:15', '2023-12-06 16:37:15'),
-(101, 13, 'BECE 225/L', 'Fundamentals of Electronic Circuits', 4, '2023-12-06 16:41:17', '2023-12-06 16:41:17'),
-(102, 13, 'CPE 224/L', 'Logic Circuits and Design', 5, '2023-12-06 16:42:01', '2023-12-06 16:42:01'),
-(103, 13, 'CPE 317/L', 'CPE Elective 1', 3, '2023-12-06 16:43:02', '2023-12-06 16:43:02'),
-(104, 13, 'CPE 311/L', 'Introduction to Hardware Description Language', 2, '2023-12-06 16:44:00', '2023-12-06 16:44:00'),
-(105, 13, 'CPE 312/L', 'Operating Systems', 4, '2023-12-06 16:44:37', '2023-12-06 16:44:37'),
-(106, 13, 'CPE 313/L', 'Data and Digital Communications', 3, '2023-12-06 16:45:22', '2023-12-06 16:45:22'),
-(107, 13, 'CPE 314/L', 'Feedback and Control Systems', 3, '2023-12-06 16:45:51', '2023-12-06 16:45:51'),
-(108, 13, 'CPE 315/L', 'Fundamentals of Mixed Signals and Sensors', 3, '2023-12-06 16:46:56', '2023-12-06 16:46:56'),
-(109, 13, 'CPE 316/L', 'Computer Engineering Drafting and Design', 2, '2023-12-06 16:47:25', '2023-12-06 16:47:25'),
-(110, 13, 'CPE 324/L', 'Computer Networks and Security', 3, '2023-12-06 16:47:53', '2023-12-06 16:47:53'),
-(111, 13, 'CPE 325/L', 'Computer Networks and Security', 4, '2023-12-06 16:48:24', '2023-12-06 16:48:24'),
-(112, 13, 'CPE 326/L', 'Microprocessor', 4, '2023-12-06 16:48:48', '2023-12-06 16:48:48'),
-(113, 13, 'CPE 328', 'CPE Laws and Professional Practice', 2, '2023-12-06 16:49:31', '2023-12-06 16:49:31'),
-(114, 13, 'CPE 329/L', 'CPE Practice and Design 1', 2, '2023-12-06 16:49:55', '2023-12-06 16:49:55'),
-(115, 13, 'CPE 333/L', 'Seminars and Fieldtrips', 2, '2023-12-06 16:50:31', '2023-12-06 16:50:31'),
-(116, 13, 'CPE 412/L', 'CPE Elective 3', 3, '2023-12-06 16:50:59', '2023-12-06 16:50:59'),
-(117, 13, 'CPE 413/L', 'Embedded Systems', 4, '2023-12-06 16:51:31', '2023-12-06 16:51:31'),
-(118, 13, 'CPE 414/L', 'Computer Architecture and Organization', 4, '2023-12-06 16:52:13', '2023-12-06 16:52:13'),
-(119, 13, 'CPE 415/L', 'Digital Signal Processing', 4, '2023-12-06 16:52:39', '2023-12-06 16:52:39'),
-(120, 13, 'CPE 416', 'Emerging Technologies in CPE', 3, '2023-12-06 16:53:04', '2023-12-06 16:53:04'),
-(121, 13, 'CPE 417/L', 'CPE Practice and Design 2', 2, '2023-12-06 16:53:27', '2023-12-06 16:53:27'),
-(122, 13, 'CPE 422', 'On the Job Training', 6, '2023-12-06 16:53:51', '2023-12-06 16:53:51'),
-(123, 13, 'CPE 421', 'Methods of Research - CPE', 3, '2023-12-06 16:54:19', '2023-12-06 16:54:19'),
-(124, 13, 'GE 15', 'Environmental Science', 3, '2023-12-06 16:54:31', '2023-12-06 16:54:31'),
-(125, 13, 'GE 11', 'The Entrepreneurial Mind', 3, '2023-12-06 16:54:54', '2023-12-06 16:54:54'),
-(126, 13, 'GE 20', 'Reading Visual Arts', 3, '2023-12-06 16:55:08', '2023-12-06 16:55:08'),
-(127, 3, 'GE 1', 'Understanding the Self', 3, '2023-12-06 16:56:36', '2023-12-06 16:56:36'),
-(128, 3, 'GE 2', 'Purposive Communication with Interactive Learning', 6, '2023-12-06 16:57:17', '2023-12-06 16:57:17'),
-(129, 3, 'GE 3', 'The Contemporary World', 3, '2023-12-06 16:57:35', '2023-12-06 16:57:35'),
-(130, 3, 'TME 100', 'Tourism Promotions and Services', 3, '2023-12-06 16:58:07', '2023-12-06 16:58:07'),
-(131, 3, 'THC 1', 'Macro Perspective of Tourism and Hospitality', 3, '2023-12-06 16:58:49', '2023-12-06 16:58:49'),
-(132, 3, 'THC 2', 'Risk Management as Applied to Safety, Security and Sanitation', 3, '2023-12-06 16:59:35', '2023-12-06 16:59:35'),
-(133, 3, 'GPE 1', 'Movement Enhancement', 2, '2023-12-06 16:59:48', '2023-12-06 16:59:48'),
-(134, 3, 'NSTP 1', 'National Service Training Program 1', 3, '2023-12-06 17:00:02', '2023-12-06 17:00:02'),
-(135, 3, 'UGE 1', 'Reading Comprehension', 6, '2023-12-06 17:00:23', '2023-12-06 17:00:23'),
-(136, 3, 'GE 4', 'Mathematics in the Modern World', 3, '2023-12-06 17:00:40', '2023-12-06 17:00:40'),
-(137, 3, 'THC 3', 'Quality Service Management in Tourism and Hospitality', 3, '2023-12-06 17:01:14', '2023-12-06 17:01:14'),
-(138, 3, 'THC 4', 'Philippine Culture and Tourism Geography', 3, '2023-12-06 17:01:47', '2023-12-06 17:01:47'),
-(139, 3, 'TME 106', 'Travel Writing and Photography', 3, '2023-12-06 17:02:26', '2023-12-06 17:02:26'),
-(140, 3, 'GPE 2', 'Fitness Exercises', 2, '2023-12-06 17:02:42', '2023-12-06 17:02:42'),
-(141, 3, 'NSTP 2', 'National Service Training Program 2', 3, '2023-12-06 17:02:55', '2023-12-06 17:02:55'),
-(142, 3, 'THC 5', 'Micro Perspective of Tourism and Hospitality', 3, '2023-12-06 17:16:14', '2023-12-06 17:16:14');
+(33, 16, 'PSY 112L', 'Psychological Statistics', 5, '2023-11-21 21:14:27', '2023-11-21 21:14:27');
 
 -- --------------------------------------------------------
 
@@ -550,7 +442,7 @@ CREATE TABLE `prow_industry` (
   `prow_industry_acct_status` int(11) NOT NULL DEFAULT 1,
   `prow_industry_created` datetime NOT NULL,
   `prow_industry_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_industry`
@@ -573,7 +465,7 @@ CREATE TABLE `prow_industry_reviews` (
   `prow_review_date_posted` datetime NOT NULL,
   `prow_review_date_updated` datetime NOT NULL,
   `prow_user_code` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -599,7 +491,7 @@ CREATE TABLE `prow_jobs` (
   `prow_jobs_barangay` varchar(50) NOT NULL,
   `prow_jobs_municipality` varchar(50) NOT NULL,
   `prow_jobs_date_posted` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_jobs`
@@ -617,7 +509,7 @@ INSERT INTO `prow_jobs` (`prow_jobs_id`, `prow_industry_code`, `prow_jobs_code`,
 CREATE TABLE `prow_list_course` (
   `prow_course_id` int(4) NOT NULL,
   `prow_course_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_list_course`
@@ -682,7 +574,7 @@ INSERT INTO `prow_list_course` (`prow_course_id`, `prow_course_name`) VALUES
 CREATE TABLE `prow_list_highschool` (
   `prow_highschool_id` int(11) NOT NULL,
   `prow_highschool` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -693,7 +585,7 @@ CREATE TABLE `prow_list_highschool` (
 CREATE TABLE `prow_list_occu` (
   `prow_occu_id` int(11) NOT NULL,
   `prow_occu_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_list_occu`
@@ -764,7 +656,7 @@ CREATE TABLE `prow_list_sy` (
   `prow_sy_id` int(11) NOT NULL,
   `prow_sy_year` varchar(255) NOT NULL,
   `prow_sy_current` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_list_sy`
@@ -784,7 +676,7 @@ INSERT INTO `prow_list_sy` (`prow_sy_id`, `prow_sy_year`, `prow_sy_current`) VAL
 CREATE TABLE `prow_list_talents` (
   `prow_talent_id` int(11) NOT NULL,
   `prow_talent_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_list_talents`
@@ -797,7 +689,7 @@ INSERT INTO `prow_list_talents` (`prow_talent_id`, `prow_talent_name`) VALUES
 (4, 'Painting'),
 (5, 'Drawing'),
 (6, 'Writing'),
-(7, 'Playing a musical instrument'),
+(7, 'Playing a musical instrument (e.g., piano, guitar, violin)'),
 (8, 'Composing music'),
 (9, 'Sculpting'),
 (10, 'Photography'),
@@ -807,7 +699,7 @@ INSERT INTO `prow_list_talents` (`prow_talent_id`, `prow_talent_name`) VALUES
 (14, 'Graphic design'),
 (15, 'Poetry'),
 (16, 'Public speaking'),
-(17, 'Playing sports'),
+(17, 'Playing sports (e.g., basketball, soccer, tennis)'),
 (18, 'Chess playing'),
 (19, 'Coding/Programming'),
 (20, 'Problem-solving'),
@@ -816,7 +708,7 @@ INSERT INTO `prow_list_talents` (`prow_talent_id`, `prow_talent_name`) VALUES
 (23, 'Critical thinking'),
 (24, 'Scientific research'),
 (25, 'Mathematical ability'),
-(26, 'Crafting'),
+(26, 'Crafting (e.g., woodworking, pottery, jewelry-making)'),
 (27, 'Gardening'),
 (28, 'Singing in multiple languages'),
 (29, 'Storytelling'),
@@ -850,7 +742,7 @@ INSERT INTO `prow_list_talents` (`prow_talent_id`, `prow_talent_name`) VALUES
 CREATE TABLE `prow_list_tribe` (
   `prow_tribe_id` int(11) NOT NULL,
   `prow_tribe_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_list_tribe`
@@ -858,26 +750,26 @@ CREATE TABLE `prow_list_tribe` (
 
 INSERT INTO `prow_list_tribe` (`prow_tribe_id`, `prow_tribe_name`) VALUES
 (1, 'Lumad'),
-(2, 'Blaan'),
-(3, 'Tausūg'),
-(4, 'Igorot'),
-(5, 'Yakan'),
+(2, 'Blaan people'),
+(3, 'Tausūg people'),
+(4, 'Igorot people'),
+(5, 'Yakan people'),
 (6, 'Sama-Bajau'),
 (7, 'Tagbanwa'),
-(8, 'Maranao'),
+(8, 'Maranao people'),
 (9, 'Mangyan'),
 (10, 'Mamanwa'),
 (11, 'Mandaya'),
 (12, 'Ibaloi'),
 (13, 'Negrito'),
-(14, 'Aeta'),
+(14, 'Aeta people'),
 (15, 'Kapampangan'),
 (16, 'Bukid language'),
-(17, 'Tboli'),
+(17, 'Tboli people'),
 (18, 'Bugkalot'),
-(19, 'Batak'),
-(20, 'Kankanaey'),
-(21, 'Palawan'),
+(19, 'Batak people'),
+(20, 'Kankanaey people'),
+(21, 'Palawan people'),
 (22, 'Bukidnon'),
 (23, 'Molbog'),
 (24, 'Tagabawa');
@@ -891,7 +783,7 @@ INSERT INTO `prow_list_tribe` (`prow_tribe_id`, `prow_tribe_name`) VALUES
 CREATE TABLE `prow_municipalities` (
   `prow_mun_id` int(11) NOT NULL,
   `prow_mun_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_municipalities`
@@ -921,7 +813,7 @@ CREATE TABLE `prow_my_project` (
   `prow_proj_address` text NOT NULL,
   `prow_proj_title` text NOT NULL,
   `prow_proj_origin` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_my_project`
@@ -942,7 +834,7 @@ CREATE TABLE `prow_notifications` (
   `prow_notif_text` text NOT NULL,
   `prow_notif_to` int(11) NOT NULL,
   `prow_notif_date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_notifications`
@@ -962,34 +854,10 @@ INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_noti
 (11, 'auth', 'Login - annimay', 0, '2023-11-26 13:15:13'),
 (12, 'auth', 'Login - annimay', 0, '2023-11-26 14:46:26'),
 (13, 'auth', 'Login - annimay', 0, '2023-11-27 12:58:17'),
-(14, 'auth', 'Login - annimay', 0, '2023-11-28 16:52:28'),
-(15, 'auth', 'Login - annimay', 0, '2023-11-28 16:53:53'),
-(16, 'auth', 'Login - Angiii', 0, '2023-11-28 17:16:54'),
-(17, 'auth', 'Login - annimay', 0, '2023-11-28 17:25:37'),
-(18, 'auth', 'Login - Angiii', 0, '2023-11-28 17:27:05'),
-(19, 'auth', 'Login - admin', 0, '2023-11-28 17:57:44'),
-(20, 'auth', 'Login - annimay', 0, '2023-11-28 18:40:01'),
-(21, 'auth', 'Login - annimay', 0, '2023-11-30 13:28:12'),
-(22, 'auth', 'Login - Angiii', 0, '2023-11-30 14:15:35'),
-(23, 'auth', 'Login - Angiii', 0, '2023-11-30 14:45:09'),
-(24, 'auth', 'Login - annimay2', 0, '2023-11-30 15:31:32'),
-(25, 'auth', 'Login - Angiii', 0, '2023-11-30 15:54:24'),
-(26, 'auth', 'Login - admin', 0, '2023-11-30 16:27:42'),
-(27, 'auth', 'Login - Angiii', 0, '2023-11-30 16:35:34'),
-(28, 'auth', 'Login - Angiii', 0, '2023-12-04 13:31:11'),
-(29, 'auth', 'Login - Angiii', 0, '2023-12-05 10:36:34'),
-(30, 'auth', 'Login - admin', 0, '2023-12-05 11:51:17'),
-(31, 'auth', 'Login - Angiii', 0, '2023-12-05 15:29:11'),
-(32, 'auth', 'Login - admin', 0, '2023-12-05 15:45:59'),
-(33, 'auth', 'Login - admin', 0, '2023-12-05 15:50:33'),
-(34, 'auth', 'Login - admin', 0, '2023-12-06 16:17:02'),
-(35, 'auth', 'Login - Angiii', 0, '2023-12-06 16:27:03'),
-(36, 'auth', 'Login - admin', 0, '2023-12-06 16:31:59'),
-(37, 'attempt', 'Login Attempt - Angiii', 0, '2023-12-06 17:16:53'),
-(38, 'auth', 'Login - Angiii', 0, '2023-12-06 17:16:58'),
-(39, 'auth', 'Login - admin', 0, '2023-12-06 17:25:54'),
-(40, 'auth', 'Login - annimay2', 0, '2023-12-06 17:29:57'),
-(41, 'auth', 'Login - annimay', 0, '2023-12-06 17:40:04');
+(14, 'auth', 'Login - annimay', 0, '2023-11-28 13:04:55'),
+(15, 'auth', 'Login - annimay', 0, '2023-12-11 19:43:19'),
+(16, 'auth', 'Login - annimay', 0, '2023-12-21 12:02:58'),
+(17, 'auth', 'Login - annimay', 0, '2023-12-22 13:26:56');
 
 -- --------------------------------------------------------
 
@@ -1001,7 +869,7 @@ CREATE TABLE `prow_notif_type` (
   `prow_notify_id` int(11) NOT NULL,
   `prow_notify_category` int(11) NOT NULL,
   `prow_notify_icon` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1016,14 +884,14 @@ CREATE TABLE `prow_otp` (
   `prow_otp_status` int(1) NOT NULL,
   `prow_otp_created` datetime NOT NULL,
   `prow_otp_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_otp`
 --
 
 INSERT INTO `prow_otp` (`prow_otp_id`, `prow_otp_code`, `prow_user_code`, `prow_otp_status`, `prow_otp_created`, `prow_otp_updated`) VALUES
-(1, '230419', '20231206173921ujlJEVFvDE', 1, '2023-12-06 17:39:21', '2023-12-06 17:39:21');
+(1, '996472', '20231122132351ieG23Djs94', 1, '2023-11-21 21:23:51', '2023-11-21 21:23:51');
 
 -- --------------------------------------------------------
 
@@ -1053,14 +921,14 @@ CREATE TABLE `prow_scholar` (
   `prow_scholar_filled_up` int(11) NOT NULL DEFAULT 0,
   `prow_scholar_created` datetime NOT NULL,
   `prow_scholar_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_scholar`
 --
 
 INSERT INTO `prow_scholar` (`prow_scholar_id`, `prow_scholar_code`, `prow_scholar_school_id`, `prow_scholar_img`, `prow_scholar_lastname`, `prow_scholar_firstname`, `prow_scholar_middlename`, `prow_scholar_suffix`, `prow_scholar_gender`, `prow_scholar_cs`, `prow_scholar_birthday`, `prow_scholar_birthplace`, `prow_scholar_con`, `prow_scholar_email`, `prow_scholar_acct_status`, `prow_account_type`, `prow_initial_approve`, `prow_initial_updated`, `prow_scholar_filled_up`, `prow_scholar_created`, `prow_scholar_updated`) VALUES
-(1, '2023L7C85y', '59319', '', 'Delima', 'Joane May', 'Berdera', '', 'Female', 'Single', '1994-02-06', 'Valenzuela, Metro Manila', '9282657552', 'joanemaydelima@gmail.com', 2, 1, 0, '2023-12-06 17:39:21', 0, '2023-12-06 17:39:21', '2023-12-06 17:39:21');
+(1, '20234fMHuh', '5321', '', 'Delima', 'Joane May', 'Berdera', '', 'Female', 'Single', '1994-02-06', 'Valenzuela Metro Manila', '9282657552', 'joanemaydelima@gmail.com', 2, 1, 0, '2023-11-21 21:23:51', 0, '2023-11-21 21:23:51', '2023-11-21 21:23:51');
 
 -- --------------------------------------------------------
 
@@ -1076,7 +944,7 @@ CREATE TABLE `prow_scholar_academe` (
   `prow_acad_signature` text NOT NULL,
   `prow_acad_created` datetime NOT NULL,
   `prow_acad_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1096,14 +964,14 @@ CREATE TABLE `prow_scholar_address` (
   `prow_address_lat` varchar(100) NOT NULL,
   `prow_address_created` datetime NOT NULL,
   `prow_address_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_scholar_address`
 --
 
 INSERT INTO `prow_scholar_address` (`prow_address_id`, `prow_scholar_code`, `prow_address_description`, `prow_address_brgy`, `prow_address_municipality`, `prow_address_province`, `prow_address_zipcode`, `prow_address_long`, `prow_address_lat`, `prow_address_created`, `prow_address_updated`) VALUES
-(1, '2023L7C85y', 'Datoc Compound, Digos City', 'Zone 1', 'Digos City', 'Davao del Sur', 8002, '125.36037256092594', '6.758988608846323', '2023-12-06 17:39:21', '2023-12-06 17:39:21');
+(1, '20234fMHuh', 'Datoc Compound, Digos City', 'Zone 1', 'Digos City', 'Davao del Sur', 8002, '125.36036183208988', '6.75898860884635', '2023-11-21 21:23:51', '2023-11-21 21:23:51');
 
 -- --------------------------------------------------------
 
@@ -1122,14 +990,14 @@ CREATE TABLE `prow_scholar_app_logs` (
   `prow_sy` varchar(50) NOT NULL,
   `prow_sem` varchar(50) NOT NULL,
   `prow_app_logs_created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_scholar_app_logs`
 --
 
 INSERT INTO `prow_scholar_app_logs` (`prow_scholar_app_logs_id`, `prow_scholar_code`, `prow_app_log_code`, `prow_app_log_status`, `prow_hei`, `prow_course`, `prow_yr_lvl`, `prow_sy`, `prow_sem`, `prow_app_logs_created`) VALUES
-(1, '2023L7C85y', '845651', 0, '1', '3', 1, '2023-2024', '1', '2023-12-06 17:42:19');
+(1, '20234fMHuh', '427019', 0, '1', '1', 1, '2023-2024', '1', '2023-11-22 11:20:52');
 
 -- --------------------------------------------------------
 
@@ -1145,7 +1013,7 @@ CREATE TABLE `prow_scholar_educ_attain` (
   `prow_educ_degree` varchar(50) NOT NULL,
   `prow_educ_created` datetime NOT NULL,
   `prow_educ_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1164,7 +1032,7 @@ CREATE TABLE `prow_scholar_employment` (
   `prow_emp_date_to` datetime NOT NULL,
   `prow_emp_created` datetime NOT NULL,
   `prow_emp_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1181,15 +1049,20 @@ CREATE TABLE `prow_scholar_grades` (
   `prow_scholar_grades_percent` double NOT NULL,
   `prow_scholar_grades_created` datetime NOT NULL,
   `prow_scholar_grades_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_scholar_grades`
 --
 
 INSERT INTO `prow_scholar_grades` (`prow_scholar_grades_id`, `prow_scholar_code`, `prow_subject_id`, `prow_scholar_grades_semester`, `prow_scholar_grades_sy`, `prow_scholar_grades_percent`, `prow_scholar_grades_created`, `prow_scholar_grades_updated`) VALUES
-(1, '2023L7C85y', 127, 1, '2023-2024', 89, '2023-12-06 17:42:54', '2023-12-06 17:42:54'),
-(2, '2023L7C85y', 128, 1, '2023-2024', 98, '2023-12-06 17:43:04', '2023-12-06 17:43:04');
+(2, '20234fMHuh', 8, 2, '2022-2023', 93, '2023-11-23 18:35:18', '2023-11-23 18:35:18'),
+(3, '20234fMHuh', 12, 2, '2021-2022', 100, '2023-11-23 20:08:49', '2023-11-23 20:21:43'),
+(4, '20234fMHuh', 7, 1, '2023-2024', 92, '2023-11-23 20:33:09', '2023-11-23 20:33:09'),
+(5, '20234fMHuh', 18, 1, '2023-2024', 75, '2023-11-24 21:22:18', '2023-11-24 21:22:18'),
+(6, '20234fMHuh', 19, 1, '2023-2024', 90, '2023-11-27 13:39:39', '2023-11-27 13:39:39'),
+(7, '20234fMHuh', 15, 1, '2023-2024', 89, '2023-11-27 13:40:11', '2023-11-27 13:40:11'),
+(8, '20234fMHuh', 11, 1, '2023-2024', 90, '2023-11-27 13:41:36', '2023-11-27 13:41:36');
 
 -- --------------------------------------------------------
 
@@ -1215,20 +1088,20 @@ CREATE TABLE `prow_scholar_profile` (
   `prow_prof_guardian_cont` varchar(11) NOT NULL,
   `prow_prof_guardian_occu` varchar(100) NOT NULL,
   `prow_prof_income` varchar(50) NOT NULL,
-  `prow_scholar_pwd` int(11) NOT NULL,
-  `prow_scholar_single_p` int(11) NOT NULL,
-  `prow_scholar_single_id` int(11) NOT NULL,
-  `prow_scholar_tribal` varchar(255) NOT NULL,
+  `prow_prof_pwd` int(11) NOT NULL,
+  `prow_prof_single_p` int(11) NOT NULL,
+  `prow_prof_single_id` int(11) NOT NULL,
+  `prow_prof_tribal` varchar(255) NOT NULL,
   `prow_prof_created` datetime NOT NULL,
   `prow_prof_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_scholar_profile`
 --
 
-INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guardian_cont`, `prow_prof_guardian_occu`, `prow_prof_income`, `prow_scholar_pwd`, `prow_scholar_single_p`, `prow_scholar_single_id`, `prow_scholar_tribal`, `prow_prof_created`, `prow_prof_updated`) VALUES
-(1, '2023L7C85y', 149, 48, 'O-', 'Others', 'Coding/Programming,Critical thinking,Drawing', 'Julieto Delima', '92828282828', 'Police officer', 'Margie Delima', '92366778762', 'Business Owner', 'Kent John Gocotano', '9121610673', 'Freelancer', '₱9,100 - ₱18,000', 0, 0, 0, 'None', '2023-12-06 17:42:19', '2023-12-06 17:43:31');
+INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guardian_cont`, `prow_prof_guardian_occu`, `prow_prof_income`, `prow_prof_pwd`, `prow_prof_single_p`, `prow_prof_single_id`, `prow_prof_tribal`, `prow_prof_created`, `prow_prof_updated`) VALUES
+(1, '20234fMHuh', 149, 49, 'B+', 'Sikhism', 'Coding/Programming,Drawing,Photography,Writing', 'Julieto Delima', '9232765442', 'Police officer', 'Margie Delima', '9835467221', 'Business Owner', 'Jessa Delima', '9863627222', 'Civil engineer', '₱9,100 - ₱18,000', 0, 1, 13455, '', '2023-11-22 11:20:52', '2023-12-22 13:41:39');
 
 -- --------------------------------------------------------
 
@@ -1251,14 +1124,14 @@ CREATE TABLE `prow_scholar_requirements` (
   `prow_req_status` tinyint(1) NOT NULL,
   `prow_req_created` datetime NOT NULL,
   `prow_req_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_scholar_requirements`
 --
 
 INSERT INTO `prow_scholar_requirements` (`prow_req_id`, `prow_scholar_code`, `prow_scholar_app_logs_code`, `prow_req_cert_low_income`, `prow_req_endorsement`, `prow_req_school_card`, `prow_req_enrollment_form`, `prow_req_birth_certificate`, `prow_req_exam_score`, `prow_req_exam_date`, `prow_req_interview_date`, `prow_req_status`, `prow_req_created`, `prow_req_updated`) VALUES
-(1, '2023L7C85y', '845651', '', '', '20231206174348_13.png', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2023-12-06 17:42:19', '0000-00-00 00:00:00');
+(1, '20234fMHuh', '427019', '', '', '657706f694a2c.png,657706f694af8.png', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2023-11-22 11:20:52', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1272,15 +1145,17 @@ CREATE TABLE `prow_scholar_skills` (
   `prow_skill_type_id` int(11) NOT NULL,
   `prow_skills` varchar(100) NOT NULL,
   `prow_skills_proficiency` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_scholar_skills`
 --
 
 INSERT INTO `prow_scholar_skills` (`prow_skills_id`, `prow_scholar_code`, `prow_skill_type_id`, `prow_skills`, `prow_skills_proficiency`) VALUES
-(1, '2023L7C85y', 52, 'Animal husbandry', 'Basic'),
-(2, '2023L7C85y', 15, 'Presentation skills', 'Intermediate');
+(1, '20234fMHuh', 1, 'Java', 'Advanced'),
+(2, '20234fMHuh', 1, 'PHP', 'Advanced'),
+(3, '20234fMHuh', 15, 'Active listening', 'Intermediate'),
+(4, '20234fMHuh', 5, 'Microsoft Azure', 'Being Developed');
 
 -- --------------------------------------------------------
 
@@ -1292,7 +1167,7 @@ CREATE TABLE `prow_skills` (
   `prow_skills_id` int(11) NOT NULL,
   `prow_skill_type_id` int(11) NOT NULL,
   `prow_skill_name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_skills`
@@ -1310,33 +1185,33 @@ INSERT INTO `prow_skills` (`prow_skills_id`, `prow_skill_type_id`, `prow_skill_n
 (9, 1, 'TypeScript'),
 (10, 1, 'R'),
 (11, 1, 'MATLAB'),
-(12, 1, 'Shell scripting languages (Bash PowerShell)'),
+(12, 1, 'Shell scripting languages (Bash, PowerShell)'),
 (13, 2, 'HTML/CSS'),
-(14, 2, 'Frontend frameworks (React Angular Vue.js)'),
-(15, 2, 'Backend frameworks (Node.js Django Flask Ruby on Rails)'),
-(16, 2, 'Web services (RESTful APIs GraphQL)'),
+(14, 2, 'Frontend frameworks (React, Angular, Vue.js)'),
+(15, 2, 'Backend frameworks (Node.js, Django, Flask, Ruby on Rails)'),
+(16, 2, 'Web services (RESTful APIs, GraphQL)'),
 (17, 3, 'iOS development (Swift, Objective-C)'),
-(18, 3, 'Android development (Kotlin Java)'),
+(18, 3, 'Android development (Kotlin, Java)'),
 (19, 4, 'SQL (MySQL, PostgreSQL, SQLite, SQL Server)'),
-(20, 4, 'NoSQL databases (MongoDB Cassandra Redis)'),
+(20, 4, 'NoSQL databases (MongoDB, Cassandra, Redis)'),
 (21, 5, 'Amazon Web Services (AWS)'),
 (22, 5, 'Microsoft Azure'),
 (23, 5, 'Google Cloud Platform (GCP)'),
-(24, 6, 'Configuration management (Ansible Puppet Chef)'),
-(25, 6, 'Containerization (Docker Kubernetes)'),
+(24, 6, 'Configuration management (Ansible, Puppet, Chef)'),
+(25, 6, 'Containerization (Docker, Kubernetes)'),
 (26, 6, 'Continuous Integration/Continuous Deployment (CI/CD) tools'),
 (27, 7, 'Ethical hacking'),
 (28, 7, 'Network security'),
 (29, 7, 'Penetration testing'),
-(30, 8, 'Machine learning (scikit-learn TensorFlow Keras PyTorch)'),
-(31, 8, 'Big data tools (Hadoop Spark)'),
-(32, 8, 'Networking: Network configuration and troubleshooting TCP/IP protocols Routing and switching'),
+(30, 8, 'Machine learning (scikit-learn, TensorFlow, Keras, PyTorch)'),
+(31, 8, 'Big data tools (Hadoop, Spark)'),
+(32, 8, 'Networking: Network configuration and troubleshooting, TCP/IP protocols, Routing and switching'),
 (33, 9, 'Windows'),
-(34, 9, 'Linux (Ubuntu CentOS Red Hat etc.)'),
+(34, 9, 'Linux (Ubuntu, CentOS, Red Hat, etc.)'),
 (35, 9, 'macOS'),
-(36, 10, 'Version control systems (Git SVN)'),
-(37, 10, 'Integrated Development Environments (IDEs) (Visual Studio Code IntelliJ IDEA Eclipse)'),
-(38, 11, 'Prototyping tools (Sketch Adobe XD Figma)'),
+(36, 10, 'Version control systems (Git, SVN)'),
+(37, 10, 'Integrated Development Environments (IDEs) (Visual Studio Code, IntelliJ IDEA, Eclipse)'),
+(38, 11, 'Prototyping tools (Sketch, Adobe XD, Figma)'),
 (39, 11, 'User research and usability testing'),
 (40, 12, 'Natural Language Processing (NLP)'),
 (41, 12, 'Computer Vision'),
@@ -1398,116 +1273,19 @@ INSERT INTO `prow_skills` (`prow_skills_id`, `prow_skill_type_id`, `prow_skill_n
 (97, 28, 'Self-discipline'),
 (98, 29, 'Patient care'),
 (99, 29, 'Medical knowledge'),
-(100, 29, 'Healthcare technology (Electronic Health Records - EHR medical imaging software)'),
+(100, 29, 'Healthcare technology (Electronic Health Records - EHR, medical imaging software)'),
 (101, 29, 'Clinical procedures'),
 (102, 29, 'Regulatory compliance (HIPAA, medical ethics)'),
 (103, 30, 'Financial analysis'),
 (104, 30, 'Risk management'),
 (105, 30, 'Investment strategies'),
 (106, 30, 'Accounting principles'),
-(107, 30, 'Compliance and regulatory knowledge (Sarbanes-Oxley Act Dodd-Frank Act)'),
+(107, 30, 'Compliance and regulatory knowledge (Sarbanes-Oxley Act, Dodd-Frank Act)'),
 (108, 31, 'Cybersecurity'),
 (109, 31, 'Network administration'),
 (110, 31, 'Cloud computing'),
 (111, 31, 'Software development'),
-(112, 31, 'IT project management'),
-(113, 32, 'Curriculum development'),
-(114, 32, 'Classroom management'),
-(115, 32, 'Teaching methodologies'),
-(116, 32, 'Educational technology integration'),
-(117, 32, 'Assessment and evaluation'),
-(118, 33, 'Technical design skills (CAD CAM)'),
-(119, 33, 'Problem-solving and innovation'),
-(120, 33, 'Structural analysis'),
-(121, 33, 'Knowledge of engineering principles (mechanical electrical civil etc.)'),
-(122, 34, 'Customer service'),
-(123, 34, 'Event management'),
-(124, 34, 'Food and beverage knowledge'),
-(125, 34, 'Hotel management software'),
-(126, 34, 'Travel planning and reservation systems'),
-(127, 35, 'Lean manufacturing principles'),
-(128, 35, 'Quality control'),
-(129, 35, 'Supply chain management'),
-(130, 35, 'Machinery operation and maintenance'),
-(131, 35, 'Production scheduling'),
-(132, 36, 'Crop management'),
-(133, 36, 'Soil science'),
-(134, 36, 'Pest control'),
-(135, 36, 'Sustainable farming practices'),
-(136, 36, 'Agricultural technology (precision farming drones)'),
-(137, 37, 'Sales techniques'),
-(138, 37, 'Inventory management'),
-(139, 37, 'Customer relationship management (CRM)'),
-(140, 37, 'Point of Sale (POS) systems'),
-(141, 37, 'Visual merchandising'),
-(142, 38, 'Property management'),
-(143, 38, 'Real estate law and regulations'),
-(144, 38, 'Market analysis'),
-(145, 38, 'Negotiation skills'),
-(146, 38, 'Property valuation'),
-(147, 39, 'Content creation (writing filming editing)'),
-(148, 39, 'Digital media production'),
-(149, 39, 'Audience engagement strategies'),
-(150, 39, 'Media planning and buying'),
-(151, 39, 'Entertainment law and contracts'),
-(152, 40, 'Automotive engineering'),
-(153, 40, 'Vehicle diagnostics and repair'),
-(154, 40, 'Manufacturing processes'),
-(155, 40, 'Sales and dealership management'),
-(156, 40, 'Electric vehicle technology'),
-(157, 41, 'Arc welding'),
-(158, 41, 'Gas welding'),
-(159, 41, 'Metal fabrication'),
-(160, 41, 'Blueprint reading'),
-(161, 42, 'Framing'),
-(162, 42, 'Cabinetmaking'),
-(163, 42, 'Finishing techniques'),
-(164, 42, 'Carpentry tools and equipment usage'),
-(165, 43, 'Pipefitting'),
-(166, 43, 'Installation and repair of plumbing systems'),
-(167, 43, 'Reading blueprints and schematics'),
-(168, 44, 'Wiring installation'),
-(169, 44, 'Electrical system troubleshooting'),
-(170, 44, 'Knowledge of electrical codes and safety standards'),
-(171, 45, 'Engine diagnostics'),
-(172, 45, 'Automotive repair and maintenance'),
-(173, 45, 'Brake and suspension systems'),
-(174, 45, 'Vehicle computer systems'),
-(175, 46, 'HVAC system installation and repair'),
-(176, 46, 'Refrigeration systems'),
-(177, 46, 'Troubleshooting heating and cooling systems'),
-(178, 47, 'Food preparation'),
-(179, 47, 'Culinary techniques'),
-(180, 47, 'Menu planning'),
-(181, 47, 'Kitchen management'),
-(182, 48, 'Basic patient care'),
-(183, 48, 'Medical terminology'),
-(184, 48, 'Vital signs monitoring'),
-(185, 48, 'Assisting healthcare professionals'),
-(186, 49, 'Hair cutting and styling'),
-(187, 49, 'Nail care'),
-(188, 49, 'Skincare treatments'),
-(189, 49, 'Makeup application'),
-(190, 50, 'Bricklaying techniques'),
-(191, 50, 'Concrete work'),
-(192, 50, 'Masonry repair and restoration'),
-(193, 51, 'Design software proficiency (Adobe Creative Suite etc.)'),
-(194, 51, 'Print production techniques'),
-(195, 51, 'Typography and layout design'),
-(196, 52, 'Crop planting and harvesting'),
-(197, 52, 'Animal husbandry'),
-(198, 52, 'Irrigation techniques'),
-(199, 52, 'Farm equipment operation and maintenance'),
-(200, 53, 'Waste sorting and recycling processes'),
-(201, 53, 'Environmental regulations'),
-(202, 53, 'Waste treatment and disposal methods'),
-(203, 54, 'Child development'),
-(204, 54, 'Classroom management'),
-(205, 54, 'Creating educational activities'),
-(206, 54, 'Childcare safety and regulations'),
-(207, 55, 'Facility maintenance'),
-(208, 55, 'Cleaning procedures'),
-(209, 55, 'Repairing and maintaining building systems');
+(112, 31, 'IT project management');
 
 -- --------------------------------------------------------
 
@@ -1519,7 +1297,7 @@ CREATE TABLE `prow_skill_type` (
   `prow_skill_type_id` int(11) NOT NULL,
   `prow_skill_type_name` varchar(255) NOT NULL,
   `prow_skill_category` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_skill_type`
@@ -1595,7 +1373,7 @@ CREATE TABLE `prow_transaction` (
   `prow_trans_date_applied` datetime NOT NULL,
   `prow_trans_statement` text NOT NULL,
   `prow_trans_status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1617,7 +1395,7 @@ CREATE TABLE `prow_users` (
   `prow_user_last_location` text NOT NULL,
   `prow_user_created` datetime NOT NULL,
   `prow_user_updated` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `prow_users`
@@ -1627,7 +1405,7 @@ INSERT INTO `prow_users` (`prow_user_id`, `prow_user_code`, `prow_scholar_code`,
 (1, '202311070330122dkOqNEDMi', '2023yDIcvq', 'Ralph Noynay', 'admin', '1bbd886460827015e5d605ed44252251', '', 0, 0, 1, '', '2023-11-06 11:30:12', '2023-11-06 11:30:12'),
 (2, '20231107062613TqKiMdHGMv', '2023CLBuDX', 'HEI sample', 'hei', '1bbd886460827015e5d605ed44252251', '', 3, 0, 1, '', '2023-11-06 14:26:13', '2023-11-06 14:26:13'),
 (3, '20231107064135RNEwoa4c6a', '2023rR2dEC', 'Industry Sample', 'industry', '1bbd886460827015e5d605ed44252251', '', 4, 0, 1, '', '2023-11-06 14:41:35', '2023-11-06 14:41:35'),
-(9, '20231206173921ujlJEVFvDE', '2023L7C85y', 'Joane May Delima', 'Annimay', '1bbd886460827015e5d605ed44252251', '', 4, 0, 1, '', '2023-12-06 17:39:21', '2023-12-06 17:39:21');
+(6, '20231122132351ieG23Djs94', '20234fMHuh', 'Joane May Delima', 'annimay', '1bbd886460827015e5d605ed44252251', '', 4, 0, 1, '', '2023-11-21 21:23:51', '2023-11-21 21:23:51');
 
 --
 -- Indexes for dumped tables
@@ -1851,13 +1629,13 @@ ALTER TABLE `prow_hei`
 -- AUTO_INCREMENT for table `prow_hei_course`
 --
 ALTER TABLE `prow_hei_course`
-  MODIFY `prow_hei_course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `prow_hei_course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `prow_hei_subjects`
 --
 ALTER TABLE `prow_hei_subjects`
-  MODIFY `prow_subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `prow_subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `prow_industry`
@@ -1917,7 +1695,7 @@ ALTER TABLE `prow_my_project`
 -- AUTO_INCREMENT for table `prow_notifications`
 --
 ALTER TABLE `prow_notifications`
-  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `prow_notif_type`
@@ -1953,7 +1731,7 @@ ALTER TABLE `prow_scholar_address`
 -- AUTO_INCREMENT for table `prow_scholar_app_logs`
 --
 ALTER TABLE `prow_scholar_app_logs`
-  MODIFY `prow_scholar_app_logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_scholar_app_logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_educ_attain`
@@ -1971,7 +1749,7 @@ ALTER TABLE `prow_scholar_employment`
 -- AUTO_INCREMENT for table `prow_scholar_grades`
 --
 ALTER TABLE `prow_scholar_grades`
-  MODIFY `prow_scholar_grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `prow_scholar_grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_profile`
@@ -1983,19 +1761,19 @@ ALTER TABLE `prow_scholar_profile`
 -- AUTO_INCREMENT for table `prow_scholar_requirements`
 --
 ALTER TABLE `prow_scholar_requirements`
-  MODIFY `prow_req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_skills`
 --
 ALTER TABLE `prow_scholar_skills`
-  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `prow_skills`
 --
 ALTER TABLE `prow_skills`
-  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
+  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `prow_skill_type`
@@ -2013,7 +1791,7 @@ ALTER TABLE `prow_transaction`
 -- AUTO_INCREMENT for table `prow_users`
 --
 ALTER TABLE `prow_users`
-  MODIFY `prow_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `prow_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

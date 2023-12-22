@@ -4,6 +4,18 @@ $(document).ready(function() {
     $('#scholarTalent').select2({
         multiple: true
     });
+
+
+    $('input[name="scholarSingleP"]').change(function(){
+      
+      if ($('#scholarSinglePNo').is(':checked')) {
+        $('#scholarSingleID').prop('disabled', true);
+        $('#scholarSingleID').val('');
+      } else {
+        $('#scholarSingleID').prop('disabled', false);
+      }
+
+    });
   
 });
   
