@@ -1,12 +1,13 @@
 <?php
-      require '../../config/includes.php';
-      require '_session.php';
 
-      $scholarCode = clean_string($_GET['scholarCode']);
+    require '../../config/includes.php';
+    require '_session.php';
 
-      $request=updateInitialApprove($scholarCode);
+    $scholarCode = clean_string($_GET['scholarCode']);
 
-      if ($request==true) {
+    $request=updateInitialApprove($scholarCode);
+
+    if ($request==true) {
         header("location: scholar_profile?scholarCode=$scholarCode");
     } else {
         echo "error";

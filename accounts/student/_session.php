@@ -42,6 +42,28 @@
     //lock
     $currentPage = str_replace('.php', '', basename($_SERVER['PHP_SELF']));
 
+    //applog
+    if (checkAppLogs($scholarCode) > 0) {
+
+        $getCurrentApplication=selectCurrentApplication($scholarCode);
+        $current=$getCurrentApplication->fetch(PDO::FETCH_ASSOC);
+
+        $appLogStatus = $current['prow_app_log_status'];
+
+        if ($current['prow_sy'] == getSchoolYearLatest()) {
+            // already filled up the new application
+            $fillUpStatus = "update";
+        } else {
+            // renew application for new school year
+            $fillUpStatus = "renew";
+        }
+
+    } else {
+        $appLogStatus = 0;
+        $fillUpStatus = "new";
+
+    }
+
     // if ($currentPage == "lockscreen") {
     //     if ($row['prow_user_lock'] == 0) {
     //         header("location: ./");

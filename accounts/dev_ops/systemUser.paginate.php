@@ -2,13 +2,16 @@
     //pagination
         
     $getPaginate=PWD()->prepare("SELECT 
-                                COUNT(prow_scholar_app_logs_id)
+                                COUNT(prow_user_id)
                                 FROM
-                                prow_scholar_app_logs
+                                prow_users
                                 Where
-                                prow_app_log_status = :prow_app_log_status");
+                                prow_user_id != :prow_user_id
+                                Order By
+                                prow_user_fullname
+                                ASC");
     $getPaginate->execute([
-        'prow_app_log_status' => 2
+        'prow_user_id' => $userId
     ]);
     $paginates=$getPaginate->fetch(PDO::FETCH_BOTH);
 
@@ -36,13 +39,18 @@
     $paginate=PWD()->prepare("SELECT 
                             *
                             FROM
-                            prow_scholar_app_logs
+                            prow_users
                             Where
-                            prow_app_log_status = :prow_app_log_status
+                            prow_user_id != :prow_user_id
+                            Order By
+                            prow_user_fullname
+                            ASC
                             $limit");
     $paginate->execute([
-        'prow_app_log_status' => 2
+        'prow_user_id' => $userId
     ]);
+
+    $countRes=$paginate->rowCount();
     
     $paginationCtrls = '';
 

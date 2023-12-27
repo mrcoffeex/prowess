@@ -46,7 +46,7 @@
         <li class="menu-item">
           <a href="scholarInformation" class="menu-link">
             <div data-i18n="Pending Scholar">Pending Scholar</div>
-            <div class="badge bg-primary rounded-pill ms-auto"><?= countScholarPending("") ?></div>
+            <div class="badge bg-primary rounded-pill ms-auto"><?= countScholarAppLogPending() ?></div>
           </a>
         </li>
         <li class="menu-item">
@@ -96,7 +96,7 @@
       <span class="menu-header-text">Other Menu</span>
     </li>
     <li class="menu-item">
-      <a href="system_users" class="menu-link">
+      <a href="systemUsers" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-account-outline"></i>
         <div data-i18n="Users">System Users</div>
       </a>

@@ -41,7 +41,7 @@
         $appLogCode= randInt(6);
         $filledupStatus = 0;
 
-        if (checkScholarInformation($scholarCode) == true) {
+        if ($fillUpStatus == "update") {
             $request1 = updateScholarInformation(
                 $scholarCode, 
                 $scholarHeight, 

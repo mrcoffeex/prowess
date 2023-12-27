@@ -219,11 +219,11 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        while ($scholar=$paginate->fetch(PDO::FETCH_ASSOC)) {
+                                        while ($pending=$paginate->fetch(PDO::FETCH_ASSOC)) {
                                     ?>
                                     <tr>
                                         <td class="text-center p-2">
-                                            <a href="scholar_profile?rand=<?= my_rand_str(100) ?>&scholarCode=<?= $scholar['prow_scholar_code'] ?>" target="_NEW">
+                                            <a href="scholar_profile?rand=<?= my_rand_str(100) ?>&scholarCode=<?= $pending['prow_scholar_code'] ?>" target="_NEW">
                                                 <button 
                                                 type="button" 
                                                 class="btn btn-primary btn-sm">
@@ -231,11 +231,11 @@
                                                 </button>
                                             </a>
                                         </td>
-                                        <td><?= $scholar['prow_scholar_code'] ?></td>
-                                        <td><?= getFullname($scholar['prow_scholar_code'])  ?></td>
-                                        <td><?= getScholarStatus($scholar['prow_scholar_acct_status'])?></td>
-                                        <td><?= getScholarSchool($scholar['prow_scholar_code'])  ?></td>
-                                        <td><?= getScholarMuni($scholar['prow_scholar_code'])  ?></td>
+                                        <td><?= $pending['prow_scholar_code'] ?></td>
+                                        <td><?= getFullname($pending['prow_scholar_code'])  ?></td>
+                                        <td><?= getScholarAppLogStatus($pending['prow_app_log_status'])?></td>
+                                        <td><?= getScholarSchool($pending['prow_scholar_code'])  ?></td>
+                                        <td><?= getScholarMuni($pending['prow_scholar_code'])  ?></td>
                                     </tr>
                                     <?php } ?>
                                 </tbody>

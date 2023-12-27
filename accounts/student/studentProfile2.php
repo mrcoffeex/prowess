@@ -69,7 +69,7 @@
                           <li class="d-flex align-items-center mb-3">
                             <span class="fw-semibold mx-2">Person with Disability: </span> 
                             <span><?php
-                            $pwd=$profile['prow_scholar_pwd'];
+                            $pwd=$profile['prow_prof_pwd'];
                             if ($pwd==0) {
                               echo "NO";
                             } else {
@@ -80,7 +80,7 @@
                           <li class="d-flex align-items-center mb-3">
                             <span class="fw-semibold mx-2">Single Parent: </span> 
                             <span><?php
-                            $parent=$profile['prow_scholar_single_p'];
+                            $parent=$profile['prow_prof_single_p'];
                             if ($parent==0) {
                               echo "NO";
                             } else {
@@ -91,8 +91,8 @@
                           <li class="d-flex align-items-center mb-3">
                             <span class="fw-semibold mx-2">Single Parent ID:</span> 
                             <span><?php
-                                    $parent=$profile['prow_scholar_single_p'];
-                                    $parentID=$profile['prow_scholar_single_id'];
+                                    $parent=$profile['prow_prof_single_p'];
+                                    $parentID=$profile['prow_prof_single_id'];
                                     if ($parent==0) {
                                       echo "None";
                                     } else {
@@ -105,7 +105,7 @@
                             <span class="fw-semibold mx-2">Tribal Affiliation:</span> 
                             <span><?php
                             
-                                    $tribe= $profile['prow_scholar_tribal']; 
+                                    $tribe= $profile['prow_prof_tribal']; 
                                     if (empty($tribe)) {
                                       echo "None";
                                     } else {

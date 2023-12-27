@@ -522,6 +522,17 @@
         
     }
 
+    function verified($val){
+
+        if ($val == 0) {
+            $res = "not verified";
+        } else {
+            $res = "verified";
+        }
+        
+        return $res;
+    }
+
     // otp
 
     function createOTP($userCode){

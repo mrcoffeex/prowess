@@ -23,8 +23,8 @@
                                 ><span class="fw-semibold">Student</span> <?php //getUserRole($scholarCode) ?>
                               </li>
                               <li class="list-inline-item">
-                                <i class="mdi mdi-account-check me-1 mdi-20px"></i
-                                ><span class="fw-semibold"><?= getScholar_Status($scholarCode) ?></span>
+                                <i class="<?= getScholarAppLogStatusIcon(getScholarAppLogStatusLatest($scholarCode)) ?> me-1 mdi-20px"></i
+                                ><span class="fw-semibold <?= getScholarAppLogStatusColor(getScholarAppLogStatusLatest($scholarCode)) ?>"><?= getScholarAppLogStatus(getScholarAppLogStatusLatest($scholarCode)) ?></span>
                               </li>
                               <li class="list-inline-item">
                                 <i class="mdi mdi-calendar-blank-outline me-1 mdi-20px"></i
@@ -33,13 +33,31 @@
                             </ul>
                           </div>
                           <div class="demo-inline-spacing">
-                            <a href="#" class="btn btn-primary">
-                              <i class="mdi mdi-image-edit-outline me-1"></i>Edit Profile
+                            <a href="statusReject?rand=<?= randStrInt(100) ?>&scholarCode=<?= $scholarCode ?>" class="btn btn-danger">
+                              <i class="mdi mdi-close me-1"></i>Reject
                             </a>
 
-                            <a href="initial_approve?scholarCode=<?=$scholarCode?>" class="btn btn-secondary waves-effect waves-light">
+                            <?php  
+                            
+                              if (selectScholarType($scholarCode) == 0) {
+                            
+                            ?>
+
+                            <a href="initial_approve?rand=<?= randStrInt(100) ?>&scholarCode=<?= $scholarCode ?>" class="btn btn-secondary waves-effect waves-light">
                               <i class="mdi mdi-check-decagram-outline me-1"></i>Initial Approve
                             </a>
+
+                            <?php 
+
+                              } else {
+                            
+                            ?>
+
+                            <a href="statusApprove?rand=<?= randStrInt(100) ?>&scholarCode=<?= $scholarCode ?>" class="btn btn-success waves-effect waves-light">
+                              <i class="mdi mdi-check-decagram-outline me-1"></i>Approve
+                            </a>
+
+                            <?php } ?>
                           </div>
                         </div>
                       </div>

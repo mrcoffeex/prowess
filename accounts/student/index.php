@@ -5,6 +5,9 @@
 
   $title = "Welcome " . $userFullname;
   include "_head.php";
+
+  $getProfile=selectScholar($scholarCode);
+  $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <body>
@@ -24,16 +27,24 @@
                     <div class="col-md-4 order-2 order-md-1">
                       <div class="card-body">
                         <h4 class="card-title" id="userName" name="userName">Welcome <strong> Student!</strong>🎉
-                        </h4> <span class="mb-3 badge rounded-pill bg-label-secondary" id="applicationStatus" name="applicationStatus"><?= getScholar_Status($scholarCode) ?></span>
+                        </h4> <span class="mb-3 badge rounded-pill bg-label-secondary" id="applicationStatus" name="applicationStatus"><?= getScholarAppLogStatus($appLogStatus) ?></span>
                         <p class="mb-0">Welcome to Prowess your
                         </p>
                         <p>Online Scholarship Management System.</p>
                         <?php  
-                          if ($fillUpStatus == "new") {
-                            echo '<a href="fillupForm_old" class="btn btn-success mb-2">Create Application</a>';
-                          } else {
+                         
+                        if ($fillUpStatus == "new") {
+                          echo '<a href="fillupForm_old" class="btn btn-success mb-2">Create Application</a>';
+                        } else if ($fillUpStatus == "renew") {
+                          echo '<a href="fillupForm_old" class="btn btn-success mb-2">Create Application</a>';
+                        } else {
+                          if ($appLogStatus == 1) {
+                            echo '<a href="studentProfile" class="btn btn-success mb-2">Student Profile</a>';
+                          }else{
                             echo '<a href="fillupForm_old" class="btn btn-warning mb-2">Update Application</a>';
                           }
+                        }
+                          
                         ?>
                       </div>
                     </div>

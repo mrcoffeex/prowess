@@ -22,4 +22,17 @@
         }
 
     }
+
+    if (isset($_POST['nameSearch'])) {
+
+        $nameSearch = clean_string($_POST['nameSearch']);
+        $userType = clean_string($_POST['userType']);
+
+        if (empty($nameSearch) && empty($userType)) {
+            header("location: systemUsers?note=empty_search");
+        } else {
+            header("location: systemUserSearch?nameSearch=" . $nameSearch . "&userType=" . $userType);
+        }
+
+    }
 ?>

@@ -18,7 +18,7 @@
 <body>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <?php include "_sidemenu_inc.php"; ?>
+            <?php include "_sidemenu.php"; ?>
 
             <div class="layout-page">
                 <?php include "_topnavigation.php"; ?>
@@ -33,7 +33,7 @@
                                 <a href="fillupForm_old2">
                                     <button type="button" class="btn btn-dark">go back</button>
                                 </a>
-                                <a href="studentProfile">
+                                <a href="fillupFormSubmit?rand=<?= randStrInt(100) ?>&scholarCode=<?= $scholarCode ?>">
                                     <button type="button" class="btn btn-primary">Done</button>
                                 </a>
                             </div>
@@ -176,7 +176,7 @@
                                             <div class="col-md-8 mb-4">
                                                 <div id="reportCardsPreview" class="image-preview-div mb-4"></div>
                                                 <div class="form-floating form-floating-outline">
-                                                    <input class="form-control" type="file" id="reportCards" name="reportCards[]" accept="image/jpeg, image/png, image/gif" multiple>
+                                                    <input class="form-control" type="file" id="reportCards" name="reportCards[]" accept="image/jpeg, image/png, image/gif" multiple required>
                                                     <label for="reportCards">Select File</label>
                                                 </div>
                                             </div>
@@ -186,9 +186,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 text-center">
+                                        <div class="col-lg-6">
                                             <div class="form-group">
-                                                <h5 for="" class="text-center text-primary text-uppercase">Uploaded Images</h5>
+                                                <h5 for="" class="text-primary text-uppercase">Uploaded Images</h5>
                                             </div>
                                             <div class="row">
                                                 <?php 

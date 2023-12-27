@@ -560,9 +560,56 @@
     }
 
     function updateInitialApprove($scholarCode){
+
         $stmt=PWD()->prepare("UPDATE prow_scholar SET prow_initial_approve = :prow_initial_approve, prow_initial_updated = NOW()  WHERE prow_scholar_code = :prow_scholar_code");
+
         $stmt->execute([
             'prow_initial_approve' => 1,
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function updateScholarAppLogStatus($scholarCode, $status){
+
+        $stmt=PWD()->prepare("UPDATE 
+                            prow_scholar_app_logs 
+                            SET 
+                            prow_app_log_status = :prow_app_log_status
+                            WHERE 
+                            prow_scholar_code = :prow_scholar_code");
+        
+        $stmt->execute([
+            'prow_app_log_status' => $status,
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function updateScholarStatus($scholarCode, $status){
+
+        $stmt=PWD()->prepare("UPDATE 
+                            prow_scholar 
+                            SET 
+                            prow_scholar_acct_status = :prow_scholar_acct_status, 
+                            prow_scholar_updated = NOW()  
+                            WHERE 
+                            prow_scholar_code = :prow_scholar_code");
+        
+        $stmt->execute([
+            'prow_scholar_acct_status' => $status,
             'prow_scholar_code' => $scholarCode
         ]);
 
@@ -812,6 +859,8 @@
             $scholar_status = "Pending";
         }else if ($status==3){
             $scholar_status = "For Reapplication";
+        }else{
+            $scholar_status = "No Application";
         }
 
         return $scholar_status;
@@ -850,18 +899,75 @@
     }
     
     //Get Scholar status
-     function getScholarStatus($acct_status){
+
+    function getScholarAppLogStatusLatest($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT
+                            prow_app_log_status
+                            FROM
+                            prow_scholar_app_logs
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            Order By
+                            prow_scholar_app_logs_id
+                            DESC LIMIT 1");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $res['prow_app_log_status'];
+
+    }
+
+    function getScholarAppLogStatus($acct_status){
+
         if ($acct_status==1){
             $status = "Approved";
         }else if ($acct_status==2){
             $status = "Pending";
-        }else{
+        }else if ($acct_status==3){
             $status = "For Reapplication";
+        }else{
+            $status = "No Application";
         }
 
         return $status;
     
     }
+
+    function getScholarAppLogStatusColor($acct_status){
+
+       if ($acct_status==1){
+           $status = "text-success";
+       }else if ($acct_status==2){
+           $status = "text-warning";
+       }else if ($acct_status==3){
+           $status = "text-danger";
+       }else{
+           $status = "text-warning";
+       }
+
+       return $status;
+   
+   }
+
+   function getScholarAppLogStatusIcon($acct_status){
+
+      if ($acct_status==1){
+          $status = "mdi mdi-account-check";
+      }else if ($acct_status==2){
+          $status = "mdi mdi-close";
+      }else if ($acct_status==3){
+          $status = "mdi mdi-close";
+      }else{
+          $status = "mdi mdi-close";
+      }
+
+      return $status;
+  
+  }
 
     function getSchoolScholar($profileCode){
         $statement=PWD()->prepare("SELECT
@@ -1116,6 +1222,40 @@
         $count=$stmt->rowCount();
 
         return $count;
+
+    }
+
+    function countScholarAppLogPending(){
+
+        $stmt=PWD()->prepare("SELECT 
+                            prow_scholar_app_logs_id
+                            FROM
+                            prow_scholar_app_logs
+                            Where
+                            prow_app_log_status = :prow_app_log_status");
+        $stmt->execute([
+            'prow_app_log_status' => 2
+        ]);
+
+        $count=$stmt->rowCount();
+
+        return $count;
+
+    }
+
+    function selectScholarAppLogPending(){
+
+        $stmt=PWD()->prepare("SELECT 
+                            *
+                            FROM
+                            prow_scholar_app_logs
+                            Where
+                            prow_app_log_status != :prow_app_log_status");
+        $stmt->execute([
+            'prow_app_log_status' => 1
+        ]);
+
+        return $stmt;
 
     }
 
@@ -1684,13 +1824,13 @@
                             Where
                             prow_scholar_code = :prow_scholar_code
                             AND
-                            prow_app_log_status = :prow_app_log_status
+                            prow_app_log_status != :prow_app_log_status
                             Order By
                             prow_scholar_app_logs_id
                             DESC LIMIT 1");
         $stmt->execute([
             'prow_scholar_code' => $scholarCode,
-            'prow_app_log_status' => 0
+            'prow_app_log_status' => 1
         ]);
 
         return $stmt;

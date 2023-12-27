@@ -52,7 +52,7 @@
 <body>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-            <?php include "_sidemenu_inc.php"; ?>
+            <?php include "_sidemenu.php"; ?>
 
             <div class="layout-page">
                 <?php include "_topnavigation.php"; ?>
@@ -202,7 +202,7 @@
                                             </div>
 
                                             <div class="form-floating form-floating-outline">
-                                                <input type="text" id="scholarSingleID" name="scholarSingleID" class="form-control" placeholder="Single Parent ID No." value="<?= $valSingleParentId ?>" />
+                                                <input type="text" id="scholarSingleID" name="scholarSingleID" class="form-control" placeholder="Single Parent ID No." value="<?= $valSingleParentId ?>" >
                                                 <label for="scholarSingleID">Single Parent ID No.</label>
                                             </div>
                                         </div>

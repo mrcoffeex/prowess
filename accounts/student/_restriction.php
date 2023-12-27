@@ -10,24 +10,26 @@
     //     header("location: ./");
     // }
 
-    if (checkAppLogs($scholarCode) > 0) {
-        // old
-        $getCurrentApplication=selectCurrentApplication($scholarCode);
-        $current=$getCurrentApplication->fetch(PDO::FETCH_ASSOC);
+    // if (checkAppLogs($scholarCode) > 0) {
 
-        if ($current['prow_sy'] == getSchoolYearLatest()) {
-            // already filled up the new application
-            $fillUpStatus = "update";
-        } else {
-            // no new application
-            $fillUpStatus = "new";
-        }
+    //     $getCurrentApplication=selectCurrentApplication($scholarCode);
+    //     $current=$getCurrentApplication->fetch(PDO::FETCH_ASSOC);
 
-    } else {
-        // new
-        $fillUpStatus = "new";
-        //header("location: fillupForm");
-    }
+    //     $appLogStatus = $current['prow_app_log_status'];
+
+    //     if ($current['prow_sy'] == getSchoolYearLatest()) {
+    //         // already filled up the new application
+    //         $fillUpStatus = "update";
+    //     } else {
+    //         // no new application
+    //         $fillUpStatus = "renew";
+    //     }
+
+    // } else {
+    //     $appLogStatus = 0;
+    //     $fillUpStatus = "new";
+
+    // }
     
 
 ?>

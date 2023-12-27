@@ -55,11 +55,11 @@
         } else if ($userType == 3){
             $res = "HEI";
         } else if ($userType == 4){
-            $res = "Student";
+            $res = "Scholar";
         } else if ($userType == 5){
             $res = "Industry";
         }else{
-            $res = "unknown";
+            $res = "";
         }
 
         return $res;

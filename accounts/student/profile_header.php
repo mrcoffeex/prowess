@@ -26,7 +26,7 @@
                 </li>
                 <li class="list-inline-item">
                   <i class="mdi mdi-account-check me-1 mdi-20px"></i
-                  ><span class="fw-semibold"><?= getScholar_Status($scholarCode) ?></span>
+                  ><span class="fw-semibold"><?= getScholarAppLogStatus($appLogStatus) ?></span>
                 </li>
               </ul>
             </div>

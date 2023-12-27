@@ -8,15 +8,12 @@
   $getProfile=selectScholar($scholarCode);
   $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
 
-  $getSchoolProfile=getSchoolScholar($scholarCode);
-  // $schoolProfile=$getSchoolProfile->fetch(PDO::FETCH_ASSOC);
-
   $getAddressProfile=selectScholarAddress($scholarCode);
   $addressProfile=$getAddressProfile->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
-  <body>
+<body>
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <div class="layout-page">
@@ -37,13 +34,11 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="scholar_profile2?rand=<?= my_rand_str(100) ?>&scholarCode=<?= $scholarCode ?>"
-                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Personal Information</a
-                      >
+                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Personal Information</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="notifications"
-                        ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a
-                      >
+                      <a class="nav-link" href="scholar_profile3?rand=<?= my_rand_str(100) ?>&scholarCode=<?= $scholarCode ?>"
+                        ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Academic Information</a>
                     </li>
                   </ul>
                 </div>
@@ -61,11 +56,11 @@
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-town-hall mdi-24px"></i><span class="fw-semibold mx-2">School:</span>
-                          <span><?=getSchoolScholar($scholarCode) ?></span>
+                          <span><?= getSchoolScholar($scholarCode) ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-book-check-outline mdi-24px"></i
-                          ><span class="fw-semibold mx-2">Course:</span> <span><?= getScholarCourse($scholarCode) ?></span>
+                          ><span class="fw-semibold mx-2">Course:</span> <span><?= getScholarCourse($scholarCode)  ?></span>
                         </li>
                         <li class="d-flex align-items-center">
                           <i class="mdi mdi-book-open-outline mdi-24px"></i
@@ -79,10 +74,10 @@
                     <div class="card-body">
                       <small class="card-text text-uppercase text-muted">About</small>
                       <ul class="list-unstyled my-3 py-1">
-                        <li class="d-flex align-items-center mb-3">
+                        <!-- <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-qrcode mdi-24px"></i
                           ><span class="fw-semibold mx-2">Scholar Code:</span> <span><?= $profile['prow_scholar_code'] ?></span>
-                        </li>
+                        </li> -->
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-account-outline mdi-24px"></i
                           ><span class="fw-semibold mx-2">User Name:</span> <span><?= getUserName($scholarCode) ?></span>
@@ -117,6 +112,8 @@
                       </ul>
                      
                       <small class="card-text text-uppercase text-muted">Address</small>
+                      <iframe style="width: 100%; height: 200px; position: relative;" src="studentProfileMap?scholarCode=<?= $scholarCode ?>" allowfullscreen></iframe>
+
                       <ul class="list-unstyled my-3 py-1">
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Province:</span>
@@ -124,7 +121,7 @@
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Municipality:</span>
-                          <span><?= $addressProfile['prow_address_municipality']?></span>
+                          <span><?= $addressProfile['prow_address_municipality'] ?></span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
                           <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Street:</span>
@@ -144,159 +141,21 @@
                   
                 </div>
                 <div class="col-xl-8 col-lg-7 col-md-7">
-                  <!-- Activity Timeline -->
-                  <div class="card card-action mb-4">
-                      <div class="card-header align-items-center">
-                        <h5 class="card-action-title mb-0">
-                          <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>Scholarship Status
-                        </h5>
-                        <div class="card-action-element">
-                          <div class="dropdown">
-                            <button
-                              type="button"
-                              class="btn dropdown-toggle hide-arrow p-0"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false">
-                              <i class="mdi mdi-dots-vertical mdi-24px text-muted"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                              <li><a class="dropdown-item" href="javascript:void(0);">Share timeline</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Suggest edits</a></li>
-                              <li>
-                                <hr class="dropdown-divider" />
-                              </li>
-                              <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                        
-                      </div>
-                      <div class="card-body pt-3 pb-0">
-                        <ul class="timeline mb-0">
-                          <li class="timeline-item timeline-item-transparent">
-                            <span class="timeline-point timeline-point-info"></span>
-                            <div class="timeline-event">
-                              <div class="timeline-header mb-1">
-                                <h6 class="mb-0">Create and Verified Account</h6>
-                                <span class="text-muted"><?=  getTimePassed($profile['prow_scholar_created'], date("Y-m-d H:i:s")) ?></span>
-                              </div>
-                              <?php  
-                                if (getScholar_Status($scholarCode) == "Pending") {
-                                  echo '<p class="text-warning mb-2">Account Verification is still ' .  getScholar_Status($scholarCode) . '</p>';
-                                } else {
-                                  echo '<p class="text-success mb-2">Account is ' .  getScholar_Status($scholarCode) . '</p>';
-                                }
-                              ?>
-                            </div>
-                          </li>
-                          <?php  
-                            if (scholarshipStatus($scholarCode, "personal_information") == "complete") {
-                              $a_bullet = "timeline-point-info";
-                              $a_created = getPersonalInformationCreatedDate($scholarCode);
-                              $a_desc = "Personal information has been registered";
-                            } else if (scholarshipStatus($scholarCode, "personal_information") == "incomplete") {
-                              $a_bullet = "timeline-point-warning";
-                              $a_created = getPersonalInformationCreatedDate($scholarCode);
-                              $a_desc = "<span class='text-warning'>Please complete your personal information</span>";
-                            } else {
-                              $a_bullet = "timeline-point-secondary";
-                              $a_created = "xxxx-xx-xx";
-                              $a_desc = "Please put your personal information";
-                            }
-                          ?>
-                          <li class="timeline-item timeline-item-transparent">
-                            <span class="timeline-point <?= $a_bullet ?>"></span>
-                            <div class="timeline-event">
-                              <div class="timeline-header mb-1">
-                                <h6 class="mb-0">Finish Fill up Personal Information</h6>
-                                <span class="text-muted"><?= getTimePassed($a_created, date("Y-m-d H:i:s")) ?></span>
-                              </div>
-                              <p class="text-muted mb-0"><?= $a_desc ?></p>
-                            </div>
-                          </li>
-                          <?php  
-                            if (scholarshipStatus($scholarCode, "requirements") == "complete") {
-                              $b_bullet = "timeline-point-info";
-                              $b_created = getRequimentsCreatedDate($scholarCode);
-                              $b_desc = "All files has been uploaded";
-                            } else if (scholarshipStatus($scholarCode, "requirements") == "incomplete") {
-                              $b_bullet = "timeline-point-warning";
-                              $b_created = getRequimentsCreatedDate($scholarCode);
-                              $b_desc = "<span class='text-warning'>Please complete your requirements</span>";
-                            } else {
-                              $b_bullet = "timeline-point-secondary";
-                              $b_created = "xxxx-xx-xx";
-                              $b_desc = "Please upload your requirements";
-                            }
-                          ?>
-                          <li class="timeline-item timeline-item-transparent">
-                            <span class="timeline-point <?= $b_bullet ?>"></span>
-                            <div class="timeline-event">
-                              <div class="timeline-header mb-1">
-                                <h6 class="mb-0">Upload File Requirements</h6>
-                                <span class="text-muted"><?= getTimePassed($b_created, date("Y-m-d H:i:s")) ?></span>
-                              </div>
-                              <p class="text-muted mb-0"><?= $b_desc ?></p>
-                            </div>
-                          </li>
+                <!-- scholar status -->
+                <?php
+                  $getScholarType=selectScholarType($scholarCode);
 
-                          <?php  
-                            if (initialApproveStatus($scholarCode) == "true") {
-                              $c_bullet = "timeline-point-info";
-                              $c_created = getRequimentsCreatedDate($scholarCode);
-                              $c_desc = "Initially approved by Scholarship Coordinator";
-                            }else {
-                              $c_bullet = "timeline-point-secondary";
-                              $c_created = "xxxx-xx-xx";
-                              $c_desc = "Wait for the Initial approval of Scholarship Coordinator";
-                            }
-                          ?>
-                          <li class="timeline-item timeline-item-transparent border-0">
-                            <span class="timeline-point <?= $c_bullet ?>"></span>
-                            <div class="timeline-event">
-                              <div class="timeline-header mb-1">
-                                <h6 class="mb-0">Checking and Initial Approval</h6>
-                                <span class="text-muted"></span>
-                              </div>
-                              <p class="text-muted mb-0"><?= $c_desc ?></p>
-                            </div>
-                          </li>
+                  if($getScholarType == 1){
+                    //old-renew Scholar Status
+                    include ("scholarStatus_old.php");
 
-                          <li class="timeline-item timeline-item-transparent border-0">
-                            <span class="timeline-point timeline-point-secondary"></span>
-                            <div class="timeline-event">
-                              <div class="timeline-header mb-1">
-                                <h6 class="mb-0">Examination</h6>
-                                <span class="text-muted"></span>
-                              </div>
-                              <p class="text-muted mb-0">Scheduled by Scholarship Coordinator</p>
-                            </div>
-                          </li>
+                  }else{
+                    //new Scholar Status
+                    include ("scholarStatus_new.php");
 
-                          <li class="timeline-item timeline-item-transparent border-0">
-                            <span class="timeline-point timeline-point-secondary"></span>
-                            <div class="timeline-event">
-                              <div class="timeline-header mb-1">
-                                <h6 class="mb-0">Interview</h6>
-                                <span class="text-muted"></span>
-                              </div>
-                              <p class="text-muted mb-0">Scheduled by Scholarship Coordinator</p>
-                            </div>
-                          </li>
-                          <li class="timeline-item timeline-item-transparent border-0">
-                            <span class="timeline-point timeline-point-secondary"></span>
-                            <div class="timeline-event">
-                              <div class="timeline-header mb-1">
-                                <h6 class="mb-0">Approval Status</h6>
-                                <span class="text-muted"></span>
-                              </div>
-                              <p class="text-muted mb-0">Approval by Scholarship Coordinator</p>
-                            </div>
-                          </li>
-
-                        </ul>
-                      </div>
-                  </div>
+                  }
+                
+                ?>
                   <div class="card card-action mb-4">
                       <div class="card-header align-items-center">
                         <h5 class="card-action-title mb-0">
@@ -351,7 +210,6 @@
     </div>
 
     <?php include "_scripts.php"; ?>
-    <?php include "_alerts.php"; ?>
     <script>
 
     $(document).ready(function() {

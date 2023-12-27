@@ -9,10 +9,10 @@ $(document).ready(function() {
     $('input[name="scholarSingleP"]').change(function(){
       
       if ($('#scholarSinglePNo').is(':checked')) {
-        $('#scholarSingleID').prop('disabled', true);
+        $('#scholarSingleID').attr('readonly', true);
         $('#scholarSingleID').val('');
       } else {
-        $('#scholarSingleID').prop('disabled', false);
+        $('#scholarSingleID').attr('readonly', false);
       }
 
     });
@@ -44,13 +44,6 @@ $(document).ready(function() {
               validators: {
                 notEmpty: {
                   message: 'Please enter your weight(kg)'
-                }
-              }
-            },
-            scholarGuardianName: {
-              validators: {
-                notEmpty: {
-                  message: 'Please enter your Guardian Name'
                 }
               }
             },
