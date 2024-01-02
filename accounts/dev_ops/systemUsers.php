@@ -128,6 +128,7 @@
                                         <th>userType</th>
                                         <th>username</th>
                                         <th>verified</th>
+                                        <th>Status</th>
                                         <th>registered</th>
                                         <th class="text-center">opt</th>
                                     </tr>
@@ -141,16 +142,53 @@
                                         <td><strong><?= $user['prow_user_fullname']  ?></strong></td>
                                         <td><?= getUserType($user['prow_user_type']) ?></td>
                                         <td><?= $user['prow_user_uname']  ?></td>
-                                        <td><?= verified($user['prow_user_verify'])  ?></td>
-                                        <td><?= $user['prow_user_created']  ?></td>
+                                        <td><?= verified($user['prow_user_verify']) ?></td>
+                                        <td><?= getUserStatus($user['prow_user_status']) ?></td>
+                                        <td><?= properDate($user['prow_user_created']) ?></td>
                                         <td class="text-center">
                                             <button 
                                             type="button" 
-                                            class="btn btn-primary btn-sm">
-                                            <i class="ti-user mdi mdi-cogs"></i>
+                                            class="btn btn-primary btn-sm"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#convert_<?= $user['prow_user_id'] ?>">
+                                                <i class="mdi mdi-account-convert"></i>
                                             </button>
                                         </td>
                                     </tr>
+
+                                    <div class="modal fade" id="convert_<?= $user['prow_user_id'] ?>" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="exampleModalLabel2">User Status</h4>
+                                                    <button
+                                                        type="button"
+                                                        class="btn-close"
+                                                        data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <form action="userStatusUpdate?rand=<?= randStrInt(100) ?>&userId=<?= $user['prow_user_id'] ?>&pn=<?= $pagenum ?>&nameSearch=&userType=" method="post" onsubmit="btnLoader(this.updateuserStatus)">
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col mb-4 mt-2">
+                                                                <div class="form-floating form-floating-outline">
+                                                                    <select name="userStatus" id="userStatus" class="form-control">
+                                                                        <option value="<?= $user['prow_user_status'] ?>"><?= getUserStatus($user['prow_user_status']) ?></option>
+                                                                        <option value="0">Active</option>
+                                                                        <option value="1">Suspended</option>
+                                                                    </select>
+                                                                    <label for="nameSmall">Status</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" id="updateuserStatus" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <?php } ?>
                                 </tbody>
                             </table>
@@ -177,6 +215,7 @@
     </div>
 
     <?php include "_scripts.php"; ?>
+    <?php include "_alerts.php"; ?>
 
 </body>
 

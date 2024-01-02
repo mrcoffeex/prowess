@@ -9,10 +9,16 @@
                 toastr.error('Course cannot be duplicated!');
             </script>
         ";
-    }else if ($note == "invalid") {
+    } else if ($note == "invalid") {
         echo "
             <script>
                 toastr.error('Invalid!');
+            </script>
+        ";
+    } else if ($note == "invalid_upload") {
+        echo "
+            <script>
+                toastr.error('Invalid Upload!');
             </script>
         ";
     } else {
@@ -59,6 +65,22 @@
                 echo "
                     <script>
                         toastr.success('Subject removed');
+                    </script>
+                ";
+            } else {
+                echo "";
+            }
+
+        }
+
+        // systemUsers
+        
+        if ($currpage == "systemUsers" || $currpage == "systemUserSearch") {
+        
+            if ($note == "updated") {
+                echo "
+                    <script>
+                        toastr.success('Changes saved');
                     </script>
                 ";
             } else {

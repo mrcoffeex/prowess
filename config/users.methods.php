@@ -66,17 +66,31 @@
 
     }
 
+    function getUserStatus($userType){
+
+        if ($userType == 0){
+            $res = "Active";
+        } else if ($userType == 1){
+            $res = "Suspended";
+        }else{
+            $res = "";
+        }
+
+        return $res;
+
+    }
+
     function updateUser($scholarCode, $username, $password, $image){
         
 
-        $stmt = PWD()->prepare("UPDATE `prow_users` 
+        $stmt = PWD()->prepare("UPDATE prow_users 
                                 SET 
-                                `prow_user_uname`= :username,
-                                `prow_user_pword`= :userPassword,
-                                `prow_user_picture`= :userImage,
-                                `prow_user_updated` = NOW()
+                                prow_user_uname= :username,
+                                prow_user_pword= :userPassword,
+                                prow_user_picture= :userImage,
+                                prow_user_updated = NOW()
                                 WHERE 
-                                `prow_scholar_code`= :scholarCode");
+                                prow_scholar_code= :scholarCode");
 
         $stmt->execute([
             'username' => $username,
@@ -91,6 +105,27 @@
             return false;
         }
         
+    }
+
+    function updateUserStatus($userId, $status){
+        
+        $stmt=PWD()->prepare("UPDATE prow_users 
+                            SET 
+                            prow_user_status = :prow_user_status,
+                            prow_user_updated = NOW()
+                            WHERE 
+                            prow_user_id = :prow_user_id");
+
+        $stmt->execute([
+            'prow_user_status' => $status,
+            'prow_user_id' => $userId
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
         
     }
 

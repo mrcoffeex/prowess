@@ -199,6 +199,30 @@
 
     }
 
+    function properDate($datetime){
+
+        if ($datetime == "") {
+            $res = "";
+        }else{
+            $res = date("Md Y", strtotime($datetime));
+        }
+
+        return $res;
+
+    }
+
+    function properTime($datetime){
+
+        if ($datetime == "") {
+            $res = "";
+        }else{
+            $res = date("g:i A", strtotime($datetime));
+        }
+
+        return $res;
+
+    }
+
     function sendEmail($emailTo, $emailSubject, $emailBodyTitle, $emailBodyMessage, $autoload){
 
         require $autoload;

@@ -1,7 +1,6 @@
 <?php
     require '../../config/includes.php';
     require '_session.php';
-    // include 'announcements.paginate.php';
     
     $title = "Announcements";
     include "_head.php";
@@ -84,11 +83,11 @@
                             <div class="card mb-4">
                                 <h5 class="card-header">Create Announcement</h5>
                                 <div class="card-body">
-                                    <form action="" method="post">
+                                    <form action="announcementCreates" enctype="multipart/form-data" method="POST" onsubmit="btnLoader(this.createAnnBtn)">
                                         <div class="row">
                                             <div class="col-12 col-sm-6 col-lg-3 mb-3">
                                                 <div class="form-floating form-floating-outline">
-                                                    <select name="status" id="status" class="form-control">
+                                                    <select name="annStatus" id="annStatus" class="form-control">
                                                         <option></option>
                                                         <option>news</option>
                                                         <option>activity</option>
@@ -98,42 +97,16 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 mb-3">
-                                                <label for="formFile" class="form-label">Announcement Image</label>
-                                                <div id="annImagePreview" class="image-preview-div"></div>
-                                                <input class="form-control" type="file" id="annImage" name="annImage" accept="image/jpeg, image/png, image/gif"/>
+                                                <div class="form-floating form-floating-outline">
+                                                    <div id="annImagePreview" class="image-preview-div mb-3"></div>
+                                                    <input type="file" class="form-control" name="annImage" id="annImage" accept="image/jpg, image/png">
+                                                    <label for="annImage" class="form-label">Announcement Image</label>
+                                                </div>
                                             </div>
                                             <div class="col-lg-12 mb-3">
                                                 <div class="form-group">
-                                                    <label for="" class="form-label">Caption</label>
-                                                    <div id="snow-toolbar">
-                                                        <span class="ql-formats">
-                                                            <select class="ql-font"></select>
-                                                            <select class="ql-size"></select>
-                                                        </span>
-                                                        <span class="ql-formats">
-                                                            <button class="ql-bold"></button>
-                                                            <button class="ql-italic"></button>
-                                                            <button class="ql-underline"></button>
-                                                            <button class="ql-strike"></button>
-                                                        </span>
-                                                        <span class="ql-formats">
-                                                            <select class="ql-color"></select>
-                                                            <select class="ql-background"></select>
-                                                        </span>
-                                                        <span class="ql-formats">
-                                                            <button class="ql-script" value="sub"></button>
-                                                            <button class="ql-script" value="super"></button>
-                                                        </span>
-                                                        <span class="ql-formats">
-                                                            <button class="ql-header" value="1"></button>
-                                                            <button class="ql-header" value="2"></button>
-                                                            <button class="ql-blockquote"></button>
-                                                            <button class="ql-code-block"></button>
-                                                        </span>
-                                                    </div>
-                                                    <div id="snow-editor">
-                                                        
-                                                    </div>
+                                                    <label for="snowEditorContent" class="form-label">Caption</label>
+                                                    <textarea class="form-control" name="annContent" id="annContent" rows="7" placeholder="type here ..."></textarea>
                                                 </div>
                                             </div> 
                                             <div class="col-lg-12">

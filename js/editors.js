@@ -4,20 +4,6 @@
 
 'use strict';
 
-(function () {
-  // Snow Theme
-  // --------------------------------------------------------------------
-  const snowEditor = new Quill('#snow-editor', {
-    bounds: '#snow-editor',
-    modules: {
-      formula: true,
-      toolbar: '#snow-toolbar'
-    },
-    theme: 'snow'
-  });
-  
-})();
-
 function imagePreview(fileId, filePreviewId) {
 
   $(fileId).on("change", function() {
