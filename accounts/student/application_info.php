@@ -28,9 +28,10 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-md-8 order-2 order-md-1">
                       <div class="card-body">
-                        <h4 class="card-title" id="userName" name="userName">Welcome <strong> Student!</strong>🎉
-                        </h4> <span class="mb-3 badge rounded-pill bg-label-secondary" id="applicationStatus" name="applicationStatus">Not Applicable</span>
-                        <p class="mb-0">Welcome to Prowess your </p>
+                      <h4 class="card-title" id="userName" name="userName">Welcome <strong> Student!</strong>🎉
+                        </h4> <span class="mb-3 badge rounded-pill bg-label-secondary" id="applicationStatus" name="applicationStatus"><?= getScholarAppLogStatus($appLogStatus) ?></span>
+                        <p class="mb-0">Welcome to Prowess your
+                        </p>
                         <p>Online Scholarship Management System.</p>
 
                         <div class="mt-4">
