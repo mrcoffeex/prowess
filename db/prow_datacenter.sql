@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2023 at 06:58 AM
+-- Generation Time: Jan 02, 2024 at 06:11 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -665,7 +665,8 @@ CREATE TABLE `prow_list_sy` (
 INSERT INTO `prow_list_sy` (`prow_sy_id`, `prow_sy_year`, `prow_sy_current`) VALUES
 (1, '2021-2022', 0),
 (2, '2022-2023', 0),
-(3, '2023-2024', 1);
+(3, '2023-2024', 1),
+(4, '2024-2025', 0);
 
 -- --------------------------------------------------------
 
@@ -857,7 +858,26 @@ INSERT INTO `prow_notifications` (`prow_notif_id`, `prow_notif_type`, `prow_noti
 (14, 'auth', 'Login - annimay', 0, '2023-11-28 13:04:55'),
 (15, 'auth', 'Login - annimay', 0, '2023-12-11 19:43:19'),
 (16, 'auth', 'Login - annimay', 0, '2023-12-21 12:02:58'),
-(17, 'auth', 'Login - annimay', 0, '2023-12-22 13:26:56');
+(17, 'auth', 'Login - annimay', 0, '2023-12-22 13:26:56'),
+(18, 'attempt', 'Login Attempt - kentjohn', 0, '2023-12-22 16:46:22'),
+(19, 'auth', 'Login - kentjohn', 0, '2023-12-22 16:46:49'),
+(20, 'auth', 'Login - annimay', 0, '2023-12-26 11:08:00'),
+(21, 'auth', 'Login - kentjohn', 0, '2023-12-26 11:08:43'),
+(22, 'auth', 'Login - admin', 0, '2023-12-26 11:54:29'),
+(23, 'attempt', 'Login Attempt - kentjohn', 0, '2023-12-26 20:08:27'),
+(24, 'auth', 'Login - kentjohn', 0, '2023-12-26 20:08:31'),
+(25, 'auth', 'Login - kentjohn', 0, '2023-12-27 09:41:25'),
+(26, 'auth', 'Login - annimay', 0, '2023-12-27 09:48:20'),
+(27, 'auth', 'Login - admin', 0, '2023-12-27 09:48:28'),
+(28, 'auth', 'Login - kentjohn', 0, '2023-12-27 12:05:55'),
+(29, 'auth', 'Login - admin', 0, '2023-12-27 14:25:06'),
+(30, 'auth', 'Login - kentjohn', 0, '2023-12-27 14:27:16'),
+(31, 'attempt', 'Login Attempt - admin', 0, '2023-12-27 14:27:51'),
+(32, 'attempt', 'Login Attempt - admin', 0, '2023-12-27 14:27:55'),
+(33, 'auth', 'Login - admin', 0, '2023-12-27 14:27:58'),
+(34, 'attempt', 'Login Attempt - kentjohn', 0, '2023-12-27 14:46:09'),
+(35, 'auth', 'Login - kentjohn', 0, '2023-12-27 14:46:12'),
+(36, 'auth', 'Login - admin', 0, '2024-01-01 20:52:31');
 
 -- --------------------------------------------------------
 
@@ -891,7 +911,8 @@ CREATE TABLE `prow_otp` (
 --
 
 INSERT INTO `prow_otp` (`prow_otp_id`, `prow_otp_code`, `prow_user_code`, `prow_otp_status`, `prow_otp_created`, `prow_otp_updated`) VALUES
-(1, '996472', '20231122132351ieG23Djs94', 1, '2023-11-21 21:23:51', '2023-11-21 21:23:51');
+(1, '996472', '20231122132351ieG23Djs94', 1, '2023-11-21 21:23:51', '2023-11-21 21:23:51'),
+(2, '968010', '202312221646040U2yoYvtJe', 1, '2023-12-22 16:46:04', '2023-12-22 16:46:04');
 
 -- --------------------------------------------------------
 
@@ -928,7 +949,8 @@ CREATE TABLE `prow_scholar` (
 --
 
 INSERT INTO `prow_scholar` (`prow_scholar_id`, `prow_scholar_code`, `prow_scholar_school_id`, `prow_scholar_img`, `prow_scholar_lastname`, `prow_scholar_firstname`, `prow_scholar_middlename`, `prow_scholar_suffix`, `prow_scholar_gender`, `prow_scholar_cs`, `prow_scholar_birthday`, `prow_scholar_birthplace`, `prow_scholar_con`, `prow_scholar_email`, `prow_scholar_acct_status`, `prow_account_type`, `prow_initial_approve`, `prow_initial_updated`, `prow_scholar_filled_up`, `prow_scholar_created`, `prow_scholar_updated`) VALUES
-(1, '20234fMHuh', '5321', '', 'Delima', 'Joane May', 'Berdera', '', 'Female', 'Single', '1994-02-06', 'Valenzuela Metro Manila', '9282657552', 'joanemaydelima@gmail.com', 2, 1, 0, '2023-11-21 21:23:51', 0, '2023-11-21 21:23:51', '2023-11-21 21:23:51');
+(1, '20234fMHuh', '5321', '', 'Delima', 'Joane May', 'Berdera', '', 'Female', 'Single', '1994-02-06', 'Valenzuela Metro Manila', '9282657552', 'joanemaydelima@gmail.com', 2, 1, 0, '2023-11-21 21:23:51', 0, '2023-11-21 21:23:51', '2023-11-21 21:23:51'),
+(2, '2023zK4gDM', '45414', '', 'Gocotano', 'kent John ', '', '', 'Male', 'Single', '1996-06-22', 'asdasda', '9121610673', 'krazyappsph@gmail.com', 1, 1, 1, '2023-12-26 12:41:03', 0, '2023-12-22 16:46:04', '2023-12-27 15:23:49');
 
 -- --------------------------------------------------------
 
@@ -971,7 +993,8 @@ CREATE TABLE `prow_scholar_address` (
 --
 
 INSERT INTO `prow_scholar_address` (`prow_address_id`, `prow_scholar_code`, `prow_address_description`, `prow_address_brgy`, `prow_address_municipality`, `prow_address_province`, `prow_address_zipcode`, `prow_address_long`, `prow_address_lat`, `prow_address_created`, `prow_address_updated`) VALUES
-(1, '20234fMHuh', 'Datoc Compound, Digos City', 'Zone 1', 'Digos City', 'Davao del Sur', 8002, '125.36036183208988', '6.75898860884635', '2023-11-21 21:23:51', '2023-11-21 21:23:51');
+(1, '20234fMHuh', 'Datoc Compound, Digos City', 'Zone 1', 'Digos City', 'Davao del Sur', 8002, '125.36036183208988', '6.75898860884635', '2023-11-21 21:23:51', '2023-11-21 21:23:51'),
+(2, '2023zK4gDM', '3434 Jumao-as', 'Zone 1', 'Digos City', 'Davao del Sur', 8002, '125.35688568920658', '6.7445944749889835', '2023-12-22 16:46:04', '2023-12-22 16:46:04');
 
 -- --------------------------------------------------------
 
@@ -984,7 +1007,7 @@ CREATE TABLE `prow_scholar_app_logs` (
   `prow_scholar_code` varchar(50) NOT NULL,
   `prow_app_log_code` varchar(11) NOT NULL,
   `prow_app_log_status` int(1) NOT NULL,
-  `prow_hei` varchar(255) NOT NULL,
+  `prow_hei` int(11) NOT NULL,
   `prow_course` varchar(255) NOT NULL,
   `prow_yr_lvl` int(11) NOT NULL,
   `prow_sy` varchar(50) NOT NULL,
@@ -997,7 +1020,8 @@ CREATE TABLE `prow_scholar_app_logs` (
 --
 
 INSERT INTO `prow_scholar_app_logs` (`prow_scholar_app_logs_id`, `prow_scholar_code`, `prow_app_log_code`, `prow_app_log_status`, `prow_hei`, `prow_course`, `prow_yr_lvl`, `prow_sy`, `prow_sem`, `prow_app_logs_created`) VALUES
-(1, '20234fMHuh', '427019', 0, '1', '1', 1, '2023-2024', '1', '2023-11-22 11:20:52');
+(1, '20234fMHuh', '427019', 0, 1, '1', 1, '2023-2024', '1', '2023-11-22 11:20:52'),
+(4, '2023zK4gDM', '965686', 1, 1, '1', 5, '2023-2024', '2', '2023-12-26 11:27:55');
 
 -- --------------------------------------------------------
 
@@ -1062,7 +1086,9 @@ INSERT INTO `prow_scholar_grades` (`prow_scholar_grades_id`, `prow_scholar_code`
 (5, '20234fMHuh', 18, 1, '2023-2024', 75, '2023-11-24 21:22:18', '2023-11-24 21:22:18'),
 (6, '20234fMHuh', 19, 1, '2023-2024', 90, '2023-11-27 13:39:39', '2023-11-27 13:39:39'),
 (7, '20234fMHuh', 15, 1, '2023-2024', 89, '2023-11-27 13:40:11', '2023-11-27 13:40:11'),
-(8, '20234fMHuh', 11, 1, '2023-2024', 90, '2023-11-27 13:41:36', '2023-11-27 13:41:36');
+(8, '20234fMHuh', 11, 1, '2023-2024', 90, '2023-11-27 13:41:36', '2023-11-27 13:41:36'),
+(10, '2023zK4gDM', 7, 2, '2023-2024', 90, '2023-12-26 11:31:19', '2023-12-26 11:31:19'),
+(11, '2023zK4gDM', 8, 2, '2023-2024', 98, '2023-12-26 11:31:27', '2023-12-26 11:31:27');
 
 -- --------------------------------------------------------
 
@@ -1101,7 +1127,8 @@ CREATE TABLE `prow_scholar_profile` (
 --
 
 INSERT INTO `prow_scholar_profile` (`prow_prof_id`, `prow_scholar_code`, `prow_prof_height`, `prow_prof_weight`, `prow_prof_blood_type`, `prow_prof_religion`, `prow_prof_talent`, `prow_prof_father`, `prow_prof_father_cont`, `prow_prof_father_occu`, `prow_prof_mother`, `prow_prof_mother_cont`, `prow_prof_mother_occu`, `prow_prof_guardian`, `prow_prof_guardian_cont`, `prow_prof_guardian_occu`, `prow_prof_income`, `prow_prof_pwd`, `prow_prof_single_p`, `prow_prof_single_id`, `prow_prof_tribal`, `prow_prof_created`, `prow_prof_updated`) VALUES
-(1, '20234fMHuh', 149, 49, 'B+', 'Sikhism', 'Coding/Programming,Drawing,Photography,Writing', 'Julieto Delima', '9232765442', 'Police officer', 'Margie Delima', '9835467221', 'Business Owner', 'Jessa Delima', '9863627222', 'Civil engineer', '₱9,100 - ₱18,000', 0, 1, 13455, '', '2023-11-22 11:20:52', '2023-12-22 13:41:39');
+(1, '20234fMHuh', 149, 49, 'B+', 'Sikhism', 'Coding/Programming,Drawing,Photography,Writing', 'Julieto Delima', '9232765442', 'Police officer', 'Margie Delima', '9835467221', 'Business Owner', 'Jessa Delima', '9863627222', 'Civil engineer', '₱9,100 - ₱18,000', 0, 1, 13455, '', '2023-11-22 11:20:52', '2023-12-22 13:41:39'),
+(2, '2023zK4gDM', 168, 70, 'A+', 'Roman Catholicism', 'Analytical thinking,Coding/Programming', '', '', '', 'Mary Ann Turner', '9209844337', 'Housekeeper', '', '', '', '₱9,100 - ₱18,000', 0, 0, 0, '', '2023-12-26 11:27:55', '2023-12-27 14:58:01');
 
 -- --------------------------------------------------------
 
@@ -1131,7 +1158,8 @@ CREATE TABLE `prow_scholar_requirements` (
 --
 
 INSERT INTO `prow_scholar_requirements` (`prow_req_id`, `prow_scholar_code`, `prow_scholar_app_logs_code`, `prow_req_cert_low_income`, `prow_req_endorsement`, `prow_req_school_card`, `prow_req_enrollment_form`, `prow_req_birth_certificate`, `prow_req_exam_score`, `prow_req_exam_date`, `prow_req_interview_date`, `prow_req_status`, `prow_req_created`, `prow_req_updated`) VALUES
-(1, '20234fMHuh', '427019', '', '', '657706f694a2c.png,657706f694af8.png', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2023-11-22 11:20:52', '0000-00-00 00:00:00');
+(1, '20234fMHuh', '427019', '', '', '657706f694a2c.png,657706f694af8.png', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2023-11-22 11:20:52', '0000-00-00 00:00:00'),
+(4, '2023zK4gDM', '965686', '', '', '658a491b9fbea.png', '', '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '2023-12-26 11:27:55', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1155,7 +1183,12 @@ INSERT INTO `prow_scholar_skills` (`prow_skills_id`, `prow_scholar_code`, `prow_
 (1, '20234fMHuh', 1, 'Java', 'Advanced'),
 (2, '20234fMHuh', 1, 'PHP', 'Advanced'),
 (3, '20234fMHuh', 15, 'Active listening', 'Intermediate'),
-(4, '20234fMHuh', 5, 'Microsoft Azure', 'Being Developed');
+(4, '20234fMHuh', 5, 'Microsoft Azure', 'Being Developed'),
+(5, '2023zK4gDM', 4, 'SQL (MySQL', 'Advanced'),
+(6, '2023zK4gDM', 2, 'HTML/CSS', 'Expert'),
+(7, '2023zK4gDM', 2, 'Backend frameworks (Node.js', 'Basic'),
+(8, '2023zK4gDM', 10, 'Version control systems (Git', 'Intermediate'),
+(9, '2023zK4gDM', 2, 'Frontend frameworks (React', 'Intermediate');
 
 -- --------------------------------------------------------
 
@@ -1403,9 +1436,10 @@ CREATE TABLE `prow_users` (
 
 INSERT INTO `prow_users` (`prow_user_id`, `prow_user_code`, `prow_scholar_code`, `prow_user_fullname`, `prow_user_uname`, `prow_user_pword`, `prow_user_picture`, `prow_user_type`, `prow_user_status`, `prow_user_verify`, `prow_user_last_location`, `prow_user_created`, `prow_user_updated`) VALUES
 (1, '202311070330122dkOqNEDMi', '2023yDIcvq', 'Ralph Noynay', 'admin', '1bbd886460827015e5d605ed44252251', '', 0, 0, 1, '', '2023-11-06 11:30:12', '2023-11-06 11:30:12'),
-(2, '20231107062613TqKiMdHGMv', '2023CLBuDX', 'HEI sample', 'hei', '1bbd886460827015e5d605ed44252251', '', 3, 0, 1, '', '2023-11-06 14:26:13', '2023-11-06 14:26:13'),
+(2, '20231107062613TqKiMdHGMv', '2023CLBuDX', 'HEI sample', 'hei', '1bbd886460827015e5d605ed44252251', '', 3, 0, 1, '', '2023-11-06 14:26:13', '2024-01-01 22:01:52'),
 (3, '20231107064135RNEwoa4c6a', '2023rR2dEC', 'Industry Sample', 'industry', '1bbd886460827015e5d605ed44252251', '', 4, 0, 1, '', '2023-11-06 14:41:35', '2023-11-06 14:41:35'),
-(6, '20231122132351ieG23Djs94', '20234fMHuh', 'Joane May Delima', 'annimay', '1bbd886460827015e5d605ed44252251', '', 4, 0, 1, '', '2023-11-21 21:23:51', '2023-11-21 21:23:51');
+(6, '20231122132351ieG23Djs94', '20234fMHuh', 'Joane May Delima', 'annimay', '1bbd886460827015e5d605ed44252251', '', 4, 0, 1, '', '2023-11-21 21:23:51', '2023-11-21 21:23:51'),
+(7, '202312221646040U2yoYvtJe', '2023zK4gDM', 'kent John  Gocotano', 'kentjohn', '1bbd886460827015e5d605ed44252251', '', 4, 0, 1, '', '2023-12-22 16:46:04', '2023-12-22 16:46:04');
 
 --
 -- Indexes for dumped tables
@@ -1665,7 +1699,7 @@ ALTER TABLE `prow_list_occu`
 -- AUTO_INCREMENT for table `prow_list_sy`
 --
 ALTER TABLE `prow_list_sy`
-  MODIFY `prow_sy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_sy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `prow_list_talents`
@@ -1695,7 +1729,7 @@ ALTER TABLE `prow_my_project`
 -- AUTO_INCREMENT for table `prow_notifications`
 --
 ALTER TABLE `prow_notifications`
-  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `prow_notif_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `prow_notif_type`
@@ -1707,13 +1741,13 @@ ALTER TABLE `prow_notif_type`
 -- AUTO_INCREMENT for table `prow_otp`
 --
 ALTER TABLE `prow_otp`
-  MODIFY `prow_otp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_otp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar`
 --
 ALTER TABLE `prow_scholar`
-  MODIFY `prow_scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_scholar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_academe`
@@ -1725,13 +1759,13 @@ ALTER TABLE `prow_scholar_academe`
 -- AUTO_INCREMENT for table `prow_scholar_address`
 --
 ALTER TABLE `prow_scholar_address`
-  MODIFY `prow_address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_app_logs`
 --
 ALTER TABLE `prow_scholar_app_logs`
-  MODIFY `prow_scholar_app_logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_scholar_app_logs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_educ_attain`
@@ -1749,25 +1783,25 @@ ALTER TABLE `prow_scholar_employment`
 -- AUTO_INCREMENT for table `prow_scholar_grades`
 --
 ALTER TABLE `prow_scholar_grades`
-  MODIFY `prow_scholar_grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `prow_scholar_grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_profile`
 --
 ALTER TABLE `prow_scholar_profile`
-  MODIFY `prow_prof_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prow_prof_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_requirements`
 --
 ALTER TABLE `prow_scholar_requirements`
-  MODIFY `prow_req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prow_req_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `prow_scholar_skills`
 --
 ALTER TABLE `prow_scholar_skills`
-  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `prow_skills_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `prow_skills`
@@ -1791,7 +1825,7 @@ ALTER TABLE `prow_transaction`
 -- AUTO_INCREMENT for table `prow_users`
 --
 ALTER TABLE `prow_users`
-  MODIFY `prow_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `prow_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
