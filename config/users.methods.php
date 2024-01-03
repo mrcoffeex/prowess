@@ -80,6 +80,27 @@
 
     }
 
+    function getUserImageByScholarCode($scholarCode){
+
+        $stmt=PWD()->prepare("SELECT prow_user_picture
+                            FROM
+                            prow_users
+                            WHere
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (is_array($res)) {
+            return $res['prow_user_picture'];
+        } else {
+            return "";
+        }
+
+    }
+
     function updateUser($scholarCode, $username, $password, $image){
         
 
@@ -127,6 +148,49 @@
             return false;
         }
         
+    }
+
+ 
+    function updateUserImage($userImage, $userId){
+
+        $stmt=PWD()->prepare("UPDATE prow_users
+                            SET
+                            prow_user_picture = :prow_user_picture
+                            Where
+                            prow_user_id = :prow_user_id");
+        $stmt->execute([
+            'prow_user_picture' => $userImage,
+            'prow_user_id' => $userId
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+        
+
+    }
+
+    function updateUserImage2($userImage, $scholarCode){
+
+        $stmt=PWD()->prepare("UPDATE prow_scholar
+                            SET
+                            prow_scholar_img = :prow_scholar_img
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_scholar_img' => $userImage,
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+        
+
     }
 
     function imageUpdate($input, $location){

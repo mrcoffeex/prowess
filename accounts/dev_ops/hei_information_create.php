@@ -13,6 +13,8 @@
     $heiprovince = $_POST['heiprovince'];
     $heizip = $_POST['heizip'];
     $heiarradress = $_POST['heiaddress'];
+    $heiLong = clean_string ($_POST['heiLong']);
+    $heiLat = clean_string ($_POST['heiLat']);   
 
     $request = createHEI(
         $heicode, 
@@ -24,7 +26,9 @@
         $heibarangay, 
         $heimunicipality, 
         $heiprovince, 
-        $heizip
+        $heizip,
+        $heiLat,
+        $heiLong
     );
 
     if($request == true){

@@ -152,6 +152,18 @@
         return $res;
     }
 
+    function previewImage($image, $default_image, $directory){
+
+        if ($image == "empty" || $image == "") {
+            $res = $default_image;
+        }else{
+            $res = $directory . "" . $image;
+        }
+
+        return $res;
+
+    }
+
     function imageUpload($input, $location){
 
         $errors= array();
@@ -620,7 +632,7 @@
 
         $subject = "Email Verification";
         $message = "<p>Hi dear Scholars! Here is your verification link:</p>";
-        $message .= "<a href='http://localhost/prowess/verify?token=".randStrInt(30)."&usercode=".$userCode."&otp=".$otp."'>http://localhost/prowess/verify</a>\n\n";
+        $message .= "<a href='".$verificationDirectory."verify?token=".randStrInt(30)."&usercode=".$userCode."&otp=".$otp."'>".$verificationDirectory."verify</a>\n\n";
         $message .= "<p>If this request did not come from you, change your account password immediately to prevent further unauthorized access.</p>";
         $message .= "<p>This is a system generated email. Do not reply.</p>";
 

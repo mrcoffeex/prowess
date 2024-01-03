@@ -39,7 +39,7 @@
         <div class="col-3">
           <center>
           <img
-            src="../../imagebankProfiles/<?= $profile['prow_scholar_img'] ?>"
+            src="../../imagebank/<?= $profile['prow_scholar_img'] ?>"
             alt="School Logo"
             class="scholarID"
           />

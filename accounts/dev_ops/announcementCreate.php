@@ -85,28 +85,42 @@
                                 <div class="card-body">
                                     <form action="announcementCreates" enctype="multipart/form-data" method="POST" onsubmit="btnLoader(this.createAnnBtn)">
                                         <div class="row">
-                                            <div class="col-12 col-sm-6 col-lg-3 mb-3">
-                                                <div class="form-floating form-floating-outline">
-                                                    <select name="annStatus" id="annStatus" class="form-control">
+                                            <div class="col-12 col-sm-6 col-lg-4 mb-3">
+                                                <div class="form-group">
+                                                    <label for="status" class="form-label">Announcement Type</label>
+                                                    <select name="annType" id="annType" class="form-control" required>
                                                         <option></option>
                                                         <option>news</option>
                                                         <option>activity</option>
                                                         <option>meeting</option>
                                                     </select>
-                                                    <label for="status">Announcement Type</label>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 mb-3">
-                                                <div class="form-floating form-floating-outline">
-                                                    <div id="annImagePreview" class="image-preview-div mb-3"></div>
-                                                    <input type="file" class="form-control" name="annImage" id="annImage" accept="image/jpg, image/png">
+                                            <div class="col-lg-4 mb-3">
+                                                <div class="form-group">
+                                                    <label for="snowEditorContent" class="form-label">Post until</label>
+                                                    <input type="date" class="form-control" name="annExpire" id="annExpire" min="<?= date("Y-m-d", strtotime("+3 days")) ?>" required>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4 mb-3">
+                                                <div class="form-group">
                                                     <label for="annImage" class="form-label">Announcement Image</label>
+                                                    <div id="annImagePreview" class="image-preview-div mb-2"></div>
+                                                    <input type="file" class="form-control" name="annImage" id="annImage" accept="image/jpg, image/png">
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 mb-3">
                                                 <div class="form-group">
+                                                    <label for="snowEditorContent" class="form-label">Title</label>
+                                                    <input type="text" class="form-control" name="annTitle" id="annTitle" placeholder="title here ..." required>
+                                                </div>
+                                            </div> 
+                                            <div class="col-lg-12 mb-3">
+                                                <div class="form-group">
                                                     <label for="snowEditorContent" class="form-label">Caption</label>
-                                                    <textarea class="form-control" name="annContent" id="annContent" rows="7" placeholder="type here ..."></textarea>
+                                                    <textarea class="form-control" name="annContent" id="annContent" rows="7" placeholder="type here ..." required></textarea>
                                                 </div>
                                             </div> 
                                             <div class="col-lg-12">
@@ -134,6 +148,8 @@
     </div>
 
     <?php include "_scripts.php"; ?>
+    <?php include "_alerts.php"; ?>
+    
     <script src="../../js/editors.js"></script>
 
 </body>

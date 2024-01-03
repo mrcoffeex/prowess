@@ -61,7 +61,7 @@
                               $c_text ="text-ongoing";
                               $c_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
                               $c_created = getPersonalInformationCreatedDate($scholarCode);
-                              $c_desc = "<span class='text-ongoing'><i class=''>Please complete your family information</span>";
+                              $c_desc = "<span class='text-ongoing'><i class=''>Please complete your family information. Add your Guardian's details</span>";
                               $c_status=0;
                             }
 

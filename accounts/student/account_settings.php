@@ -26,38 +26,34 @@
                     <h4 class="card-header">Profile Details</h4>
                     <!-- Account -->
                     <div class="card-body">
-                    <form id="formAccountSettings" action="account_update.php" method="POST" enctype="multipart/form-data">
-                      <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <!-- <img
-                          src="../../assets/img/avatars/1.png"
-                          alt="user-avatar"
-                          class="d-block w-px-120 h-px-120 rounded"
-                          id="uploadedAvatar" /> -->
-                        <div id="uploadedAvatar"></div>
-                        
-                        <div class="button-wrapper">
-                          <label for="userImage" class="btn btn-primary me-2 mb-3" tabindex="0">
-                            <span class="d-none d-sm-block">Upload new photo</span>
-                            <i class="mdi mdi-tray-arrow-up d-block d-sm-none"></i>
-                            <input
-                              type="file"
-                              id="userImage"
-                              class="account-file-input"
-                              hidden
-                              name = "userImage"
-                              accept="image/png, image/jpeg" />
-                          </label>
-                          <button type="button" class="btn btn-outline-secondary account-image-reset mb-3">
-                            <i class="mdi mdi-reload d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Reset</span>
-                          </button>
+                      <form id="formAccountSettings1" enctype="multipart/form-data" action="account_imageup" method="POST" onsubmit="btnLoader(this.imgSave)">
+                        <div class="d-flex align-items-start align-items-sm-center gap-4">
+                          <div id="uploadedAvatar"></div>
+                          <div class="button-wrapper">
+                            <label for="userImage" class="btn btn-primary me-2 mb-3" tabindex="0">
+                              <span class="d-none d-sm-block">Upload new photo</span>
+                              <i class="mdi mdi-tray-arrow-up d-block d-sm-none"></i>
+                              <input
+                                type="file"
+                                id="userImage"
+                                class="account-file-input"
+                                hidden
+                                name="userImage"
+                                accept="image/png, image/jpeg" />
+                            </label>
+                            <button id="imgSave" type="submit" class="btn btn-outline-secondary account-image-reset mb-3">
+                              <i class="mdi mdi-reload d-block d-sm-none"></i>
+                              <span class="d-none d-sm-block">Save</span>
+                            </button>
 
-                          <div class="text-muted small">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                            <div class="text-muted small">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                          </div>
                         </div>
-                      </div>
+                      </form>
                     </div>
+                    <hr class="my-4 mx-n4" />
                     <div class="card-body pt-2 mt-1">
-                      
+                    <form id="formAccountSettings" action="account_update.php" method="POST" enctype="multipart/form-data">
                         <div class="row mt-2 gy-4">
                           <div class="col-md-6">
                             <div class="form-floating form-floating-outline">

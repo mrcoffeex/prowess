@@ -19,7 +19,7 @@
                 echo '
                     <div class="col-md-6 col-lg-6 mb-3">
                         <div class="card h-100">
-                            <p class="text-center mt-2">no file</p>
+                            <p class="text-center mt-2">No File Found</p>
                             <div class="card-body text-center">
                                 <h5 class="card-title">Low Income Certificate</h5>
                             </div>
@@ -44,7 +44,7 @@
                 echo '
                     <div class="col-md-6 col-lg-6 mb-3">
                         <div class="card h-100">
-                            <p class="text-center mt-2">no file</p>
+                            <p class="text-center mt-2">No File Found Found</p>
                             <div class="card-body text-center">
                                 <h5 class="card-title">Endoresement Letter</h5>
                             </div>
@@ -69,7 +69,7 @@
                 echo '
                     <div class="col-md-6 col-lg-6 mb-3">
                         <div class="card h-100">
-                            <p class="text-center mt-2">no file</p>
+                            <p class="text-center mt-2">No File Found Found</p>
                             <div class="card-body text-center">
                                 <h5 class="card-title">School Card</h5>
                             </div>
@@ -94,7 +94,7 @@
                 echo '
                     <div class="col-md-6 col-lg-6 mb-3">
                         <div class="card h-100">
-                            <p class="text-center mt-2">no file</p>
+                            <p class="text-center mt-2">No File Found</p>
                             <div class="card-body text-center">
                                 <h5 class="card-title">Enrollment Form</h5>
                             </div>
@@ -119,7 +119,7 @@
                 echo '
                     <div class="col-md-6 col-lg-6 mb-3">
                         <div class="card h-100">
-                            <p class="text-center mt-2">no file</p>
+                            <p class="text-center mt-2">No File Found</p>
                             <div class="card-body text-center">
                                 <h5 class="card-title">Birth Certificate</h5>
                             </div>

@@ -89,6 +89,34 @@
 
         }
 
+        // announcements
+        
+        if ($currpage == "announcementCreate" || $currpage == "announcementEdit" || $currpage == "announcements") {
+        
+            if ($note == "added") {
+                echo "
+                    <script>
+                        toastr.success('Announcement added');
+                    </script>
+                ";
+            } else if ($note == "updated") {
+                echo "
+                    <script>
+                        toastr.success('Changes saved');
+                    </script>
+                ";
+            } else if ($note == "removed") {
+                echo "
+                    <script>
+                        toastr.success('Announcement removed');
+                    </script>
+                ";
+            } else {
+                echo "";
+            }
+
+        }
+
         //error page
 
         if ($currpage == "error") {

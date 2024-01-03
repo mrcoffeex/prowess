@@ -1,9 +1,16 @@
 <?php
-include '../../config/includes.php';
-require '_session.php';
-include 'hei_information_paginate.php';
-include "_head.php";
+    include '../../config/includes.php';
+    require '_session.php';
+    include 'hei_information_paginate.php';
+    include "_head.php";
 ?>
+
+<style>
+    #heiMap {
+        height: 400px;
+        width: 100%;
+    }
+</style>
 
 <body>
     <div class="layout-wrapper layout-content-navbar">
@@ -111,7 +118,30 @@ include "_head.php";
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="row">
+                                                            <h5><i class="mdi mdi-home-map-marker me-2 mdi-20px"></i>Pin HEI's Address</h5>
+                                                                    <h6 class="fst-italic">*Drag the Pin to your exact address</h6>
+                                                                    <div class="row g-3">
+                                                                        <div class="col-md-12">
+                                                                            <div id="heiMap"></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-floating form-floating-outline">
+                                                                                <input type="number" id="heiLong" name="heiLong" class="form-control" value="<?= getheiLong($scholarCode) ?>" readonly />
+                                                                                <label for="scholarHeight">Longtitude</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-floating form-floating-outline">
+                                                                                <input type="number" id="heiLat" name="heiLat" class="form-control" value="<?= getheiLat($scholarCode) ?>" readonly />
+                                                                                <label for="scholarHeight">Latitude</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                                            <hr class="my-4 mx-n4" />
                                                             <div class="modal-footer">
+                                                             
                                                                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
                                                                     Close
                                                                 </button>
@@ -222,5 +252,57 @@ include "_head.php";
     <script src="../../assets/js/ui-modals.js"></script>
     <script src="../../js/signUp.js"></script>
     <script src="../../js/hei.js"></script>
+    
+    <script>
+        function initMap() {
+
+            var initialLocation = { lat: 6.7445944749889835, lng: 125.35688568920658 };
+
+            var map = new google.maps.Map(document.getElementById('heiMap'), {
+                zoom: 17,
+                center: initialLocation,
+                styles: [
+                            {
+                        featureType: "poi",
+                        elementType: "labels",
+                        stylers: [{ color: "#35373b" }],
+                    },
+                    {
+                        featureType: "label",
+                        elementType: "labels.icon",
+                        stylers: [{ color: "#35373b" }],
+                    },
+                    {
+                        featureType: "label",
+                        elementType: "labels.text.fill",
+                        stylers: [{ color: "#35373b" }], // Set the color you want for labels
+                    },{
+                        featureType: "label",
+                        elementType: "labels.text.stroke",
+                        stylers: [{ color: "#ffffff" }],
+                    },
+                ]
+            });
+
+            var marker = new google.maps.Marker({
+                position: initialLocation,
+                map: map,
+                draggable: true // Allow marker to be dragged
+            });
+
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+                updateLatLng(marker.getPosition().lat(), marker.getPosition().lng());
+            });
+
+            updateLatLng(initialLocation.lat, initialLocation.lng);
+        }
+
+        function updateLatLng(lat, lng) {
+            document.getElementById('heiLong').value = lng;
+            document.getElementById('heiLat').value = lat;
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl37fY99htQLQOK1zIErOwsxMiTQ3AxmA&callback=initMap" async defer></script>
 </body>
 </html>

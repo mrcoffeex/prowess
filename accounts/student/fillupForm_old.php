@@ -78,13 +78,13 @@
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
                                             <input type="number" id="scholarLong" name="scholarLong" class="form-control" value="<?= getScholarLong($scholarCode) ?>" readonly />
-                                            <label for="scholarHeight">Longtitude</label>
+                                            <label for="scholarLong">Longtitude</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating form-floating-outline">
                                             <input type="number" id="scholarLat" name="scholarLat" class="form-control" value="<?= getScholarLat($scholarCode) ?>" readonly />
-                                            <label for="scholarHeight">Latitude</label>
+                                            <label for="scholarLat">Latitude</label>
                                         </div>
                                     </div>
                                 </div>

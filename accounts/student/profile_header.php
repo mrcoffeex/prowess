@@ -5,7 +5,7 @@
       <img src="<?= getBannerImg($userType) ?>" alt="Banner image" class="rounded-top" />
       </div>
       <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
-        <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto" id = >
+        <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
           <!-- <img
             src="../../assets/img/avatars/1.png"
             alt="user image"
@@ -30,7 +30,7 @@
                 </li>
               </ul>
             </div>
-          
+              <a href="edit_fillupForm_old" class="btn btn-primary mb-2">Edit Profile</a>
           </div>
         </div>
       </div>

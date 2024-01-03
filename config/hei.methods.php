@@ -92,7 +92,7 @@
 
     }
 
-    function createHEI($heicode, $heiname, $heicontactperson, $heicontact, $heiemail, $heiarradress, $heibarangay, $heimunicipality, $heiprovince, $heizip){
+    function createHEI($heicode, $heiname, $heicontactperson, $heicontact, $heiemail, $heiarradress, $heibarangay, $heimunicipality, $heiprovince, $heizip, $heiLat, $heiLong){
 
     $stmt=PWD()->prepare("INSERT INTO prow_hei 
                         (
@@ -145,8 +145,8 @@
                 'prow_hei_municipality' => $heimunicipality, 
                 'prow_hei_province' => $heiprovince, 
                 'prow_hei_zip' => $heizip, 
-                'prow_hei_lat' => 0, 
-                'prow_hei_long' => 0, 
+                'prow_hei_lat' => $heiLat, 
+                'prow_hei_long' => $heiLong, 
             ]);
 
             if($stmt){
@@ -379,6 +379,24 @@
     } 
 
     function countCoursebyHei($heiID){
+
+        $stmt=PWD()->prepare("SELECT 
+                            prow_course_id
+                            FROM
+                            prow_hei_course
+                            Where
+                            prow_hei_id = :prow_hei_id");
+        $stmt->execute([
+            'prow_hei_id' => $heiID
+        ]);
+
+        $count=$stmt->rowCount();
+
+        return $count;
+
+    }
+
+    function countTotalHeiScholar($heiID){
 
         $stmt=PWD()->prepare("SELECT 
                             prow_course_id
@@ -730,21 +748,97 @@
 
     }
 
-    function updateHei($heicode, $imgdir){
-        $statement=PWD()->prepare("UPDATE `prow_hei`
-                                    SET `prow_hei_logo`= :prow_hei_logo,
-                                    `prow_hei_updated`= NOW()
-                                    WHERE prow_hei_code = :prow_hei_code");
-        $statement->execute([
-            'prow_hei_logo' => $imgdir,
-            'prow_hei_code' => $imgdir
+    function getHeiImageById($hei_id){
+
+        $stmt=PWD()->prepare("SELECT prow_hei_logo
+                            FROM
+                            prow_hei
+                            Where
+                            prow_hei_id = :prow_hei_id");
+        $stmt->execute([
+            'prow_hei_id' => $hei_id
         ]);
 
-        if ($statement) {
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (is_array($res)) {
+            return $res['prow_hei_logo'];
+        } else {
+            return "";
+        }
+
+    }
+
+    function updateHeiImage($heiImage, $heiId){
+
+        $stmt=PWD()->prepare("UPDATE prow_hei
+                            SET
+                            prow_hei_logo = :prow_hei_logo
+                            Where
+                            prow_hei_id = :prow_hei_id");
+        $stmt->execute([
+            'prow_hei_logo' => $heiImage,
+            'prow_hei_id' => $heiId
+        ]);
+
+        if ($stmt) {
             return true;
         } else {
             return false;
-        }        
+        }
+        
+
+    }
+
+    function updateHeiInfo(
+        $hei_id,
+        $heiName,
+        $heiContactPerson,
+        $heiContactNo,
+        $heiContactEmail,
+        $heimunicipality,
+        $heibarangay,
+        $heiStreet,
+        $heiZip,
+        $HeiLat,
+        $HeiLong
+    ){
+
+        $stmt=PWD()->prepare("UPDATE prow_hei
+                            SET 
+                            prow_hei_name = :prow_hei_name, 
+                            prow_hei_contact_person = :prow_hei_contact_person, 
+                            prow_hei_contact = :prow_hei_contact, 
+                            prow_hei_email = :prow_hei_email, 
+                            prow_hei_street = :prow_hei_street, 
+                            prow_hei_barangay = :prow_hei_barangay, 
+                            prow_hei_municipality = :prow_hei_municipality,
+                            prow_hei_zip = :prow_hei_zip,
+                            prow_hei_lat = :prow_hei_lat,
+                            prow_hei_long = :prow_hei_long,
+                            prow_hei_updated = NOW()
+                            Where
+                            prow_hei_id = :prow_hei_id");
+        $stmt->execute([
+            'prow_hei_name' => $heiName,
+            'prow_hei_contact_person' => $heiContactPerson,
+            'prow_hei_contact' => $heiContactNo,
+            'prow_hei_email' => $heiContactEmail,
+            'prow_hei_street' => $heiStreet,
+            'prow_hei_barangay' => $heibarangay,
+            'prow_hei_municipality' => $heimunicipality,
+            'prow_hei_zip' => $heiZip,
+            'prow_hei_lat' => $HeiLat,
+            'prow_hei_long' => $HeiLong,
+            'prow_hei_id' => $hei_id
+        ]);
+
+        if ($stmt) {
+        return true;
+        } else {
+        return false;
+        }
+
     }
 
 

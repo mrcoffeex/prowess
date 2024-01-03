@@ -154,8 +154,8 @@
     var navpopDiv = $("#navpopDiv");
     var storedFiles = [];
     var defaultImage = '../../assets/img/avatars/1.png'; // Replace with the path to your default image
-    var userImageURL = '<?= $userImg?>'; 
-    var imageDir = '../../imagebankProfiles/';// Variable to store the user's image URL
+    var userImageURL = '<?= $userImg ?>'; 
+    var imageDir = '../../imagebank/';// Variable to store the user's image URL
 
     $(document).ready(function () {
         // Fetch the user's image URL from the database using AJAX
@@ -214,6 +214,45 @@
     }
 </script>
 
+<script>
+
+	//validations
+	function btnLoader(formObj){
+        formObj.disabled = true;
+        formObj.innerHTML = "processing ...";
+        return true;  
+    }
+
+    // Municipality to barangay
+
+    $(document).ready(function() {
+
+        $('#multiStepsMunicipality').change(function(){
+
+            $.ajax({
+				type: "GET",
+				url: "auto_gen_bgy.php",
+				data: {municipalityId: $('#multiStepsMunicipality').val()},              
+				success: function (data) {
+
+                    $('#multiStepsBarangay').find('option').remove();
+
+					var municipality = data.split(",");
+                    var option = '<option></option>';
+                    
+                    for (var i=0; i<municipality.length; i++){
+                        option += '<option>' + municipality[i] + '</option>';
+                    }
+
+                    $('#multiStepsBarangay').append(option);
+				}
+			});
+            
+        });
+
+    });
+
+</script>
 
 <!-- <script>
     

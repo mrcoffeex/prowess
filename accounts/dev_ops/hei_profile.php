@@ -53,6 +53,10 @@
                           <i class="mdi mdi-town-hall mdi-24px"></i><span class="fw-semibold mx-2">Number of Offered Courses:</span>
                           <span><?= countCoursebyHei($hei_id) ?></span>
                         </li>
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-format-list-checkbox mdi-24px"></i><span class="fw-semibold mx-2">Number of Total Scholars:</span>
+                          <span><?= countTotalHeiScholar($hei_id) ?></span>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -107,7 +111,7 @@
                         <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>School Map
                       </h5>                 
                     </div>
-                    <iframe style="width: 100%; height: 590px; position: relative;" src="hei_information_map?hei_id=<?= $hei_id ?>" allowfullscreen></iframe>
+                    <iframe style="width: 100%; height: 635px; position: relative;" src="hei_information_map?hei_id=<?= $hei_id ?>" allowfullscreen></iframe>
                   </div>
                 </div>                  
               </div>
@@ -128,6 +132,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Courses</th>
+                                                    <th>No. of Scholars</th>
                                                     <th>No. of Subjects</th>
                                                     <th class="text-center">Subjects</th>
                                                     <th class="text-center">Actions</th>
@@ -141,6 +146,7 @@
                                             <tr>
                                                     
                                                     <td><?= $course['prow_course_name']?></td>
+                                                    <td>0</td>
                                                     <td><?= selectCountCoursebyHeiIds($course['prow_hei_course_id']) ?></td>
                                                     <td class="text-center p-2">
                                                         <a href="hei_subjects?rand=<?= my_rand_str(100) ?>&hei_id=<?=$hei_id ?>&course_id=<?=$course['prow_hei_course_id'] ?>">

@@ -355,6 +355,93 @@
 
     }
 
+    function updateScholarBasicInfo(
+            $scholarCode, 
+            $scholarLastName, 
+            $scholarFirstName, 
+            $scholarMiddleName, 
+            $scholarSuffix, 
+            $scholarGender,
+            $scholarCs, 
+            $scholarBday, 
+            $scholarBPlace, 
+            $scholarContact
+    ){
+
+        $stmt=PWD()->prepare("UPDATE prow_scholar
+                            SET 
+                            prow_scholar_lastname = :prow_scholar_lastname, 
+                            prow_scholar_firstname = :prow_scholar_firstname, 
+                            prow_scholar_middlename	 = :prow_scholar_middlename	, 
+                            prow_scholar_suffix = :prow_scholar_suffix, 
+                            prow_scholar_gender = :prow_scholar_gender, 
+                            prow_scholar_cs = :prow_scholar_cs, 
+                            prow_scholar_birthday = :prow_scholar_birthday,
+                            prow_scholar_birthplace = :prow_scholar_birthplace,
+                            prow_scholar_con = :prow_scholar_con,
+                            prow_scholar_updated = NOW()
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_scholar_lastname' => $scholarLastName,
+            'prow_scholar_firstname' => $scholarFirstName,
+            'prow_scholar_middlename' => $scholarMiddleName,
+            'prow_scholar_suffix' => $scholarSuffix,
+            'prow_scholar_gender' => $scholarGender,
+            'prow_scholar_cs' => $scholarCs,
+            'prow_scholar_birthday' => $scholarBday,
+            'prow_scholar_birthplace' => $scholarBPlace,
+            'prow_scholar_con' => $scholarContact,
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        if ($stmt) {
+        return true;
+        } else {
+        return false;
+        }
+
+    }
+
+    function updateScholarAddress(
+        $scholarLong,
+        $scholarLat,
+        $scholarStreet,
+        $multiStepsMunicipality,
+        $multiStepsBarangay,
+        $scholarZip,
+        $scholarCode
+    ){
+
+        $stmt=PWD()->prepare("UPDATE prow_scholar_address
+                            SET 
+                            prow_address_description = :prow_address_description, 
+                            prow_address_brgy = :prow_address_brgy, 
+                            prow_address_municipality	 = :prow_address_municipality	, 
+                            prow_address_zipcode = :prow_address_zipcode, 
+                            prow_address_long = :prow_address_long, 
+                            prow_address_lat = :prow_address_lat,
+                            prow_address_updated = NOW()
+                            Where
+                            prow_scholar_code = :prow_scholar_code");
+        $stmt->execute([
+            'prow_address_description' => $scholarStreet,
+            'prow_address_brgy' => $multiStepsBarangay,
+            'prow_address_municipality' => $multiStepsMunicipality,
+            'prow_address_zipcode' => $scholarZip,
+            'prow_address_long' => $scholarLong,
+            'prow_address_lat' => $scholarLat,
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        if ($stmt) {
+        return true;
+        } else {
+        return false;
+        }
+
+    }
+    
     function checkScholarInformation($scholarCode){
 
         $stmt=PWD()->prepare("SELECT prow_prof_id
@@ -1284,7 +1371,7 @@
         if ($userType==0){
             $userbanner="../../assets/img/pages/profile-banner.png";
         }else if($userType==1){
-            $userbanner="../../assets/img/pages/profile-banner.png";
+            $userbanner="../../assets/img/pages/2.png";
         }else if($userType==2){
             $userbanner="../../assets/img/pages/profile-banner.png";
         }else if($userType==3){

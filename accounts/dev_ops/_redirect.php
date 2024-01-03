@@ -35,4 +35,16 @@
         }
 
     }
+
+    if (isset($_POST['searchAnn'])) {
+
+        $searchAnn = clean_string($_POST['searchAnn']);
+
+        if (empty($searchAnn)) {
+            header("location: announcements?note=empty_search");
+        } else {
+            header("location: announcementSearch?searchAnn=" . $searchAnn);
+        }
+
+    }
 ?>

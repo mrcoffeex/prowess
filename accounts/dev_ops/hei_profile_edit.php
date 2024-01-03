@@ -8,11 +8,22 @@
   $profile=$getHeiProfile->fetch(PDO::FETCH_ASSOC);
 
   $heiLogo = $profile['prow_hei_logo'];
-  $heiCover = $profile['prow_hei_cover_photo'];
+ // $heiCover = $profile['prow_hei_cover_photo'];
   $getHeiCourse=selectCoursebyHeiIds($hei_id);
+
+  $long = getHeiLong($_GET['hei_id']);
+  $lat = getHeiLat($_GET['hei_id']);
 
   
   ?>
+
+<style>
+    #heiMap {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+
 
 <body>
   <div class="layout-wrapper layout-content-navbar">
@@ -32,14 +43,9 @@
                     <h4 class="card-header">Profile Details</h4>
                     <!-- Account -->
                     <div class="card-body">
-                    <form id="formHeiUpdate" action="hei_profile_edit_update.php" method="POST" enctype="multipart/form-data">
+                    <form id="formHeiUpdate" action="hei_profile_edit_update?hei_id=<?= $hei_id ?>" method="POST" enctype="multipart/form-data" onsubmit="btnLoader(this.heiEdit)">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <!-- <img
-                          src="../../assets/img/avatars/1.png"
-                          alt="user-avatar"
-                          class="d-block w-px-120 h-px-120 rounded"
-                          id="uploadedAvatar" /> -->
-                        <div id="uploadedAvatar"></div>
+                        <div id="heiAvatar"></div>
                         <input type="text" value="<?= $profile['prow_hei_name']?>" hidden>
                         <div class="button-wrapper">
                           <label for="heilogo" class="btn btn-primary me-2 mb-3" tabindex="0">
@@ -53,11 +59,7 @@
                               name = "heilogo"
                               accept="image/png, image/jpeg" />
                           </label>
-                          <button type="button" class="btn btn-outline-secondary account-image-reset mb-3">
-                            <i class="mdi mdi-reload d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Reset</span>
-                          </button>
-
+                         
                           <div class="text-muted small">Allowed JPG, GIF or PNG. Max size of 800K</div>
                         </div>
                       </div>
@@ -70,17 +72,17 @@
                               <input
                                 class="form-control"
                                 type="text"
-                                id="firstName"
-                                name="username"
+                                id="heiName"
+                                name="heiName"
                                 value= "<?= $profile['prow_hei_name']?>"
                                 autofocus
                                 required />
-                              <label for="firstName">HEI Name</label>
+                              <label for="heiName">HEI Name</label>
                             </div>
                           </div>
                         </div>
-
-                        <h5 class="mt-3">HEI Contact Information</h5>
+                        <hr class="my-4 mx-n4" />
+                        <h5><i class="mdi mdi-account me-2 mdi-20px"></i>HEI Contact Information</h5>
                                    
                         <div class="row mt-3">
                           <div class="mb-3 col-md-6 form-password-toggle">
@@ -131,7 +133,9 @@
                             </div>
                           </div>
                         </div>
-                        <h5 class="mt-0">HEI Address</h5>
+                        <hr class="my-4 mx-n4" />
+                        <h5><i class="mdi mdi-map-marker me-2 mdi-20px"></i>HEI Address Information</h5>
+
                         <div class="row">
                           <div class="mb-3 col-md-6 form-password-toggle">
                             <div class="input-group input-group-merge">
@@ -181,7 +185,7 @@
                                   id="heiStreet"
                                   value="<?= $profile['prow_hei_street']?>"
                                   placeholder="Street Name"
-                                  readonly/>
+                                  />
                                 <label for="heiStreet">Street</label>
                               </div>
                             </div>
@@ -196,25 +200,47 @@
                                   id="heiZip"
                                   value="<?= $profile['prow_hei_zip']?>"
                                   placeholder="Zip Code"
-                                  readonly/>
+                                  />
                                 <label for="heiZip">Zip Code</label>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <!-- <h6 class="text-body">Password Requirements:</h6>
-                        <ul class="ps-3 mb-0">
-                          <li class="mb-1">Minimum 8 characters long - the more, the better</li>
-                          <li class="mb-1">At least one lowercase character</li>
-                          <li>At least one number, symbol, or whitespace character</li>
-                        </ul> -->
+                        <hr class="my-4 mx-n4" />
+                        <h5><i class="mdi mdi-home-map-marker me-2 mdi-20px"></i>Pin your address</h5>
+                        <h6 class="fst-italic">*Drag the Pin to your exact address</h6>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <div id="heiMap"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating form-floating-outline">
+                                    <input type="number" id="HeiLong" name="HeiLong" class="form-control" value="<?= $long ?>" readonly />
+                                    <label for="HeiLong">Longtitude</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating form-floating-outline">
+                                    <input type="number" id="HeiLat" name="HeiLat" class="form-control" value="<?= $lat ?>" readonly />
+                                    <label for="HeiLat">Latitude</label>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <div class="mt-4">
-                          <button type="submit" class="btn btn-primary me-2">Save changes</button>
-                          <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                          <button type="submit" class="btn btn-primary me-2" id="heiEdit">Save changes</button>
+                          <button type="reset" class="btn btn-outline-secondary"><a href="hei_profile?hei_id=<?= $hei_id ?>">Cancel</button>
                         </div>                        
                       </form>
                     </div>
-                    <!-- /Account -->
+                    
+                    <?php  
+                      $HeiImage = getHeiImageById($hei_id);
+                    ?>
+
+
                   </div>
                 </div>
               </div>
@@ -230,5 +256,60 @@
     <div class="drag-target"></div>
   </div>
   <?php include "_scripts.php"; ?>
+  <script>
+        function initMap() {
+
+            if (<?= $lat ?> == "" || <?= $long ?> == "") {
+                var initialLocation = { lat: 6.7445944749889835, lng: 125.35688568920658 };
+            } else {
+                var initialLocation = { lat: <?= $lat ?>, lng: <?= $long ?> };
+            }
+
+            var map = new google.maps.Map(document.getElementById('heiMap'), {
+                zoom: 17,
+                center: initialLocation,
+                styles: [
+                            {
+                        featureType: "poi",
+                        elementType: "labels",
+                        stylers: [{ color: "#35373b" }],
+                    },
+                    {
+                        featureType: "label",
+                        elementType: "labels.icon",
+                        stylers: [{ color: "#35373b" }],
+                    },
+                    {
+                        featureType: "label",
+                        elementType: "labels.text.fill",
+                        stylers: [{ color: "#35373b" }], // Set the color you want for labels
+                    },{
+                        featureType: "label",
+                        elementType: "labels.text.stroke",
+                        stylers: [{ color: "#ffffff" }],
+                    },
+                ]
+            });
+
+            var marker = new google.maps.Marker({
+                position: initialLocation,
+                map: map,
+                draggable: true // Allow marker to be dragged
+            });
+
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+                updateLatLng(marker.getPosition().lat(), marker.getPosition().lng());
+            });
+
+            updateLatLng(initialLocation.lat, initialLocation.lng);
+        }
+
+        function updateLatLng(lat, lng) {
+            document.getElementById('HeiLong').value = lng;
+            document.getElementById('HeiLat').value = lat;
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl37fY99htQLQOK1zIErOwsxMiTQ3AxmA&callback=initMap" async defer></script>
 </body>
 </html>

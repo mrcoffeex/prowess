@@ -86,7 +86,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li>
-                    <a class="dropdown-item" href="pages-account-settings-account.html">
+                    <a class="dropdown-item" href="studentProfile">
                       <div class="d-flex">
                         <div class="flex-shrink-0 me-3">
                           <div class="avatar avatar-online" id="navpopDiv">
@@ -95,7 +95,7 @@
                           </div>
                         </div>
                         <div class="flex-grow-1">
-                          <span class="fw-semibold d-block"><?= $userFullname ?></span>
+                          <span class="fw-semibold d-block"><?= getFullname($scholarCode) ?></span>
                           <small class="text-muted"><?= getUserType($userType) ?></small>
                         </div>
                       </div>

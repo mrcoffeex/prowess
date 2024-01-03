@@ -6,11 +6,7 @@
                     </div>
                     <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                       <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-                        <div id="heiLogo"></div>
-                        <!-- <img
-                          src="../../assets/img/avatars/1.png"
-                          alt="user image"
-                          class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" /> -->
+                        <div id="userprofileAvatar"></div>
                       </div>
                       <div class="flex-grow-1 mt-3 mt-sm-5">
                         <div
@@ -42,3 +38,7 @@
                   </div>
                 </div>
               </div>
+
+              <?php  
+                $HeiImage = getHeiImageById($hei_id);
+              ?>

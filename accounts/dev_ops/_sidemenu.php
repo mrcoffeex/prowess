@@ -79,13 +79,13 @@
         <li class="menu-item">
           <a href="industry_information" class="menu-link">
             <div data-i18n="Industry Information">Industry Information</div>
-            <div class="badge bg-primary rounded-pill ms-auto">3</div>
+            <div class="badge bg-primary rounded-pill ms-auto"></div>
           </a>
         </li>
         <li class="menu-item">
           <a href="reports" class="menu-link">
             <div data-i18n="Reports">Reports</div>
-            <div class="badge bg-primary rounded-pill ms-auto">2</div>
+            <div class="badge bg-primary rounded-pill ms-auto"></div>
           </a>
         </li>
       </ul>
@@ -110,7 +110,7 @@
         <li class="menu-item">
           <a href="layouts-collapsed-menu.html" class="menu-link">
             <div data-i18n="Public Messages">Public Messages</div>
-            <div class="badge bg-primary rounded-pill ms-auto">10</div>
+            <div class="badge bg-primary rounded-pill ms-auto"></div>
           </a>
         </li>
         <li class="menu-item">
