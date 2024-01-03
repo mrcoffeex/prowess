@@ -103,4 +103,64 @@
 
     }
 
+    function createAnnLike($scholarCode, $annId){
+
+        $stmt=PWD()->prepare("INSERT INTO prow_announcements_likes
+                            (
+                                prow_scholar_code, 
+                                prow_ann_id, 
+                                prow_like_created
+                            )
+                            Values
+                            (
+                                :prow_scholar_code, 
+                                :prow_ann_id, 
+                                NOW()
+                            )");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_ann_id' => $annId
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function checkLikeStatus($scholarCode, $annId){
+
+        $stmt=PWD()->prepare("SELECT * FROM prow_announcements_likes
+                            Where
+                            prow_scholar_code = :prow_scholar_code
+                            AND
+                            prow_ann_id = :prow_ann_id");
+        $stmt->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_ann_id' => $annId
+        ]);
+
+        $count=$stmt->rowCount();
+
+        return $count;
+
+    }
+
+    function countAnnLike($annId){
+
+        $stmt=PWD()->prepare("SELECT * FROM prow_announcements_likes
+                            Where
+                            prow_ann_id = :prow_ann_id");
+        $stmt->execute([
+            'prow_ann_id' => $annId
+        ]);
+
+        $count=$stmt->rowCount();
+
+        return $count;
+
+    }
+
 ?>

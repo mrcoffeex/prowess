@@ -104,7 +104,7 @@
       
 
         if ($request1 == true && $request2 == true && $request3 == true) {
-            header("location: fillupForm_old2?note=updated");
+            header("location: studentProfile?note=updated");
         } else {
             header("location: edit_fillupForm_old?note=error");
         }

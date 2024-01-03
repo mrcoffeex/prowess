@@ -152,6 +152,17 @@
         return $res;
     }
 
+    function stringLimit($name, $limit){
+
+        if (strlen($name) > $limit){
+            $name = substr($name, 0, $limit) . '...';
+        }else{
+            $name = $name;
+        }
+
+        return $name;
+    }
+
     function previewImage($image, $default_image, $directory){
 
         if ($image == "empty" || $image == "") {

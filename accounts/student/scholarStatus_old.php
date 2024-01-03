@@ -196,6 +196,16 @@
                             <span class="timeline-point timeline-point-secondary"></span>
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
+                                <h6 class="mb-0">Verification of Scholar's Academic Requirements</h6>
+                                <span class="text-muted"></span>
+                              </div>
+                              <p class="text-muted mb-0">Verified by the School Authorized Person</p>
+                            </div>
+                          </li>
+                          <li class="timeline-item timeline-item-transparent border-0">
+                            <span class="timeline-point timeline-point-secondary"></span>
+                            <div class="timeline-event">
+                              <div class="timeline-header mb-1">
                                 <h6 class="mb-0">Verification of Scholar</h6>
                                 <span class="text-muted"></span>
                               </div>

@@ -42,12 +42,12 @@
       </a>
     </li>
     
-    <li class="menu-item">
+    <!-- <li class="menu-item">
       <a href="#" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-download-box-outline"></i>
         <div data-i18n="Download Mobile App">Download Mobile App</div>
       </a>
-    </li>
+    </li> -->
 
     
     <li class="menu-item">

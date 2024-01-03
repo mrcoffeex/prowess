@@ -36,10 +36,10 @@
                       <a class="nav-link" href="studentProfile3"
                         ><i class="mdi mdi-school-outline me-1 mdi-20px"></i>Academic Information</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                       <a class="nav-link" href="notifications"
                         ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a>
-                    </li>
+                    </li> -->
                   </ul>
                 </div>
               </div>
