@@ -636,6 +636,8 @@
     }
 
     function sendVerification($userCode, $emailTo, $autoload){
+        
+	    include 'globalVars.php';
 
         $otp = createOTP($userCode);
 
