@@ -77,17 +77,24 @@
                     </div>
                 ';
             } else {
+
+                $cardsArray = explode(',', $req['prow_req_school_card']);
+                
+                foreach ($cardsArray as $cards) {
+
                 echo '
                     <div class="col-md-6 col-lg-6 mb-3">
                         <div class="card h-100">
-                            <img class="card-img-top" src="../../imagebank/'. $req['prow_req_school_card'] .'" alt="image here .." />
+                            <img class="card-img-top" src="../../imagebank/'. $cards .'" alt="image here .." />
                             <div class="card-body text-center">
                                 <h5 class="card-title">School Card</h5>
-                                <a href="viewImage?image='. $req['prow_req_school_card'] .'" target="_blank" class="btn btn-outline-primary">Full view</a>
+                                <a href="viewImage?image='. $cards .'" target="_blank" class="btn btn-outline-primary">Full view</a>
                             </div>
                         </div>
                     </div>
                 ';
+
+                }
             }
             
             if (empty($req['prow_req_enrollment_form'])) {

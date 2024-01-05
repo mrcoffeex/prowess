@@ -49,21 +49,21 @@
                               $b_status=0;
                             }
 
-                            if (scholarshipStatusOld($scholarCode, "family_information") == "complete") {
-                              $c_bullet = "timeline-point-successnew";
-                              $c_text ="text-muted";
-                              $c_created = getPersonalInformationCreatedDate($scholarCode);
-                              $c_icon = "mdi mdi-check-bold me-1 mdi-20px";
-                              $c_desc = " Family Information has been registered";
-                              $c_status=1;
-                            } else {
-                              $c_bullet = "timeline-point-warning";
-                              $c_text ="text-ongoing";
-                              $c_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
-                              $c_created = getPersonalInformationCreatedDate($scholarCode);
-                              $c_desc = "<span class='text-ongoing'><i class=''>Please complete your family information. Add your Guardian's details</span>";
-                              $c_status=0;
-                            }
+                            // if (scholarshipStatusOld($scholarCode, "family_information") == "complete") {
+                            //   $c_bullet = "timeline-point-successnew";
+                            //   $c_text ="text-muted";
+                            //   $c_created = getPersonalInformationCreatedDate($scholarCode);
+                            //   $c_icon = "mdi mdi-check-bold me-1 mdi-20px";
+                            //   $c_desc = " Family Information has been registered";
+                            //   $c_status=1;
+                            // } else {
+                            //   $c_bullet = "timeline-point-warning";
+                            //   $c_text ="text-ongoing";
+                            //   $c_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
+                            //   $c_created = getPersonalInformationCreatedDate($scholarCode);
+                            //   $c_desc = "<span class='text-ongoing'><i class=''>Please complete your family information. Add your Guardian's details</span>";
+                            //   $c_status=0;
+                            // }
 
                             if (scholarshipStatusOld($scholarCode, "skills_information") == "complete") {
                               $d_bullet = "timeline-point-successnew";
@@ -98,7 +98,7 @@
                               $e_status=0;
                             }
 
-                            if ($a_status==1 && $b_status==1 && $c_status==1 && $d_status==1 && $e_status==1) {
+                            if ($a_status==1 && $b_status==1 && $d_status==1 && $e_status==1) {
                               $overall_bullet = "timeline-point-successnew";
                               $overall_text ="text-success";
                               $overall_created = getPersonalInformationCreatedDate($scholarCode);
@@ -127,7 +127,6 @@
                               </div>
                               <p class="<?= $a_text ?> mb-1"><i class="<?= $a_icon ?>"></i> <?= $a_desc ?></p>
                               <p class="<?= $b_text ?> mb-1"><i class="<?= $b_icon ?>"></i> <?= $b_desc ?></p>
-                              <p class="<?= $c_text ?> mb-1"><i class="<?= $c_icon ?>"></i> <?= $c_desc ?></p>
                               <p class="<?= $d_text ?> mb-1"><i class="<?= $d_icon ?>"></i> <?= $d_desc ?></p>
                               <p class="<?= $e_text ?> mb-1"><i class="<?= $e_icon ?>"></i> <?= $e_desc ?></p>                       
                             </div>
@@ -141,8 +140,8 @@
                               $f_created = getPersonalInformationCreatedDate($scholarCode);
                               $f_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $f_desc = " Subject and Grades Information has been registered.";
-                            } else if (scholarshipStatusOld($scholarCode, "grades") == "incomplete") {
-                              $f_bullet = "timeline-point-warning";
+                            } else {
+                              $f_bullet = "timeline-point-info";
                               $f_text ="text-ongoing";
                               $f_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
                               $f_created = getPersonalInformationCreatedDate($scholarCode);
@@ -157,7 +156,7 @@
                               $g_created = getPersonalInformationCreatedDate($scholarCode);
                               $g_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $g_desc = " Proof of Grades image uploaded.";
-                            } else if (scholarshipStatusOld($scholarCode, "requirements") == "incomplete") {
+                            } else {
                               $g_bullet = "timeline-point-info";
                               $g_text ="text-ongoing";
                               $g_text1 ="text-ongoing";
