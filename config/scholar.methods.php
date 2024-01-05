@@ -2169,4 +2169,39 @@
         return $statement;
 
     }
+
+    function checkScholarDuplicate($lname, $fname, $mname, $bday, $gender, $cs, $email){
+
+        $stmt=PWD()->prepare("SELECT prow_scholar_id
+                            FROM
+                            prow_scholar
+                            Where
+                            prow_scholar_lastname = :prow_scholar_lastname
+                            AND
+                            prow_scholar_firstname = :prow_scholar_firstname
+                            AND
+                            prow_scholar_middlename = :prow_scholar_middlename
+                            AND
+                            prow_scholar_birthday = :prow_scholar_birthday
+                            AND
+                            prow_scholar_gender = :prow_scholar_gender
+                            AND
+                            prow_scholar_cs = :prow_scholar_cs
+                            AND
+                            prow_scholar_email = :prow_scholar_email");
+        $stmt->execute([
+            'prow_scholar_lastname' => $lname,
+            'prow_scholar_firstname' => $fname,
+            'prow_scholar_middlename' => $mname,
+            'prow_scholar_birthday' => $bday,
+            'prow_scholar_gender' => $gender,
+            'prow_scholar_cs' => $cs,
+            'prow_scholar_email' => $email,
+        ]);
+
+        $count=$stmt->rowCount();
+
+        return $count;
+
+    }
 ?>

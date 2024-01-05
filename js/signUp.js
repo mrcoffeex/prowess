@@ -295,6 +295,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var multiStepsAddress = $('#multiStepsAddress').val();
 
         signUpBtn.disabled = true;
+        signUpBtn.innerHTML = "processing ...";
 
         $.ajax({
           url: 'signUpProcess.php', // Replace with your server endpoint URL
@@ -321,9 +322,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
           },
           success: function(response) {
             // Handle success response here
-            toastr.success('Registered successfully!');
-            console.log(response);  
-            window.location.href = 'signupComplete'
+            if (response == "success") {
+              toastr.success('Registered successfully!');
+              console.log(response);  
+              window.location.href = 'signupComplete'
+            } else {
+              toastr.success('Duplicate Entry!');
+              console.log(response);  
+              window.location.href = 'signup?note=duplicate'
+            }
           },
           error: function(error) {
             // Handle error response here

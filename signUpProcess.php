@@ -21,33 +21,40 @@
     $multiStepsAddress = $_POST['multiStepsAddress'];
 
     $fullname = $multiStepsFirstName . " " . $multiStepsLastName;
-   
 
-    $request = signUpScholar(
-        $fullname, 
-        $multiStepsUsername, 
-        $multiStepsPass, 
-        $multiStepsLastName, 
-        $multiStepsFirstName, 
-        $multiStepsMiddleName, 
-        $multiStepsQualifier, 
-        $multiStepsGender, 
-        $multiStepsCS, 
-        $multiStepsBirthday, 
-        $multiStepsBirthPlace, 
-        $multiStepsMobile, 
-        $multiStepsEmail, 
-        $multiStepsAddress, 
-        $multiStepsBarangay, 
-        $multiStepsMunicipality, 
-        $multiStepsProvince, 
-        $multiStepsZipCode
-    );
+    if (checkScholarDuplicate($multiStepsLastName, $multiStepsFirstName, $multiStepsMiddleName, $multiStepsBirthday, $multiStepsGender, $multiStepsCS, $multiStepsEmail) > 0) {
 
-    if ($request == true) {
-        echo "success";
+        echo "duplicate";
+
     } else {
-        echo "error";
+
+        $request = signUpScholar(
+            $fullname, 
+            $multiStepsUsername, 
+            $multiStepsPass, 
+            $multiStepsLastName, 
+            $multiStepsFirstName, 
+            $multiStepsMiddleName, 
+            $multiStepsQualifier, 
+            $multiStepsGender, 
+            $multiStepsCS, 
+            $multiStepsBirthday, 
+            $multiStepsBirthPlace, 
+            $multiStepsMobile, 
+            $multiStepsEmail, 
+            $multiStepsAddress, 
+            $multiStepsBarangay, 
+            $multiStepsMunicipality, 
+            $multiStepsProvince, 
+            $multiStepsZipCode
+        );
+    
+        if ($request == true) {
+            echo "success";
+        } else {
+            echo "error";
+        }
+
     }
 
 ?>

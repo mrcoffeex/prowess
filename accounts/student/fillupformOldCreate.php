@@ -42,6 +42,7 @@
         $filledupStatus = 0;
 
         if ($fillUpStatus == "update") {
+            
             $request1 = updateScholarInformation(
                 $scholarCode, 
                 $scholarHeight, 

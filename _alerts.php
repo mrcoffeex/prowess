@@ -40,6 +40,12 @@
                         toastr.error('Captcha error');
                     </script>
                 ";
+            } else if ($note == "duplicate") {
+                echo "
+                    <script>
+                        toastr.error('Duplicate Entry!');
+                    </script>
+                ";
             } else {
                 echo "";
             }
