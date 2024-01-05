@@ -26,7 +26,7 @@
                 <div class="content-wrapper">
                     <div class="container-xxl flex-grow-1 container-p-y">
 
-                    <?php include "profile_header.php"; ?>
+                    <?php include "profile_header_new.php"; ?>
 
                         <div class="row mb-4">
                             <div class="col-md-12">

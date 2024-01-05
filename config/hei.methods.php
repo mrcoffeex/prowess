@@ -842,4 +842,25 @@
     }
 
 
+    function getHeiSySem($hei_id){
+
+        $stmt=PWD()->prepare("SELECT prow_hei_sysem FROM
+                            prow_hei
+                            Where
+                            prow_hei_id = :prow_hei_id");
+        $stmt->execute([
+            "prow_hei_id" => $hei_id
+        ]);
+
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (is_array($res)) {
+            return $res['prow_hei_sysem'];
+        } else {
+            return "";
+        }
+        
+    }
+
+
 ?>

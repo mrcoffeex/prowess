@@ -49,8 +49,10 @@
         $current=$getCurrentApplication->fetch(PDO::FETCH_ASSOC);
 
         $appLogStatus = $current['prow_app_log_status'];
+        $heiCurrentSySem = getHeiSySem($current['prow_hei']);
 
-        if ($current['prow_sy'] == getSchoolYearLatest()) {
+
+        if ($current['prow_sy'] . "-" . $current['prow_sem'] == $heiCurrentSySem) {
             // already filled up the new application
             $fillUpStatus = "update";
         } else {
