@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="ms-3">
                                     <div class="d-flex align-items-center">
-                                        <h5 class="mb-0">0</h5>
+                                        <h5 class="mb-0"><?= countAnn("news") ?></h5>
                                     </div>
                                     <small class="text-muted">News</small>
                                     </div>
@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="ms-3">
                                     <div class="d-flex align-items-center">
-                                        <h5 class="mb-0">0</h5>
+                                        <h5 class="mb-0"><?= countAnn("activity") ?></h5>
                                     </div>
                                     <small class="text-muted">Activity</small>
                                     </div>
@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="ms-3">
                                     <div class="d-flex align-items-center">
-                                        <h5 class="mb-0">0</h5>
+                                        <h5 class="mb-0"><?= countAnn("meeting") ?></h5>
                                     </div>
                                     <small class="text-muted">Meeting</small>
                                     </div>

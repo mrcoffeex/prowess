@@ -56,7 +56,7 @@
                               id="heilogo"
                               class="account-file-input"
                               hidden
-                              name = "heilogo"
+                              name="heilogo"
                               accept="image/png, image/jpeg" />
                           </label>
                          

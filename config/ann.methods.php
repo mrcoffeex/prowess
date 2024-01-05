@@ -163,4 +163,32 @@
 
     }
 
+    function countAnn($type){
+
+        if (empty($type)) {
+            
+            $stmt=PWD()->prepare("SELECT 
+                                prow_ann_id 
+                                FROM
+                                prow_announcements");
+            $stmt->execute();
+
+        } else {
+            $stmt=PWD()->prepare("SELECT 
+                                prow_ann_id 
+                                FROM
+                                prow_announcements
+                                Where
+                                prow_ann_type = :prow_ann_type");
+            $stmt->execute([
+                'prow_ann_type' => $type
+            ]);
+        }
+        
+        $count=$stmt->rowCount();
+
+        return $count;
+
+    }
+
 ?>

@@ -75,66 +75,6 @@
 
 </script>
 
-<!-- <script>
-    var selDiv = $("#uploadedAvatar");
-    var dispDiv = $("#heiLogo");
-    var storedFiles = [];
-    var defaultImage = '../../assets/img/avatars/1.png'; // Replace with the path to your default image
-    var userImageURL = '<?= (empty(@$HeiImage)) ?  "'../../assets/img/avatars/1.png" : $HeiImage ?>'; 
-    var imageDir = '../../imagebank/';// Variable to store the user's image URL
-
-    $(document).ready(function () {
-        // Fetch the user's image URL from the database using AJAX
-        if(userImageURL != ""){
-            displayUserImage();
-        }else{
-            displayDefaultImage();
-        }
-
-        $("#heilogo").on("change", handleFileSelect);
-        selDiv = $("#uploadedAvatar");
-    });
-
-    function displayDefaultImage() {
-        var htmlset = '<img src="' + defaultImage + '" alt="default-avatar" class="d-block w-px-120 h-px-120 rounded">';
-        var htmldisp = '<img src="'+ defaultImage +'" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" />';
-        selDiv.html(htmlset);
-        dispDiv.html(htmldisp);
-       
-    }
-
-    function displayUserImage() {
-        var htmlset = '<img src="' + imageDir + userImageURL + '" alt="user-avatar" class="d-block w-px-120 h-px-120 rounded">';
-        var htmldisp = '<img src="'+ defaultImage +'" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" />';
-        selDiv.html(htmlset);
-        dispDiv.html(htmldisp);
-    }
-
-    function handleFileSelect(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-        console.log(filesArr);
-        filesArr.forEach(function (f) {
-        if (!f.type.match("image.*")) {
-            return;
-        }
-        storedFiles.push(f);
-
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            var htmlset =
-            '<img src="' +
-            e.target.result +
-            '" data-file="' +
-            f.name +
-            '" alt="user-avatar" class="d-block w-px-120 h-px-120 rounded">';
-            selDiv.html(htmlset);
-        };
-        reader.readAsDataURL(f);
-        });
-    }
-</script> -->
-
 <script>
     var selDiv = $("#heiAvatar");
     var userprof = $("#userprofileAvatar");
@@ -142,15 +82,15 @@
     var navpopDiv = $("#navpopDiv");
     var storedFiles = [];
     var defaultImage = '../../assets/img/avatars/1.png'; // Replace with the path to your default image
-    var userImageURL = '<?= (empty(@$HeiImage)) ?  "'../../assets/img/avatars/1.png" : $HeiImage ?>'; 
+    var userImageURL = '<?= ((@$HeiImage == "" || @$HeiImage == "empty")) ?  "" : @$HeiImage ?>'; 
     var imageDir = '../../imagebank/';// Variable to store the user's image URL
 
     $(document).ready(function () {
         // Fetch the user's image URL from the database using AJAX
-        if(userImageURL != ""){
-            displayUserImage();
-        }else{
+        if(userImageURL == ""){
             displayDefaultImage();
+        }else{
+            displayUserImage();
         }
 
         $("#heilogo").on("change", handleFileSelect);

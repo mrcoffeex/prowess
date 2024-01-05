@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="ms-3">
                                     <div class="d-flex align-items-center">
-                                        <h5 class="mb-0">0</h5>
+                                        <h5 class="mb-0"><?= countAnn("news") ?></h5>
                                     </div>
                                     <small class="text-muted">News</small>
                                     </div>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="ms-3">
                                     <div class="d-flex align-items-center">
-                                        <h5 class="mb-0">0</h5>
+                                        <h5 class="mb-0"><?= countAnn("activity") ?></h5>
                                     </div>
                                     <small class="text-muted">Activity</small>
                                     </div>
@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="ms-3">
                                     <div class="d-flex align-items-center">
-                                        <h5 class="mb-0">0</h5>
+                                        <h5 class="mb-0"><?= countAnn("meeting") ?></h5>
                                     </div>
                                     <small class="text-muted">Meeting</small>
                                     </div>
@@ -122,6 +122,17 @@
                                 <tbody>
                                     <?php  
                                         while ($ann=$paginate->fetch(PDO::FETCH_ASSOC)) {
+
+                                            if ($ann['prow_ann_type'] == "news") {
+                                                $annColor = "text-primary";
+                                            } else if ($ann['prow_ann_type'] == "activity") {
+                                                $annColor = "text-warning";
+                                            } else if ($ann['prow_ann_type'] == "meeting") {
+                                                $annColor = "text-info";
+                                            } else {
+                                                $annColor = "text-danger";
+                                            }
+                                            
                                     ?>
                                     <tr>
                                         <td class="text-center">
@@ -140,7 +151,7 @@
                                             </a>
                                         </td>
                                         <td><?= $ann['prow_ann_title'] ?></td>
-                                        <td><?= $ann['prow_ann_type'] ?></td>
+                                        <td class="<?= $annColor ?>"><?= $ann['prow_ann_type'] ?></td>
                                         <td class="text-center"><?= $ann['prow_ann_views'] ?> <i class="mdi mdi-eye"></i></td>
                                         <td><?= properDate($ann['prow_ann_created']) ?></td>
                                         <td>expires at <?= properDate($ann['prow_ann_expire']) ?></td>
