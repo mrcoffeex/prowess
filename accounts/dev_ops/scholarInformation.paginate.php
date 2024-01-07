@@ -39,6 +39,9 @@
                             prow_scholar_app_logs
                             Where
                             prow_app_log_status = :prow_app_log_status
+                            Order By
+                            prow_app_logs_created 
+                            DESC
                             $limit");
     $paginate->execute([
         'prow_app_log_status' => 2

@@ -924,6 +924,25 @@
     
     }
 
+    function getgetScholarSchoolId($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                       *
+                                       From
+                                       prow_scholar
+                                       Where
+                                       prow_scholar_code = :prow_scholar_code");
+       $statement->execute([
+           'prow_scholar_code' => $profileCode
+       ]);
+
+       $res=$statement->fetch(PDO::FETCH_ASSOC);
+       
+       $username = $res['prow_scholar_school_id'];
+       
+       return $username;
+   
+   }
+
 
     function getScholar_Status($profileCode){
          $statement=PWD()->prepare("SELECT
@@ -1148,6 +1167,25 @@
         } else {         
             return $res['prow_yr_lvl'];
         }
+
+    }
+    function selectAllScholarbyHEI($hei_id){
+        $statement=PWD()->prepare("SELECT
+                                     a.prow_scholar_code, 
+                                     a.prow_scholar_school_id, 
+                                     concat(a.prow_scholar_lastname,', ',a.prow_scholar_firstname), 
+                                     b.prow_hei, b.prow_course  
+                                     FROM prow_scholar AS a
+                                     INNER JOIN prow_scholar_app_logs AS b 
+                                     ON a.prow_scholar_code = b.prow_scholar_code
+                                     Where
+                                     b.prow_hei = :prow_hei
+                                     ORDER BY b.prow_course, a.prow_scholar_lastname");
+        $statement->execute([
+            'prow_hei' => $hei_id
+        ]);
+
+        return $statement;
 
     }
 

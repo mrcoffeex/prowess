@@ -195,7 +195,7 @@
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <button type="submit" id="searchStudent" class="btn btn-primary"><i class="mdi mdi mdi-magnify me-1"></i>Search</button>
 
-                                                <a href="" target="_blank" class="btn btn-success">
+                                                <a href="print_list_scholar" target="_blank" class="btn btn-success">
                                                     <i class="mdi mdi-printer-outline me-1"></i>Print List
                                                 </a>
                                             </div>
