@@ -1188,6 +1188,27 @@
         return $statement;
 
     }
+    function countAllScholarbyCourse($hei_id,$hei_course_id){
+        $statement=PWD()->prepare("SELECT
+                                       COUNT(*) 
+                                    FROM 
+                                        prow_scholar AS a
+                                    INNER JOIN 
+                                        prow_scholar_app_logs AS b ON a.prow_scholar_code = b.prow_scholar_code
+                                    WHERE
+                                        b.prow_hei = :prow_hei
+                                    AND
+                                        b.prow_course = :prow_course
+                                    GROUP BY
+                                        b.prow_course");
+        $statement->execute([
+            'prow_hei' => $hei_id,
+            'prow_course' => $hei_course_id
+        ]);
+        $count = $statement->fetchColumn();
+        return $count;
+
+    }
 
     function selectScholar($profileCode){
         $statement=PWD()->prepare("SELECT

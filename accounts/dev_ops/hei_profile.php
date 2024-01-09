@@ -146,7 +146,13 @@
                                             <tr>
                                                     
                                                     <td><?= $course['prow_course_name']?></td>
-                                                    <td>0</td>
+                                                    <td><?php $hei_id=$course['prow_hei_id'];
+                                                              $hei_course=$course['prow_hei_course_id'];
+                                                        ?>
+                                                        <a href="scholarInformationperCourse?rand=<?= my_rand_str(100) ?>&hei_id=<?=$hei_id ?>&course_id=<?=$course['prow_hei_course_id'] ?>">
+                                                          <?= $count=countAllScholarbyCourse($hei_id,$hei_course);?>
+                                                        </a>
+                                                    </td>
                                                     <td><?= selectCountCoursebyHeiIds($course['prow_hei_course_id']) ?></td>
                                                     <td class="text-center p-2">
                                                         <a href="hei_subjects?rand=<?= my_rand_str(100) ?>&hei_id=<?=$hei_id ?>&course_id=<?=$course['prow_hei_course_id'] ?>">

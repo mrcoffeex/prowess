@@ -79,7 +79,7 @@
                                 }
                                 
                           ?>
-                            <div class="col-lg-4 col-md-4 col-xs-6">
+                            <div class="col-lg-4 col-md-4 col-xs-6 mb-4">
                               <div class="card h-100">
                                 <img class="card-img-top" src="<?= previewImage($ann['prow_ann_image'], '../../assets/img/elements/2.jpg', '../../imagebank/') ?>" alt="Card image cap" />
                                 <div class="card-body">
@@ -94,17 +94,25 @@
                                 </div>
                                   <hr />
                                   <h6 class="card-text text-muted">
-                                    <?php $dateTime = new DateTime($ann['prow_ann_expire']); 
+                                    <?php $dateTime = new DateTime($ann['prow_ann_created']); 
                                           $formattedDate = $dateTime->format('F j, Y'); 
                                           echo $formattedDate; ?>
                                   </h6>
                                   
-                                  <p class="card-text"><?= stringLimit($ann['prow_ann_content'], 150) ?></p>
-                                  <a class="btn btn-outline-primary mb-4 btn-block" href="#">
-                                    <span class="align-left">Read More</span>
-                                    <i class="mdi mdi-arrow-right scaleX-n1-rtl me-1"></i>
-                                    
-                                  </a>
+                                  <p class="card-text"><?= stringLimit($ann['prow_ann_content'], 250) ?></p>
+
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-primary mb-4 btn-block"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#onboardImageModal"
+                                    data-announcement-image="<?= htmlspecialchars($ann['prow_ann_image']) ?>"
+                                    data-announcement-title="<?= htmlspecialchars($ann['prow_ann_title']) ?>"
+                                    data-announcement-content="<?= htmlspecialchars($ann['prow_ann_content']) ?>">
+                                    Read More <i class="mdi mdi-arrow-right scaleX-n1-rtl me-1"></i>
+                                  </button>
+                                  
+
                                   <div class="article-votes">
                                     <button type="button" id="<?= $btnId ?>" class="btn btn-icon btn-sm btn-outline-primary me-2" title="click to like ..." onclick="addThumbsUp('#<?= $btnId ?>', '<?= $annId ?>')" <?= $btnAnnStatus ?> >
                                       <span class="mdi mdi-thumb-up-outline"></span>
@@ -131,6 +139,40 @@
     </div>
     <div class="layout-overlay layout-menu-toggle"></div>
     <div class="drag-target"></div>
+    <!-- Announcement Modal -->
+    <div
+        class="modal-onboarding modal fade animate__animated"
+        id="onboardImageModal"
+        tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content text-center">
+            <div class="modal-body p-0">
+              <div class="onboarding-media">
+                <div class="mx-2">
+                  <img
+                  id="announcementImage"
+                  alt="Announcement Image"
+                  class="img-fluid"
+                  data-app-light-img="illustrations/girl-unlock-password-light.png"
+                  data-app-dark-img="illustrations/girl-unlock-password-dark.png" />
+                </div>
+              </div>
+              <div class="onboarding-content mb-0">
+                <h4 class="onboarding-title text-body" id="announcementTitle"></h4>
+                <div class="onboarding-info" id="announcementContent">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer border-0">
+              <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
   <?php include "_scripts.php"; ?>
 
@@ -161,5 +203,19 @@
       }
 
   </script>
+
+<script>
+    $('#onboardImageModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var announcementContent = button.data('announcement-content');
+        var announcementTitle = button.data('announcement-title');
+        var announcementImage = button.data('announcement-image');
+
+        // Update modal content with the passed data
+        $('#announcementContent').text(announcementContent);
+        $('#announcementTitle').text(announcementTitle);
+        $('#announcementImage').attr('src', announcementImage);
+    });
+</script>
 </body>
 </html>
