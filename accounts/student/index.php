@@ -106,7 +106,7 @@
                                     class="btn btn-outline-primary mb-4 btn-block"
                                     data-bs-toggle="modal"
                                     data-bs-target="#onboardImageModal"
-                                    data-announcement-image="<?= htmlspecialchars($ann['prow_ann_image']) ?>"
+                                    data-announcement-image="<?= previewImage($ann['prow_ann_image'], '../../assets/img/elements/2.jpg', '../../imagebank/') ?>"
                                     data-announcement-title="<?= htmlspecialchars($ann['prow_ann_title']) ?>"
                                     data-announcement-content="<?= htmlspecialchars($ann['prow_ann_content']) ?>">
                                     Read More <i class="mdi mdi-arrow-right scaleX-n1-rtl me-1"></i>

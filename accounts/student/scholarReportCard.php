@@ -41,7 +41,7 @@
           <center>
           <img
             src="../../imagebank/<?= $profile['prow_scholar_img'] ?>"
-            alt="School Logo"
+            alt="Profile Picture does not exist"
             class="scholarID"
           />
           </center>

@@ -32,5 +32,5 @@
 
 
     <!-- Favicon  -->
-    <link rel="icon" href="landing/images/favicon.png">
+    <link rel="icon" href="landing/images/favicon_new.png">
 </head>

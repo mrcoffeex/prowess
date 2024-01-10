@@ -1,26 +1,23 @@
 <?php
-    require '_config.php';
-
     include 'landing/_head.php';
     include 'landing/_nav.php';
 ?>
-
 
     <!-- Header -->
     <header id="header" class="header">
         <div class="header-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" justify-content="middle">
                         <div class="text-container">
                             <h1><span class="turquoise">PROWESS</span> Online Scholarship System</h1>
-                            <p class="p-large">Empowering Communities, Igniting Careers: ProWESS - Where Education Leads to Opportunity</p>
-                            <a class="btn-solid-lg page-scroll" href="signup">Sign Up</a>
+                            <p class="p-large">A scholarship  registry, monitoring dashboard and job matching prediction system for the Province of Davao del Sur.</p>
+                            <a class="btn-solid-lg page-scroll" href="signup">Apply Now</a>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="image-container">
-                            <img class="img-fluid" src="landing/images/header-teamwork.svg" alt="alternative">
+                        <div class="image-container" >
+                            <img class="img-fluid" src="landing/images/prowess-landing.png" alt="alternative">
                         </div>
                     </div>
                 </div>
@@ -57,12 +54,12 @@
                                             alt="alternative">
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
+                                 <div class="swiper-slide">
                                     <div class="image-container">
-                                        <img class="img-responsive imgsliderlogo" src="landing/images/placeholder.png"
+                                        <img class="img-responsive imgsliderlogo" src="landing/images/ProWESS_Icon.png"
                                             alt="alternative">
                                     </div>
-                                </div>
+                                </div> 
                             </div> <!-- end of swiper-wrapper -->
                         </div> <!-- end of swiper container -->
                     </div> <!-- end of slider-container -->
@@ -81,9 +78,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2>About <span class="turquoise">PROWESS</span></h2>
-                    <p class="p-heading p-large">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis
-                        similique quae possimus nam sit esse sapiente veritatis, animi hic vitae iure numquam
-                        perspiciatis beatae repellendus, facere tempore nisi aperiam excepturi?</p>
+                    <p class="p-heading p-large">What are the key features of the PROWESS project?</p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -91,33 +86,30 @@
 
                     <!-- Card -->
                     <div class="card">
-                        <img class="card-image" src="landing/images/services-icon-1.svg" alt="alternative">
+                        <img class="card-image" src="landing/images/prowess-onprocess.png" alt="alternative">
                         <div class="card-body">
-                            <h4 class="card-title">Market Analysis</h4>
-                            <p>Our team of enthusiastic marketers will analyse and evaluate how your company stacks
-                                against the closest competitors</p>
+                            <h4 class="card-title">Online Application</h4>
+                            <p>This feature allows users to submit scholarship application, attach document requirements, monitor application status, and update information. This feature simplifies and accelerates the application process, scholarship renewal, or job postings, and enhancing user convenience and efficiency.</p>
                         </div>
                     </div>
                     <!-- end of card -->
 
                     <!-- Card -->
                     <div class="card">
-                        <img class="card-image" src="landing/images/services-icon-2.svg" alt="alternative">
+                        <img class="card-image" src="landing/images/prowess-analytics.png" alt="alternative">
                         <div class="card-body">
-                            <h4 class="card-title">Opportunity Scan</h4>
-                            <p>Once the market analysis process is completed our staff will search for opportunities
-                                that are in reach</p>
+                            <h4 class="card-title">Data Analytics</h4>
+                            <p>Data analytics for student scholars entails the systematic use of data to improve data visualization of scholars and decision-making. It includes actions such as collecting and evaluating academic data, finding trends, and making informed decisions to meet the needs of every party.</p>
                         </div>
                     </div>
                     <!-- end of card -->
 
                     <!-- Card -->
                     <div class="card">
-                        <img class="card-image" src="landing/images/services-icon-3.svg" alt="alternative">
+                        <img class="card-image" src="landing/images/prowess-skills.png" alt="alternative">
                         <div class="card-body">
-                            <h4 class="card-title">Action Plan</h4>
-                            <p>With all the information in place you will be presented with an action plan that your
-                                company needs to follow</p>
+                            <h4 class="card-title">Skills Matching</h4>
+                            <p>This feature compares individual's skills, qualifications, or preferences with available opportunities set by the industry. It helps users find the most suitable matches, streamlining the process of connecting individuals with opportunities that align with their abilities and capabilities.</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -128,68 +120,87 @@
     </div> <!-- end of cards-1 -->
     <!-- end of services -->
 
-
+    
     <!-- Details 1 -->
     <div class="basic-1" id="features">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h2 style="text-align: center">Features</h2>
-
                 </div>
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>Design And Plan Your Business Growth Steps</h2>
-                        <p>Use our staff and our expertise to design and plan your business growth strategy. Evolo team
-                            is eager to advise you on the best opportunities that you should look into</p>
-                        <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">LIGHTBOX</a>
-                    </div> <!-- end of text-container -->
+                        <h2>Online Scholarship Application</h2>
+                        <p>Implementing an online scholarship application feature involves creating a digital platform where students can easily apply for scholarships.</p>
+                        <!--<a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">LIGHTBOX</a> -->
+                        <ul class="checklist">
+                            <i class="fas fa-check" style="color: #ff9c00;"></i> <strong>Accessibility:</strong> Online systems make it easy for applicants to access scholarship information and submit applications from anywhere with internet access.<br>
+                            <i class="fas fa-check" style="color: #ff9c00;"></i> <strong>Efficiency and Time Savings:</strong> Automation of application submission, document uploads, and communication accelerates the entire application process, saving time for both applicants and administrators.<br>
+                            <i class="fas fa-check" style="color: #ff9c00;"></i> <strong>Scalability:</strong> Online systems can efficiently handle a large volume of scholarship applications, making them suitable for both small and large-scale scholarship programs.
+                        </ul>
+                    </div> <!-- end of text-container -->      
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
                     <div class="image-container">
                         <img class="img-fluid" src="landing/images/details-1-office-worker.svg" alt="alternative">
-                    </div> <!-- end of image-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-1 -->
+                    </div><!-- end of image-container -->
+               </div> <!--  end of col -->
+            </div> <!--  end of row -->
+        </div> <!--  end of container -->
+    </div> <!--  end of basic-1 -->
     <!-- end of details 1 -->
-
-
+  
     <!-- Details 2 -->
     <div class="basic-2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="image-container">
+                    <div class="image-container">   
                         <img class="img-fluid" src="landing/images/details-2-office-team-work.svg" alt="alternative">
                     </div> <!-- end of image-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>Search For Optimization Wherever Is Possible</h2>
-                        <ul class="list-unstyled li-space-lg">
-                            <li class="media">
-                                <i class="fas fa-check"></i>
-                                <div class="media-body">Basically we'll teach you step by step what you need to do
-                                </div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-check"></i>
-                                <div class="media-body">In order to develop your company and reach new heights</div>
-                            </li>
-                            <li class="media">
-                                <i class="fas fa-check"></i>
-                                <div class="media-body">Everyone will be pleased from stakeholders to employees</div>
-                            </li>
+                        <h2>Data Analytics</h2>
+                        <p>Implementing data analytics features for online scholarship renewal can greatly enhance the efficiency, transparency, and decision-making processes.</p>
+                        <ul class="checklist">
+                            <i class="fas fa-check" style="color: #ff9c00;"></i> <strong>Performance Analytics:</strong> Provide insights into the correlation between academic performance and the likelihood of scholarship renewal.<br>
+                            <i class="fas fa-check" style="color: #ff9c00;"></i> <strong>Real-time Reporting:</strong>Generate real-time reports for administrators, highlighting key metrics such as the number of applications received, processed, and approved.<br>
+                            <i class="fas fa-check" style="color: #ff9c00;"></i> <strong>Feedback Mechanism:</strong> Collect feedback from both applicants and administrators to continually improve the scholarship renewal process.
                         </ul>
-                        <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-2">LIGHTBOX</a>
+                        <!--<a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-2">LIGHTBOX</a>-->
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     </div> <!-- end of basic-2 -->
     <!-- end of details 2 -->
+
+    <!-- Details 3 -->
+    <div class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-container">
+                        <h2>Skills Matching</h2>
+                        <p>Skills matching to the industry involves incorporating features that assess applicants' skills and align them with the requirements of the specific industry for future job opportunity.</p>
+                        <!--<a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox-1">LIGHTBOX</a> -->
+                        <ul class="checklist">
+                            <i class="fas fa-check" style="color: #ff9c00;"></i> <strong>Skill Assessment Module:</strong> Implement a module where applicants can input their skills, both technical and soft skills.<br>
+                            <i class="fas fa-check" style="color: #ff9c00;"></i> <strong>Automated Skill Matching Algorithm:</strong>Implement an algorithm that matches the skills provided by applicants with the skills required in the industry.<br>
+                            <i class="fas fa-check" style="color: #ff9c00;"></i> <strong>Feedback Loop for Employers:</strong> Establish a feedback loop where employers can provide insights into the skills they find most valuable.
+                        </ul>
+                    </div> <!-- end of text-container -->      
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                    <div class="image-container">
+                        <img class="img-fluid" src="landing/images/details-1-office-worker.svg" alt="alternative">
+                    </div><!-- end of image-container -->
+               </div> <!--  end of col -->
+            </div> <!--  end of row -->
+        </div> <!--  end of container -->
+    </div> <!--  end of basic-1 -->
+    <!-- end of details 3 -->
 
     <!-- Details Lightboxes -->
     <!-- Details Lightbox 1 -->
@@ -306,23 +317,22 @@
             </div> <!-- end of row -->
             <div class="row">
                 <div class="col-lg-12">
-
+                    
                     <!-- Video Preview -->
-                    <div class="image-containera">
+                    <div class="image-container">
                         <div class="video-wrapper">
-                            <a class="popup-youtube" href="https://www.youtube.com/watch?v=fLCjQJCekTs"
+                        <a class="popup-youtube" href="https://www.youtube.com/watch?v=Pav8OsWeDdc&autoplay=1"
                                 data-effect="fadeIn">
-                                <img class="img-fluid" src="landing/images/video-frame.svg" alt="alternative">
+                                <img class="img-fluid" src="landing/images/vid-thumbnail.png" alt="alternative">
                                 <span class="video-play-button">
                                     <span></span>
                                 </span>
-                            </a>
-                        </div> <!-- end of video-wrapper -->
-                    </div> <!-- end of image-container -->
-                    <!-- end of video preview -->
+                        </a>
+                        </div>  <!--end of video-wrapper--> 
+                    </div>  <!--end of image-container--> 
+                     <!--end of video preview -->
 
-                    <p>This video will show you a case study for one of our <strong>Major Customers</strong> and will
-                        help you understand why your startup needs Evolo in this highly competitive market</p>
+                    <p>This video will show you the sample demonstration on how the student can register profile through <strong>PROWESS Website</strong>.</p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
@@ -340,17 +350,18 @@
                         will help you research new products and launch them in new emerging markets</p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
+           
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="padding-left: 150px; padding-right: 150px;">
 
                     <!-- Team Member -->
                     <div class="team-member">
                         <div class="image-wrapper">
-                            <img class="img-fluid" src="landing/images/team-member-1.svg" alt="alternative">
+                            <img class="img-fluid" src="landing/images/jvm.jpg"  alt="alternative">
                         </div> <!-- end of image-wrapper -->
-                        <p class="p-large"><strong>Lacy Whitelong</strong></p>
-                        <p class="job-title">Business Developer</p>
-                        <span class="social-icons">
+                        <p class="p-large"><strong>Dr. John Vianne B. Murcia</strong></p>
+                        <p class="job-title">Project Leader</p>
+                        <!--<span class="social-icons">
                             <span class="fa-stack">
                                 <a href="#your-link">
                                     <i class="fas fa-circle fa-stack-2x facebook"></i>
@@ -363,79 +374,47 @@
                                     <i class="fab fa-twitter fa-stack-1x"></i>
                                 </a>
                             </span>
-                        </span> <!-- end of social-icons -->
+                        </span>  end of social-icons -->
+                    </div> <!-- end of team-member -->
+                    <!-- end of team member -->
+
+                     <!-- Team Member -->
+                     <div class="team-member">
+                        <div class="image-wrapper">
+                            <img class="img-fluid" src="landing/images/elp.jpg" alt="alternative">
+                        </div> <!-- end of image wrapper -->
+                        <p class="p-large"><strong>Eduard L. Pulvera, MSIS</strong></p>
+                        <p class="job-title">Project Staff</p>
                     </div> <!-- end of team-member -->
                     <!-- end of team member -->
 
                     <!-- Team Member -->
                     <div class="team-member">
                         <div class="image-wrapper">
-                            <img class="img-fluid" src="landing/images/team-member-2.svg" alt="alternative">
+                            <img class="img-fluid" src="landing/images/jmd.jpg" alt="alternative">
                         </div> <!-- end of image wrapper -->
-                        <p class="p-large"><strong>Chris Brown</strong></p>
-                        <p class="job-title">Online Marketer</p>
-                        <span class="social-icons">
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x facebook"></i>
-                                    <i class="fab fa-facebook-f fa-stack-1x"></i>
-                                </a>
-                            </span>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x twitter"></i>
-                                    <i class="fab fa-twitter fa-stack-1x"></i>
-                                </a>
-                            </span>
-                        </span> <!-- end of social-icons -->
+                        <p class="p-large"><strong>Joan Mae B. Delima, MIT</strong></p>
+                        <p class="job-title">Project Staff</p>
                     </div> <!-- end of team-member -->
                     <!-- end of team member -->
 
                     <!-- Team Member -->
                     <div class="team-member">
                         <div class="image-wrapper">
-                            <img class="img-fluid" src="landing/images/team-member-3.svg" alt="alternative">
+                            <img class="img-fluid" src="landing/images/cbp.jpg" alt="alternative">
                         </div> <!-- end of image wrapper -->
-                        <p class="p-large"><strong>Sheila Zimerman</strong></p>
-                        <p class="job-title">Software Engineer</p>
-                        <span class="social-icons">
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x facebook"></i>
-                                    <i class="fab fa-facebook-f fa-stack-1x"></i>
-                                </a>
-                            </span>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x twitter"></i>
-                                    <i class="fab fa-twitter fa-stack-1x"></i>
-                                </a>
-                            </span>
-                        </span> <!-- end of social-icons -->
+                        <p class="p-large"><strong>Conrado B. Panerio, Jr., MAT</strong></p>
+                        <p class="job-title">Project Staff</p>
                     </div> <!-- end of team-member -->
                     <!-- end of team member -->
 
                     <!-- Team Member -->
                     <div class="team-member">
                         <div class="image-wrapper">
-                            <img class="img-fluid" src="landing/images/team-member-4.svg" alt="alternative">
+                            <img class="img-fluid" src="landing/images/jrm.jpg" alt="alternative">
                         </div> <!-- end of image wrapper -->
-                        <p class="p-large"><strong>Mary Villalonga</strong></p>
-                        <p class="job-title">Product Manager</p>
-                        <span class="social-icons">
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x facebook"></i>
-                                    <i class="fab fa-facebook-f fa-stack-1x"></i>
-                                </a>
-                            </span>
-                            <span class="fa-stack">
-                                <a href="#your-link">
-                                    <i class="fas fa-circle fa-stack-2x twitter"></i>
-                                    <i class="fab fa-twitter fa-stack-1x"></i>
-                                </a>
-                            </span>
-                        </span> <!-- end of social-icons -->
+                        <p class="p-large"><strong>John Raven V. Manulat, MIT</strong></p>
+                        <p class="job-title">Project Staff</p>
                     </div> <!-- end of team-member -->
                     <!-- end of team member -->
 

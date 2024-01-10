@@ -29413,10 +29413,15 @@ a.bg-vimeo:focus {
 .scholarID{
   width: 80%;
   height:auto;
+  float: right!important;
 }
 .custom-img{
   height: 10px;
 }
 .continformation{
   padding-top: 20px;
+}
+
+.text_custom2{
+  font-size: 12px!important;
 }
