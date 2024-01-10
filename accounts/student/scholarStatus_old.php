@@ -208,9 +208,10 @@
                                 <h6 class="mb-0">Verification of Scholar</h6>
                                 <span class="text-muted"></span>
                               </div>
-                              <p class="text-muted mb-0">Verified by Scholarship Coordinator</p>
+                              <p class="text-muted mb-0">Verified by Scholarship Coordinator. After verification, you may now download/print your Bio Data</p>
                             </div>
                           </li>
+                          
 
                         </ul>
                       </div>

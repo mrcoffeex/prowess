@@ -18,7 +18,7 @@
 		} else {
 
             $request = createAnn($annType, $annExpire, $annImage, $annTitle, $annContent, $userId);
-
+            //$sendEmailofAnnouncement=($emailTo, $emailSubject, $emailBodyTitle, $emailBodyMessage, $autoload);
             if ($request == true) {
                 header("location: announcementCreate?note=added");
             } else {

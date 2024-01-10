@@ -16,6 +16,10 @@
         margin-bottom: 0.2cm;
       }
     }
+
+    .textcust2{
+      font-size:8px!important;
+    }
   </style>
   <body class="reportCard">
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -32,13 +36,13 @@
         
   
 
-      <table class="tables text-custom">
+      <table class="tables text-custom textcust2">
         <tr>
-          <th>Scholar Code</th>
-          <th>Fullname</th>
-          <th>School ID</th>
-          <th>School</th>
-          <th>Course</th>
+          <th style="width: 10%;">Scholar Code</th>
+          <th style="width: 25%;">Fullname</th>
+          <th style="width: 10%;">School ID</th>
+          <th style="width: 20%;">School Name</th>
+          <th style="width: 35%;">Course</th>
         </tr>
         <tbody>
             <?php 
