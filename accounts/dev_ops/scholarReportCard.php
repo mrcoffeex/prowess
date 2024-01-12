@@ -22,6 +22,12 @@
         margin-right: 1.5cm;
         margin-top: 0.2cm;
         margin-bottom: 0.2cm;
+
+         /* Set the watermark background image */
+        background-image: url('../../assets/img/favicon/favicon.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
       }
     }
   </style>

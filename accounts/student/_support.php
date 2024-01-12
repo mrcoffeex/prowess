@@ -137,8 +137,9 @@ include "_head.php";
                             <div class="col-md-12">
                                 <div class="card mb-4">
                                     <h5 class="card-header">Submit a Ticket</h5>
+                                    <!-- <small class="accordion-body text-muted">You may raise your concern, feedback by submitting a ticket and we will give a response before 24 hours end</small> -->
                                     <div class="card-body demo-vertical-spacing demo-only-element">
-                                        <form action="" method="POST" enctype="multipart/form-data">
+                                        <form action="studentTicket" method="POST" enctype="multipart/form-data">
                                             <div class="form-floating form-floating-outline mb-4">
                                                 <input type="text" class="form-control" id="ticketSubject" name="ticketSubject" placeholder="Request Subject" />
                                                 <label for="ticketSubject">Subject</label>

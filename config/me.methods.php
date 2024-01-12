@@ -1211,4 +1211,32 @@
 
         return $res['prow_user_picture'];
     }
+
+    function addStudentTicket($scholarCode,$ticketSubject,$ticketDescription,$ticketAttachment){
+
+        $statement=PWD()->prepare("INSERT INTO prow_student_ticket(
+                    prow_scholar_code,
+                    prow_ticket_subject,
+                    prow_ticket_desc,
+                    prow_ticket_attachements) 
+                    Values(
+                        :prow_scholar_code,
+                        :prow_ticket_subject,
+                        :prow_ticket_desc,
+                        :prow_ticket_attachements,
+                        NOW() )");
+        $statement->execute([
+            'prow_scholar_code' => $scholarCode,
+            'prow_ticket_subject' => $ticketSubject,
+            'prow_ticket_desc' => $ticketDescription,
+            'prow_ticket_attachements' => $ticketAttachment
+        ]);
+
+        if ($statement) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 ?>

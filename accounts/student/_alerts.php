@@ -150,5 +150,22 @@
 
         }
 
+        //ticket_student
+        
+        if ($currpage == "_support") {
+        
+            if ($note == "uploaded") {
+                echo "
+                    <script>
+                        toastr.success('Feedback has been submitted');
+                    </script>
+                ";
+            } else {
+                echo "";
+            }
+
+        }
+
+
     }
 ?>

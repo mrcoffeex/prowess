@@ -25,6 +25,7 @@
         margin-bottom: 0.2cm;
       }
     }
+
   </style>
   <body class="reportCard">
     <div class="container-xxl flex-grow-1 container-p-y">
