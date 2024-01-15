@@ -2210,7 +2210,7 @@
     }
 
     //ANNOUNCEMENTS
-    function selectAnnouncements(){
+    function selectAnnouncementsnews(){
 
         $statement=PWD()->prepare("SELECT
                                         *
@@ -2223,6 +2223,25 @@
                                         ");
         $statement->execute([
             'prow_ann_type' => "news"
+        ]);
+
+        return $statement;
+
+    }
+
+    function selectAnnouncementsActivities(){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_announcements
+                                        WHERE
+                                        prow_ann_type = :prow_ann_type
+                                        AND
+                                        prow_ann_expire >= CURDATE()
+                                        ");
+        $statement->execute([
+            'prow_ann_type' => "activity"
         ]);
 
         return $statement;

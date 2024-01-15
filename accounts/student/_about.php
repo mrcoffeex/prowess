@@ -23,7 +23,7 @@ include "_head.php";
                                     </div>
                                     <div class="col-md-8 ms-1">
                                         <h3 class="card-title mt-5 ">
-                                            What is PROWESS
+                                            What is PROWESS?
                                         </h3>
                                         <p class="card-text">
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus odio quasi quo ipsam similique repellat dignissimos neque delectus molestias doloremque. Quae quidem consequuntur et odio aperiam possimus deleniti, temporibus at.
@@ -64,7 +64,7 @@ include "_head.php";
                                                 </div>
                                                 <div class="card-info">
                                                     <div class="d-flex align-items-center">
-                                                        <h5 class="mb-0">+639820173819</h5>
+                                                        <h5 class="mb-0">+639282657552</h5>
                                                         <!-- {{-- <i class="mdi mdi-chevron-down text-danger mdi-24px"></i> --}} -->
                                                     </div>
                                                     <small class="text-muted">Mobile Number</small>
@@ -84,7 +84,7 @@ include "_head.php";
                                                 </div>
                                                 <div class="card-info">
                                                     <div class="d-flex align-items-center">
-                                                        <h5 class="mb-0">prowess@gmail.com</h5>
+                                                        <h5 class="mb-0">prowess@umindanao.edu.ph</h5>
                                                         <!-- {{-- <i class="mdi mdi-chevron-down text-danger mdi-24px"></i> --}} -->
                                                     </div>
                                                     <small class="text-muted">Email</small>

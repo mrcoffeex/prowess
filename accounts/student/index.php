@@ -67,7 +67,7 @@
                       <div class="row mb-5">
                           <?php  
                               //get announcements
-                              $getAnnouncement=selectAnnouncements();
+                              $getAnnouncement=selectAnnouncementsnews();
                               while ($ann=$getAnnouncement->fetch(PDO::FETCH_ASSOC)) {
                                 $btnId = "thumbsUp_" . $ann['prow_ann_id'];
                                 $annId = $ann['prow_ann_id'];
@@ -139,7 +139,7 @@
                       <div class="row mb-5">
                           <?php  
                               //get announcements
-                              $getAnnouncement=selectAnnouncements();
+                              $getAnnouncement=selectAnnouncementsActivities();
                               while ($ann=$getAnnouncement->fetch(PDO::FETCH_ASSOC)) {
                                 $btnId = "thumbsUp_" . $ann['prow_ann_id'];
                                 $annId = $ann['prow_ann_id'];
