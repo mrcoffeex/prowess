@@ -1212,23 +1212,24 @@
         return $res['prow_user_picture'];
     }
 
-    function addStudentTicket($scholarCode,$ticketSubject,$ticketDescription,$ticketAttachment){
+    function addStudentTicket($scholarCode,$ticketSubject,$ticket_Descript,$ticketAttachment){
 
         $statement=PWD()->prepare("INSERT INTO prow_student_ticket(
                     prow_scholar_code,
                     prow_ticket_subject,
                     prow_ticket_desc,
-                    prow_ticket_attachements) 
+                    prow_ticket_attachements,
+                    prow_ticket_created) 
                     Values(
                         :prow_scholar_code,
                         :prow_ticket_subject,
                         :prow_ticket_desc,
                         :prow_ticket_attachements,
-                        NOW() )");
+                        NOW())");
         $statement->execute([
             'prow_scholar_code' => $scholarCode,
             'prow_ticket_subject' => $ticketSubject,
-            'prow_ticket_desc' => $ticketDescription,
+            'prow_ticket_desc' => $ticket_Descript,
             'prow_ticket_attachements' => $ticketAttachment
         ]);
 

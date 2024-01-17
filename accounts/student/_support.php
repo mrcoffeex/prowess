@@ -1,7 +1,7 @@
 <?php
-require '../../config/includes.php';
-require '_session.php';
-include "_head.php";
+    require '../../config/includes.php';
+    require '_session.php';
+    include "_head.php";
 ?>
 
 <body>
@@ -32,7 +32,7 @@ include "_head.php";
                                                 </div>
                                                 <div class="card-info">
                                                     <div class="d-flex align-items-center">
-                                                        <h5 class="mb-0">+639820173819</h5>
+                                                        <h5 class="mb-0">+639282657552</h5>
                                                         <!-- {{-- <i class="mdi mdi-chevron-down text-danger mdi-24px"></i> --}} -->
                                                     </div>
                                                     <small class="text-muted">Mobile Number</small>
@@ -41,7 +41,7 @@ include "_head.php";
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-3 mb-2">
+                                <div class="col-12 col-sm-4 mb-2">
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center flex-wrap gap-2">
@@ -52,7 +52,7 @@ include "_head.php";
                                                 </div>
                                                 <div class="card-info">
                                                     <div class="d-flex align-items-center">
-                                                        <h5 class="mb-0">prowess@gmail.com</h5>
+                                                        <h5 class="mb-0">prowess@umindanao.edu.ph</h5>
                                                         <!-- {{-- <i class="mdi mdi-chevron-down text-danger mdi-24px"></i> --}} -->
                                                     </div>
                                                     <small class="text-muted">Email</small>
@@ -99,7 +99,7 @@ include "_head.php";
 
                                         <div id="accordionOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta hic magni adipisci blanditiis, dolorem cupiditate ut! Animi amet illum, vel voluptatem sapiente voluptate vero enim pariatur non facere nobis consectetur?
+                                            To apply for a scholarship using the PROWESS system, start by creating an account on the website. Follow the application steps and ensure all required information and documents are provided for a smooth process. Complete documentation is crucial to avoid delays in the approval of your scholarship application. Sign up, follow the steps, and submit a comprehensive application to maximize your chances of success.
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@ include "_head.php";
                                         </h2>
                                         <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum laudantium a dolore deleniti, repellendus est, non distinctio, aut molestias aperiam eius id! Eligendi quas a quisquam mollitia quasi, ullam dicta.
+                                            To renew your scholarship, scholars will receive notifications through the app and email, indicating the start of the renewal process. Updating your profile is crucial, including personal information, skills, and grades, along with providing a screenshot of your proof of grades. The school will then review and authenticate your records. Upon verification, the scholarship coordinator will give final approval, ensuring the renewal process is complete and your scholarship is continued.
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@ include "_head.php";
                                         </h2>
                                         <div id="accordionThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit excepturi ut earum distinctio, natus rerum nulla est iste voluptates placeat. Eos tenetur cupiditate omnis quas in rerum ad qui vitae.
+                                            Once your scholarship application has been approved, you'll receive a confirmation email notifying you of the successful outcome. Additionally, check your student profile on the institution's portal for updated scholarship status. A key indicator of approval is the disabling of the "Update Application" button, signaling that your application is in its final stages. Official communication from the scholarship coordinator or office may provide more details about your award, duration, and any specific requirements. If you're eager for updates, contacting the scholarship office directly can offer the most accurate information. Stay patient, and congratulations on your potential scholarship  
                                             </div>
                                         </div>
                                     </div>
@@ -142,17 +142,17 @@ include "_head.php";
                                         <form action="studentTicket" method="POST" enctype="multipart/form-data">
                                             <div class="form-floating form-floating-outline mb-4">
                                                 <input type="text" class="form-control" id="ticketSubject" name="ticketSubject" placeholder="Request Subject" />
-                                                <label for="ticketSubject">Subject</label>
+                                                <label for="ticketSubject">What is your concern?</label>
                                             </div>
                                             <div class="form-floating form-floating-outline mb-4">
-                                                <textarea class="form-control h-px-100" id="ticketDescription" name="ticketDescription" placeholder="Comments here..."></textarea>
-                                                <label for="ticketDescription">Description</label>
+                                                <textarea class="form-control h-px-100" id="ticket_Descript" name="ticket_Descript" placeholder="Comments here..."></textarea>
+                                                <label for="ticket_Descript">Add description of your concern</label>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="ticketAttachment" class="form-label">Attachements</label>
-                                                <input class="form-control" type="file" id="ticketAttachment" name="ticketAttachment" />
+                                                <label for="ticketAttachment" class="form-label">Add Screenshot of your concern</label>
+                                                <input class="form-control" type="file" id="ticketAttachment" name="ticketAttachment" accept="image/png, image/jpeg"/>
                                             </div>
-                                            <button type="submit" class="btn btn-primary me-sm-3 me-1">Submit Ticket</button>
+                                            <button id="btn_ticket" name="btn_ticket" type="submit" class="btn btn-primary me-sm-3 me-1">Submit Ticket</button>
                                         </form>
                                     </div>
                                 </div>

@@ -48,6 +48,8 @@
             $multiStepsProvince, 
             $multiStepsZipCode
         );
+
+        // $request2=notifSignup();
     
         if ($request == true) {
             echo "success";

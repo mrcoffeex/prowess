@@ -2248,6 +2248,25 @@
 
     }
 
+    function selectAnnouncementsMeetings(){
+
+        $statement=PWD()->prepare("SELECT
+                                        *
+                                        FROM
+                                        prow_announcements
+                                        WHERE
+                                        prow_ann_type = :prow_ann_type
+                                        AND
+                                        prow_ann_expire >= CURDATE()
+                                        ");
+        $statement->execute([
+            'prow_ann_type' => "meeting"
+        ]);
+
+        return $statement;
+
+    }
+
     function checkScholarDuplicate($lname, $fname, $mname, $bday, $gender, $cs, $email){
 
         $stmt=PWD()->prepare("SELECT prow_scholar_id

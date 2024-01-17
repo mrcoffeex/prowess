@@ -2,27 +2,27 @@
     require '../../config/includes.php';
     require '_session.php';
 
-    if (isset($_POST['ticketSubject'])) {
+    if (isset($_POST['btn_ticket'])) {
         $ticketSubject =clean_string ($_POST['ticketSubject']);
-        $ticketDescription = clean_float ($_POST['ticketDescription']);
+        $ticket_Descript = $_POST['ticket_Descript'];
         $ticketAttachment = imageUpload("ticketAttachment", "../../imagebank/");
         
         $request1 = addStudentTicket(
-            $scholarCode, 
+            $scholarCode,
             $ticketSubject,
-            ticketDescription,
+            $ticket_Descript,
             $ticketAttachment
         );
 
         if ($request1 == true) {
             header("location: _support?note=updated");
         } else {
-            echo "location: _support?note=error";
+            echo "error";
         }
     
         
     } else {
-        # code...
+        echo "error not accessible";
     }
     
 

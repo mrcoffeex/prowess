@@ -26,7 +26,7 @@ include "_head.php";
                                             What is PROWESS?
                                         </h3>
                                         <p class="card-text">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus odio quasi quo ipsam similique repellat dignissimos neque delectus molestias doloremque. Quae quidem consequuntur et odio aperiam possimus deleniti, temporibus at.
+                                        Welcome to the Scholarship Registry, Monitoring Dashboard, and Job Matching Prediction System designed exclusively for the Province of Davao del Sur. Our online platform revolutionizes the scholarship application process, making it seamless for users to apply, track their application status, and update information. The system not only expedites scholarship renewals but also facilitates job postings, ensuring user convenience and efficiency. Our commitment extends to data analytics, employing a systematic approach to enhance decision-making by evaluating academic data and identifying trends among student scholars. Moreover, our Skills Matching feature empowers individuals by aligning their skills, qualifications, and preferences with industry opportunities, streamlining the connection between talent and potential pathways. Join us in transforming education and career opportunities in Davao del Sur!
                                         </p>
                                     </div>
                                 </div>
@@ -39,7 +39,8 @@ include "_head.php";
                                             The GODDESS Project Team
                                         </h3>
                                         <p class="card-text">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus odio quasi quo ipsam similique repellat dignissimos neque delectus molestias doloremque. Quae quidem consequuntur et odio aperiam possimus deleniti, temporibus at.
+                                        Meet the team behind PROWESS! Our team is composed of skilled and dedicated individuals who have worked together to create PROWESS Online Scholarship System
+A scholarship registry, monitoring dashboard and job matching prediction system for the Province of Davao del Sur.
                                         </p>
                                     </div>
                                     <div class="col-md-3">
@@ -73,7 +74,7 @@ include "_head.php";
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-3 mb-2">
+                                <div class="col-12 col-sm-4 mb-2">
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center flex-wrap gap-2">
