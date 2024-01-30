@@ -32,7 +32,7 @@
               <!--/ Style Switcher -->
 
               <!-- Notification -->
-              <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-2 me-xl-1">
+              <!-- <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-2 me-xl-1">
                 <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow"
                   href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                   aria-expanded="false">
@@ -76,7 +76,7 @@
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> -->
               <!--/ Notification -->
 
               <!-- User -->

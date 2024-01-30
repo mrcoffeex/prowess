@@ -41,6 +41,12 @@
         <div data-i18n="View Requirements">View Requirements</div>
       </a>
     </li>
+    <li class="menu-item">
+      <a href="appLogs" class="menu-link">
+        <i class="menu-icon tf-icons mdi mdi-list-box-outline"></i>
+        <div data-i18n="Application Logs">Application Logs</div>
+      </a>
+    </li>
     
     <!-- <li class="menu-item">
       <a href="#" class="menu-link">
