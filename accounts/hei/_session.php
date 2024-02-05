@@ -31,6 +31,8 @@
     $userUsername = $row['prow_user_uname'];
     $userId = $row['prow_user_id'];
     $userType = $row['prow_user_type'];
+    $heiCode = $row['prow_hei_code'];
+    $heiId = getHeiId($heiCode);
 
     //usertype
     if ($userType==0){

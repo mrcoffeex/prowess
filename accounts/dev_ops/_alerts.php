@@ -45,6 +45,22 @@
 
         }
 
+        //hei_information
+        
+        if ($currpage == "hei_information") {
+        
+            if ($note == "added") {
+                echo "
+                    <script>
+                        toastr.success('HEI added');
+                    </script>
+                ";
+            } else {
+                echo "";
+            }
+
+        }
+
         // hei_subjects
         
         if ($currpage == "hei_subjects") {

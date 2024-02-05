@@ -248,7 +248,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
+                    <a class="dropdown-item" href="logout">
                       <i class="mdi mdi-logout me-2"></i>
                       <span class="align-middle">Log Out</span>
                     </a>

@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="ms-3">
                                 <div class="d-flex align-items-center">
-                                    <h5 class="mb-0"><?= countScholarPending("") ?></h5>
+                                    <h5 class="mb-0"><?= countScholarAppLogPending("") ?></h5>
                                 </div>
                                 <small class="text-muted">Pending Scholars</small>
                                 </div>

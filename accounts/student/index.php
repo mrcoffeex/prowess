@@ -132,7 +132,7 @@
 
               <div class="col-12 col-lg-13 col-xl-12 mb-4">
                 <div class="card h-100">
-                  <img src="../../assets//img/elements/activity-timeline.png" alt="timeline-image" class="card-img-top h-px-200" style="object-fit: cover" />
+                  <img src="../../assets//img/pages/5.png" alt="timeline-image" class="card-img-top h-px-200" style="object-fit: cover" />
                   <div class="card-body">
                     <h3 class="mb-4">Announcement - Activities</h3>
                     <ul class="timeline card-timeline mb-0">

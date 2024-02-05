@@ -155,7 +155,7 @@
         $userCode = date('YmdHis') . randStrInt(10);
         $scholarCode = date('Y') . randStrInt(6);
 
-        $createUser = createUser($userCode, $scholarCode, $fullname, $uname, $pword);
+        $createUser = createUser($userCode, $scholarCode, 0, 0, $fullname, $uname, $pword, 4, 0);
         $createScholar = createScholarProfile($scholarCode, $lname, $fname, $mname, $suffix, $gender, $cs, $birthday, $birthplace, $contact, $email);
         $createScholarAddress = createScholarAddress($scholarCode, $addressDescription, $barangay, $municipality, $province, $zipcode, 0, 0);
 
@@ -2014,11 +2014,12 @@
         $stmt->execute([
             'prow_scholar_code' => $scholarCode
         ]);
+
         $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
         return $res['prow_account_type'];
-
-
     }
+
     function selectScholarGradesBySySem($scholarCode, $sy, $sem){
 
         $stmt=PWD()->prepare("SELECT

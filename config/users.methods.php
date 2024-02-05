@@ -1,16 +1,19 @@
 <?php  
 
-    function createUser($userCode, $scholarCode, $fullname, $uname, $pword){
+    function createUser($userCode, $scholarCode, $heiCode, $industryCode, $fullname, $uname, $pword, $userType, $verify){
 
         $stmt=PWD()->prepare("INSERT INTO prow_users
                             (
                                 prow_user_code, 
                                 prow_scholar_code, 
+                                prow_hei_code, 
+                                prow_industry_code, 
                                 prow_user_fullname, 
                                 prow_user_uname, 
                                 prow_user_pword,
                                 prow_user_type, 
                                 prow_user_status,
+                                prow_user_verify,
                                 prow_user_created, 
                                 prow_user_updated
                             ) 
@@ -18,22 +21,28 @@
                             (
                                 :prow_user_code, 
                                 :prow_scholar_code, 
+                                :prow_hei_code, 
+                                :prow_industry_code, 
                                 :prow_user_fullname, 
                                 :prow_user_uname, 
                                 :prow_user_pword,
                                 :prow_user_type, 
                                 :prow_user_status,
+                                :prow_user_verify,
                                 NOW(), 
                                 NOW()
                             )");
         $stmt->execute([
             'prow_user_code' => $userCode, 
             'prow_scholar_code' => $scholarCode, 
+            'prow_hei_code' => $heiCode, 
+            'prow_industry_code' => $industryCode, 
             'prow_user_fullname' => $fullname, 
             'prow_user_uname' => $uname, 
             'prow_user_pword' => $pword,
-            'prow_user_type' => 4, 
-            'prow_user_status' => 0
+            'prow_user_type' => $userType, 
+            'prow_user_status' => 0,
+            'prow_user_verify' => $verify
         ]);
 
         if ($stmt) {

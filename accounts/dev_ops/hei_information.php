@@ -247,7 +247,8 @@
       window.Helpers.initCustomOptionCheck();
     </script>
  
-    <?php include "_scripts.php";?>
+    <?php include "_scripts.php"; ?>
+    <?php include "_alerts.php"; ?>
   
     <script src="../../assets/js/ui-modals.js"></script>
     <script src="../../js/signUp.js"></script>

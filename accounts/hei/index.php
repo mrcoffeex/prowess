@@ -35,11 +35,11 @@
                   <div class="d-flex align-items-end row">
                     <div class="col-md-8 order-2 order-md-1">
                       <div class="card-body">
-                        <h4 class="card-title mb-0" id="userName" name="userName">Welcome <strong>HEI Name</strong></h4>
-                        <p class="mb-3">Contact Person Name</p>
+                        <h4 class="card-title mb-0" id="userName" name="userName">Welcome <strong><?= $userFullname ?></strong></h4>
+                        <p class="mb-4"><?= getHeiContactPerson($heiCode) ?></p>
                         <p class="mb-0">Welcome to Prowess your</p>
                         <p>online scholarship management system.</p>
-                        <a href="javascript:;" class="btn btn-primary">View Profile</a>
+                        <a href="heiProfile" class="btn btn-primary">View Profile</a>
                       </div>
                     </div>
                     <div class="col-md-4 text-center text-md-end order-1 order-md-2">
@@ -51,22 +51,26 @@
                   </div>
                 </div>
               </div>
-              <div class="row mt-2 md-0">
+              <div class="row mt-4 md-0">
                 <div class="col-md-7">
                   <form action="">
                     <div class="row">
                       <div class="col-sm-6 col-md-3">
-                        <p class="mb-0">Semester</p>
-                        <select name="optionSemester" id="optionSemester" class="mb-0 form-select form-select-sm">
-                          <option value="1">1st Semester</option>
-                          <option value="2">2nd Semester</option>
-                        </select>
+                        <div class="form-group">
+                          <label class="form-label">Semester</label>
+                          <select name="optionSemester" id="optionSemester" class="form-control form-control-lg">
+                            <option value="1">1st Semester</option>
+                            <option value="2">2nd Semester</option>
+                          </select>
+                        </div>
                       </div>
                       <div class="col-sm-6 col-md-3">
-                        <p class="mb-0">Year</p>
-                        <select name="optionYear" id="scholarYrGrad" class="mb-0 form-select form-select-sm ">
-                          <!-- Add your options here -->
-                        </select>
+                        <div class="form-group">
+                          <label class="form-label">Year</label>
+                          <select name="optionYear" id="scholarYrGrad" class="form-control form-control-lg">
+                            <!-- Add your options here -->
+                          </select>
+                        </div>
                       </div>
                     </div>
                   </form>
@@ -84,7 +88,6 @@
                       <div class="card-info">
                         <div class="d-flex align-items-center">
                           <h4 class="mb-0">100</h4>
-                          <!-- {{-- <i class="mdi mdi-chevron-down text-danger mdi-24px"></i> --}} -->
                         </div>
                         <small class="text-muted">No. of Scholars</small>
                       </div>
@@ -104,7 +107,6 @@
                       <div class="card-info">
                         <div class="d-flex align-items-center">
                           <h4 class="mb-0">10</h4>
-                          <!-- {{-- <i class="mdi mdi-chevron-down text-danger mdi-24px"></i> --}} -->
                         </div>
                         <small class="text-muted">No. of Pending Scholars</small>
                       </div>
@@ -112,56 +114,146 @@
                   </div>
                 </div>
               </div>
-              
-              <!-- Activity Timeline -->
+
               <div class="col-12 col-lg-13 col-xl-12 mb-4">
                 <div class="card h-100">
                   <img src="../../assets//img/elements/activity-timeline.png" alt="timeline-image" class="card-img-top h-px-200" style="object-fit: cover" />
                   <div class="card-body">
-                    <h4 class="mb-4">Activity Timeline</h4>
+                    <h3 class="mb-4">Announcement - NEWS</h3>
                     <ul class="timeline card-timeline mb-0">
-                      <li class="timeline-item timeline-item-transparent">
-                        <span class="timeline-point timeline-point-danger"></span>
-                        <div class="timeline-event">
-                          <div class="timeline-header mb-1">
-                            <h6 class="mb-0 fw-semibold">8 Invoices have been paid</h6>
-                            <small class="text-muted">Wednesday</small>
-                          </div>
-                          <p class="text-muted mb-2">Invoices have been paid to the company</p>
-                          <div class="d-flex">
-                            <a href="javascript:void(0)" class="me-3">
-                              <img src="../../assets/img/icons/misc/pdf.png" alt="PDF image" width="15" class="me-2" />
-                              <span class="fw-semibold text-muted">invoices.pdf</span>
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="timeline-item timeline-item-transparent">
-                        <span class="timeline-point timeline-point-primary"></span>
-                        <div class="timeline-event">
-                          <div class="timeline-header mb-1">
-                            <h6 class="mb-0 fw-semibold">Create a new project for client 😎</h6>
-                            <small class="text-muted">April, 18</small>
-                          </div>
-                          <p class="text-muted mb-2">Invoices have been paid to the company.</p>
-                          <div class="d-flex flex-wrap align-items-center">
-                            <div class="avatar avatar-sm me-3">
-                              <img src="../../assets/img/avatars/1.png" alt="Avatar" class="rounded-circle" />
+                      <div class="row mb-5">
+                          <?php  
+                              //get announcements
+                              $getAnnouncement=selectAnnouncementsnews();
+                              while ($ann=$getAnnouncement->fetch(PDO::FETCH_ASSOC)) {
+                                $btnId = "thumbsUp_" . $ann['prow_ann_id'];
+                                $annId = $ann['prow_ann_id'];
+
+                                if (checkLikeStatus($scholarCode, $annId) > 0) {
+                                  $btnAnnStatus = "disabled";
+                                } else {
+                                  $btnAnnStatus = "";
+                                }
+                                
+                          ?>
+                            <div class="col-lg-4 col-md-4 col-xs-6 mb-4">
+                              <div class="card h-100">
+                                <img class="card-img-top" src="<?= previewImage($ann['prow_ann_image'], '../../assets/img/elements/2.jpg', '../../imagebank/') ?>" alt="Card image cap" />
+                                <div class="card-body">
+                                  
+                                <div class="h4 d-flex align-items-center mt-2 mb-4">
+                                  <div class="avatar">
+                                    <div class="avatar-initial bg-label-secondary rounded w-100">
+                                      <i class="mdi mdi-newspaper-variant-outline mdi-24px"></i>
+                                    </div>
+                                  </div>
+                                  <span class="ard-title ms-3"><?= $ann['prow_ann_title'] ?></span>
+                                </div>
+                                  <hr />
+                                  <h6 class="card-text text-muted">
+                                    <?php $dateTime = new DateTime($ann['prow_ann_created']); 
+                                          $formattedDate = $dateTime->format('F j, Y'); 
+                                          echo $formattedDate; ?>
+                                  </h6>
+                                  
+                                  <p class="card-text"><?= stringLimit($ann['prow_ann_content'], 250) ?></p>
+
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-primary mb-4 btn-block"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#onboardImageModal"
+                                    data-announcement-image="<?= previewImage($ann['prow_ann_image'], '../../assets/img/elements/2.jpg', '../../imagebank/') ?>"
+                                    data-announcement-title="<?= htmlspecialchars($ann['prow_ann_title']) ?>"
+                                    data-announcement-content="<?= htmlspecialchars($ann['prow_ann_content']) ?>">
+                                    Read More <i class="mdi mdi-arrow-right scaleX-n1-rtl me-1"></i>
+                                  </button>
+                                  
+
+                                  <div class="article-votes">
+                                    <button type="button" id="<?= $btnId ?>" class="btn btn-icon btn-sm btn-outline-primary me-2" title="click to like ..." onclick="addThumbsUp('#<?= $btnId ?>', '<?= $annId ?>')" <?= $btnAnnStatus ?> >
+                                      <span class="mdi mdi-thumb-up-outline"></span>
+                                    </button>
+                                    <span class="card-text text-muted"><?= countAnnLike($annId) ?> Scholar found this helpful</span>
+                                  </div>
+                                </div>
+                                  
+                              </div>
                             </div>
-                            <h6 class="mb-0 fw-semibold text-muted">John Doe (Client)</h6>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="timeline-item timeline-item-transparent border-0">
-                        <span class="timeline-point timeline-point-info"></span>
-                        <div class="timeline-event pb-1">
-                          <div class="timeline-header mb-1">
-                            <h6 class="mb-0 fw-semibold">Order #37745 from September</h6>
-                            <small class="text-muted">January, 10</small>
-                          </div>
-                          <p class="text-muted mb-0">Invoices have been paid to the company.</p>
-                        </div>
-                      </li>
+                          <?php } ?>     
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-12 col-lg-13 col-xl-12 mb-4">
+                <div class="card h-100">
+                  <img src="../../assets//img/pages/5.png" alt="timeline-image" class="card-img-top h-px-200" style="object-fit: cover" />
+                  <div class="card-body">
+                    <h3 class="mb-4">Announcement - Activities</h3>
+                    <ul class="timeline card-timeline mb-0">
+                      <div class="row mb-5">
+                          <?php  
+                              //get announcements
+                              $getAnnouncement=selectAnnouncementsActivities();
+                              while ($ann=$getAnnouncement->fetch(PDO::FETCH_ASSOC)) {
+                                $btnId = "thumbsUp_" . $ann['prow_ann_id'];
+                                $annId = $ann['prow_ann_id'];
+
+                                if (checkLikeStatus($scholarCode, $annId) > 0) {
+                                  $btnAnnStatus = "disabled";
+                                } else {
+                                  $btnAnnStatus = "";
+                                }
+                                
+                          ?>
+                            <div class="col-lg-4 col-md-4 col-xs-6 mb-4">
+                              <div class="card h-100">
+                                <img class="card-img-top" src="<?= previewImage($ann['prow_ann_image'], '../../assets/img/elements/2.jpg', '../../imagebank/') ?>" alt="Card image cap" />
+                                <div class="card-body">
+                                  
+                                <div class="h4 d-flex align-items-center mt-2 mb-4">
+                                  <div class="avatar">
+                                    <div class="avatar-initial bg-label-secondary rounded w-100">
+                                      <i class="mdi mdi-newspaper-variant-outline mdi-24px"></i>
+                                    </div>
+                                  </div>
+                                  <span class="ard-title ms-3"><?= $ann['prow_ann_title'] ?></span>
+                                </div>
+                                  <hr />
+                                  <h6 class="card-text text-muted">
+                                    <?php $dateTime = new DateTime($ann['prow_ann_created']); 
+                                          $formattedDate = $dateTime->format('F j, Y'); 
+                                          echo $formattedDate; ?>
+                                  </h6>
+                                  
+                                  <p class="card-text"><?= stringLimit($ann['prow_ann_content'], 250) ?></p>
+
+                                  <button
+                                    type="button"
+                                    class="btn btn-outline-primary mb-4 btn-block"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#onboardImageModal"
+                                    data-announcement-image="<?= previewImage($ann['prow_ann_image'], '../../assets/img/elements/2.jpg', '../../imagebank/') ?>"
+                                    data-announcement-title="<?= htmlspecialchars($ann['prow_ann_title']) ?>"
+                                    data-announcement-content="<?= htmlspecialchars($ann['prow_ann_content']) ?>">
+                                    Read More <i class="mdi mdi-arrow-right scaleX-n1-rtl me-1"></i>
+                                  </button>
+                                  
+
+                                  <div class="article-votes">
+                                    <button type="button" id="<?= $btnId ?>" class="btn btn-icon btn-sm btn-outline-primary me-2" title="click to like ..." onclick="addThumbsUp('#<?= $btnId ?>', '<?= $annId ?>')" <?= $btnAnnStatus ?> >
+                                      <span class="mdi mdi-thumb-up-outline"></span>
+                                    </button>
+                                    <span class="card-text text-muted"><?= countAnnLike($annId) ?> Scholar found this helpful</span>
+                                  </div>
+                                </div>
+                                  
+                              </div>
+                            </div>
+                          <?php } ?>     
+                      </div>
                     </ul>
                   </div>
                 </div>

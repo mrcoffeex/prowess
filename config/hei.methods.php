@@ -862,5 +862,64 @@
         
     }
 
+    function getHeiContactPerson($heiCode){
+
+        $stmt=PWD()->prepare("SELECT prow_hei_contact_person FROM
+                            prow_hei
+                            Where
+                            prow_hei_code = :prow_hei_code");
+        $stmt->execute([
+            "prow_hei_code" => $heiCode
+        ]);
+
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (is_array($res)) {
+            return $res['prow_hei_contact_person'];
+        } else {
+            return "";
+        }
+
+    }
+
+    function getHeiId($heiCode){
+
+        $stmt=PWD()->prepare("SELECT prow_hei_id FROM
+                            prow_hei
+                            Where
+                            prow_hei_code = :prow_hei_code");
+        $stmt->execute([
+            "prow_hei_code" => $heiCode
+        ]);
+
+        $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (is_array($res)) {
+            return $res['prow_hei_id'];
+        } else {
+            return "";
+        }
+
+    }
+
+    function countHeiScholarPending($heiId){
+
+        $stmt=PWD()->prepare("SELECT * FROM
+                            prow_scholar_app_logs
+                            Where
+                            prow_hei = :prow_hei
+                            AND
+                            prow_app_log_status = :prow_app_log_status");
+        $stmt->execute([
+            'prow_hei' => $heiId,
+            'prow_app_log_status' => 2
+        ]);
+
+        $count=$stmt->rowCount();
+
+        return $count;
+
+    }
+
 
 ?>

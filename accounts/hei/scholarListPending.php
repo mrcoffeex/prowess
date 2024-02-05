@@ -1,7 +1,7 @@
 <?php
     require '../../config/includes.php';
     require '_session.php';
-    include 'scholarList.paginate.php';
+    include 'scholarListPending.paginate.php';
     include "_head.php";
 ?>
 
@@ -23,44 +23,6 @@
                             <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="avatar">
-                                <div class="avatar-initial bg-label-primary rounded">
-                                    <div class="mdi mdi-account-outline mdi-24px"></div>
-                                </div>
-                                </div>
-                                <div class="ms-3">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mb-0"><?= countScholarActive("") ?></h5>
-                                </div>
-                                <small class="text-muted">Active Scholars</small>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                <div class="avatar-initial bg-label-warning rounded">
-                                    <div class="mdi mdi-account-outline mdi-24px"></div>
-                                </div>
-                                </div>
-                                <div class="ms-3">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mb-0">0</h5>
-                                </div>
-                                <small class="text-muted">Total Scholars</small>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar">
                                 <div class="avatar-initial bg-label-info rounded">
                                     <div class="mdi mdi-account-outline mdi-24px"></div>
                                 </div>
@@ -70,25 +32,6 @@
                                     <h5 class="mb-0"><?= countHeiScholarPending($heiId) ?></h5>
                                 </div>
                                 <small class="text-muted">Pending Scholars</small>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                <div class="avatar-initial bg-label-success rounded">
-                                    <div class="mdi mdi-account-outline mdi-24px"></div>
-                                </div>
-                                </div>
-                                <div class="ms-3">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mb-0">0</h5>
-                                </div>
-                                <small class="text-muted">Graduated</small>
                                 </div>
                             </div>
                             </div>

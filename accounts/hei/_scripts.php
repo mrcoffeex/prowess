@@ -80,11 +80,11 @@
     const yearSelect = document.getElementById('scholarYrGrad');
 
     // Define the range of years you want to include
-    const startYear = 2000;
-    const endYear = new Date().getFullYear();;
+    const startYear = new Date().getFullYear();
+    const endYear = 2000;
 
     // Populate the select element with options for each year in the range
-    for (let year = startYear; year <= endYear; year++) {
+    for (let year = startYear; year >= endYear; year--) {
         const option = document.createElement('option');
         option.value = year;
         option.text = year;
