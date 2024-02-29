@@ -1,574 +1,249 @@
 <?php
+    require '../../config/includes.php';
+    require '_session.php';
 
-include '_head.php';
+    $getHeiProfile=selectHEIProfile($heiId);
+    $profile=$getHeiProfile->fetch(PDO::FETCH_ASSOC);
 
+    $heiLogo = $profile['prow_hei_logo'];
+    $heiCover = $profile['prow_hei_cover_photo'];
+    $getHeiCourse=selectCoursebyHeiIds($heiId);
+
+    include "_head.php";
+ 
 ?>
 
-<body>
-    <!-- Layout wrapper -->
+  <body>
     <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
-            <!-- Menu -->
-            <?php
-            include '_sidemenu.php';
+      <div class="layout-container">
+        <div class="layout-page">
+         <?php include "_sidemenu.php";?>
 
-            ?>
-            <!-- / Menu -->
+          <div class="content-wrapper">
+            <?php include "_topnavigation.php"; ?>
+            
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">HEI Information /</span> Profile</h4>
+             
+              <?php include "profile_header_hei.php"; ?>
 
-            <!-- Layout container -->
-            <div class="layout-page">
-                <!-- Navbar -->
+             <div class="row">
+                <div class="col-md-12">
+                  <ul class="nav nav-pills flex-column flex-sm-row mb-4">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="javascript:void(0);"
+                        ><i class="mdi mdi-account-outline me-1 mdi-20px"></i>Profile</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="pages-profile-teams.html"
+                        ><i class="mdi mdi-bell-badge-outline me-1 mdi-20px"></i>Notifications</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-                <?php 
-                include '_topnavigation.php';
-                
-                ?>
-
-                <!-- / Navbar -->
-
-                <!-- Content wrapper -->
-                <div class="content-wrapper">
-                    <!-- Content -->
-
-                    <div class="container-xxl flex-grow-1 container-p-y">
-                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hei Profile /</span> Profile</h4>
-
-                        <!-- Header -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card mb-4">
-                                    <div class="user-profile-header-banner">
-                                        <img src="../../assets/img/pages/profile-banner.png" alt="Banner image" class="rounded-top" />
-                                    </div>
-                                    <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
-                                        <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
-                                            <img src="../../assets/img/avatars/1.png" alt="user image" class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" />
-                                        </div>
-                                        <div class="flex-grow-1 mt-3 mt-sm-5">
-                                            <div class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
-                                                <div class="user-profile-info">
-                                                    <h4>HEI Name</h4>
-                                                    <p>Contact Person</p>
-                                                    <!-- <ul class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
-                                                        <li class="list-inline-item">
-                                                            <i class="mdi mdi-invert-colors me-1 mdi-20px"></i><span class="fw-semibold">UX Designer</span>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="mdi mdi-map-marker-outline me-1 mdi-20px"></i><span class="fw-semibold">Vatican City</span>
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="mdi mdi-calendar-blank-outline me-1 mdi-20px"></i><span class="fw-semibold"> Joined April 2021</span>
-                                                        </li>
-                                                    </ul> -->
-                                                </div>
-                                                <a href="javascript:void(0)" class="btn btn-primary">
-                                                    <i class="mdi mdi-account-check-outline me-1"></i>Connected
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+              <div class="row">
+                <div class="col-xl-4 col-lg-5 col-md-5">
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <small class="card-text text-uppercase text-muted">School Information</small>
+                      <ul class="list-unstyled mb-0 mt-3 pt-1">
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-town-hall mdi-24px"></i><span class="fw-semibold mx-2">Number of Offered Courses:</span>
+                          <span><?= countCoursebyHei($heiId) ?></span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-format-list-checkbox mdi-24px"></i><span class="fw-semibold mx-2">Number of Total Scholars:</span>
+                          <span><?= countTotalHeiScholar($heiId) ?></span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <small class="card-text text-uppercase text-muted">Contacts</small>
+                      <ul class="list-unstyled my-3 py-1">
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-account mdi-24px"></i><span class="fw-semibold mx-2">Contact Person:</span>
+                          <span><?= $profile['prow_hei_contact_person']; ?></span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-phone-outline mdi-24px"></i><span class="fw-semibold mx-2">Contact Number:</span>
+                          <span><?= $profile['prow_hei_contact']; ?></span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-email-outline mdi-24px"></i><span class="fw-semibold mx-2">Email:</span>
+                          <span><?= $profile['prow_hei_email']; ?></span>
+                        </li>
+                      </ul>
+ 
+                      <small class="card-text text-uppercase text-muted">Address</small>
+                      <ul class="list-unstyled my-3 py-1">
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Street:</span>
+                          <span><?= $profile['prow_hei_street']; ?></span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Province:</span>
+                          <span><?= $profile['prow_hei_province']; ?></span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Municipality:</span>
+                          <span><?= $profile['prow_hei_municipality']; ?></span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Barangay:</span>
+                          <span><?= $profile['prow_hei_barangay']; ?></span>
+                        <li class="d-flex align-items-center mb-3">
+                          <i class="mdi mdi-map-marker-outline mdi-24px"></i><span class="fw-semibold mx-2">Zip Code:</span>
+                          <span><?= $profile['prow_hei_zip']; ?></span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="col-xl-8 col-lg-7 col-md-7">
+                  <div class="card card-action mb-4">
+                    <div class="card-header align-items-center">
+                      <h5 class="card-action-title mb-0">
+                        <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>School Map
+                      </h5>                 
+                    </div>
+                    <iframe style="width: 100%; height: 635px; position: relative;" src="hei_information_map?heiId=<?= $heiId ?>" allowfullscreen></iframe>
+                  </div>
+                </div>                  
+              </div>
+              <div class="row">
+                <div class="mb-4">
+                    <div class="card card-action mb-4">
+                            <div class="card-header align-items-center">
+                            <h5 class="card-action-title mb-0">
+                                <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>School Courses
+                            </h5>
+                            <div class="card-action-element">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">Add Course</button>
+                            </div>                  
                             </div>
-                        </div>
-                        <!--/ Header -->
-
-                        <!-- Navbar pills -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ul class="nav nav-pills flex-column flex-sm-row mb-4">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="javascript:void(0);"><i class="mdi mdi-account-outline me-1 mdi-20px"></i>Profile</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="pages-profile-teams.html"><i class="mdi mdi-account-multiple-outline me-1 mdi-20px"></i>Teams</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="pages-profile-projects.html"><i class="mdi mdi-view-grid-outline me-1 mdi-20px"></i>Projects</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="pages-profile-connections.html"><i class="mdi mdi-link me-1 mdi-20px"></i>Connections</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--/ Navbar pills -->
-
-                        <!-- User Profile Content -->
-                        <div class="row">
-                            <div class="col-xl-4 col-lg-5 col-md-5">
-                                <!-- About User -->
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <small class="card-text text-uppercase text-muted">About</small>
-                                        <ul class="list-unstyled my-3 py-1">
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-account-outline mdi-24px"></i><span class="fw-semibold mx-2">Full Name:</span> <span>John Doe</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-check mdi-24px"></i><span class="fw-semibold mx-2">Status:</span>
-                                                <span>Active</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-star-outline mdi-24px"></i><span class="fw-semibold mx-2">Role:</span>
-                                                <span>Developer</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-flag-outline mdi-24px"></i><span class="fw-semibold mx-2">Country:</span>
-                                                <span>USA</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-translate mdi-24px"></i><span class="fw-semibold mx-2">Languages:</span>
-                                                <span>English</span>
-                                            </li>
-                                        </ul>
-                                        <small class="card-text text-uppercase text-muted">Contacts</small>
-                                        <ul class="list-unstyled my-3 py-1">
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-phone-outline mdi-24px"></i><span class="fw-semibold mx-2">Contact:</span>
-                                                <span>(123) 456-7890</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-message-outline mdi-24px"></i><span class="fw-semibold mx-2">Skype:</span>
-                                                <span>john.doe</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-email-outline mdi-24px"></i><span class="fw-semibold mx-2">Email:</span>
-                                                <span>john.doe@example.com</span>
-                                            </li>
-                                        </ul>
-                                        <small class="card-text text-uppercase text-muted">Teams</small>
-                                        <ul class="list-unstyled mb-0 mt-3 pt-1">
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-github mdi-24px text-secondary me-2"></i>
-                                                <div class="d-flex flex-wrap">
-                                                    <span class="fw-semibold me-2">Backend Developer</span><span>(126 Members)</span>
-                                                </div>
-                                            </li>
-                                            <li class="d-flex align-items-center">
-                                                <i class="mdi mdi-react mdi-24px text-info me-2"></i>
-                                                <div class="d-flex flex-wrap">
-                                                    <span class="fw-semibold me-2">React Developer</span><span>(98 Members)</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!--/ About User -->
-                                <!-- Profile Overview -->
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <small class="card-text text-uppercase text-muted">Overview</small>
-                                        <ul class="list-unstyled mb-0 mt-3 pt-1">
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-check mdi-24px"></i><span class="fw-semibold mx-2">Task Compiled:</span>
-                                                <span>13.5k</span>
-                                            </li>
-                                            <li class="d-flex align-items-center mb-3">
-                                                <i class="mdi mdi-account-outline mdi-24px"></i><span class="fw-semibold mx-2">Projects Compiled:</span> <span>146</span>
-                                            </li>
-                                            <li class="d-flex align-items-center">
-                                                <i class="mdi mdi-view-grid-outline mdi-24px"></i><span class="fw-semibold mx-2">Connections:</span> <span>897</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!--/ Profile Overview -->
-                            </div>
-                            <div class="col-xl-8 col-lg-7 col-md-7">
-                                <!-- Activity Timeline -->
-                                <div class="card card-action mb-4">
-                                    <div class="card-header align-items-center">
-                                        <h5 class="card-action-title mb-0">
-                                            <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>Activity Timeline
-                                        </h5>
-                                        <div class="card-action-element">
-                                            <div class="dropdown">
-                                                <button type="button" class="btn dropdown-toggle hide-arrow p-0" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="mdi mdi-dots-vertical mdi-24px text-muted"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item" href="javascript:void(0);">Share timeline</a></li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0);">Suggest edits</a></li>
-                                                    <li>
-                                                        <hr class="dropdown-divider" />
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body pt-3 pb-0">
-                                        <ul class="timeline mb-0">
-                                            <li class="timeline-item timeline-item-transparent">
-                                                <span class="timeline-point timeline-point-danger"></span>
-                                                <div class="timeline-event">
-                                                    <div class="timeline-header mb-1">
-                                                        <h6 class="mb-0">Client Meeting</h6>
-                                                        <span class="text-muted">Today</span>
-                                                    </div>
-                                                    <p class="text-muted mb-2">Project meeting with john @10:15am</p>
-                                                    <div class="d-flex flex-wrap">
-                                                        <div class="avatar me-3">
-                                                            <img src="../../assets/img/avatars/3.png" alt="Avatar" class="rounded-circle" />
-                                                        </div>
-                                                        <div>
-                                                            <h6 class="mb-0">Lester McCarthy (Client)</h6>
-                                                            <span class="text-muted">CEO of Infibeam</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="timeline-item timeline-item-transparent">
-                                                <span class="timeline-point timeline-point-primary"></span>
-                                                <div class="timeline-event">
-                                                    <div class="timeline-header mb-1">
-                                                        <h6 class="mb-0">Create a new project for client</h6>
-                                                        <span class="text-muted">2 Day Ago</span>
-                                                    </div>
-                                                    <p class="text-muted mb-0">Add files to new design folder</p>
-                                                </div>
-                                            </li>
-                                            <li class="timeline-item timeline-item-transparent">
-                                                <span class="timeline-point timeline-point-warning"></span>
-                                                <div class="timeline-event">
-                                                    <div class="timeline-header mb-1">
-                                                        <h6 class="mb-0">Shared 2 New Project Files</h6>
-                                                        <span class="text-muted">6 Day Ago</span>
-                                                    </div>
-                                                    <p class="text-muted mb-2">
-                                                        Sent by Mollie Dixon
-                                                        <img src="../../assets/img/avatars/4.png" class="rounded-circle me-3" alt="avatar" height="24" width="24" />
-                                                    </p>
-                                                    <div class="d-flex flex-wrap gap-2">
-                                                        <a href="javascript:void(0)" class="me-3">
-                                                            <img src="../../assets/img/icons/misc/doc.png" alt="Document image" width="15" class="me-2" />
-                                                            <span class="fw-medium text-body">App Guidelines</span>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <img src="../../assets/img/icons/misc/xls.png" alt="Excel image" width="15" class="me-2" />
-                                                            <span class="fw-medium text-body">Testing Results</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="timeline-item timeline-item-transparent border-0">
-                                                <span class="timeline-point timeline-point-info"></span>
-                                                <div class="timeline-event">
-                                                    <div class="timeline-header mb-1">
-                                                        <h6 class="mb-0">Project status updated</h6>
-                                                        <span class="text-muted">10 Day Ago</span>
-                                                    </div>
-                                                    <p class="text-muted mb-0">Woocommerce iOS App Completed</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!--/ Activity Timeline -->
-                                <div class="row">
-                                    <!-- Connections -->
-                                    <div class="col-lg-12 col-xl-6">
-                                        <div class="card card-action mb-4">
-                                            <div class="card-header align-items-center">
-                                                <h5 class="card-action-title mb-0">Connections</h5>
-                                                <div class="card-action-element">
-                                                    <div class="dropdown">
-                                                        <button type="button" class="btn dropdown-toggle hide-arrow p-0" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="mdi mdi-dots-vertical mdi-24px text-muted"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-end">
-                                                            <li><a class="dropdown-item" href="javascript:void(0);">Share connections</a></li>
-                                                            <li><a class="dropdown-item" href="javascript:void(0);">Suggest edits</a></li>
-                                                            <li>
-                                                                <hr class="dropdown-divider" />
-                                                            </li>
-                                                            <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <ul class="list-unstyled mb-0">
-                                                    <li class="mb-3">
-                                                        <div class="d-flex align-items-start">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="avatar me-3">
-                                                                    <img src="../../assets/img/avatars/2.png" alt="Avatar" class="rounded-circle" />
-                                                                </div>
-                                                                <div class="me-2">
-                                                                    <h6 class="mb-0">Cecilia Payne</h6>
-                                                                    <small class="text-muted">45 Connections</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-auto">
-                                                                <button class="btn btn-outline-primary btn-icon">
-                                                                    <i class="mdi mdi-account-outline mdi-24px"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="mb-3">
-                                                        <div class="d-flex align-items-start">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="avatar me-3">
-                                                                    <img src="../../assets/img/avatars/3.png" alt="Avatar" class="rounded-circle" />
-                                                                </div>
-                                                                <div class="me-2">
-                                                                    <h6 class="mb-0">Curtis Fletcher</h6>
-                                                                    <small class="text-muted">1.32k Connections</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-auto">
-                                                                <button class="btn btn-primary btn-icon">
-                                                                    <i class="mdi mdi-account-outline mdi-24px"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="mb-3">
-                                                        <div class="d-flex align-items-start">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="avatar me-3">
-                                                                    <img src="../../assets/img/avatars/8.png" alt="Avatar" class="rounded-circle" />
-                                                                </div>
-                                                                <div class="me-2">
-                                                                    <h6 class="mb-0">Alice Stone</h6>
-                                                                    <small class="text-muted">125 Connections</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-auto">
-                                                                <button class="btn btn-primary btn-icon">
-                                                                    <i class="mdi mdi-account-outline mdi-24px"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="mb-3">
-                                                        <div class="d-flex align-items-start">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="avatar me-3">
-                                                                    <img src="../../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                                                                </div>
-                                                                <div class="me-2">
-                                                                    <h6 class="mb-0">Darrell Barnes</h6>
-                                                                    <small class="text-muted">456 Connections</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-auto">
-                                                                <button class="btn btn-outline-primary btn-icon">
-                                                                    <i class="mdi mdi-account-outline mdi-24px"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="mb-3">
-                                                        <div class="d-flex align-items-start">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="avatar me-3">
-                                                                    <img src="../../assets/img/avatars/12.png" alt="Avatar" class="rounded-circle" />
-                                                                </div>
-                                                                <div class="me-2">
-                                                                    <h6 class="mb-0">Eugenia Moore</h6>
-                                                                    <small class="text-muted">1.2k Connections</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-auto">
-                                                                <button class="btn btn-outline-primary btn-icon">
-                                                                    <i class="mdi mdi-account-outline mdi-24px"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="text-center">
-                                                        <a href="javascript:;">View all connections</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/ Connections -->
-                                    <!-- Teams -->
-                                    <div class="col-lg-12 col-xl-6">
-                                        <div class="card card-action mb-4">
-                                            <div class="card-header align-items-center">
-                                                <h5 class="card-action-title mb-0">Teams</h5>
-                                                <div class="card-action-element">
-                                                    <div class="dropdown">
-                                                        <button type="button" class="btn dropdown-toggle hide-arrow p-0" data-bs-toggle="dropdown" aria-expanded="false">
-                                                            <i class="mdi mdi-dots-vertical mdi-24px text-muted"></i>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-end">
-                                                            <li><a class="dropdown-item" href="javascript:void(0);">Share teams</a></li>
-                                                            <li><a class="dropdown-item" href="javascript:void(0);">Suggest edits</a></li>
-                                                            <li>
-                                                                <hr class="dropdown-divider" />
-                                                            </li>
-                                                            <li><a class="dropdown-item" href="javascript:void(0);">Report bug</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <ul class="list-unstyled mb-0">
-                                                    <li class="mb-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="avatar me-3">
-                                                                    <img src="../../assets/img/icons/brands/react-label.png" alt="Avatar" class="rounded-circle" />
-                                                                </div>
-                                                                <div class="me-2">
-                                                                    <h6 class="mb-0">React Developers</h6>
-                                                                    <small class="text-muted">72 Members</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-auto">
-                                                                <a href="javascript:;"><span class="badge bg-label-danger rounded-pill">Developer</span></a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="mb-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="avatar me-3">
-                                                                    <img src="../../assets/img/icons/brands/support-label.png" alt="Avatar" class="rounded-circle" />
-                                                                </div>
-                                                                <div class="me-2">
-                                                                    <h6 class="mb-0">Support Team</h6>
-                                                                    <small class="text-muted">122 Members</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-auto">
-                                                                <a href="javascript:;"><span class="badge bg-label-primary rounded-pill">Support</span></a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="mb-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="avatar me-3">
-                                                                    <img src="../../assets/img/icons/brands/figma-label.png" alt="Avatar" class="rounded-circle" />
-                                                                </div>
-                                                                <div class="me-2">
-                                                                    <h6 class="mb-0">UI Designers</h6>
-                                                                    <small class="text-muted">7 Members</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-auto">
-                                                                <a href="javascript:;"><span class="badge bg-label-info rounded-pill">Designer</span></a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="mb-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="avatar me-3">
-                                                                    <img src="../../assets/img/icons/brands/vue-label.png" alt="Avatar" class="rounded-circle" />
-                                                                </div>
-                                                                <div class="me-2">
-                                                                    <h6 class="mb-0">Vue.js Developers</h6>
-                                                                    <small class="text-muted">289 Members</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-auto">
-                                                                <a href="javascript:;"><span class="badge bg-label-danger rounded-pill">Developer</span></a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="mb-3">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="d-flex align-items-start">
-                                                                <div class="avatar me-3">
-                                                                    <img src="../../assets/img/icons/brands/twitter-label.png" alt="Avatar" class="rounded-circle" />
-                                                                </div>
-                                                                <div class="me-w">
-                                                                    <h6 class="mb-0">Digital Marketing</h6>
-                                                                    <small class="text-muted">24 Members</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ms-auto">
-                                                                <a href="javascript:;"><span class="badge bg-label-secondary rounded-pill">Marketing</span></a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="text-center">
-                                                        <a href="javascript:;">View all teams</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/ Teams -->
-                                </div>
-                                <!-- Projects table -->
-                                <div class="card mb-4">
+                            <div class="card-body pt-3 pb-0">
                                     <div class="card-datatable table-responsive">
-                                        <table class="datatables-projects table">
+                                        <table class=" datatables-ajax dt-advanced-search table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th>Name</th>
-                                                    <th>Leader</th>
-                                                    <th>Team</th>
-                                                    <th class="w-px-200">Status</th>
-                                                    <th>Action</th>
+                                                    <th>Courses</th>
+                                                    <th>No. of Scholars</th>
+                                                    <th>No. of Subjects</th>
+                                                    <th class="text-center">Subjects</th>
+                                                    <th class="text-center">Actions</th>
                                                 </tr>
                                             </thead>
+                                        <tbody>
+                                                <?php
+                                                    while ($course=$getHeiCourse->fetch(PDO::FETCH_ASSOC)) {
+                                                ?>                                            
+
+                                            <tr>
+                                                    
+                                                    <td><?= $course['prow_course_name']?></td>
+                                                    <td><?php $heiId=$course['prow_hei_id'];
+                                                              $hei_course=$course['prow_hei_course_id'];
+                                                        ?>
+                                                        <a href="scholarInformationperCourse?rand=<?= my_rand_str(100) ?>&heiId=<?=$heiId ?>&course_id=<?=$course['prow_hei_course_id'] ?>">
+                                                          <?= $count=countAllScholarbyCourse($heiId,$hei_course);?>
+                                                        </a>
+                                                    </td>
+                                                    <td><?= selectCountCoursebyHeiIds($course['prow_hei_course_id']) ?></td>
+                                                    <td class="text-center p-2">
+                                                        <a href="hei_subjects?rand=<?= my_rand_str(100) ?>&heiId=<?=$heiId ?>&course_id=<?=$course['prow_hei_course_id'] ?>">
+                                                            <button 
+                                                            type="button" 
+                                                            class="btn btn-primary btn-sm">
+                                                              <i class="mdi mdi-book-outline"></i>
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center p-2">
+                                                        <a href="hei_delete?rand=<?= my_rand_str(100) ?>&heiId=<?=$heiId ?>">
+                                                            <button 
+                                                            type="button" 
+                                                            class="btn btn-danger btn-sm">
+                                                              <i class="mdi mdi-delete-outline"></i>
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                
+                                            </tr>
+                                            <?php } ?>
+                                        </tbody>
                                         </table>
                                     </div>
-                                </div>
-                                <!--/ Projects table -->
                             </div>
                         </div>
-                        <!--/ User Profile Content -->
                     </div>
-                    <!-- / Content -->
-
-                    <!-- Footer -->
-                    <footer class="content-footer footer bg-footer-theme">
-                        <div class="container-xxl">
-                            <div class="footer-container d-flex align-items-center justify-content-between py-3 flex-md-row flex-column">
-                                <div class="mb-2 mb-md-0">
-                                    ©
-                                    <script>
-                                        document.write(new Date().getFullYear());
-                                    </script>
-                                    , made with <span class="text-danger">❤️</span> by
-                                    <a href="https://pixinvent.com" target="_blank" class="footer-link fw-medium">Pixinvent</a>
-                                </div>
-                                <div>
-                                    <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank">License</a>
-                                    <a href="https://1.envato.market/pixinvent_portfolio" target="_blank" class="footer-link me-4">More Themes</a>
-
-                                    <a href="https://demos.pixinvent.com/materialize-html-admin-template/documentation/" target="_blank" class="footer-link me-4">Documentation</a>
-
-                                    <a href="https://pixinvent.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- / Footer -->
-
-                    <div class="content-backdrop fade"></div>
                 </div>
-                <!-- Content wrapper -->
+              </div>
+
+              </div>
+             
+              <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel1">Add Course</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form action="hei_course_create?heiId=<?= $heiId?>" method="POST">
+                                <div class="row">
+                                    <div class="col-sm-12 my-4">
+                                        <div class="form-floating form-floating-outline">
+                                            <select id="listcourse" name="listcourse" class="form-control">
+                                                <option>Select Course</option>
+                                                            <?php
+                                                                //get list of course
+                                                                $getCourse=selectCourseList();
+                                                                while ($cor=$getCourse->fetch(PDO::FETCH_ASSOC)) {
+                                                            ?>
+                                                            <option value="<?= $cor['prow_course_id'] ?>"><?= $cor['prow_course_name'] ?></option>
+                                                            <?php } ?>
+                                                </select>
+                                                <label for="listcourse">Select Course</label>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <button type="submit" id="heiSaveBtn" name="heiSaveBtn" class="btn btn-primary">Add Course</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        </form>
+                    </div>
+                </div>
             </div>
-            <!-- / Layout page -->
+              <?php
+                include "_footer.php";
+              ?>
+         
+
+            <div class="content-backdrop fade"></div>
+          </div>
+      
         </div>
-
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
-
-        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-        <div class="drag-target"></div>
+        
+      </div>
+      <div class="layout-overlay layout-menu-toggle"></div>
+      <div class="drag-target"></div>
     </div>
-    <!-- / Layout wrapper -->
-    <?php 
-    include '_scripts.php';
-    
-    ?>
-    <script src="../../assets/js/pages-profile.js"></script>
-</body>
 
+    <?php include "_scripts.php" ?>
+    <?php include '_alerts.php' ?>
+  </body>
 </html>

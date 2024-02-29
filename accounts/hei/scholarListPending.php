@@ -40,7 +40,10 @@
                     </div>
 
                     <div class="card">
-                        <h5 class="card-header">Student List</h5>
+                        <h5 class="card-header">
+                            Student Pending List
+                            <span class="float-end"><?= $countRes ?> <small>result(s)</small></span>
+                        </h5>
                         <!--Search Form -->
                         <div class="card-body">
                             <form class="dt_adv_search" method="POST" action="_redirect" onsubmit="btnLoader(this.searchStudent)">
@@ -49,7 +52,7 @@
                                         <div class="row g-3">
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" name="scholarCode" class="form-control dt-input" data-column="3" placeholder="2023AbCd123" data-column-index="2" />
+                                                    <input type="text" name="scholarCodePending" class="form-control dt-input" data-column="3" placeholder="2023AbCd123" data-column-index="2" />
                                                     <label>Scholar Code</label>
                                                 </div>
                                             </div>
@@ -63,32 +66,6 @@
                                                 <div class="form-floating form-floating-outline">
                                                     <input type="text" name="scholarName" class="form-control dt-input" data-column="3" placeholder="Juan Dela Cruz" data-column-index="2" />
                                                     <label>Name</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-6 col-lg-4">
-                                                <div class="form-floating form-floating-outline">
-                                                    <select name="school" id="school" class="form-control">
-                                                        <option></option>
-                                                         <?php
-                                                            //get HEI
-                                                            $getHei=selectHei();
-                                                            while ($hei=$getHei->fetch(PDO::FETCH_ASSOC)) {
-                                                        ?>
-                                                        <option value="<?= $hei['prow_hei_id'] ?>"><?= $hei['prow_hei_name'] ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                    <label for="multiStepsSchool">School</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-6 col-lg-4">
-                                                <div class="form-floating form-floating-outline">
-                                                    <select name="status" id="status" class="form-control">
-                                                        <option value=""></option>
-                                                        <option value="1">Active</option>
-                                                        <option value="2">Pending</option>
-                                                        <option value="3">Alumni</option>
-                                                    </select>
-                                                    <label for="status">Status</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
@@ -155,6 +132,7 @@
                                             <th>Scholar Code</th>
                                             <th>Fullname</th>
                                             <th>Status</th>
+                                            <th>Scholarship</th>
                                             <th>School</th>
                                             <th>Municipality</th>
                                         </tr>
@@ -175,7 +153,8 @@
                                             </td>
                                             <td><?= $pending['prow_scholar_code'] ?></td>
                                             <td><?= getFullname($pending['prow_scholar_code'])  ?></td>
-                                            <td><?= getScholar_Status($pending['prow_scholar_code'])?></td>
+                                            <td><?= scholarStatus(getScholarStatus($pending['prow_scholar_code'] ))?></td>
+                                            <td><?= getScholarAppLogStatus(getScholarAppLogStatusLatest($pending['prow_scholar_code']))?></td>
                                             <td><?= getScholarSchool($pending['prow_scholar_code'])  ?></td>
                                             <td><?= getScholarMuni($pending['prow_scholar_code'])  ?></td>
                                         </tr>
@@ -206,6 +185,7 @@
     </div>
 
     <?php include "_scripts.php"; ?>
+    <?php include "_alerts.php"; ?>
 
 </body>
 

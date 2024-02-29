@@ -14,10 +14,10 @@
                                 <span class="text-muted"><?=  getTimePassed($profile['prow_scholar_created'], date("Y-m-d H:i:s")) ?></span>
                               </div>
                               <?php  
-                                if (getScholar_Status($scholarCode) == "Pending") {
-                                  echo '<p class="text-warning mb-2">Account Verification is still ' .  getScholar_Status($scholarCode) . '</p>';
+                                if (getScholarStatus($scholarCode) == "Pending") {
+                                  echo '<p class="text-warning mb-2">Account Verification is still ' .  getScholarStatus($scholarCode) . '</p>';
                                 } else {
-                                  echo '<p class="text-success mb-2">Account is ' .  getScholar_Status($scholarCode) . '</p>';
+                                  echo '<p class="text-success mb-2">Account is ' .  getScholarStatus($scholarCode) . '</p>';
                                 }
                               ?>
                             </div>

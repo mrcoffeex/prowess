@@ -4,7 +4,11 @@
     $getPaginate=PWD()->prepare("SELECT 
                                 COUNT(prow_scholar_app_logs_id)
                                 FROM
+                                prow_scholar
+                                LEFT JOIN
                                 prow_scholar_app_logs
+                                ON
+                                prow_scholar.prow_scholar_code = prow_scholar_app_logs.prow_scholar_code
                                 Where
                                 prow_hei = :prow_hei");
     $getPaginate->execute([
@@ -32,11 +36,17 @@
     }
     
     $limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
+
+    $countRes=$paginates[0];
     
     $paginate=PWD()->prepare("SELECT 
                             *
                             FROM
+                            prow_scholar
+                            LEFT JOIN
                             prow_scholar_app_logs
+                            ON
+                            prow_scholar.prow_scholar_code = prow_scholar_app_logs.prow_scholar_code
                             Where
                             prow_hei = :prow_hei
                             Order By

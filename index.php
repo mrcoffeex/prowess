@@ -381,7 +381,7 @@ A scholarship registry, monitoring dashboard and job matching prediction system 
                      <!-- Team Member -->
                      <div class="team-member">
                         <div class="image-wrapper">
-                            <img class="img-fluid" src="landing/images/elp.jpg" alt="alternative">
+                            <img class="img-fluid" src="landing/images/elp.JPG" alt="alternative">
                         </div> <!-- end of image wrapper -->
                         <p class="p-large"><strong>Eduard L. Pulvera, MSIS</strong></p>
                         <p class="job-title">Project Staff</p>
@@ -393,7 +393,7 @@ A scholarship registry, monitoring dashboard and job matching prediction system 
                         <div class="image-wrapper">
                             <img class="img-fluid" src="landing/images/jmd.jpg" alt="alternative">
                         </div> <!-- end of image wrapper -->
-                        <p class="p-large"><strong>Joan Mae B. Delima, MIT</strong></p>
+                        <p class="p-large"><strong>Joan May B. Delima, MIT</strong></p>
                         <p class="job-title">Project Staff</p>
                     </div> <!-- end of team-member -->
                     <!-- end of team member -->

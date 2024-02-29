@@ -210,6 +210,8 @@
     </div>
 
     <?php include "_scripts.php"; ?>
+    <?php include "_alerts.php"; ?>
+
     <script>
 
     $(document).ready(function() {

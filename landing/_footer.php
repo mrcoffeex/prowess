@@ -6,38 +6,38 @@
                 <div class="col-md-4">
                     <div class="footer-col">
                         <h4>About PROWESS</h4>
-                        <p>We're passionate about offering some of the best business growth services for startups</p>
+                        <p>Welcome to the Scholarship Registry, Monitoring Dashboard, and Job Matching Prediction System designed exclusively for the Province of Davao del Sur.</p>
                     </div>
                 </div> <!-- end of col -->
                 <div class="col-md-4">
                     <div class="footer-col last">
                         <h4>Social Media</h4>
                         <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="#">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-facebook-f fa-stack-1x"></i>
                             </a>
                         </span>
                         <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="#">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-twitter fa-stack-1x"></i>
                             </a>
                         </span>
                         <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="#">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-google-plus-g fa-stack-1x"></i>
                             </a>
                         </span>
                         <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="#">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-instagram fa-stack-1x"></i>
                             </a>
                         </span>
                         <span class="fa-stack">
-                            <a href="#your-link">
+                            <a href="#">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-linkedin-in fa-stack-1x"></i>
                             </a>

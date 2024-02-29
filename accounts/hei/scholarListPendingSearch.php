@@ -1,7 +1,15 @@
 <?php
     require '../../config/includes.php';
     require '_session.php';
-    include 'scholarList.paginate.php';
+
+    $scholarCode = clean_string($_GET['scholarCode']);
+    $schoolId = clean_string($_GET['schoolId']);
+    $scholarName = clean_string($_GET['scholarName']);
+    $municipality = clean_int($_GET['municipality']);
+    $schoolYear = clean_string($_GET['schoolYear']);
+    $semester = clean_int($_GET['semester']);
+
+    include 'scholarListPendingSearch.paginate.php';
     include "_head.php";
 ?>
 
@@ -23,44 +31,6 @@
                             <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="avatar">
-                                <div class="avatar-initial bg-label-primary rounded">
-                                    <div class="mdi mdi-account-outline mdi-24px"></div>
-                                </div>
-                                </div>
-                                <div class="ms-3">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mb-0"><?= countScholarActive("") ?></h5>
-                                </div>
-                                <small class="text-muted">Active Scholars</small>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                <div class="avatar-initial bg-label-warning rounded">
-                                    <div class="mdi mdi-account-outline mdi-24px"></div>
-                                </div>
-                                </div>
-                                <div class="ms-3">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mb-0">0</h5>
-                                </div>
-                                <small class="text-muted">Total Scholars</small>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar">
                                 <div class="avatar-initial bg-label-info rounded">
                                     <div class="mdi mdi-account-outline mdi-24px"></div>
                                 </div>
@@ -75,30 +45,12 @@
                             </div>
                         </div>
                         </div>
-                        <div class="col-sm-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                <div class="avatar-initial bg-label-success rounded">
-                                    <div class="mdi mdi-account-outline mdi-24px"></div>
-                                </div>
-                                </div>
-                                <div class="ms-3">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mb-0">0</h5>
-                                </div>
-                                <small class="text-muted">Graduated</small>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
                     </div>
 
                     <div class="card">
                         <h5 class="card-header">
-                            Student List 
+                            <a href="scholarListPending"><button type="button" class="btn btn-dark btn-sm">back to list</button></a>&nbsp;
+                            Student Pending List 
                             <span class="float-end"><?= $countRes ?> <small>result(s)</small></span>
                         </h5>
                         <!--Search Form -->
@@ -109,36 +61,26 @@
                                         <div class="row g-3">
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" name="scholarCode" class="form-control dt-input" data-column="3" placeholder="2023AbCd123" data-column-index="2" />
+                                                    <input type="text" name="scholarCodePending" class="form-control dt-input" data-column="3" placeholder="2023AbCd123" data-column-index="2" value="<?= $scholarCode ?>" />
                                                     <label>Scholar Code</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" name="schoolId" class="form-control dt-input" data-column="3" placeholder="042001" data-column-index="2" />
+                                                    <input type="text" name="schoolId" class="form-control dt-input" data-column="3" placeholder="042001" data-column-index="2" value="<?= $schoolId ?>" />
                                                     <label>School ID</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" name="scholarName" class="form-control dt-input" data-column="3" placeholder="Juan Dela Cruz" data-column-index="2" />
+                                                    <input type="text" name="scholarName" class="form-control dt-input" data-column="3" placeholder="Juan Dela Cruz" data-column-index="2" value="<?= $scholarName ?>" />
                                                     <label>Name</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <select name="status" id="status" class="form-control">
-                                                        <option value=""></option>
-                                                        <option value="1">Active</option>
-                                                        <option value="3">Alumni</option>
-                                                    </select>
-                                                    <label for="status">Status</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-6 col-lg-4">
-                                                <div class="form-floating form-floating-outline">
                                                     <select name="municipality" id="municipality" class="form-control">
-                                                        <option value=""></option>
+                                                        <option value="<?= $municipality ?>"><?= getMunicipalityName($municipality) ?></option>
                                                         <?php  
                                                             //get municipalites
                                                             $getMunicipalities=selectMunicipalities();
@@ -154,7 +96,7 @@
                                                 <div class="form-floating form-floating-outline">
                                                     <div class="form-floating form-floating-outline">
                                                         <select name="schoolYear" id="schoolYear" class="form-control">
-                                                            <option value=""></option>
+                                                            <option><?= $schoolYear ?></option>
                                                             <?php  
                                                                 //get municipalites
                                                                 $getSY=selectSchoolYears();
@@ -171,7 +113,7 @@
                                                 <div class="form-floating form-floating-outline">
                                                     <div class="form-floating form-floating-outline">
                                                         <select name="semester" id="semester" class="form-control">
-                                                            <option value=""></option>
+                                                            <option value="<?= $semester ?>"><?= semester($semester) ?></option>
                                                             <option value="1">First Semester</option>
                                                             <option value="2">Second Semester</option>
                                                         </select>

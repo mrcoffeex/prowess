@@ -1047,6 +1047,21 @@
         return $res;
     }
 
+    function scholarStatusIcon($acct_status){
+
+        if ($acct_status==1){
+            $status = "mdi mdi-account-check";
+        }else if ($acct_status==2){
+            $status = "mdi mdi-close";
+        }else if ($acct_status==3){
+            $status = "mdi mdi-account-school";
+        }else{
+            $status = "mdi mdi-close";
+        }
+  
+        return $status;
+    }
+
     function semester($semester){
 
         if ($semester == 1) {

@@ -708,6 +708,34 @@
 
     }
 
+    function createUserNotification($scholarCode, $text){
+
+        $stmt=PWD()->prepare("INSERT INTO prow_user_notifications
+                            (
+                                prow_unotif_text, 
+                                prow_scholar_code, 
+                                prow_unotif_created
+                            )
+                            Values
+                            (
+                                :prow_unotif_text, 
+                                :prow_scholar_code, 
+                                NOW()
+                            )");
+        
+        $stmt->execute([
+            'prow_unotif_text' => $text,
+            'prow_scholar_code' => $scholarCode
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     //check if scholar has already fill up form
     function checkProfileForm($profileCode){
         $statement=PWD()->prepare("SELECT
@@ -944,7 +972,8 @@
    }
 
 
-    function getScholar_Status($profileCode){
+    function getScholarStatus($profileCode){
+
          $statement=PWD()->prepare("SELECT
                                         prow_scholar_acct_status
                                         From
@@ -958,18 +987,8 @@
         $res=$statement->fetch(PDO::FETCH_ASSOC);
         
         $status = $res['prow_scholar_acct_status'];
-        
-        if ($status==1){
-            $scholar_status = "Approved";
-        }else if ($status==2){
-            $scholar_status = "Pending";
-        }else if ($status==3){
-            $scholar_status = "For Reapplication";
-        }else{
-            $scholar_status = "No Application";
-        }
 
-        return $scholar_status;
+        return $status;
     
     }
 

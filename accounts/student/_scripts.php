@@ -36,12 +36,19 @@
 <!-- Custom JS -->
 
 <script>
+    //modal autofocus
+    $(document).on('shown.bs.modal', function() {
+      $(this).find('[autofocus]').focus();
+      $(this).find('[autofocus]').select();
+    });
+
     //validations
     function btnLoader(formObj) {
         formObj.disabled = true;
         formObj.innerHTML = "processing ...";
         return true;
     }
+
     // Municipality to barangay
     $(document).ready(function() {
 
@@ -86,11 +93,6 @@
 
 
 <script>
-	function btnLoader(formObj){
-        formObj.disabled = true;
-        formObj.innerHTML = "processing ...";
-        return true;  
-    }
 
     $(document).ready(function() {
 
@@ -215,13 +217,6 @@
 </script>
 
 <script>
-
-	//validations
-	function btnLoader(formObj){
-        formObj.disabled = true;
-        formObj.innerHTML = "processing ...";
-        return true;  
-    }
 
     // Municipality to barangay
 
