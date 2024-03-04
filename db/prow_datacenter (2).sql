@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2024 at 02:52 AM
+-- Generation Time: Mar 04, 2024 at 04:29 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -21417,6 +21417,28 @@ INSERT INTO `prow_skill_type` (`prow_skill_type_id`, `prow_skill_type_name`, `pr
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prow_student_ticket`
+--
+
+CREATE TABLE `prow_student_ticket` (
+  `prow_ticket_id` int(11) NOT NULL,
+  `prow_scholar_code` varchar(255) NOT NULL,
+  `prow_ticket_subject` varchar(255) NOT NULL,
+  `prow_ticket_desc` text NOT NULL,
+  `prow_ticket_attachements` varchar(255) NOT NULL,
+  `prow_ticket_created` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `prow_student_ticket`
+--
+
+INSERT INTO `prow_student_ticket` (`prow_ticket_id`, `prow_scholar_code`, `prow_ticket_subject`, `prow_ticket_desc`, `prow_ticket_attachements`, `prow_ticket_created`) VALUES
+(1, '20243uhtGM', 'SAmple title', 'qqqqqqqqqqqqqq', '20240117105843_aaa.jpg', '2024-01-17 10:58:43');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prow_transaction`
 --
 
@@ -22290,6 +22312,12 @@ ALTER TABLE `prow_skill_type`
   ADD PRIMARY KEY (`prow_skill_type_id`);
 
 --
+-- Indexes for table `prow_student_ticket`
+--
+ALTER TABLE `prow_student_ticket`
+  ADD PRIMARY KEY (`prow_ticket_id`);
+
+--
 -- Indexes for table `prow_transaction`
 --
 ALTER TABLE `prow_transaction`
@@ -22496,6 +22524,12 @@ ALTER TABLE `prow_skills`
 --
 ALTER TABLE `prow_skill_type`
   MODIFY `prow_skill_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
+--
+-- AUTO_INCREMENT for table `prow_student_ticket`
+--
+ALTER TABLE `prow_student_ticket`
+  MODIFY `prow_ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `prow_transaction`
