@@ -40,7 +40,8 @@
                                     <table class="datatables-ajax dt-advanced-search table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
+                                                <th>Log Code</th>
+                                                <th>School</th>
                                                 <th>School Year</th>
                                                 <th>Semester</th>
                                                 <th>Course</th>
@@ -50,15 +51,17 @@
                                         </thead>
                                         <tbody>
                                             <?php  
-                                                $getScholarSkills=selectScholarSkills($scholarCode);
-                                                while ($scholarSkills=$getScholarSkills->fetch(PDO::FETCH_ASSOC)) {
+                                                $getScholarAppLogs=selectScholarAppLogs($scholarCode);
+                                                while ($scholarAppLogs=$getScholarAppLogs->fetch(PDO::FETCH_ASSOC)) {
                                             ?>
                                             <tr>
-                                                <td><?= getSkillCategory($scholarSkills['prow_skill_type_id'])?></td>
-                                                <td><?= getSkillType($scholarSkills['prow_skill_type_id']) ?></td>
-                                                <td><?= $scholarSkills['prow_skills'] ?></td>
-                                                <td class="text-center"><span class="badge bg-primary"><?= $scholarSkills['prow_skills_proficiency'] ?></span></td>
-                                                <td class=="text-center">
+                                                <td><?= $scholarAppLogs['prow_app_log_code'] ?></td>
+                                                <td><?= getSchoolNamebyID($scholarAppLogs['prow_hei']) ?></td>
+                                                <td><?= $scholarAppLogs['prow_sy'] ?></td>
+                                                <td><?= $scholarAppLogs['prow_sem'] ?></td>
+                                                <td><?= getScholarCourse($scholarCode) ?></td>
+                                                <td class="text-center"><span class="badge <?= getScholarAppLogStatusColor($scholarAppLogs['prow_app_log_status']) ?>"> <i class="<?= getScholarAppLogStatusIcon($scholarAppLogs['prow_app_log_status']) ?>"></i><?= getScholarAppLogStatus($scholarAppLogs['prow_app_log_status']) ?></span></td>
+                                                <td class="text-center">
                                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#removeSkill_<?= $scholarSkills['prow_skills_id'] ?>"><i class="mdi mdi-delete-outline"></i></button>
                                                 </td>
                                             </tr>

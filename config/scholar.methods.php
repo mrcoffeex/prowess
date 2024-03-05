@@ -1094,6 +1094,19 @@
   
   }
 
+    function selectScholarAppLogs($profileCode){
+        $statement=PWD()->prepare("SELECT
+                                    *
+                                    From
+                                    prow_scholar_app_logs
+                                    Where
+                                    prow_scholar_code = :prow_scholar_code");
+        $statement->execute([
+            'prow_scholar_code' => $profileCode
+        ]);
+        return $statement;
+    }
+
     function getSchoolScholar($profileCode){
         $statement=PWD()->prepare("SELECT
                                     *
@@ -2321,4 +2334,5 @@
         return $count;
 
     }
+
 ?>
