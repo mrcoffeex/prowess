@@ -34,7 +34,7 @@
  
         <div class="content-wrapper">
           <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">HEI Information / <span> <a href="hei_profile?rand=<?= my_rand_str(100) ?>&hei_id=<?=$hei_id ?>">Profile</a></span>  / </span> Edit</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">HEI Information / <span> <a href="heiProfile?rand=<?= my_rand_str(100) ?>&hei_id=<?=$hei_id ?>">Profile</a></span>  / </span> Edit</h4>
 
               <div class="row">
                 <div class="col-md-12">
@@ -231,7 +231,7 @@
 
                         <div class="mt-4">
                           <button type="submit" class="btn btn-primary me-2" id="heiEdit">Save changes</button>
-                          <button type="reset" class="btn btn-outline-secondary"><a href="hei_profile?hei_id=<?= $hei_id ?>">Cancel</button>
+                          <button type="reset" class="btn btn-outline-secondary"><a href="heiProfile?hei_id=<?= $hei_id ?>">Cancel</button>
                         </div>                        
                       </form>
                     </div>

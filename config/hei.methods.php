@@ -466,6 +466,53 @@
     
     }  
 
+    function removeHeiCourseSubjects($courseId){
+
+        $stmt=PWD()->prepare("DELETE FROM prow_hei_subjects
+                            Where
+                            prow_hei_course_id = :prow_hei_course_id");
+        $stmt->execute([
+            'prow_hei_course_id' => $courseId
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    function removeHeiCourse($courseId){
+
+        $stmt=PWD()->prepare("DELETE FROM prow_hei_course
+                            Where
+                            prow_hei_course_id = :prow_hei_course_id");
+        $stmt->execute([
+            'prow_hei_course_id' => $courseId
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
+    function removeHeiCourseAndSubjects($courseId){
+
+        $course=removeHeiCourse($courseId);
+        $subjects=removeHeiCourseSubjects($courseId);
+
+        if ($course == true && $subjects == true) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
     function selectHeiCourseSubjects($courseId){
 
         $statement=PWD()->prepare("SELECT

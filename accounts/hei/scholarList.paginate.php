@@ -10,9 +10,12 @@
                                 ON
                                 prow_scholar.prow_scholar_code = prow_scholar_app_logs.prow_scholar_code
                                 Where
-                                prow_hei = :prow_hei");
+                                prow_hei = :prow_hei
+                                AND
+                                prow_scholar_acct_status != :prow_scholar_acct_status");
     $getPaginate->execute([
-        'prow_hei' => $heiId
+        'prow_hei' => $heiId,
+        'prow_scholar_acct_status' => 2
     ]);
     $paginates=$getPaginate->fetch(PDO::FETCH_BOTH);
 
@@ -49,12 +52,15 @@
                             prow_scholar.prow_scholar_code = prow_scholar_app_logs.prow_scholar_code
                             Where
                             prow_hei = :prow_hei
+                            AND
+                            prow_scholar_acct_status != :prow_scholar_acct_status
                             Order By
                             prow_app_logs_created 
                             DESC
                             $limit");
     $paginate->execute([
-        'prow_hei' => $heiId
+        'prow_hei' => $heiId,
+        'prow_scholar_acct_status' => 2
     ]);
     
     $paginationCtrls = '';

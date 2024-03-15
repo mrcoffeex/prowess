@@ -1,5 +1,7 @@
 <?php
 include '../../config/includes.php';
+include '../../config/session.php';
+
 include "_head.php";
 
 ?>

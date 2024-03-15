@@ -16,9 +16,9 @@
         );      
 
         if ($request1 == true) {
-            header("location: hei_profile?hei_id=$heiId&note=added");
+            header("location: heiProfile?hei_id=$heiId&note=added");
         } else {
-            header("location: hei_profile?hei_id=$heiId&note=duplicate");
+            header("location: heiProfile?hei_id=$heiId&note=duplicate");
         }
     
         

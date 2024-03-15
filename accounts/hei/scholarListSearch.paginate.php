@@ -43,7 +43,7 @@
                                 AND
                                 (prow_sem LIKE :prow_sem)
                                 AND
-                                (prow_app_log_status = :prow_app_log_status)");
+                                (prow_scholar_acct_status != :prow_scholar_acct_status2)");
     $getPaginate->execute([
         'prow_scholar_code' => $scholarCodeText,
         'prow_scholar_school_id' => $schoolIdText,
@@ -52,7 +52,7 @@
         'prow_address_municipality' => $municipalityText,
         'prow_sy' => $schoolYearText,
         'prow_sem' => $semesterText,
-        'prow_app_log_status' => 2
+        'prow_scholar_acct_status2' => 2
     ]);
     
 
@@ -115,7 +115,7 @@
                             AND
                             (prow_sem LIKE :prow_sem)
                             AND
-                            (prow_app_log_status = :prow_app_log_status)
+                            (prow_scholar_acct_status != :prow_scholar_acct_status2)
                             Order By
                             prow_scholar_lastname
                             ASC
@@ -128,7 +128,7 @@
         'prow_address_municipality' => $municipalityText,
         'prow_sy' => $schoolYearText,
         'prow_sem' => $semesterText,
-        'prow_app_log_status' => 2
+        'prow_scholar_acct_status2' => 2
     ]);
     
     $paginationCtrls = '';

@@ -13,7 +13,6 @@
   $long = getHeiLong($heiId);
   $lat = getHeiLat($heiId);
 
-  
   ?>
 
 <style>
@@ -44,8 +43,10 @@
                     <div class="card-body">
                     <form id="formHeiUpdate" action="hei_profile_edit_update?hei_id=<?= $heiId ?>" method="POST" enctype="multipart/form-data" onsubmit="btnLoader(this.heiEdit)">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <div id="heiAvatar"></div>
-                        <input type="text" value="<?= $profile['prow_hei_name']?>" hidden>
+                        <div id="heiAvatar">
+                            <img src="<?= previewImage($profile['prow_hei_logo'], '../../assets/img/avatars/1.png', '../../imagebank/') ?>" id="hei_profile_avatar" alt="default-avatar" class="d-block w-px-120 h-px-120 ms-0 ms-sm-4 rounded user-profile-img">
+                        </div>
+                        <input type="text" value="<?= $profile['prow_hei_name'] ?>" hidden>
                         <div class="button-wrapper">
                           <label for="heilogo" class="btn btn-primary me-2 mb-3" tabindex="0">
                             <span class="d-none d-sm-block">Upload new photo</span>
@@ -230,7 +231,7 @@
 
                         <div class="mt-4">
                           <button type="submit" class="btn btn-primary me-2" id="heiEdit">Save changes</button>
-                          <button type="reset" class="btn btn-outline-secondary"><a href="hei_profile?hei_id=<?= $heiId ?>">Cancel</button>
+                          <button type="reset" class="btn btn-outline-secondary"><a href="heiProfile?hei_id=<?= $heiId ?>">Cancel</button>
                         </div>                        
                       </form>
                     </div>
@@ -310,5 +311,6 @@
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl37fY99htQLQOK1zIErOwsxMiTQ3AxmA&callback=initMap" async defer></script>
+    
 </body>
 </html>

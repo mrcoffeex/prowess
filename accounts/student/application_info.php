@@ -3,6 +3,11 @@
   require '_session.php';
   include "_head.php";
 
+  $getProfile=selectScholar($scholarCode);
+  $profile=$getProfile->fetch(PDO::FETCH_ASSOC);
+
+  
+
 ?>
 
 <body>

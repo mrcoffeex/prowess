@@ -144,37 +144,57 @@
                                                     while ($course=$getHeiCourse->fetch(PDO::FETCH_ASSOC)) {
                                                 ?>                                            
 
-                                            <tr>
-                                                    
-                                                    <td><?= $course['prow_course_name']?></td>
-                                                    <td><?php $heiId=$course['prow_hei_id'];
-                                                              $hei_course=$course['prow_hei_course_id'];
-                                                        ?>
-                                                        <a href="scholarInformationperCourse?rand=<?= my_rand_str(100) ?>&heiId=<?=$heiId ?>&course_id=<?=$course['prow_hei_course_id'] ?>">
-                                                          <?= $count=countAllScholarbyCourse($heiId,$hei_course);?>
-                                                        </a>
-                                                    </td>
-                                                    <td><?= selectCountCoursebyHeiIds($course['prow_hei_course_id']) ?></td>
-                                                    <td class="text-center p-2">
-                                                        <a href="hei_subjects?rand=<?= my_rand_str(100) ?>&heiId=<?=$heiId ?>&course_id=<?=$course['prow_hei_course_id'] ?>">
-                                                            <button 
-                                                            type="button" 
-                                                            class="btn btn-primary btn-sm">
-                                                              <i class="mdi mdi-book-outline"></i>
-                                                            </button>
-                                                        </a>
-                                                    </td>
-                                                    <td class="text-center p-2">
-                                                        <a href="hei_delete?rand=<?= my_rand_str(100) ?>&heiId=<?=$heiId ?>">
-                                                            <button 
-                                                            type="button" 
-                                                            class="btn btn-danger btn-sm">
-                                                              <i class="mdi mdi-delete-outline"></i>
-                                                            </button>
-                                                        </a>
-                                                    </td>
-                                
+                                            <tr> 
+                                                <td><?= $course['prow_course_name'] ?></td>
+                                                <td>
+                                                    <a href="scholarInformationperCourse?rand=<?= my_rand_str(100) ?>&heiId=<?=$heiId ?>&course_id=<?= $course['prow_hei_course_id'] ?>">
+                                                        <?= countAllScholarbyCourse($heiId, $course['prow_hei_course_id']) ?>
+                                                    </a>
+                                                </td>
+                                                <td><?= selectCountCoursebyHeiIds($course['prow_hei_course_id']) ?></td>
+                                                <td class="text-center p-2">
+                                                    <a href="hei_subjects?rand=<?= my_rand_str(100) ?>&heiId=<?=$heiId ?>&course_id=<?=$course['prow_hei_course_id'] ?>">
+                                                        <button 
+                                                        type="button" 
+                                                        class="btn btn-primary btn-sm">
+                                                            <i class="mdi mdi-book-outline"></i>
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                                <td class="text-center p-2">
+                                                    <button 
+                                                    type="button" 
+                                                    class="btn btn-danger btn-sm" 
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#remove_<?= $course['prow_hei_course_id'] ?>">
+                                                        <i class="mdi mdi-delete-outline"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
+
+                                            <div class="modal fade" id="remove_<?= $course['prow_hei_course_id'] ?>" tabindex="-1" aria-hidden="true">
+                                                <div class="modal-dialog modal-sm" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="exampleModalLabel1"><i class="mdi mdi-alert"></i> Delete</h4>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <p>Are you sure you want to remove <span class="text-danger"><?= $course['prow_course_name'] ?></span> </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="hei_course_remove?rand=<?= my_rand_str(100) ?>&courseId=<?= $course['prow_hei_course_id'] ?>">
+                                                                <button type="button" id="resubBtn" class="btn btn-danger">Remove</button>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <?php } ?>
                                         </tbody>
                                         </table>

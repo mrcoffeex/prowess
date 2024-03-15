@@ -25,8 +25,16 @@
                   ><span class="fw-semibold"><?= getUserRole($scholarCode) ?></span>
                 </li>
                 <li class="list-inline-item">
-                  <i class="mdi mdi-account-check me-1 mdi-20px"></i
-                  ><span class="fw-semibold"><?= getScholarAppLogStatus($appLogStatus) ?></span>
+                  <i class="<?= scholarStatusIcon(getScholarStatus($scholarCode)) ?> me-1 mdi-20px"></i
+                  ><span class="fw-semibold"><?= scholarStatus(getScholarStatus($scholarCode)) ?></span>
+                </li>
+                <li class="list-inline-item">
+                  <i class="<?= getScholarAppLogStatusIcon(getScholarAppLogStatusLatest($scholarCode)) ?> me-1 mdi-20px"></i
+                  ><span class="fw-semibold <?= getScholarAppLogStatusColor(getScholarAppLogStatusLatest($scholarCode)) ?>"><?= getScholarAppLogStatus(getScholarAppLogStatusLatest($scholarCode)) ?></span>
+                </li>
+                <li class="list-inline-item">
+                  <i class="mdi mdi-calendar-blank-outline me-1 mdi-20px"></i
+                  ><span class="fw-semibold"> Joined <?= getScholar_Joined($scholarCode) ?></span>
                 </li>
               </ul>
             </div>

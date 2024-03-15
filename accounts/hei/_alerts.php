@@ -31,12 +31,18 @@
 
         //hei_profile
         
-        if ($currpage == "hei_profile") {
+        if ($currpage == "heiProfile") {
         
             if ($note == "duplicate") {
                 echo "
                     <script>
                         toastr.error('Course already exists');
+                    </script>
+                ";
+            } else if ($note == "course_removed") {
+                echo "
+                    <script>
+                        toastr.success('Course removed');
                     </script>
                 ";
             } else if ($note == "added") {
