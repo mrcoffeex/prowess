@@ -34,9 +34,9 @@
         }else{
             return "0";
         }
-        
 
     }
+    
     function checkHeiCourseDuplicate($hei_id,$listcourse){
         $statement=PWD()->prepare("SELECT
                                     *

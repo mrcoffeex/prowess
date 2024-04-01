@@ -40,6 +40,7 @@
                             Course Settings
                             </button>
                         </a>
+                        
                     </div>
                 </div>
             </div>

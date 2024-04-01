@@ -2,6 +2,7 @@
   require '../../config/includes.php';
   require '_session.php';
   include "_head.php";
+  include 'addOccu_paginate.php';
 ?>
 
   <body>
@@ -77,35 +78,47 @@
                                 <table class=" datatables-ajax dt-advanced-search table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            
                                             <th>Occupation Name</th>
                                             <th>Action</th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody>                            
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Driver</td>
-                                            <td class="text-center p-2">
-                                                <a href="" target="">
-                                                    <button 
-                                                    type="button" 
-                                                    class="btn btn-primary btn-sm">
-                                                    <i class="ti-user mdi mdi-pencil-outline"></i>
-                                                    </button>
-                                                </a>
-                                                <a href="" target="">
-                                                    <button 
-                                                    type="button" 
-                                                    class="btn btn-danger btn-sm">
-                                                    <i class="ti-user mdi mdi-delete-outline"></i>
-                                                    </button>
-                                                </a>
-                                                </td>
-                                            </tr>
+                               
+                                    <?php
+                                        while($data=$paginate->fetch(PDO::FETCH_ASSOC)){
+                                    ?>
+                                     <tr>
+                                        
+                                        <td><?= $data['prow_occu_name']  ?></td>
+                                        <td class="text-center p-3">
+                                            <a href="" target="">
+                                                <button 
+                                                type="button" 
+                                                class="btn btn-primary btn-sm">
+                                                <i class="ti-user mdi mdi-pencil-outline"></i>
+                                                </button>
+                                            </a>
+                                            <a href="" target="">
+                                                <button 
+                                                type="button" 
+                                                class="btn btn-danger btn-sm">
+                                                <i class="ti-user mdi mdi-delete-outline"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php }?>
+                               
                                     </tbody>
                                 </table>
+                                
+                                <div class ="d-flex justify-content-center">
+                                    <ul class="list-group list-group-horizontal-sm">
+                                        <?= $paginationCtrls ?>
+                                    </ul>
+                                </div>
                             </div>
                     </div>
                 </div>
