@@ -1166,7 +1166,7 @@
                                 Where
                                 prow_hei_course_id = :prow_hei_course_id");
         $stmt->execute([
-        'prow_hei_course_id' => $heiCOurse
+        'prow_hei_course_id' => $courseId
         ]);
 
         $res=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -1221,6 +1221,7 @@
         }
 
     }
+    
     function selectAllScholarbyHEI($hei_id){
         $statement=PWD()->prepare("SELECT
                                      a.prow_scholar_code, 
@@ -1433,6 +1434,31 @@
                             prow_app_log_status = :prow_app_log_status");
         $stmt->execute([
             'prow_app_log_status' => 2
+        ]);
+
+        $count=$stmt->rowCount();
+
+        return $count;
+
+    }
+
+    function countScholarAppLogPending2(){
+
+        $stmt=PWD()->prepare("SELECT 
+                            prow_scholar_app_logs_id
+                            FROM
+                            prow_scholar_app_logs
+                            LEFT JOIN
+                            prow_scholar
+                            ON
+                            prow_scholar_app_logs.prow_scholar_code = prow_scholar.prow_scholar_code
+                            Where
+                            prow_app_log_status = :prow_app_log_status
+                            AND
+                            prow_scholar_acct_status = :prow_scholar_acct_status");
+        $stmt->execute([
+            'prow_app_log_status' => 2,
+            'prow_scholar_acct_status' => 1
         ]);
 
         $count=$stmt->rowCount();
@@ -2352,6 +2378,27 @@
         $count=$stmt->rowCount();
 
         return $count;
+
+    }
+
+    function updateScholarFundingStatus($appLogId, $fundingStatus, $fundingDate){
+
+        $stmt=PWD()->prepare("UPDATE prow_scholar_app_logs SET
+                            prow_app_log_funding_status = :prow_app_log_funding_status,
+                            prow_app_log_funding_date = :prow_app_log_funding_date
+                            Where
+                            prow_scholar_app_logs_id = :prow_scholar_app_logs_id");
+        $stmt->execute([
+            'prow_app_log_funding_status' => $fundingStatus,
+            'prow_app_log_funding_date' => $fundingDate,
+            'prow_scholar_app_logs_id' => $appLogId
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 

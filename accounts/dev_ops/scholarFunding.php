@@ -1,18 +1,7 @@
 <?php
     require '../../config/includes.php';
     require '_session.php';
-
-    $scholarCode = clean_string($_GET['scholarCode']);
-    $schoolId = clean_string($_GET['schoolId']);
-    $scholarName = clean_string($_GET['scholarName']);
-    $school = clean_int($_GET['school']);
-    $status = clean_string($_GET['status']);
-    $municipality = clean_int($_GET['municipality']);
-    $schoolYear = clean_string($_GET['schoolYear']);
-    $semester = clean_int($_GET['semester']);
-
-    include 'scholarInformationSearch.paginate.php';
-
+    include 'scholarFunding.paginate.php';
     include "_head.php";
 ?>
 
@@ -61,45 +50,7 @@
                                 <div class="d-flex align-items-center">
                                     <h5 class="mb-0">0</h5>
                                 </div>
-                                <small class="text-muted">Total Scholars</small>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                <div class="avatar-initial bg-label-info rounded">
-                                    <div class="mdi mdi-account-outline mdi-24px"></div>
-                                </div>
-                                </div>
-                                <div class="ms-3">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mb-0"><?= countScholarAppLogPending2() ?></h5>
-                                </div>
-                                <small class="text-muted">Pending Scholars</small>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-sm-6 col-xl-3">
-                        <div class="card">
-                            <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="avatar">
-                                <div class="avatar-initial bg-label-success rounded">
-                                    <div class="mdi mdi-account-outline mdi-24px"></div>
-                                </div>
-                                </div>
-                                <div class="ms-3">
-                                <div class="d-flex align-items-center">
-                                    <h5 class="mb-0">0</h5>
-                                </div>
-                                <small class="text-muted">Graduated</small>
+                                <small class="text-muted">Funded Scholars</small>
                                 </div>
                             </div>
                             </div>
@@ -108,11 +59,7 @@
                     </div>
 
                     <div class="card">
-                        <h5 class="card-header">
-                            <a href="scholarInformation"><button type="button" class="btn btn-dark btn-sm">back to list</button></a>&nbsp;
-                            Student List 
-                            <span class="float-end"><?= $countRes ?> <small>result(s)</small></span>
-                        </h5>
+                        <h5 class="card-header">Funding List <span class="float-end"><?= $countRes ?> result(s)</span></h5>
                         <!--Search Form -->
                         <div class="card-body">
                             <form class="dt_adv_search" method="POST" action="_redirect">
@@ -121,26 +68,26 @@
                                         <div class="row g-3">
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" name="scholarCode" class="form-control dt-input" data-column="3" placeholder="2023AbCd123" data-column-index="2" value="<?= $scholarCode ?>" />
+                                                    <input type="text" name="scholarCode" class="form-control dt-input" data-column="3" placeholder="2023AbCd123" data-column-index="2" />
                                                     <label>Scholar Code</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" name="schoolId" class="form-control dt-input" data-column="3" placeholder="042001" data-column-index="2" value="<?= $schoolId ?>" />
+                                                    <input type="text" name="schoolId" class="form-control dt-input" data-column="3" placeholder="042001" data-column-index="2" />
                                                     <label>School ID</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
-                                                    <input type="text" name="scholarName" class="form-control dt-input" data-column="3" placeholder="Juan Dela Cruz" data-column-index="2" value="<?= $scholarName ?>" />
+                                                    <input type="text" name="scholarName" class="form-control dt-input" data-column="3" placeholder="Juan Dela Cruz" data-column-index="2" />
                                                     <label>Name</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
                                                     <select name="school" id="school" class="form-control">
-                                                        <option value="<?= $school ?>"><?= getSchoolName($school) ?></option>
+                                                        <option></option>
                                                          <?php
                                                             //get HEI
                                                             $getHei=selectHei();
@@ -155,7 +102,7 @@
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
                                                     <select name="status" id="status" class="form-control">
-                                                        <option value="<?= $status ?>"><?= scholarStatus($status) ?></option>
+                                                        <option value=""></option>
                                                         <option value="1">Active</option>
                                                         <option value="3">Alumni</option>
                                                     </select>
@@ -165,7 +112,7 @@
                                             <div class="col-12 col-sm-6 col-lg-4">
                                                 <div class="form-floating form-floating-outline">
                                                     <select name="municipality" id="municipality" class="form-control">
-                                                        <option value="<?= $municipality ?>"><?= getMunicipalityName($municipality) ?></option>
+                                                        <option value=""></option>
                                                         <?php  
                                                             //get municipalites
                                                             $getMunicipalities=selectMunicipalities();
@@ -181,7 +128,7 @@
                                                 <div class="form-floating form-floating-outline">
                                                     <div class="form-floating form-floating-outline">
                                                         <select name="schoolYear" id="schoolYear" class="form-control">
-                                                            <option><?= $schoolYear ?></option>
+                                                            <option value=""></option>
                                                             <?php  
                                                                 //get municipalites
                                                                 $getSY=selectSchoolYears();
@@ -198,7 +145,7 @@
                                                 <div class="form-floating form-floating-outline">
                                                     <div class="form-floating form-floating-outline">
                                                         <select name="semester" id="semester" class="form-control">
-                                                            <option value="<?= $semester ?>"><?= semester($semester) ?></option>
+                                                            <option value=""></option>
                                                             <option value="1">First Semester</option>
                                                             <option value="2">Second Semester</option>
                                                         </select>
@@ -207,9 +154,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
-                                                <button type="submit" name="scholarInformationBtn" id="searchStudent" class="btn btn-primary"><i class="mdi mdi mdi-magnify me-1"></i>Search</button>
+                                                <button type="submit" name="scholarInformationBtn" id="scholarInformationBtn" class="btn btn-primary"><i class="mdi mdi mdi-magnify me-1"></i>Search</button>
 
-                                                <a href="" target="_blank" class="btn btn-success">
+                                                <a href="print_list_scholar" target="_blank" class="btn btn-success">
                                                     <i class="mdi mdi-printer-outline me-1"></i>Print List
                                                 </a>
                                             </div>
@@ -223,12 +170,12 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Action</th>
+                                        <th class="text-center p-2">Action</th>
                                         <th>Scholar Code</th>
                                         <th>Fullname</th>
-                                        <th>Scholarship</th>
-                                        <th>School</th>
-                                        <th>Municipality</th>
+                                        <th>S.Y.</th>
+                                        <th>Status</th>
+                                        <th>Release Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -244,13 +191,62 @@
                                                 <i class="ti-user mdi mdi-account-eye"></i>
                                                 </button>
                                             </a>
+
+                                            <button 
+                                                type="button" 
+                                                class="btn btn-info btn-sm" 
+                                                title="update funding status ..." 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#fund_<?= $pending['prow_scholar_app_logs_id'] ?>">
+                                                <i class="ti-user mdi mdi-update"></i>
+                                            </button>
                                         </td>
                                         <td><?= $pending['prow_scholar_code'] ?></td>
                                         <td><?= getFullname($pending['prow_scholar_code'])  ?></td>
-                                        <td><?= getScholarAppLogStatus($pending['prow_app_log_status'])?></td>
-                                        <td><?= getScholarSchool($pending['prow_scholar_code'])  ?></td>
-                                        <td><?= getScholarMuni($pending['prow_scholar_code'])  ?></td>
+                                        <td><?= $pending['prow_sy'] . "<br>" . semester($pending['prow_sem']) ?></td>
+                                        <td><?= fundingStatus($pending['prow_app_log_funding_status']) ?></td>
+                                        <td><?= properDate($pending['prow_app_log_funding_date']) . " " . properTime($pending['prow_app_log_funding_date']) ?></td>
                                     </tr>
+
+                                    <div class="modal fade" id="fund_<?= $pending['prow_scholar_app_logs_id'] ?>" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="exampleModalLabel2">Change Funding Status</h4>
+                                                    <button
+                                                        type="button"
+                                                        class="btn-close"
+                                                        data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <form action="scholarFundingUpdate?rand=<?= randStrInt(100) ?>&appLogId=<?= $pending['prow_scholar_app_logs_id'] ?>" method="post" onsubmit="btnLoader(this.updateFundingStatus)">
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12 mb-4 mt-2">
+                                                                <div class="form-floating form-floating-outline">
+                                                                    <select name="fundingStatus" id="fundingStatus" class="form-control text-center" required>
+                                                                        <option value="<?= $pending['prow_app_log_funding_status'] ?>"><?= fundingStatus($pending['prow_app_log_funding_status']) ?></option>
+                                                                        <option value="0">Pending</option>
+                                                                        <option value="1">Funded</option>
+                                                                    </select>
+                                                                    <label for="nameSmall">Status</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 mb-4 mt-2">
+                                                                <div class="form-floating form-floating-outline">
+                                                                    <input type="date" name="dateRelease" id="dateRelease" value="<?= date("Y-m-d") ?>" class="form-control" required>
+                                                                    <label for="nameSmall">Date Released</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" id="updateFundingStatus" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <?php } ?>
                                 </tbody>
                             </table>

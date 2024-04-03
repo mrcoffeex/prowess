@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="ms-3">
                                 <div class="d-flex align-items-center">
-                                    <h5 class="mb-0"><?= countScholarAppLogPending("") ?></h5>
+                                    <h5 class="mb-0"><?= countScholarAppLogPending2() ?></h5>
                                 </div>
                                 <small class="text-muted">Pending Scholars</small>
                                 </div>
@@ -100,7 +100,7 @@
                         <h5 class="card-header">Student List</h5>
                         <!--Search Form -->
                         <div class="card-body">
-                            <form class="dt_adv_search" method="POST" action="_redirect" onsubmit="btnLoader(this.searchStudent)">
+                            <form class="dt_adv_search" method="POST" action="_redirect">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row g-3">
@@ -142,7 +142,6 @@
                                                     <select name="status" id="status" class="form-control">
                                                         <option value=""></option>
                                                         <option value="1">Active</option>
-                                                        <option value="2">Pending</option>
                                                         <option value="3">Alumni</option>
                                                     </select>
                                                     <label for="status">Status</label>
@@ -193,7 +192,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">
-                                                <button type="submit" id="searchStudent" class="btn btn-primary"><i class="mdi mdi mdi-magnify me-1"></i>Search</button>
+                                                <button type="submit" name="scholarInformationBtn" id="scholarInformationBtn" class="btn btn-primary"><i class="mdi mdi mdi-magnify me-1"></i>Search</button>
 
                                                 <a href="print_list_scholar" target="_blank" class="btn btn-success">
                                                     <i class="mdi mdi-printer-outline me-1"></i>Print List
@@ -212,7 +211,7 @@
                                         <th>Action</th>
                                         <th>Scholar Code</th>
                                         <th>Fullname</th>
-                                        <th>Status</th>
+                                        <th>Scholarship</th>
                                         <th>School</th>
                                         <th>Municipality</th>
                                     </tr>
@@ -263,6 +262,7 @@
     </div>
 
     <?php include "_scripts.php"; ?>
+    <?php include "_alerts.php"; ?>
 
 </body>
 

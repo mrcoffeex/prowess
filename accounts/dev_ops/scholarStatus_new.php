@@ -1,4 +1,4 @@
-                <div class="card card-action mb-4">
+<div class="card card-action mb-4">
                       <div class="card-header align-items-center">
                         <h5 class="card-action-title mb-0">
                           <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>Scholarship Status

@@ -224,7 +224,7 @@
 
     function properDate($datetime){
 
-        if ($datetime == "") {
+        if ($datetime == "" || $datetime == "0000-00-00 00:00:00") {
             $res = "";
         }else{
             $res = date("Md Y", strtotime($datetime));
@@ -236,7 +236,7 @@
 
     function properTime($datetime){
 
-        if ($datetime == "") {
+        if ($datetime == "" || $datetime == "0000-00-00 00:00:00") {
             $res = "";
         }else{
             $res = date("g:i A", strtotime($datetime));
@@ -244,6 +244,35 @@
 
         return $res;
 
+    }
+
+    function sysem($sysem, $position){
+
+        $res = explode("-", $sysem);
+
+        if ($position == "from") {
+            return $res[0];
+        } else if ($position == "to") {
+            return $res[1];
+        } else if ($position == "sem") {
+            return $res[2];
+        } else {
+            return "unknown";
+        }
+
+    }
+
+    function fundingStatus($status){
+
+        if ($status == 0) {
+            $res = "";
+        } else if ($status == 1) {
+            $res = "Funded";
+        } else {
+            $res = "";
+        }
+        
+        return $res;
     }
 
     function sendEmail($emailTo, $emailSubject, $emailBodyTitle, $emailBodyMessage, $autoload){
@@ -1068,6 +1097,8 @@
             $res = "1st Semester";
         } else if ($semester == 2) {
             $res = "2nd Semester";
+        } else if ($semester == 3) {
+            $res = "3rd Semester";
         } else {
             $res = "";
         }

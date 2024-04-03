@@ -968,5 +968,41 @@
 
     }
 
+    function selectHeiSchoolYears($heiId){
+
+        $stmt=PWD()->prepare("SELECT DISTINCT prow_sy as school_year FROM
+                            prow_scholar_app_logs
+                            Where
+                            prow_hei = :prow_hei
+                            Order By
+                            prow_sy
+                            DESC");
+        $stmt->execute([
+            'prow_hei' => $heiId
+        ]);
+
+        return $stmt;
+
+    }
+
+    function updateHeiSY($sysem, $heiId){
+
+        $stmt=PWD()->prepare("UPDATE prow_hei SET
+                            prow_hei_sysem = :prow_hei_sysem
+                            Where
+                            prow_hei_id = :prow_hei_id");
+        $stmt->execute([
+            'prow_hei_sysem' => $sysem,
+            'prow_hei_id' => $heiId
+        ]);
+
+        if ($stmt) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+
 
 ?>

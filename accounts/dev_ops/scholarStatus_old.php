@@ -1,4 +1,4 @@
-                    <div class="card card-action mb-4">
+<div class="card card-action mb-4">
                       <div class="card-header align-items-center">
                         <h5 class="card-action-title mb-0">
                           <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i>Scholarship Status
@@ -20,15 +20,15 @@
                             if (scholarshipStatusOld($scholarCode, "personal_information") == "complete") {
                               $a_bullet = "timeline-point-successnew";
                               $a_text ="text-muted";
-                              $a_created = getPersonalInformationCreatedDate($scholarCode);
+                              $a_created = getTimePassed(getPersonalInformationCreatedDate($scholarCode), date("Y-m-d H:i:s"));
                               $a_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $a_desc = " Personal Information has been registered";
                               $a_status=1;
-                            } else if (scholarshipStatusOld($scholarCode, "personal_information") == "incomplete") {
+                            } else {
                               $a_bullet = "timeline-point-warning";
                               $a_text ="text-ongoing";
                               $a_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
-                              $a_created = getPersonalInformationCreatedDate($scholarCode);
+                              $a_created = "---";
                               $a_desc = "<span class='text-ongoing'><i class=''>Please complete your personal information</span>";
                               $a_status=0;
                             }
@@ -36,15 +36,15 @@
                             if (scholarshipStatusOld($scholarCode, "address_information") == "complete") {
                               $b_bullet = "timeline-point-successnew";
                               $b_text ="text-muted";
-                              $b_created = getPersonalInformationCreatedDate($scholarCode);
+                              $b_created = getTimePassed(getPersonalInformationCreatedDate($scholarCode), date("Y-m-d H:i:s"));
                               $b_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $b_desc = " Address Information has been registered";
                               $b_status=1;
-                            } else if (scholarshipStatusOld($scholarCode, "address_information") == "incomplete") {
+                            } else {
                               $b_bullet = "timeline-point-warning";
                               $b_text ="text-ongoing";
                               $b_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
-                              $b_created = getPersonalInformationCreatedDate($scholarCode);
+                              $b_created = "---";
                               $b_desc = "<span class='text-ongoing'><i class=''>Please complete your address information</span>";
                               $b_status=0;
                             }
@@ -52,15 +52,15 @@
                             if (scholarshipStatusOld($scholarCode, "family_information") == "complete") {
                               $c_bullet = "timeline-point-successnew";
                               $c_text ="text-muted";
-                              $c_created = getPersonalInformationCreatedDate($scholarCode);
+                              $c_created = getTimePassed(getPersonalInformationCreatedDate($scholarCode), date("Y-m-d H:i:s"));
                               $c_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $c_desc = " Family Information has been registered";
                               $c_status=1;
-                            } else if (scholarshipStatusOld($scholarCode, "family_information") == "incomplete") {
+                            } else {
                               $c_bullet = "timeline-point-warning";
                               $c_text ="text-ongoing";
                               $c_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
-                              $c_created = getPersonalInformationCreatedDate($scholarCode);
+                              $c_created = "---";
                               $c_desc = "<span class='text-ongoing'><i class=''>Please complete your family information</span>";
                               $c_status=0;
                             }
@@ -68,52 +68,49 @@
                             if (scholarshipStatusOld($scholarCode, "skills_information") == "complete") {
                               $d_bullet = "timeline-point-successnew";
                               $d_text ="text-muted";
-                              $d_created = getPersonalInformationCreatedDate($scholarCode);
+                              $d_created = getTimePassed(getPersonalInformationCreatedDate($scholarCode), date("Y-m-d H:i:s"));
                               $d_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $d_desc = " Skills Information has been registered";
-                              $d_status=1;
-                            } else if (scholarshipStatusOld($scholarCode, "skills_information") == "incomplete") {
+                              $d_status = 1;
+                            } else {
                               $d_bullet = "timeline-point-warning";
                               $d_text ="text-ongoing";
                               $d_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
-                              $d_created = getPersonalInformationCreatedDate($scholarCode);
+                              $d_created = "---";
                               $d_desc = "<span class='text-ongoing'><i class=''>Please complete your skills information</span>";
-                              $c_status=0;
+                              $d_status = 0;
                             }
 
 
                             if (scholarshipStatusOld($scholarCode, "enroll_information") == "complete") {
                               $e_bullet = "timeline-point-successnew";
                               $e_text ="text-muted";
-                              $e_created = getPersonalInformationCreatedDate($scholarCode);
+                              $e_created = getTimePassed(getPersonalInformationCreatedDate($scholarCode), date("Y-m-d H:i:s"));
                               $e_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $e_desc = " Enrollment Information has been registered";
                               $e_status=1;
-                            } else if (scholarshipStatusOld($scholarCode, "enroll_information") == "incomplete") {
+                            } else {
                               $e_bullet = "timeline-point-warning";
                               $e_text ="text-ongoing";
                               $e_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
-                              $e_created = getPersonalInformationCreatedDate($scholarCode);
+                              $e_created = "---";
                               $e_desc = "<span class='text-ongoing'><i class=''>Please complete your enrollment information</span>";
                               $e_status=0;
                             }
 
-                            if ($a_status==1 && $b_status==1 && $c_status==1 && $d_status==1 && $e_status==1) {
+                            if ($a_status==1 && $b_status==1 && $c_status==1 && $d_status == 1 && $e_status==1) {
                               $overall_bullet = "timeline-point-successnew";
                               $overall_text ="text-success";
-                              $overall_created = getPersonalInformationCreatedDate($scholarCode);
+                              $overall_created = getTimePassed(getPersonalInformationCreatedDate($scholarCode), date("Y-m-d H:i:s"));
                               $overall_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $overall_desc = " Personal Information has been registered";
-                            } else{
+                            } else {
                               $overall_bullet = "timeline-point-info";
                               $overall_text ="text-ongoing";
                               $overall_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
-                              $overall_created = getPersonalInformationCreatedDate($scholarCode);
+                              $overall_created = "---";
                               $overall_desc = "<span class='text-ongoing'><i class=''>Please complete your personal information</span>";
                             }
-
-
-
 
                           ?>
 
@@ -123,7 +120,7 @@
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
                                 <h6 class="<?= $overall_text ?> mb-0">Fill up Personal Information</h6>
-                                <span class="text-muted"><?= getTimePassed($a_created, date("Y-m-d H:i:s")) ?></span>
+                                <span class="text-muted"><?= $a_created ?></span>
                               </div>
                               <p class="<?= $a_text ?> mb-1"><i class="<?= $a_icon ?>"></i> <?= $a_desc ?></p>
                               <p class="<?= $b_text ?> mb-1"><i class="<?= $b_icon ?>"></i> <?= $b_desc ?></p>
@@ -138,14 +135,14 @@
                               $f_bullet = "timeline-point-successnew";
                               $f_text ="text-muted";
                               $f_text1 ="text-success";
-                              $f_created = getPersonalInformationCreatedDate($scholarCode);
+                              $f_created = getTimePassed(getPersonalInformationCreatedDate($scholarCode), date("Y-m-d H:i:s"));
                               $f_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $f_desc = " Subject and Grades Information has been registered.";
-                            } else if (scholarshipStatusOld($scholarCode, "grades") == "incomplete") {
+                            } else {
                               $f_bullet = "timeline-point-warning";
                               $f_text ="text-ongoing";
                               $f_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
-                              $f_created = getPersonalInformationCreatedDate($scholarCode);
+                              $f_created = "---";
                               $f_desc = "<span class='text-ongoing'><i class=''>Please complete your subject and grades information</span>";
                             }
 
@@ -154,15 +151,15 @@
                               $g_bullet = "timeline-point-successnew";
                               $g_text ="text-muted";
                               $g_text1 ="text-success";
-                              $g_created = getPersonalInformationCreatedDate($scholarCode);
+                              $g_created = getTimePassed(getPersonalInformationCreatedDate($scholarCode), date("Y-m-d H:i:s"));
                               $g_icon = "mdi mdi-check-bold me-1 mdi-20px";
                               $g_desc = " Proof of Grades image uploaded.";
-                            } else if (scholarshipStatusOld($scholarCode, "requirements") == "incomplete") {
+                            } else {
                               $g_bullet = "timeline-point-info";
                               $g_text ="text-ongoing";
                               $g_text1 ="text-ongoing";
                               $g_icon = "mdi mdi-exclamation-thick me-1 mdi-20px";
-                              $g_created = getPersonalInformationCreatedDate($scholarCode);
+                              $g_created = "---";
                               $g_desc = "<span class='text-ongoing'><i class=''>Please upload image of your Proof of Grades</span>";
                             }
                           ?>
@@ -172,7 +169,7 @@
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
                                 <h6 class="<?= $f_text1 ?> mb-0">Add Subject and Grades Information</h6>
-                                <span class="text-muted"><?= getTimePassed($f_created, date("Y-m-d H:i:s")) ?></span>
+                                <span class="text-muted"><?= $f_created ?></span>
                               </div>
                               <p class="<?= $f_text ?> mb-1"><i class="<?= $f_icon ?>"></i> <?= $f_desc ?></p>  
                             </div>
@@ -183,7 +180,7 @@
                             <div class="timeline-event">
                               <div class="timeline-header mb-1">
                                 <h6 class="<?= $g_text1 ?>">Upload File Requirements - Proof of Grades</h6>
-                                <span class="text-muted"><?= getTimePassed($g_created, date("Y-m-d H:i:s")) ?></span>
+                                <span class="text-muted"><?= $g_created ?></span>
                               </div>
                               <p class="<?= $g_text ?> mb-1"><i class="<?= $g_icon ?>"></i> <?= $g_desc ?></p>  
                             </div>

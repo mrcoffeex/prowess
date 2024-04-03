@@ -37,8 +37,19 @@
               <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#for-resub">
                 <i class="mdi mdi-close me-1"></i> For Resubmission
               </button>
-              <a href="scholarStatusChangeActive?rand=<?= randStrInt(100) ?>&scholarCode=<?= $scholarCode ?>" class="btn btn-success waves-effect waves-light">
-                <i class="mdi mdi-check-decagram-outline me-1"></i> Set Active
+
+              <?php  
+                if (getScholarStatus($scholarCode) == 1) {
+                  $approveDisabler = "disabled";
+                  $approveText = "active";
+                } else {
+                  $approveDisabler = "";
+                  $approveText = "set active";
+                }
+              ?>
+
+              <a href="scholarStatusChangeActive?rand=<?= randStrInt(100) ?>&scholarCode=<?= $scholarCode ?>" class="btn btn-success waves-effect waves-light <?= $approveDisabler ?>">
+                <i class="mdi mdi-check-decagram-outline me-1"></i> <?= $approveText ?>
               </a>
             </div>
           </div>

@@ -6,12 +6,11 @@
     $schoolId = clean_string($_GET['schoolId']);
     $scholarName = clean_string($_GET['scholarName']);
     $school = clean_int($_GET['school']);
-    $status = clean_string($_GET['status']);
     $municipality = clean_int($_GET['municipality']);
     $schoolYear = clean_string($_GET['schoolYear']);
     $semester = clean_int($_GET['semester']);
 
-    include 'scholarInformationSearch.paginate.php';
+    include 'scholarPendingSearch.paginate.php';
 
     include "_head.php";
 ?>
@@ -150,16 +149,6 @@
                                                         <?php } ?>
                                                     </select>
                                                     <label for="multiStepsSchool">School</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-6 col-lg-4">
-                                                <div class="form-floating form-floating-outline">
-                                                    <select name="status" id="status" class="form-control">
-                                                        <option value="<?= $status ?>"><?= scholarStatus($status) ?></option>
-                                                        <option value="1">Active</option>
-                                                        <option value="3">Alumni</option>
-                                                    </select>
-                                                    <label for="status">Status</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 col-lg-4">

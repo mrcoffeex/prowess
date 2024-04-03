@@ -21,6 +21,12 @@
                 toastr.error('Invalid Upload!');
             </script>
         ";
+    } else if ($note == "empty_search") {
+        echo "
+            <script>
+                toastr.error('No input!');
+            </script>
+        ";
     } else {
 
         //hei_profile
@@ -53,6 +59,22 @@
                 echo "
                     <script>
                         toastr.success('HEI added');
+                    </script>
+                ";
+            } else {
+                echo "";
+            }
+
+        }
+
+        //scholarFunding
+        
+        if ($currpage == "scholarFunding") {
+        
+            if ($note == "updated") {
+                echo "
+                    <script>
+                        toastr.success('Changes saved');
                     </script>
                 ";
             } else {
@@ -102,6 +124,14 @@
             } else {
                 echo "";
             }
+
+        }
+
+        // scholarInformation
+        
+        if ($currpage == "scholarInformation" || $currpage == "scholarInformationSearch" || $currpage == "scholarPending" || $currpage == "scholarPendingSearch") {
+        
+            // nothing here
 
         }
 

@@ -73,6 +73,22 @@
 
         }
 
+        //settings
+        
+        if ($currpage == "settings") {
+        
+            if ($note == "updated") {
+                echo "
+                    <script>
+                        toastr.success('Changes saved');
+                    </script>
+                ";
+            } else {
+                echo "";
+            }
+
+        }
+
         // hei_subjects
         
         if ($currpage == "hei_subjects") {

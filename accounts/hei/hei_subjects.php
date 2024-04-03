@@ -30,6 +30,9 @@
                     <div class="card card-action mb-4">
                             <div class="card-header align-items-center">
                                 <h5 class="card-action-title mb-0">
+                                    <a href="heiProfile">
+                                        <button type="button" class="btn btn-dark btn-sm">back</button>
+                                    </a>
                                     <i class="mdi mdi-format-list-bulleted mdi-24px me-2"></i><?= $course['prow_course_name'] ?> Subjects
                                 </h5>
                                 <div class="card-action-element">
@@ -65,7 +68,7 @@
 
                                             <tr>
                                                 <td><?= $subject['prow_subject_code'] ?></td>
-                                                <td><?= $subject['prow_subject_desc'] ?></td>
+                                                <td title="<?= $subject['prow_subject_desc'] ?>"><?= stringLimit($subject['prow_subject_desc'], 100) ?></td>
                                                 <td class="text-center p-2"><?= $subject['prow_subject_units'] ?></td>
                                                 <td class="text-center p-2">
                                                     <button 
@@ -111,7 +114,7 @@
                                                                     </div>
                                                                     <div class="col-sm-12 mb-3">
                                                                         <div class="form-floating form-floating-outline">
-                                                                            <input type="text" name="subjectDesc" id="subjectDesc" class="form-control dt-input" placeholder="Ex. Programming I" data-column-index="2" value="<?= $subject['prow_subject_desc'] ?>" required>
+                                                                            <input type="text" name="subjectDesc" id="subjectDesc" maxlength="125 class="form-control dt-input" placeholder="Ex. Programming I" data-column-index="2" value="<?= $subject['prow_subject_desc'] ?>" required>
                                                                             <label for="subjectDesc">Subject Description</label>
                                                                         </div>
                                                                     </div>
@@ -184,7 +187,7 @@
                                 </div>
                                 <div class="col-sm-12 mb-3">
                                     <div class="form-floating form-floating-outline">
-                                        <input type="text" name="subjectDesc" id="subjectDesc" class="form-control dt-input" placeholder="Ex. Programming I" data-column-index="2" required>
+                                        <input type="text" name="subjectDesc" id="subjectDesc" maxlength="125" class="form-control dt-input" placeholder="Ex. Programming I" data-column-index="2" required>
                                         <label for="subjectDesc">Subject Description</label>
                                     </div>
                                 </div>

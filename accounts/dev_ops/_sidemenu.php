@@ -44,19 +44,19 @@
           </a>
         </li>
         <li class="menu-item">
-          <a href="scholarInformation" class="menu-link">
+          <a href="scholarPending" class="menu-link">
             <div data-i18n="Pending Scholar">Pending Scholar</div>
-            <div class="badge bg-primary rounded-pill ms-auto"><?= countScholarAppLogPending() ?></div>
+            <div class="badge bg-primary rounded-pill ms-auto"><?= countScholarAppLogPending2() ?></div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="scholarInformation" class="menu-link">
+          <a href="#" class="menu-link">
             <div data-i18n="New Scholars">New Scholars</div>
             <div class="badge bg-primary rounded-pill ms-auto"></div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="layouts-without-menu.html" class="menu-link">
+          <a href="scholarFunding" class="menu-link">
             <div data-i18n="Funding">Funding</div>
           </a>
         </li>

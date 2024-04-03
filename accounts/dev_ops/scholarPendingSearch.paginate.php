@@ -5,7 +5,6 @@
     $schoolIdText = ($schoolId != "") ? "%$schoolId%" : '%';
     $scholarNameText = ($scholarName != "") ? "%$scholarName%" : '%';
     $schoolText = ($school != "") ? "%$school%" : '%';
-    $statusText = ($status != "") ? "%$status%" : '%';
     $municipalityText = ($municipality != "") ? "%$municipality%" : '%';
     $schoolYearText = ($schoolYear != "") ? "%$schoolYear%" : '%';
     $semesterText = ($semester != "") ? "%$semester%" : '%';
@@ -38,9 +37,7 @@
                                 AND
                                 (prow_hei LIKE :prow_hei)
                                 AND
-                                (prow_scholar_acct_status != :prow_scholar_acct_status1)
-                                AND
-                                (prow_scholar_acct_status LIKE :prow_scholar_acct_status2)
+                                (prow_scholar_acct_status != :prow_scholar_acct_status)
                                 AND
                                 (prow_address_municipality LIKE :prow_address_municipality)
                                 AND
@@ -54,12 +51,11 @@
         'prow_scholar_school_id' => $schoolIdText,
         'scholarName' => $scholarNameText,
         'prow_hei' => $schoolText,
-        'prow_scholar_acct_status1' => 2,
-        'prow_scholar_acct_status2' => $statusText,
+        'prow_scholar_acct_status' => 2,
         'prow_address_municipality' => $municipalityText,
         'prow_sy' => $schoolYearText,
         'prow_sem' => $semesterText,
-        'prow_app_log_status' => 1
+        'prow_app_log_status' => 2
     ]);
     
 
@@ -114,9 +110,7 @@
                             AND
                             (prow_hei LIKE :prow_hei)
                             AND
-                            (prow_scholar_acct_status != :prow_scholar_acct_status1)
-                            AND
-                            (prow_scholar_acct_status LIKE :prow_scholar_acct_status2)
+                            (prow_scholar_acct_status != :prow_scholar_acct_status)
                             AND
                             (prow_address_municipality LIKE :prow_address_municipality)
                             AND
@@ -134,12 +128,11 @@
         'prow_scholar_school_id' => $schoolIdText,
         'scholarName' => $scholarNameText,
         'prow_hei' => $schoolText,
-        'prow_scholar_acct_status1' => 2,
-        'prow_scholar_acct_status2' => $statusText,
+        'prow_scholar_acct_status' => 2,
         'prow_address_municipality' => $municipalityText,
         'prow_sy' => $schoolYearText,
         'prow_sem' => $semesterText,
-        'prow_app_log_status' => 1
+        'prow_app_log_status' => 2
     ]);
 
     $countRes=$paginate->rowCount();

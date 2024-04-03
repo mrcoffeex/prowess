@@ -57,11 +57,17 @@
     </li>
 
     <li class="menu-item">
-      <a href="reports" class="menu-link">
+      <a href="#" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-chart-bar"></i>
         <div data-i18n="Reports">Reports</div>
       </a>
+    </li>
 
+    <li class="menu-item">
+      <a href="settings" class="menu-link">
+        <i class="menu-icon tf-icons mdi mdi-cogs"></i>
+        <div data-i18n="Settings">Settings</div>
+      </a>
     </li>
     <!-- Layouts -->
 

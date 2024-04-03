@@ -4,7 +4,7 @@
 
     //redirects
 
-    if (isset($_POST['scholarCode'])) {
+    if (isset($_POST['scholarInformationBtn'])) {
 
         $scholarCode = clean_string($_POST['scholarCode']);
         $schoolId = clean_string($_POST['schoolId']);
@@ -19,6 +19,24 @@
             header("location: scholarInformation?note=empty_search");
         } else {
             header("location: scholarInformationSearch?scholarCode=" . $scholarCode . "&schoolId=" . $schoolId . "&scholarName=" . $scholarName . "&school=" . $school . "&status=" . $status . "&municipality=" . $municipality . "&schoolYear=" . $schoolYear . "&semester=" . $semester);
+        }
+
+    }
+
+    if (isset($_POST['scholarPendingBtn'])) {
+
+        $scholarCode = clean_string($_POST['scholarCode']);
+        $schoolId = clean_string($_POST['schoolId']);
+        $scholarName = clean_string($_POST['scholarName']);
+        $school = clean_int($_POST['school']);
+        $municipality = clean_int($_POST['municipality']);
+        $schoolYear = clean_string($_POST['schoolYear']);
+        $semester = clean_int($_POST['semester']);
+
+        if (empty($scholarCode) && empty($schoolId) && empty($scholarName) && empty($school) && empty($municipality) && empty($schoolYear) && empty($semester)) {
+            header("location: scholarPending?note=empty_search");
+        } else {
+            header("location: scholarPendingSearch?scholarCode=" . $scholarCode . "&schoolId=" . $schoolId . "&scholarName=" . $scholarName . "&school=" . $school . "&municipality=" . $municipality . "&schoolYear=" . $schoolYear . "&semester=" . $semester);
         }
 
     }
